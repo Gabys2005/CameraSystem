@@ -1,2 +1,3 @@
 # Camera-System
-Lite version of my Camera System for Roblox (I give full version only to people I trust). https://gabys2005.github.io/cameras
+A Camera System for Roblox, mainly for Eurovisions and Earthvision, if you want to help me add a feature you can always DM me on Discord, or create an issue or a pull request.
+https://gabys.xyz/cameras

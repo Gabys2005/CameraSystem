@@ -1,0 +1,34 @@
+{
+ "className": "BoolValue",
+ "name": "DecelerateEnd",
+ "referent": "RBX5A06622C496942468574E996B1DDCF3A",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "DecelerateEnd"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "Value": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

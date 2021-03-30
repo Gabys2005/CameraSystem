@@ -1,0 +1,34 @@
+{
+ "className": "IntValue",
+ "name": "CurrentCamID",
+ "referent": "RBXE62876C9E68A4993B21CC30D65CDA475",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "CurrentCamID"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "Value": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "0"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

@@ -1,0 +1,42 @@
+{
+ "className": "Vector3Value",
+ "name": "PositionValue",
+ "referent": "RBX78F9885FCDCE467AB846DDDBD2AAD7CA",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "PositionValue"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "Value": {
+   "_propertyType": "Vector3",
+   "values": {
+    "X": [
+     "0"
+    ],
+    "Y": [
+     "0"
+    ],
+    "Z": [
+     "0"
+    ]
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

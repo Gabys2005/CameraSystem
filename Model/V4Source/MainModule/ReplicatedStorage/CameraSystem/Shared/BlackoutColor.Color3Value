@@ -1,0 +1,42 @@
+{
+ "className": "Color3Value",
+ "name": "BlackoutColor",
+ "referent": "RBX3FEF9F94BBAB49BC97600BABC04B71DA",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "BlackoutColor"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "Value": {
+   "_propertyType": "Color3",
+   "values": {
+    "R": [
+     "0"
+    ],
+    "G": [
+     "0"
+    ],
+    "B": [
+     "0"
+    ]
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

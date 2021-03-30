@@ -1,0 +1,66 @@
+{
+ "className": "ColorCorrectionEffect",
+ "name": "CameraSystemColorCorrection",
+ "referent": "RBX438FDB9FEBAD4227B20A7D037D86A4CB",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Brightness": {
+   "_propertyType": "float",
+   "values": {
+    "_": "0"
+   }
+  },
+  "Contrast": {
+   "_propertyType": "float",
+   "values": {
+    "_": "0"
+   }
+  },
+  "Saturation": {
+   "_propertyType": "float",
+   "values": {
+    "_": "0"
+   }
+  },
+  "Enabled": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "CameraSystemColorCorrection"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "TintColor": {
+   "_propertyType": "Color3",
+   "values": {
+    "R": [
+     "1"
+    ],
+    "G": [
+     "1"
+    ],
+    "B": [
+     "1"
+    ]
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

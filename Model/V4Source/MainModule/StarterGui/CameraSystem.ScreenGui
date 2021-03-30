@@ -1,0 +1,70 @@
+{
+ "className": "ScreenGui",
+ "name": "CameraSystem",
+ "referent": "RBX0AB3D299EF6042A2B74FDD2A8778C920",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "AutoLocalize": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "Enabled": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "IgnoreGuiInset": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "ResetOnSpawn": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "DisplayOrder": {
+   "_propertyType": "int",
+   "values": {
+    "_": "0"
+   }
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "CameraSystem"
+   }
+  },
+  "RootLocalizationTable": {
+   "_propertyType": "Ref",
+   "values": {
+    "_": "null"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "ZIndexBehavior": {
+   "_propertyType": "token",
+   "values": {
+    "_": "1"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

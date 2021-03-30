@@ -1,0 +1,63 @@
+{
+ "className": "UIGradient",
+ "name": "UIGradient",
+ "referent": "RBXBFC13A78BC9E43488AA784E439EBDE3A",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Color": {
+   "_propertyType": "ColorSequence",
+   "values": {
+    "_": "0 1 1 1 0 1 0 0 0 0 "
+   }
+  },
+  "Enabled": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "UIGradient"
+   }
+  },
+  "Offset": {
+   "_propertyType": "Vector2",
+   "values": {
+    "X": [
+     "0"
+    ],
+    "Y": [
+     "0"
+    ]
+   }
+  },
+  "Rotation": {
+   "_propertyType": "float",
+   "values": {
+    "_": "0"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "Transparency": {
+   "_propertyType": "NumberSequence",
+   "values": {
+    "_": "0 0 0 1 0 0 "
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

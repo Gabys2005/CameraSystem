@@ -1,0 +1,42 @@
+{
+ "className": "Vector3Value",
+ "name": "RotationValue",
+ "referent": "RBX96A4384BA5664DFFAC8F1584058C911F",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "RotationValue"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "Value": {
+   "_propertyType": "Vector3",
+   "values": {
+    "X": [
+     "0"
+    ],
+    "Y": [
+     "0"
+    ],
+    "Z": [
+     "0"
+    ]
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

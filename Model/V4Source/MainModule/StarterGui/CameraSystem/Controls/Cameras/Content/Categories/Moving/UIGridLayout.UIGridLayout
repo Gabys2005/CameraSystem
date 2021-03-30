@@ -1,0 +1,98 @@
+{
+ "className": "UIGridLayout",
+ "name": "UIGridLayout",
+ "referent": "RBXAD85189923A646F49BC4981E59C11492",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "CellPadding": {
+   "_propertyType": "UDim2",
+   "values": {
+    "XS": [
+     "0"
+    ],
+    "XO": [
+     "5"
+    ],
+    "YS": [
+     "0"
+    ],
+    "YO": [
+     "5"
+    ]
+   }
+  },
+  "CellSize": {
+   "_propertyType": "UDim2",
+   "values": {
+    "XS": [
+     "0"
+    ],
+    "XO": [
+     "90"
+    ],
+    "YS": [
+     "0"
+    ],
+    "YO": [
+     "30"
+    ]
+   }
+  },
+  "FillDirection": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "HorizontalAlignment": {
+   "_propertyType": "token",
+   "values": {
+    "_": "1"
+   }
+  },
+  "SortOrder": {
+   "_propertyType": "token",
+   "values": {
+    "_": "2"
+   }
+  },
+  "StartCorner": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "VerticalAlignment": {
+   "_propertyType": "token",
+   "values": {
+    "_": "1"
+   }
+  },
+  "FillDirectionMaxCells": {
+   "_propertyType": "int",
+   "values": {
+    "_": "0"
+   }
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "UIGridLayout"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

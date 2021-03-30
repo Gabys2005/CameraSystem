@@ -1,0 +1,32 @@
+{
+ "className": "StringValue",
+ "name": "OriginalText",
+ "referent": "RBX79CF747F6A6643A2B204E5E48210C313",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "OriginalText"
+   }
+  },
+  "Value": {
+   "_propertyType": "string",
+   "values": {}
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

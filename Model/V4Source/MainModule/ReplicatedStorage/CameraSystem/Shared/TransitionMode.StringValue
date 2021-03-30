@@ -1,0 +1,34 @@
+{
+ "className": "StringValue",
+ "name": "TransitionMode",
+ "referent": "RBXB801A57BBD644854B02A5C20D6EE121B",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "TransitionMode"
+   }
+  },
+  "Value": {
+   "_propertyType": "string",
+   "values": {
+    "_": "None"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

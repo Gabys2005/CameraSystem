@@ -1,0 +1,39 @@
+{
+ "className": "UICorner",
+ "name": "UICorner",
+ "referent": "RBXC261072D3B1F4FE0B2DD1D225F263E14",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "CornerRadius": {
+   "_propertyType": "UDim",
+   "values": {
+    "S": [
+     "0"
+    ],
+    "O": [
+     "8"
+    ]
+   }
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "UICorner"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

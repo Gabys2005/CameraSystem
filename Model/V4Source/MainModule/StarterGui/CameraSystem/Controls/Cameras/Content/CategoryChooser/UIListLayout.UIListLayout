@@ -1,0 +1,63 @@
+{
+ "className": "UIListLayout",
+ "name": "UIListLayout",
+ "referent": "RBX50E810104B394D7588D4347B42BFE8BD",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "FillDirection": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "HorizontalAlignment": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "SortOrder": {
+   "_propertyType": "token",
+   "values": {
+    "_": "2"
+   }
+  },
+  "VerticalAlignment": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "UIListLayout"
+   }
+  },
+  "Padding": {
+   "_propertyType": "UDim",
+   "values": {
+    "S": [
+     "0"
+    ],
+    "O": [
+     "10"
+    ]
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

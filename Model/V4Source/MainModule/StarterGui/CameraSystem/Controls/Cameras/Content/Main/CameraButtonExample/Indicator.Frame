@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Indicator",
- "referent": "RBX47ADF618BBF0462599F42A5D0DBE3221",
  "properties": {
   "Active": {
    "_propertyType": "bool",

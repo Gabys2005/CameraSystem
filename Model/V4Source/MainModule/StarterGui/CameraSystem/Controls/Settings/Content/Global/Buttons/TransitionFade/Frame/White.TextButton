@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "White",
- "referent": "RBXA7B640F79B054DE981AD6662A1220316",
  "properties": {
   "Active": {
    "_propertyType": "bool",

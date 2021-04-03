@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Buttons",
- "referent": "RBX970EE57FE6244E8B811C36BF1549F907",
  "properties": {
   "Active": {
    "_propertyType": "bool",

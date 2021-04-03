@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Effects",
- "referent": "RBXD2500B8EB4B1481FBB039FEA13EB5B53",
  "properties": {
   "Active": {
    "_propertyType": "bool",

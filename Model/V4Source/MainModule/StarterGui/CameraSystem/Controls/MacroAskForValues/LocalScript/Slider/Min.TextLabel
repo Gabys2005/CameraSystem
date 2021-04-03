@@ -1,7 +1,6 @@
 {
  "className": "TextLabel",
  "name": "Min",
- "referent": "RBX0C7E05C362CF4A3F8471E1D2C507A32C",
  "properties": {
   "Active": {
    "_propertyType": "bool",

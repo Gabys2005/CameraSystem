@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "ChangeCamera",
- "referent": "RBX62222E478C2C4312B3FAC3020C82B401",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

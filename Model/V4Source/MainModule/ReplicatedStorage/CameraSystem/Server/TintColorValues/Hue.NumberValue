@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "Hue",
- "referent": "RBX5A0837139D6B45DEA40E4BC7AD8C094F",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

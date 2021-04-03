@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Bars",
- "referent": "RBXCE874DA4E0A344E7BE80F8785D103780",
  "properties": {
   "Active": {
    "_propertyType": "bool",

@@ -1,7 +1,6 @@
 {
  "className": "TextBox",
  "name": "TextBox",
- "referent": "RBXC121CA21322D48C38F9646DD59A0B3E4",
  "properties": {
   "Active": {
    "_propertyType": "bool",

@@ -1,7 +1,6 @@
 {
  "className": "BoolValue",
  "name": "RainbowEnabled",
- "referent": "RBX0A77C9294761493C8A7BA0DF1337ABF2",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

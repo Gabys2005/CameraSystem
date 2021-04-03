@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Submit",
- "referent": "RBX58D3350FE7B04BF9B9F0E3B260970F42",
  "properties": {
   "Active": {
    "_propertyType": "bool",

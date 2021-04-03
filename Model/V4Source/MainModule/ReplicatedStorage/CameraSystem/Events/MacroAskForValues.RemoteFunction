@@ -1,7 +1,6 @@
 {
  "className": "RemoteFunction",
  "name": "MacroAskForValues",
- "referent": "RBX403AF769701B49AE9878B583E697FA2E",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

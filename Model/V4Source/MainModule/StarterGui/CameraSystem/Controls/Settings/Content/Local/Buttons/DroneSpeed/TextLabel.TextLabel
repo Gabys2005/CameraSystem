@@ -1,7 +1,6 @@
 {
  "className": "TextLabel",
  "name": "TextLabel",
- "referent": "RBX1695FEBB89744E26BA423D8FFBEE4019",
  "properties": {
   "Active": {
    "_propertyType": "bool",

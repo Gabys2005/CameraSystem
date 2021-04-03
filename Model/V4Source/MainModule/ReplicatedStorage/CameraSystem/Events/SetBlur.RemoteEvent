@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "SetBlur",
- "referent": "RBXE0500FBFCF144350833159242E1C5E9B",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

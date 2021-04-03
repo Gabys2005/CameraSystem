@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Template",
- "referent": "RBX1941F18A2CAB4173A033188B6D6750FE",
  "properties": {
   "Active": {
    "_propertyType": "bool",

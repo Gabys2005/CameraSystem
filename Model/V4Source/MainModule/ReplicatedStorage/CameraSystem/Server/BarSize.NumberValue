@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "BarSize",
- "referent": "RBX27033E7A49614A0D8C74B885CAB4CC2B",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

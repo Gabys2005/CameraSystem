@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "Fov",
- "referent": "RBXD592E452DF504257AABE225F8CB8AF38",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

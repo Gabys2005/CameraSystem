@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Controls",
- "referent": "RBX93FB2D7F21834C0CB8D8B6CC1BDDDE7E",
  "properties": {
   "Active": {
    "_propertyType": "bool",

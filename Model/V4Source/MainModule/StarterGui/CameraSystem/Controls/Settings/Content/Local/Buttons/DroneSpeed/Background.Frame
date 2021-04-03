@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Background",
- "referent": "RBX816D48B28CB44C409C9A67AB60A8189C",
  "properties": {
   "Active": {
    "_propertyType": "bool",

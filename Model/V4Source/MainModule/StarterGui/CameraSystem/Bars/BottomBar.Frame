@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "BottomBar",
- "referent": "RBX2DC2851FC2544EB49E3C04D7C981E214",
  "properties": {
   "Active": {
    "_propertyType": "bool",

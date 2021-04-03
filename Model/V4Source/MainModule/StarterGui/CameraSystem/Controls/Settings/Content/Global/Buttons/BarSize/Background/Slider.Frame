@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Slider",
- "referent": "RBXBBC912258B3A4221B3592194D8764306",
  "properties": {
   "Active": {
    "_propertyType": "bool",

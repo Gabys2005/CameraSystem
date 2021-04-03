@@ -1,7 +1,6 @@
 {
  "className": "BoolValue",
  "name": "UseClient",
- "referent": "RBXF83C53D8D97243C2B1CEF45CD75E186D",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

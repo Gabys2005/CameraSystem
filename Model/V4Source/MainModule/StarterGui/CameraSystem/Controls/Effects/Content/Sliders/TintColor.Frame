@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "TintColor",
- "referent": "RBX9CADD11C91F3496192B6BD62706F61AD",
  "properties": {
   "Active": {
    "_propertyType": "bool",

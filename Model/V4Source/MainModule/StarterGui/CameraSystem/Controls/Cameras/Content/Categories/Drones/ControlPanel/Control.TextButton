@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Control",
- "referent": "RBX551C0EE971C841339C5CF627B12484CA",
  "properties": {
   "Active": {
    "_propertyType": "bool",

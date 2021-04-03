@@ -1,7 +1,6 @@
 {
  "className": "BoolValue",
  "name": "KeybindsEnabled",
- "referent": "RBXB61E84158C4C4D9698CC635F6860D1B4",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

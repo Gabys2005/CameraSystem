@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "End",
- "referent": "RBX734D2C4AE1524E7DAE70C73BDFEFCFF4",
  "properties": {
   "Active": {
    "_propertyType": "bool",

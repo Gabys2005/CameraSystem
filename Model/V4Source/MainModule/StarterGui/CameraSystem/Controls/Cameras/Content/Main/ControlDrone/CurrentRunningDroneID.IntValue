@@ -1,7 +1,6 @@
 {
  "className": "IntValue",
  "name": "CurrentRunningDroneID",
- "referent": "RBXFF917653F16647828BF2D3C44A1943A3",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

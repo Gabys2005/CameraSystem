@@ -1,7 +1,6 @@
 {
  "className": "ScreenGui",
  "name": "CameraSystem",
- "referent": "RBX0AB3D299EF6042A2B74FDD2A8778C920",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

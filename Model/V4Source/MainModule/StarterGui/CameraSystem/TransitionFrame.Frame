@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "TransitionFrame",
- "referent": "RBX0A0F3D8B756E4360AC738FC9F67B42D4",
  "properties": {
   "Active": {
    "_propertyType": "bool",

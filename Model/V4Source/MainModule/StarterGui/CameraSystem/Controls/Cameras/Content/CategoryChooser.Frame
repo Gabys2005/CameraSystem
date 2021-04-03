@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "CategoryChooser",
- "referent": "RBX752BDDC1DF0846948EBEE9F7AA551E2B",
  "properties": {
   "Active": {
    "_propertyType": "bool",

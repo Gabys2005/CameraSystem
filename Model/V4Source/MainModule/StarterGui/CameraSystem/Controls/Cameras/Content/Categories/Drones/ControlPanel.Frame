@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "ControlPanel",
- "referent": "RBXE4299A65DF6F4A49B89AF19C40C133E5",
  "properties": {
   "Active": {
    "_propertyType": "bool",

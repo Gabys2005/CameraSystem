@@ -1,7 +1,6 @@
 {
  "className": "BoolValue",
  "name": "BlackoutEnabled",
- "referent": "RBX1FF4AD63BE99486585EC6A7289AF81AE",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "FOV",
- "referent": "RBXC43B1A573E0E4D5E95A19F517FCEEED3",
  "properties": {
   "Active": {
    "_propertyType": "bool",

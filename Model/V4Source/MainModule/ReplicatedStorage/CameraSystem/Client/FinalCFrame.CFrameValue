@@ -1,7 +1,6 @@
 {
  "className": "CFrameValue",
  "name": "FinalCFrame",
- "referent": "RBX35B363FCB55748758B05BA030C62842A",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

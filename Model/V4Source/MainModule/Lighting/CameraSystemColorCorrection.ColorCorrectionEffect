@@ -1,7 +1,6 @@
 {
  "className": "ColorCorrectionEffect",
  "name": "CameraSystemColorCorrection",
- "referent": "RBX438FDB9FEBAD4227B20A7D037D86A4CB",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

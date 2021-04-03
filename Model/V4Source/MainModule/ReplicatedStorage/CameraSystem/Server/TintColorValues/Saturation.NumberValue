@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "Saturation",
- "referent": "RBX04AEAC0F64474EDB8B125FE4F4E673F0",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

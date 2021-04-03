@@ -1,7 +1,6 @@
 {
  "className": "IntValue",
  "name": "CurrentCamID",
- "referent": "RBXE62876C9E68A4993B21CC30D65CDA475",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

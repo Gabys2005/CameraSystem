@@ -1,7 +1,6 @@
 {
  "className": "BoolValue",
  "name": "ShowBars",
- "referent": "RBX08E4739AD1A8410882BDD783DB1C3344",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

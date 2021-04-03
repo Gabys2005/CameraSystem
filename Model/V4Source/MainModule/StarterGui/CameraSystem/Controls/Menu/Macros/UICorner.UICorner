@@ -1,7 +1,6 @@
 {
  "className": "UICorner",
  "name": "UICorner",
- "referent": "RBX613DA8004CFC4BF2A1E48B514ED172D2",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

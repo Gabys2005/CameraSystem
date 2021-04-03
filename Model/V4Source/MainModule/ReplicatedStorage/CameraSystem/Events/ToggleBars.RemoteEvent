@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "ToggleBars",
- "referent": "RBX1B9E1EF5C2EE47DA8CFF89BB2A7AEC57",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

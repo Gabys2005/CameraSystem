@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Effects",
- "referent": "RBX676F189B75B747E1B949AFBE7B8E8764",
  "properties": {
   "Active": {
    "_propertyType": "bool",

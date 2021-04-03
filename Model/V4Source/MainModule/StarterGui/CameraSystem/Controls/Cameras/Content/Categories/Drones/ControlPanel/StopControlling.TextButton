@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "StopControlling",
- "referent": "RBX5ABB3D60F3A643B3BDFA41900E58A675",
  "properties": {
   "Active": {
    "_propertyType": "bool",

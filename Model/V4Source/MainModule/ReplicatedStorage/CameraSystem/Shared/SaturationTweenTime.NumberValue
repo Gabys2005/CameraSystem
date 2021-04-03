@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "SaturationTweenTime",
- "referent": "RBX37A448BA9FAB4B5DAFB6C154087A1BA3",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Left",
- "referent": "RBX76ADDE3C75C54089A71C78FCE03A57C4",
  "properties": {
   "Active": {
    "_propertyType": "bool",
@@ -192,7 +191,7 @@
      "0"
     ],
     "YS": [
-     "0.800000012"
+     "0.400000006"
     ],
     "YO": [
      "0"

@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "SetBarSize",
- "referent": "RBX2AF9A3AD0D6A45EDB7CA6DAE98D864AD",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

@@ -1,7 +1,6 @@
 {
  "className": "UIGridLayout",
  "name": "UIGridLayout",
- "referent": "RBX2A85186FE47044D2B74C484B7F171174",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

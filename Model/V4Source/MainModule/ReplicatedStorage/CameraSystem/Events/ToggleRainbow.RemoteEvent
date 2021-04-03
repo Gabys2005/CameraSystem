@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "ToggleRainbow",
- "referent": "RBXD22DD534231C4CEF9ECDD9FAC04C8B8C",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

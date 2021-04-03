@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "BlackoutTransparency",
- "referent": "RBX0E7F7EA4741E48EEA7A1344C49F034FC",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "BlurTweenTime",
- "referent": "RBX8D72957A6A84421D877329DE3719DF18",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

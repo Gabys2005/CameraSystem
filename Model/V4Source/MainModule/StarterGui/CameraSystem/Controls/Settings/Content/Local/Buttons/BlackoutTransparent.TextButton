@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "BlackoutTransparent",
- "referent": "RBX357B3EF1563840C0B246623C32EA5CC2",
  "properties": {
   "Active": {
    "_propertyType": "bool",

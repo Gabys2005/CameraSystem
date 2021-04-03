@@ -1,7 +1,6 @@
 {
  "className": "StringValue",
  "name": "TransitionMode",
- "referent": "RBXB801A57BBD644854B02A5C20D6EE121B",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

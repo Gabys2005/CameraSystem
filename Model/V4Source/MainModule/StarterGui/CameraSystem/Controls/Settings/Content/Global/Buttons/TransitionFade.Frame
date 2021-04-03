@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "TransitionFade",
- "referent": "RBXECD4C3D927FF46E9AFD667776DA22AA1",
  "properties": {
   "Active": {
    "_propertyType": "bool",

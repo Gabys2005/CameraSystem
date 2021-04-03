@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Moving",
- "referent": "RBXB851D3DEA9084C638F15C79B0193EC1A",
  "properties": {
   "Active": {
    "_propertyType": "bool",

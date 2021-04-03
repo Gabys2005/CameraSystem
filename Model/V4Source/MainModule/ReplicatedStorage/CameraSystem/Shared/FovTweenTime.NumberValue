@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "FovTweenTime",
- "referent": "RBX364661DAA809426C88B8780F07196060",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

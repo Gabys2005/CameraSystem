@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Focus",
- "referent": "RBX3C2DC14B422B4091827FB470D50F1CA5",
  "properties": {
   "Active": {
    "_propertyType": "bool",

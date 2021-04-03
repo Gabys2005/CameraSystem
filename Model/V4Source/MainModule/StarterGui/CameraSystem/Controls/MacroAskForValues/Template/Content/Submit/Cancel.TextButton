@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Cancel",
- "referent": "RBX239DB7AACF194978B53A89BFC8B5B2DC",
  "properties": {
   "Active": {
    "_propertyType": "bool",

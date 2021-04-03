@@ -1,7 +1,6 @@
 {
  "className": "BoolValue",
  "name": "AccelerateStart",
- "referent": "RBX44C09D5D2028429C8A196E6EF21C88BB",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

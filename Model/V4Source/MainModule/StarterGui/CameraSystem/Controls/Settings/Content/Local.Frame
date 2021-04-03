@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Local",
- "referent": "RBX7FEEBD7F2C9C4145B4ED2EE453AFF3C5",
  "properties": {
   "Active": {
    "_propertyType": "bool",

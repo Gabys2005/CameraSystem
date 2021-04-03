@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Value",
- "referent": "RBX56F7D1555E1B4DEFAB3351BB44377625",
  "properties": {
   "Active": {
    "_propertyType": "bool",

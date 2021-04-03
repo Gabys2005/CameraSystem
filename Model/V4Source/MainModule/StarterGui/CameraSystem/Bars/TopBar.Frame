@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "TopBar",
- "referent": "RBXCEE6A575A04C4886A302A45A26821477",
  "properties": {
   "Active": {
    "_propertyType": "bool",

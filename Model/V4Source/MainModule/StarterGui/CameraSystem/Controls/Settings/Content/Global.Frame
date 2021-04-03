@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Global",
- "referent": "RBX49506C6345D74D9E9FF9777BF8FD085A",
  "properties": {
   "Active": {
    "_propertyType": "bool",

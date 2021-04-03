@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "InfoSpace",
- "referent": "RBX376997828A124A3D9E883C98E658EEC9",
  "properties": {
   "Active": {
    "_propertyType": "bool",

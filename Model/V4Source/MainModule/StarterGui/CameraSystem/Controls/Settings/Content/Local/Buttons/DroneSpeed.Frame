@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "DroneSpeed",
- "referent": "RBX8C435C7667C64D399DD0268035D81252",
  "properties": {
   "Active": {
    "_propertyType": "bool",

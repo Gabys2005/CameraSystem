@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "Drone",
- "referent": "RBXBB1F0EBFBE2547DCAF0A0C5F397DD7B5",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

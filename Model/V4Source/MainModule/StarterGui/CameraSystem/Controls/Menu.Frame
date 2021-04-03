@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Menu",
- "referent": "RBXB4BD2C57C95C424CB70ED8264E061AB6",
  "properties": {
   "Active": {
    "_propertyType": "bool",

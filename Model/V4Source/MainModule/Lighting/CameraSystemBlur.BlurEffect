@@ -1,7 +1,6 @@
 {
  "className": "BlurEffect",
  "name": "CameraSystemBlur",
- "referent": "RBX9C472FF022294337977E57CA87889A27",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

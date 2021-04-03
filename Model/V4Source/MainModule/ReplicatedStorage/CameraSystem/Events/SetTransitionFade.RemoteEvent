@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "SetTransitionFade",
- "referent": "RBX22F22E3821514AF3AEB5FFA8BC4E9112",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

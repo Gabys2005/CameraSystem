@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Macros",
- "referent": "RBXBBBDBF0FE0D442AFA91474F6E69162B5",
  "properties": {
   "Active": {
    "_propertyType": "bool",

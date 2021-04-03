@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "RunKeybind",
- "referent": "RBX02D306DA57D94AB5AFA3FA6F7979C653",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

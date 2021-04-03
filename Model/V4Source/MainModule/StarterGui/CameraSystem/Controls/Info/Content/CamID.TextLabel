@@ -1,7 +1,6 @@
 {
  "className": "TextLabel",
  "name": "CamID",
- "referent": "RBX4D443A73B3C2412CB3232C9A8B3861AF",
  "properties": {
   "Active": {
    "_propertyType": "bool",

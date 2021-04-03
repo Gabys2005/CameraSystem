@@ -1,7 +1,6 @@
 {
  "className": "Vector3Value",
  "name": "RotationValue",
- "referent": "RBX96A4384BA5664DFFAC8F1584058C911F",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

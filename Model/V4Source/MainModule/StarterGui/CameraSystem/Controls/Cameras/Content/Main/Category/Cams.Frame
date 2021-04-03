@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Cams",
- "referent": "RBX054D76FBA553457FAE4295A0BAE4958E",
  "properties": {
   "Active": {
    "_propertyType": "bool",

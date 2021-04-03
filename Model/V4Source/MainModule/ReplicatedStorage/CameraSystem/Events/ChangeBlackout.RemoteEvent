@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "ChangeBlackout",
- "referent": "RBX1DAB09C415A04440A46381B2C348F3D3",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

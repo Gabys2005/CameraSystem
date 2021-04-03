@@ -1,7 +1,6 @@
 {
  "className": "TextLabel",
  "name": "MoveProgress",
- "referent": "RBXFCC224912CC24E0ABFBF45E53921CF2C",
  "properties": {
   "Active": {
    "_propertyType": "bool",

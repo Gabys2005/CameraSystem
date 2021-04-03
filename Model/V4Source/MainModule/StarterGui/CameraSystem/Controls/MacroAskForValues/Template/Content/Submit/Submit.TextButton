@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Submit",
- "referent": "RBX75BD5F432893498B9EE8B252FECBC2D6",
  "properties": {
   "Active": {
    "_propertyType": "bool",

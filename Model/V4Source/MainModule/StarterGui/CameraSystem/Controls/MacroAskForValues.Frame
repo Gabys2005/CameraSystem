@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "MacroAskForValues",
- "referent": "RBX476FC04B693A4791B883CE0EBA4C520B",
  "properties": {
   "Active": {
    "_propertyType": "bool",

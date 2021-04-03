@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "DroneSpeed",
- "referent": "RBXB64C5B794BD648A5821E12EFE4073BE4",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

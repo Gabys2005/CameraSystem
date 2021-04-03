@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Focus",
- "referent": "RBX19FDDDA87DE346FFA064F3F126DF67C3",
  "properties": {
   "Active": {
    "_propertyType": "bool",

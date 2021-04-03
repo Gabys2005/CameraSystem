@@ -1,7 +1,6 @@
 {
  "className": "BoolValue",
  "name": "Watching",
- "referent": "RBXB57933CF85004398BA004A6AC85AFBDA",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

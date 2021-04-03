@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Macros",
- "referent": "RBX8166405FB7004AD890C66E5D93AC4E04",
  "properties": {
   "Active": {
    "_propertyType": "bool",

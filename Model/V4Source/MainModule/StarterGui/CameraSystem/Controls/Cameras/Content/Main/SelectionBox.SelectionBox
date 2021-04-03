@@ -1,7 +1,6 @@
 {
  "className": "SelectionBox",
  "name": "SelectionBox",
- "referent": "RBX11EC425B51DF40FDB81E95AB3AB26283",
  "properties": {
   "Adornee": {
    "_propertyType": "Ref",

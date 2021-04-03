@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "SwitchTo",
- "referent": "RBX59405F5AA0F4418881E89ACA6EF184A8",
  "properties": {
   "Active": {
    "_propertyType": "bool",

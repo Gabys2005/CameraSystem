@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "BarSize",
- "referent": "RBX6EF7460BFAE442D09C0F15690DD16294",
  "properties": {
   "Active": {
    "_propertyType": "bool",

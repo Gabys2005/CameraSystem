@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Drones",
- "referent": "RBX00A89006D8C645ACB4777CBC9B189D3A",
  "properties": {
   "Active": {
    "_propertyType": "bool",

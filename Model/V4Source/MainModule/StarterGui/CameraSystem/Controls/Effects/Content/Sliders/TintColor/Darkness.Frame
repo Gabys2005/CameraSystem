@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Darkness",
- "referent": "RBXABAD055992FE495496A7E29BCC20AABB",
  "properties": {
   "Active": {
    "_propertyType": "bool",

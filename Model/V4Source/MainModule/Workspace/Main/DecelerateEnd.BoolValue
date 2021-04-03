@@ -1,7 +1,6 @@
 {
  "className": "BoolValue",
  "name": "DecelerateEnd",
- "referent": "RBX5A06622C496942468574E996B1DDCF3A",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "Blur",
- "referent": "RBXA5B3F0D89CC84A5695E6B95DD548BE99",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

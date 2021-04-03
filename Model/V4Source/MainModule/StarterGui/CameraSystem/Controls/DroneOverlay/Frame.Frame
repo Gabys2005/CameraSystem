@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Frame",
- "referent": "RBX1EC3BAA5DA994A04925364170E1860FB",
  "properties": {
   "Active": {
    "_propertyType": "bool",
@@ -43,10 +42,10 @@
    "_propertyType": "Vector2",
    "values": {
     "X": [
-     "0"
+     "1"
     ],
     "Y": [
-     "1"
+     "0"
     ]
    }
   },
@@ -186,13 +185,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "0"
+     "1"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "1"
+     "0"
     ],
     "YO": [
      "0"
@@ -203,16 +202,16 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1"
+     "0"
     ],
     "XO": [
-     "0"
+     "10"
     ],
     "YS": [
-     "0"
+     "1"
     ],
     "YO": [
-     "10"
+     "0"
     ]
    }
   },

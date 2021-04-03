@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Drones",
- "referent": "RBX08F37AB5D79946ACB3F5CADC8FCE4F99",
  "properties": {
   "Active": {
    "_propertyType": "bool",

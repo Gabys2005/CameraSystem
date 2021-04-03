@@ -1,7 +1,6 @@
 {
  "className": "StringValue",
  "name": "OriginalText",
- "referent": "RBX79CF747F6A6643A2B204E5E48210C313",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Blur",
- "referent": "RBX5D963C4952B1439E8BE669922389F9FA",
  "properties": {
   "Active": {
    "_propertyType": "bool",

@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Blur",
- "referent": "RBXF2195CAAF402471FA96F18B243CDC03D",
  "properties": {
   "Active": {
    "_propertyType": "bool",

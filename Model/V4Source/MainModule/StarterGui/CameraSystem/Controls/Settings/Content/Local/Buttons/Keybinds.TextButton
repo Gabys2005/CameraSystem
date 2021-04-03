@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Keybinds",
- "referent": "RBXD2EED18837B343F9BF5301773C207F9C",
  "properties": {
   "Active": {
    "_propertyType": "bool",

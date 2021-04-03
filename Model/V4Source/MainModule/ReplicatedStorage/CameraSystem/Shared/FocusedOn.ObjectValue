@@ -1,7 +1,6 @@
 {
  "className": "ObjectValue",
  "name": "FocusedOn",
- "referent": "RBX6D133A45198F4E68A9B3CDFB51A4EB22",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

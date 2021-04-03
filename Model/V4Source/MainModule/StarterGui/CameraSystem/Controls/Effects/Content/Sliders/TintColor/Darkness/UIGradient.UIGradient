@@ -1,7 +1,6 @@
 {
  "className": "UIGradient",
  "name": "UIGradient",
- "referent": "RBXBFC13A78BC9E43488AA784E439EBDE3A",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

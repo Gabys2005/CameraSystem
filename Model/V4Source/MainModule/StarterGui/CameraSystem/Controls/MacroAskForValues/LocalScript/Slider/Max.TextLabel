@@ -1,7 +1,6 @@
 {
  "className": "TextLabel",
  "name": "Max",
- "referent": "RBX8CE914BDAADF43F3B40EBEC09A5B14C1",
  "properties": {
   "Active": {
    "_propertyType": "bool",

@@ -1,7 +1,6 @@
 {
  "className": "IntValue",
  "name": "MoveProgress",
- "referent": "RBX7A69D0F6D8D74EF094DD6459C601282B",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

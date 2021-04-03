@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Color",
- "referent": "RBXE0E817E14AA14767BCAB043D477706E6",
  "properties": {
   "Active": {
    "_propertyType": "bool",

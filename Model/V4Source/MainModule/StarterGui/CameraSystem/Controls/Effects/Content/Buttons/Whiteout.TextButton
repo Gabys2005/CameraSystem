@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Whiteout",
- "referent": "RBX18A5178B8F4D44E5A3337CB2DA4DD90B",
  "properties": {
   "Active": {
    "_propertyType": "bool",

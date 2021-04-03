@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "Value",
- "referent": "RBX3BC5D28BA68A4960A317D96CB4E3E97F",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

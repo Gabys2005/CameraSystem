@@ -1,7 +1,6 @@
 {
  "className": "BoolValue",
  "name": "Start",
- "referent": "RBX7B2AAA2752D7449B9FC75BF433A226D6",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

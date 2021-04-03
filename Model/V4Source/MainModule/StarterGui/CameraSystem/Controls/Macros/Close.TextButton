@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Close",
- "referent": "RBXE1EEEFC716B24D0396D4EC896357ECC9",
  "properties": {
   "Active": {
    "_propertyType": "bool",

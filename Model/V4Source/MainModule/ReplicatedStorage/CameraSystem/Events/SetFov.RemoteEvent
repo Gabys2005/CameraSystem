@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "SetFov",
- "referent": "RBX7DA09FC49F2D494197DD25761773430E",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

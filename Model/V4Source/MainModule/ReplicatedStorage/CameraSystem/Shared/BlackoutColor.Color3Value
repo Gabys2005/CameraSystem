@@ -1,7 +1,6 @@
 {
  "className": "Color3Value",
  "name": "BlackoutColor",
- "referent": "RBX3FEF9F94BBAB49BC97600BABC04B71DA",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

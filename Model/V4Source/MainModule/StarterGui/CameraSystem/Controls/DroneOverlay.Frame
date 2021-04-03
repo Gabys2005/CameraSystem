@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "DroneOverlay",
- "referent": "RBX0C9DD4BE7C11434384AE3D353107DCDE",
  "properties": {
   "Active": {
    "_propertyType": "bool",

@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "BlackOut",
- "referent": "RBXA95A31E288294D14B77A4B491382AC23",
  "properties": {
   "Active": {
    "_propertyType": "bool",

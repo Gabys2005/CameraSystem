@@ -1,7 +1,6 @@
 {
  "className": "NumberValue",
  "name": "TintColorTweenTime",
- "referent": "RBXE08607A2C2534C959D94B58E0F5E77C9",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

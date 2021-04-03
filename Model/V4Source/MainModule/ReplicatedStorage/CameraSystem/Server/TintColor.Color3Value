@@ -1,7 +1,6 @@
 {
  "className": "Color3Value",
  "name": "TintColor",
- "referent": "RBX0FC535846533411690141450601050B3",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

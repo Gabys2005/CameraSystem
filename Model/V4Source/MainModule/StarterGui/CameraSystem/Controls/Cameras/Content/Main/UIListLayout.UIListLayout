@@ -1,7 +1,6 @@
 {
  "className": "UIListLayout",
  "name": "UIListLayout",
- "referent": "RBXB52C1E1D1B3A47DBAB7A2A85C40C85D7",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

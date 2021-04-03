@@ -1,7 +1,6 @@
 {
  "className": "Vector3Value",
  "name": "PositionValue",
- "referent": "RBXB41EC4DD027A4C58A5E92E7CA3F7337E",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

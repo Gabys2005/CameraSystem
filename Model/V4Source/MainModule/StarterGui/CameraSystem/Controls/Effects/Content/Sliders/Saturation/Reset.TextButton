@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Reset",
- "referent": "RBXB3AC20836A234A9786B55376E174892E",
  "properties": {
   "Active": {
    "_propertyType": "bool",

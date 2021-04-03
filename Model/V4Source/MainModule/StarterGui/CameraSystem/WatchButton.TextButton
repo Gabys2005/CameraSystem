@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "WatchButton",
- "referent": "RBX22AB3367C7DC446BA18D84E37F26AAF1",
  "properties": {
   "Active": {
    "_propertyType": "bool",

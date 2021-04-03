@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Rainbow",
- "referent": "RBX898FA945EA784163AB619479114ED609",
  "properties": {
   "Active": {
    "_propertyType": "bool",

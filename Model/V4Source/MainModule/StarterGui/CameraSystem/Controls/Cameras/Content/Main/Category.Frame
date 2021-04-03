@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Category",
- "referent": "RBX85116FE694BD4D8E8A76638E5E77C48C",
  "properties": {
   "Active": {
    "_propertyType": "bool",

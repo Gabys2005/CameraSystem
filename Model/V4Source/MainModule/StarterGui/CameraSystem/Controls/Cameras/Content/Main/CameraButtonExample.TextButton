@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "CameraButtonExample",
- "referent": "RBX73DA5157E9A14FB38A04E58926167D90",
  "properties": {
   "Active": {
    "_propertyType": "bool",

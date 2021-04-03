@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "Saturation",
- "referent": "RBX939F0C6116B342E3A446B93AB419655E",
  "properties": {
   "Active": {
    "_propertyType": "bool",

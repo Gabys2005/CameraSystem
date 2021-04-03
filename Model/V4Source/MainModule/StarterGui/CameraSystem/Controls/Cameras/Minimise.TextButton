@@ -1,7 +1,6 @@
 {
  "className": "TextButton",
  "name": "Minimise",
- "referent": "RBX6135E80667D7493799F0E9C69ECEC9BD",
  "properties": {
   "Active": {
    "_propertyType": "bool",

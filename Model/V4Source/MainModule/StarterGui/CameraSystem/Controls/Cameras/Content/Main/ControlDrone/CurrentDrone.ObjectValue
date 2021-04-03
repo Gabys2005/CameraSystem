@@ -1,7 +1,6 @@
 {
  "className": "ObjectValue",
  "name": "CurrentDrone",
- "referent": "RBX95D1996EC5A641B390B6BE525B8185EE",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

@@ -1,7 +1,6 @@
 {
  "className": "Frame",
  "name": "TransitionBars",
- "referent": "RBXE3DD91CC056F44D0A20D635A8FDB798D",
  "properties": {
   "Active": {
    "_propertyType": "bool",

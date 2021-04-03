@@ -1,7 +1,6 @@
 {
  "className": "RemoteEvent",
  "name": "SetSaturation",
- "referent": "RBX87DDB24CB4774AC29DA16A5779C93C71",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

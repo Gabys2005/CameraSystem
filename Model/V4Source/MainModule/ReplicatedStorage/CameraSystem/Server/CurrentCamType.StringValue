@@ -1,7 +1,6 @@
 {
  "className": "StringValue",
  "name": "CurrentCamType",
- "referent": "RBX5A5E6644DAFB47569C5EB99E92FA4DFA",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",

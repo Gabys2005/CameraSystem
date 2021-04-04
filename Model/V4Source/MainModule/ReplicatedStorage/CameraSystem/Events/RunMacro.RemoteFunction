@@ -1,5 +1,5 @@
 {
- "className": "RemoteEvent",
+ "className": "RemoteFunction",
  "name": "RunMacro",
  "properties": {
   "AttributesSerialize": {

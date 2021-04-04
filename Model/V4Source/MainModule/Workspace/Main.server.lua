@@ -221,10 +221,10 @@ replicated.Events.RunKeybind.OnServerEvent:Connect(function(plr,run)
 	end
 end)
 
-replicated.Events.RunMacro.OnServerEvent:Connect(function(plr,macroName,funcName)
+replicated.Events.RunMacro.OnServerInvoke = function(plr,macroName,funcName)
 	for i,v in pairs(Settings.Macros) do
 		if v.Name == macroName then
-			v[funcName](plr)
+			return v[funcName](plr)
 		end
 	end
-end)
+end

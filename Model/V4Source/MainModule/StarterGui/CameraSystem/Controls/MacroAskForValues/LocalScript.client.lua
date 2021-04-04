@@ -32,6 +32,12 @@ replicated.Events.MacroAskForValues.OnClientInvoke = function(data)
 			temp.Parent = template.Content.InfoSpace
 			totalSize += temp.Size.Y.Offset
 			table.insert(toCollect,temp)
+		elseif v.Type == "bool" then
+			local temp = script.Bool:Clone()
+			temp.Namer.Text = v.Name
+			temp.Parent = template.Content.InfoSpace
+			totalSize += temp.Size.Y.Offset
+			table.insert(toCollect,temp)
 		end
 	end
 	template.Content.Size = UDim2.new(0,250,0,totalSize)
@@ -60,6 +66,12 @@ replicated.Events.MacroAskForValues.OnClientInvoke = function(data)
 			table.insert(toSend,v.TextBox.Text or "")
 		elseif v.Name == "Slider" then
 			table.insert(toSend,v.FinalValue.Value)
+		elseif v.Name == "Bool" then
+			if v.TextButton.Text == "X" then
+				table.insert(toSend,true)
+			else
+				table.insert(toSend,false)
+			end
 		end
 	end
 	template:Destroy()

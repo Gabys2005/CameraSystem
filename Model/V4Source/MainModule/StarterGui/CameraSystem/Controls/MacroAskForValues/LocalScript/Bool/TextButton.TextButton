@@ -1,11 +1,17 @@
 {
- "className": "Frame",
- "name": "Right",
+ "className": "TextButton",
+ "name": "TextButton",
  "properties": {
   "Active": {
    "_propertyType": "bool",
    "values": {
-    "_": "false"
+    "_": "true"
+   }
+  },
+  "AutoButtonColor": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
    }
   },
   "AutoLocalize": {
@@ -26,7 +32,37 @@
     "_": "false"
    }
   },
+  "Modal": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "RichText": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
   "Selectable": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "Selected": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "TextScaled": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "TextWrapped": {
    "_propertyType": "bool",
    "values": {
     "_": "false"
@@ -69,6 +105,12 @@
     "_": "0"
    }
   },
+  "Font": {
+   "_propertyType": "token",
+   "values": {
+    "_": "3"
+   }
+  },
   "SizeConstraint": {
    "_propertyType": "token",
    "values": {
@@ -79,6 +121,24 @@
    "_propertyType": "token",
    "values": {
     "_": "0"
+   }
+  },
+  "TextTruncate": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "TextXAlignment": {
+   "_propertyType": "token",
+   "values": {
+    "_": "2"
+   }
+  },
+  "TextYAlignment": {
+   "_propertyType": "token",
+   "values": {
+    "_": "1"
    }
   },
   "BackgroundColor3": {
@@ -109,13 +169,65 @@
     ]
    }
   },
+  "TextColor3": {
+   "_propertyType": "Color3",
+   "values": {
+    "R": [
+     "1"
+    ],
+    "G": [
+     "1"
+    ],
+    "B": [
+     "1"
+    ]
+   }
+  },
+  "TextStrokeColor3": {
+   "_propertyType": "Color3",
+   "values": {
+    "R": [
+     "0"
+    ],
+    "G": [
+     "0"
+    ],
+    "B": [
+     "0"
+    ]
+   }
+  },
   "BackgroundTransparency": {
+   "_propertyType": "float",
+   "values": {
+    "_": "0.699999988"
+   }
+  },
+  "LineHeight": {
+   "_propertyType": "float",
+   "values": {
+    "_": "1"
+   }
+  },
+  "Rotation": {
    "_propertyType": "float",
    "values": {
     "_": "0"
    }
   },
-  "Rotation": {
+  "TextSize": {
+   "_propertyType": "float",
+   "values": {
+    "_": "15"
+   }
+  },
+  "TextStrokeTransparency": {
+   "_propertyType": "float",
+   "values": {
+    "_": "1"
+   }
+  },
+  "TextTransparency": {
    "_propertyType": "float",
    "values": {
     "_": "0"
@@ -133,6 +245,12 @@
     "_": "0"
    }
   },
+  "MaxVisibleGraphemes": {
+   "_propertyType": "int",
+   "values": {
+    "_": "-1"
+   }
+  },
   "ZIndex": {
    "_propertyType": "int",
    "values": {
@@ -142,8 +260,12 @@
   "Name": {
    "_propertyType": "string",
    "values": {
-    "_": "Right"
+    "_": "TextButton"
    }
+  },
+  "Text": {
+   "_propertyType": "string",
+   "values": {}
   },
   "NextSelectionDown": {
    "_propertyType": "Ref",
@@ -185,16 +307,16 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1"
+     "0"
     ],
     "XO": [
-     "0"
+     "111"
     ],
     "YS": [
-     "0.300000012"
+     "0"
     ],
     "YO": [
-     "0"
+     "27"
     ]
    }
   },
@@ -202,16 +324,16 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1.5"
+     "0"
     ],
     "XO": [
-     "0"
+     "27"
     ],
     "YS": [
-     "0.100000001"
+     "0"
     ],
     "YO": [
-     "0"
+     "27"
     ]
    }
   },

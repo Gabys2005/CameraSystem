@@ -8,12 +8,22 @@ for i,v in pairs(macros) do
 	template.Parent = script.Parent.ScrollingFrame
 	if v.LeftClick then
 		template.MouseButton1Click:Connect(function()
-			replicated.Events.RunMacro:FireServer(v.Name,"LeftClick")
+			local response = replicated.Events.RunMacro:InvokeServer(v.Name,"LeftClick")
+			if response == true then
+				template.BackgroundColor3 = Color3.fromRGB(0,255,0)
+			elseif response == false then
+				template.BackgroundColor3 = Color3.fromRGB(0,0,0)
+			end
 		end)
 	end
 	if v.RightClick then
 		template.MouseButton2Click:Connect(function()
-			replicated.Events.RunMacro:FireServer(v.Name,"RightClick")
+			local response = replicated.Events.RunMacro:InvokeServer(v.Name,"RightClick")
+			if response == true then
+				template.BackgroundColor3 = Color3.fromRGB(0,255,0)
+			elseif response == false then
+				template.BackgroundColor3 = Color3.fromRGB(0,0,0)
+			end
 		end)
 	end
 end

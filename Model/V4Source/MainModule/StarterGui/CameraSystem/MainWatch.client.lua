@@ -43,6 +43,7 @@ watching.Changed:Connect(function()
 		script.Parent.BlackOut.Visible = false
 		script.Parent.WatchButton.Text = "Watch"
 		script.Parent.TransitionFrame.Visible = false
+		script.Parent.TransitionBars.Visible = false
 		for i,v in pairs(cameras.Drones:GetChildren()) do
 			v.Transparency = 0
 		end
@@ -60,6 +61,7 @@ watching.Changed:Connect(function()
 		script.Parent.BlackOut.Visible = true
 		script.Parent.WatchButton.Text = "Exit"
 		script.Parent.TransitionFrame.Visible = true
+		script.Parent.TransitionBars.Visible = true
 		if Settings.DronesVisibleFromOtherCams == false then
 			for i,v in pairs(cameras.Drones:GetChildren()) do
 				v.Transparency = 1

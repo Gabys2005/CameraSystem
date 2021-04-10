@@ -452,7 +452,7 @@ local function StartFreecam()
 	local cameraCFrame = currentDrone.CamPos.CFrame
 	cameraRot = Vector2.new(cameraCFrame:toEulerAnglesYXZ())
 	cameraPos = cameraCFrame.p
-	cameraFov = Camera.FieldOfView
+	cameraFov = replicated.Server.Fov.Value
 
 	velSpring:Reset(Vector3.new())
 	panSpring:Reset(Vector2.new())

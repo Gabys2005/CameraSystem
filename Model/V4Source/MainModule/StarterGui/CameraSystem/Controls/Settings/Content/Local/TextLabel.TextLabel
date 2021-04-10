@@ -90,7 +90,7 @@
   "Font": {
    "_propertyType": "token",
    "values": {
-    "_": "16"
+    "_": "4"
    }
   },
   "SizeConstraint": {
@@ -114,7 +114,7 @@
   "TextYAlignment": {
    "_propertyType": "token",
    "values": {
-    "_": "0"
+    "_": "1"
    }
   },
   "BackgroundColor3": {
@@ -194,7 +194,7 @@
   "TextSize": {
    "_propertyType": "float",
    "values": {
-    "_": "14"
+    "_": "20"
    }
   },
   "TextStrokeTransparency": {
@@ -242,7 +242,7 @@
   "Text": {
    "_propertyType": "string",
    "values": {
-    "_": "(changes visible only to you)"
+    "_": "Local"
    }
   },
   "NextSelectionDown": {
@@ -291,7 +291,7 @@
      "0"
     ],
     "YS": [
-     "0.148760334"
+     "0"
     ],
     "YO": [
      "0"
@@ -323,4 +323,5 @@
   }
  },
  "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}all properties of this instance."
 }

@@ -29,15 +29,17 @@ for i,v in pairs(cameras.Drones:GetChildren()) do
 	val.Value = ID
 	ID += 1
 	val.Parent = v
-	v.BodyGyro.CFrame = v.CFrame
-	v.BodyPosition.Position = v.Position
-	v.CamPos.BodyGyro.CFrame = v.CFrame
-	v.CamPos.BodyPosition.Position = v.Position
-	v.Anchored = false
-	v.CamPos.Anchored = false
-	for i,v in pairs(v:GetDescendants()) do
-		if v:IsA("Weld") then
-			v:Destroy()
+	if v:FindFirstChild("BodyGyro") then
+		v.BodyGyro.CFrame = v.CFrame
+		v.BodyPosition.Position = v.Position
+		v.CamPos.BodyGyro.CFrame = v.CFrame
+		v.CamPos.BodyPosition.Position = v.Position
+		v.Anchored = false
+		v.CamPos.Anchored = false
+		for i,v in pairs(v:GetDescendants()) do
+			if v:IsA("Weld") then
+				v:Destroy()
+			end
 		end
 	end
 end
@@ -91,7 +93,7 @@ end)
 
 replicated.Events.FocusOn.OnServerEvent:Connect(function(plr,focusText)
 	if isOwner(plr) then
-		api:Focus(focusText)
+		api:Focus(focusText,"ButtonClick")
 	end
 end)
 

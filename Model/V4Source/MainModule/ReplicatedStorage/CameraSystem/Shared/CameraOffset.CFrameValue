@@ -1,0 +1,68 @@
+{
+ "className": "CFrameValue",
+ "name": "CameraOffset",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "CameraOffset"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "Value": {
+   "_propertyType": "CoordinateFrame",
+   "values": {
+    "X": [
+     "0"
+    ],
+    "Y": [
+     "0"
+    ],
+    "Z": [
+     "0"
+    ],
+    "R00": [
+     "1"
+    ],
+    "R01": [
+     "0"
+    ],
+    "R02": [
+     "0"
+    ],
+    "R10": [
+     "0"
+    ],
+    "R11": [
+     "1"
+    ],
+    "R12": [
+     "0"
+    ],
+    "R20": [
+     "0"
+    ],
+    "R21": [
+     "0"
+    ],
+    "R22": [
+     "1"
+    ]
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

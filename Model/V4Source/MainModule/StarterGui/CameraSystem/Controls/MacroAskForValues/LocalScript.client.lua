@@ -14,12 +14,18 @@ replicated.Events.MacroAskForValues.OnClientInvoke = function(data)
 		if v.Type == "number" then
 			local temp = script.Number:Clone()
 			temp.Namer.Text = v.Name
+			if v.Default then
+				temp.TextBox.Text = v.Default
+			end
 			temp.Parent = template.Content.InfoSpace
 			totalSize += temp.Size.Y.Offset
 			table.insert(toCollect,temp)
 		elseif v.Type == "string" then
 			local temp = script.String:Clone()
 			temp.Namer.Text = v.Name
+			if v.Default then
+				temp.TextBox.Text = v.Default
+			end
 			temp.Parent = template.Content.InfoSpace
 			totalSize += temp.Size.Y.Offset
 			table.insert(toCollect,temp)
@@ -29,12 +35,19 @@ replicated.Events.MacroAskForValues.OnClientInvoke = function(data)
 			temp.Namer.OriginalText.Value = v.Name
 			temp.Min.Text = v.Min
 			temp.Max.Text = v.Max
+			if v.Default then
+				temp.FinalValue.Value = v.Default
+				temp.Namer.Text = v.Name .. " " .. v.Default
+			end
 			temp.Parent = template.Content.InfoSpace
 			totalSize += temp.Size.Y.Offset
 			table.insert(toCollect,temp)
 		elseif v.Type == "bool" then
 			local temp = script.Bool:Clone()
 			temp.Namer.Text = v.Name
+			if v.Default then
+				v.TextButton.Text = "X"
+			end
 			temp.Parent = template.Content.InfoSpace
 			totalSize += temp.Size.Y.Offset
 			table.insert(toCollect,temp)

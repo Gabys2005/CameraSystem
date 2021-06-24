@@ -1,4 +1,5 @@
 local api = {}
+local clientapi = {}
 
 local replicated = game.ReplicatedStorage.CameraSystem
 local players = game.Players
@@ -204,8 +205,14 @@ function api:Focus(playerText,source)
 end
 
 function api:GetCamIdFromName(category, name)
-	if script.Parent.Cameras[category]:FindFirstChild(name) then
-		return script.Parent.Cameras[category]:FindFirstChild(name).ID.Value
+	if script.Parent.Cameras[category]:FindFirstChild(name,true) then
+		return script.Parent.Cameras[category]:FindFirstChild(name,true).ID.Value
+	end
+end
+
+function clientapi:GetCamIdFromName(category, name)
+	if script.Parent.Cameras[category]:FindFirstChild(name,true) then
+		return script.Parent.Cameras[category]:FindFirstChild(name,true).ID.Value
 	end
 end
 
@@ -356,5 +363,5 @@ end
 if run:IsServer() then
 	return api
 else
-	return {}	
+	return clientapi
 end

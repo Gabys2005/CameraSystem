@@ -189,7 +189,7 @@ function api:Focus(playerText,source)
 	end
 	
 	for i,v in pairs(players:GetPlayers()) do
-		if string.sub(string.lower(v.Name),1,string.len(playerText)) == string.lower(playerText) then
+		if string.sub(string.lower(v.Name),1,string.len(playerText)) == string.lower(playerText) or string.sub(string.lower(v.DisplayName),1,string.len(playerText)) == string.lower(playerText) then
 			replicated.Shared.FocusedOn.Value = v.Character
 			spawn(function()
 				for _,func in pairs(events.FocusChange) do

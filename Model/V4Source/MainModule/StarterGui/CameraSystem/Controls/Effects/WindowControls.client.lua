@@ -1,6 +1,7 @@
 local UserInputService = game:GetService("UserInputService")
 
 local gui = script.Parent
+local minimised = false
 
 local dragging
 local dragInput
@@ -36,4 +37,21 @@ UserInputService.InputChanged:Connect(function(input)
 	if input == dragInput and dragging then
 		update(input)
 	end
+end)
+
+script.Parent.Close.MouseButton1Click:Connect(function()
+	script.Parent.Visible = false
+end)
+
+script.Parent.Minimise.MouseButton1Click:Connect(function()
+	if minimised == false then
+		script.Parent.Size = UDim2.new(0,80,0,25)
+		script.Parent.Content.Visible = false
+		script.Parent.Minimise.Text = "+"
+	else
+		script.Parent.Size = UDim2.new(0,200,0,25)
+		script.Parent.Content.Visible = true
+		script.Parent.Minimise.Text = "—"
+	end
+	minimised = not minimised
 end)

@@ -42,7 +42,7 @@
    "_propertyType": "Vector2",
    "values": {
     "X": [
-     "1"
+     "0"
     ],
     "Y": [
      "0"
@@ -185,7 +185,7 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1"
+     "0"
     ],
     "XO": [
      "0"

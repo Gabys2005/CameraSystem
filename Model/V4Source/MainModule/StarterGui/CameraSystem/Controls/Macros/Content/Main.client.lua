@@ -27,5 +27,3 @@ for i,v in pairs(macros) do
 		end)
 	end
 end
-
-script.Parent.ScrollingFrame.CanvasSize = UDim2.new(0,0,0,math.ceil(#macros/2)*35)

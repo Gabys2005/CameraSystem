@@ -77,7 +77,7 @@
   "AutomaticCanvasSize": {
    "_propertyType": "token",
    "values": {
-    "_": "0"
+    "_": "2"
    }
   },
   "AutomaticSize": {
@@ -246,7 +246,7 @@
      "0"
     ],
     "YS": [
-     "2"
+     "0"
     ],
     "YO": [
      "0"

@@ -10,11 +10,11 @@ end
 
 local function updateButtons()
 	local mode = replicated.Shared.TransitionMode.Value
-	script.Parent.None.BackgroundColor3 = Color3.fromRGB(0,0,0)
-	script.Parent.Black.BackgroundColor3 = Color3.fromRGB(0,0,0)
-	script.Parent.White.BackgroundColor3 = Color3.fromRGB(0,0,0)
-	script.Parent.Bars.BackgroundColor3 = Color3.fromRGB(0,0,0)
-	script.Parent.Blur.BackgroundColor3 = Color3.fromRGB(0,0,0)
+	for i,v in pairs(script.Parent:GetChildren()) do
+		if v:IsA("TextButton") then
+			v.BackgroundColor3 = Color3.fromRGB(0,0,0)
+		end
+	end
 	script.Parent[mode].BackgroundColor3 = Color3.fromRGB(35, 167, 28)
 end
 

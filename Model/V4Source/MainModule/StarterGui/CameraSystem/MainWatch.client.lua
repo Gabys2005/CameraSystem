@@ -98,23 +98,3 @@ if Settings.WatchButton.UseSettings then
 		script.Parent.WatchButton.UICorner:Destroy()
 	end
 end
-
---run.RenderStepped:Connect(function()
---	if watching.Value == true then
---		if cameraInstance.CameraType ~= Enum.CameraType.Scriptable then
---			cameraInstance.CameraType = Enum.CameraType.Scriptable
---		end
-		
---		cameraInstance.FieldOfView = replicated.Client.Fov.Value
---		-- Calculate FinalCFrame
---		local position = replicated.Client.PositionValue.Value
---		local rotation = replicated.Client.RotationValue.Value
---		if replicated.Shared.FocusedOn.Value then
---			replicated.Client.FinalCFrame.Value = CFrame.new(position,replicated.Shared.FocusedOn.Value.HumanoidRootPart.Position + Vector3.new(0,2,0))
---		else
---			replicated.Client.FinalCFrame.Value = CFrame.new(position.X,position.Y,position.Z) * CFrame.fromOrientation(math.rad(rotation.X),math.rad(rotation.Y),math.rad(rotation.Z))
---		end
-		
---		cameraInstance.CFrame = replicated.Client.FinalCFrame.Value
---	end
---end)

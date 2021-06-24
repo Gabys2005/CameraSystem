@@ -3,6 +3,7 @@ local Settings = require(workspace.CameraSystem.Settings)
 local cameras = workspace.CameraSystem.Cameras
 local replicated = game.ReplicatedStorage.CameraSystem
 local lighting = game.Lighting
+local run = game:GetService("RunService")
 
 local camerasTable = {Static = {}, Moving = {}, Drones = {}}
 for i,v in pairs(cameras.Static:GetDescendants()) do
@@ -17,6 +18,11 @@ for i,v in pairs(cameras.Moving:GetDescendants()) do
 end
 for i,v in pairs(cameras.Drones:GetChildren()) do
 	camerasTable.Drones[v.ID.Value] = v
+end
+
+local function wait(t)
+	local endTime = tick()+t
+	repeat run.RenderStepped:Wait() until tick() >= endTime
 end
 
 local CurrentPositionTween
@@ -196,7 +202,11 @@ end
 
 local function setFov(fov)
 	fov = fov or replicated.Server.Fov.Value
-	ts:Create(replicated.Client.Fov,TweenInfo.new(replicated.Shared.FovTweenTime.Value),{Value = fov}):Play()
+	if replicated.Shared.FovTweenTime.Value == 0 then
+		replicated.Client.Fov.Value = fov
+	else
+		ts:Create(replicated.Client.Fov,TweenInfo.new(replicated.Shared.FovTweenTime.Value),{Value = fov}):Play()
+	end
 end
 
 local function setBlackout()

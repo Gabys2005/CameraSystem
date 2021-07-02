@@ -1,6 +1,6 @@
 {
  "className": "Frame",
- "name": "Right",
+ "name": "Buttons",
  "properties": {
   "Active": {
    "_propertyType": "bool",
@@ -17,7 +17,7 @@
   "ClipsDescendants": {
    "_propertyType": "bool",
    "values": {
-    "_": "false"
+    "_": "true"
    }
   },
   "Draggable": {
@@ -85,13 +85,13 @@
    "_propertyType": "Color3",
    "values": {
     "R": [
-     "0"
+     "1"
     ],
     "G": [
-     "0"
+     "1"
     ],
     "B": [
-     "0"
+     "1"
     ]
    }
   },
@@ -112,7 +112,7 @@
   "BackgroundTransparency": {
    "_propertyType": "float",
    "values": {
-    "_": "0"
+    "_": "1"
    }
   },
   "Rotation": {
@@ -142,7 +142,7 @@
   "Name": {
    "_propertyType": "string",
    "values": {
-    "_": "Right"
+    "_": "Buttons"
    }
   },
   "NextSelectionDown": {
@@ -185,13 +185,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1"
+     "0"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.300000012"
+     "0.100000009"
     ],
     "YO": [
      "0"
@@ -202,13 +202,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1.5"
+     "0.989583313"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.100000001"
+     "0.400000006"
     ],
     "YO": [
      "0"

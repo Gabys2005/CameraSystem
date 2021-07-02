@@ -1,6 +1,6 @@
 {
  "className": "Frame",
- "name": "Right",
+ "name": "Slider",
  "properties": {
   "Active": {
    "_propertyType": "bool",
@@ -142,7 +142,7 @@
   "Name": {
    "_propertyType": "string",
    "values": {
-    "_": "Right"
+    "_": "Slider"
    }
   },
   "NextSelectionDown": {
@@ -185,13 +185,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1"
+     "0.266203731"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.300000012"
+     "0"
     ],
     "YO": [
      "0"
@@ -202,13 +202,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1.5"
+     "0.752314866"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.100000001"
+     "1"
     ],
     "YO": [
      "0"

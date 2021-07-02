@@ -1,6 +1,6 @@
 {
  "className": "Frame",
- "name": "Right",
+ "name": "Title",
  "properties": {
   "Active": {
    "_propertyType": "bool",
@@ -142,7 +142,7 @@
   "Name": {
    "_propertyType": "string",
    "values": {
-    "_": "Right"
+    "_": "Title"
    }
   },
   "NextSelectionDown": {
@@ -185,13 +185,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1"
+     "0"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.300000012"
+     "0"
     ],
     "YO": [
      "0"
@@ -202,7 +202,7 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1.5"
+     "1"
     ],
     "XO": [
      "0"

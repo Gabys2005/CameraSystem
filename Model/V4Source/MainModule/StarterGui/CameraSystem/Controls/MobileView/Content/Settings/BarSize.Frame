@@ -1,6 +1,6 @@
 {
  "className": "Frame",
- "name": "Right",
+ "name": "BarSize",
  "properties": {
   "Active": {
    "_propertyType": "bool",
@@ -42,7 +42,7 @@
    "_propertyType": "Vector2",
    "values": {
     "X": [
-     "0"
+     "0.5"
     ],
     "Y": [
      "0"
@@ -142,7 +142,7 @@
   "Name": {
    "_propertyType": "string",
    "values": {
-    "_": "Right"
+    "_": "BarSize"
    }
   },
   "NextSelectionDown": {
@@ -185,13 +185,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1"
+     "0.5"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.300000012"
+     "0.772861362"
     ],
     "YO": [
      "0"
@@ -202,13 +202,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1.5"
+     "0.78125"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.100000001"
+     "0.17699115"
     ],
     "YO": [
      "0"

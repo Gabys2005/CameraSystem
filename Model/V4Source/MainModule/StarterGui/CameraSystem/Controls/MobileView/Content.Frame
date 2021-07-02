@@ -1,6 +1,6 @@
 {
  "className": "Frame",
- "name": "Right",
+ "name": "Content",
  "properties": {
   "Active": {
    "_propertyType": "bool",
@@ -85,13 +85,13 @@
    "_propertyType": "Color3",
    "values": {
     "R": [
-     "0"
+     "1"
     ],
     "G": [
-     "0"
+     "1"
     ],
     "B": [
-     "0"
+     "1"
     ]
    }
   },
@@ -112,7 +112,7 @@
   "BackgroundTransparency": {
    "_propertyType": "float",
    "values": {
-    "_": "0"
+    "_": "1"
    }
   },
   "Rotation": {
@@ -124,7 +124,7 @@
   "BorderSizePixel": {
    "_propertyType": "int",
    "values": {
-    "_": "0"
+    "_": "1"
    }
   },
   "LayoutOrder": {
@@ -142,7 +142,7 @@
   "Name": {
    "_propertyType": "string",
    "values": {
-    "_": "Right"
+    "_": "Content"
    }
   },
   "NextSelectionDown": {
@@ -185,16 +185,16 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1"
+     "0"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.300000012"
+     "0"
     ],
     "YO": [
-     "0"
+     "36"
     ]
    }
   },
@@ -202,16 +202,16 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1.5"
+     "1"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.100000001"
+     "1"
     ],
     "YO": [
-     "0"
+     "-36"
     ]
    }
   },

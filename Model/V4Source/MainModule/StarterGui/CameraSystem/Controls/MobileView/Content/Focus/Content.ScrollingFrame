@@ -1,17 +1,11 @@
 {
- "className": "TextButton",
- "name": "WatchButton",
+ "className": "ScrollingFrame",
+ "name": "Content",
  "properties": {
   "Active": {
    "_propertyType": "bool",
    "values": {
-    "_": "true"
-   }
-  },
-  "AutoButtonColor": {
-   "_propertyType": "bool",
-   "values": {
-    "_": "true"
+    "_": "false"
    }
   },
   "AutoLocalize": {
@@ -23,7 +17,7 @@
   "ClipsDescendants": {
    "_propertyType": "bool",
    "values": {
-    "_": "false"
+    "_": "true"
    }
   },
   "Draggable": {
@@ -32,37 +26,13 @@
     "_": "false"
    }
   },
-  "Modal": {
-   "_propertyType": "bool",
-   "values": {
-    "_": "false"
-   }
-  },
-  "RichText": {
-   "_propertyType": "bool",
-   "values": {
-    "_": "false"
-   }
-  },
-  "Selectable": {
+  "ScrollingEnabled": {
    "_propertyType": "bool",
    "values": {
     "_": "true"
    }
   },
-  "Selected": {
-   "_propertyType": "bool",
-   "values": {
-    "_": "false"
-   }
-  },
-  "TextScaled": {
-   "_propertyType": "bool",
-   "values": {
-    "_": "false"
-   }
-  },
-  "TextWrapped": {
+  "Selectable": {
    "_propertyType": "bool",
    "values": {
     "_": "false"
@@ -78,7 +48,18 @@
    "_propertyType": "Vector2",
    "values": {
     "X": [
-     "0.5"
+     "0"
+    ],
+    "Y": [
+     "0"
+    ]
+   }
+  },
+  "CanvasPosition": {
+   "_propertyType": "Vector2",
+   "values": {
+    "X": [
+     "0"
     ],
     "Y": [
      "0"
@@ -93,6 +74,12 @@
    "_propertyType": "BinaryString",
    "values": {}
   },
+  "AutomaticCanvasSize": {
+   "_propertyType": "token",
+   "values": {
+    "_": "2"
+   }
+  },
   "AutomaticSize": {
    "_propertyType": "token",
    "values": {
@@ -105,10 +92,22 @@
     "_": "0"
    }
   },
-  "Font": {
+  "ElasticBehavior": {
    "_propertyType": "token",
    "values": {
-    "_": "3"
+    "_": "0"
+   }
+  },
+  "HorizontalScrollBarInset": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "ScrollingDirection": {
+   "_propertyType": "token",
+   "values": {
+    "_": "4"
    }
   },
   "SizeConstraint": {
@@ -117,41 +116,29 @@
     "_": "0"
    }
   },
-  "Style": {
+  "VerticalScrollBarInset": {
    "_propertyType": "token",
    "values": {
     "_": "0"
    }
   },
-  "TextTruncate": {
+  "VerticalScrollBarPosition": {
    "_propertyType": "token",
    "values": {
     "_": "0"
-   }
-  },
-  "TextXAlignment": {
-   "_propertyType": "token",
-   "values": {
-    "_": "2"
-   }
-  },
-  "TextYAlignment": {
-   "_propertyType": "token",
-   "values": {
-    "_": "1"
    }
   },
   "BackgroundColor3": {
    "_propertyType": "Color3",
    "values": {
     "R": [
-     "0.121568628"
+     "1"
     ],
     "G": [
-     "0.121568628"
+     "1"
     ],
     "B": [
-     "0.121568628"
+     "1"
     ]
    }
   },
@@ -169,7 +156,7 @@
     ]
    }
   },
-  "TextColor3": {
+  "ScrollBarImageColor3": {
    "_propertyType": "Color3",
    "values": {
     "R": [
@@ -180,30 +167,10 @@
     ],
     "B": [
      "1"
-    ]
-   }
-  },
-  "TextStrokeColor3": {
-   "_propertyType": "Color3",
-   "values": {
-    "R": [
-     "0"
-    ],
-    "G": [
-     "0"
-    ],
-    "B": [
-     "0"
     ]
    }
   },
   "BackgroundTransparency": {
-   "_propertyType": "float",
-   "values": {
-    "_": "0.5"
-   }
-  },
-  "LineHeight": {
    "_propertyType": "float",
    "values": {
     "_": "1"
@@ -215,19 +182,7 @@
     "_": "0"
    }
   },
-  "TextSize": {
-   "_propertyType": "float",
-   "values": {
-    "_": "20"
-   }
-  },
-  "TextStrokeTransparency": {
-   "_propertyType": "float",
-   "values": {
-    "_": "1"
-   }
-  },
-  "TextTransparency": {
+  "ScrollBarImageTransparency": {
    "_propertyType": "float",
    "values": {
     "_": "0"
@@ -245,28 +200,97 @@
     "_": "0"
    }
   },
-  "MaxVisibleGraphemes": {
+  "ScrollBarThickness": {
    "_propertyType": "int",
    "values": {
-    "_": "-1"
+    "_": "12"
    }
   },
   "ZIndex": {
    "_propertyType": "int",
    "values": {
-    "_": "4"
+    "_": "1"
+   }
+  },
+  "BottomImage": {
+   "_propertyType": "Content",
+   "values": {
+    "url": [
+     "rbxasset://textures/ui/Scroll/scroll-bottom.png"
+    ]
+   }
+  },
+  "MidImage": {
+   "_propertyType": "Content",
+   "values": {
+    "url": [
+     "rbxasset://textures/ui/Scroll/scroll-middle.png"
+    ]
+   }
+  },
+  "TopImage": {
+   "_propertyType": "Content",
+   "values": {
+    "url": [
+     "rbxasset://textures/ui/Scroll/scroll-top.png"
+    ]
+   }
+  },
+  "CanvasSize": {
+   "_propertyType": "UDim2",
+   "values": {
+    "XS": [
+     "0"
+    ],
+    "XO": [
+     "0"
+    ],
+    "YS": [
+     "0"
+    ],
+    "YO": [
+     "0"
+    ]
+   }
+  },
+  "Position": {
+   "_propertyType": "UDim2",
+   "values": {
+    "XS": [
+     "0"
+    ],
+    "XO": [
+     "0"
+    ],
+    "YS": [
+     "0.100000001"
+    ],
+    "YO": [
+     "35"
+    ]
+   }
+  },
+  "Size": {
+   "_propertyType": "UDim2",
+   "values": {
+    "XS": [
+     "1"
+    ],
+    "XO": [
+     "0"
+    ],
+    "YS": [
+     "0.899999976"
+    ],
+    "YO": [
+     "-35"
+    ]
    }
   },
   "Name": {
    "_propertyType": "string",
    "values": {
-    "_": "WatchButton"
-   }
-  },
-  "Text": {
-   "_propertyType": "string",
-   "values": {
-    "_": "Watch"
+    "_": "Content"
    }
   },
   "NextSelectionDown": {
@@ -303,40 +327,6 @@
    "_propertyType": "Ref",
    "values": {
     "_": "null"
-   }
-  },
-  "Position": {
-   "_propertyType": "UDim2",
-   "values": {
-    "XS": [
-     "0.5"
-    ],
-    "XO": [
-     "0"
-    ],
-    "YS": [
-     "0"
-    ],
-    "YO": [
-     "6"
-    ]
-   }
-  },
-  "Size": {
-   "_propertyType": "UDim2",
-   "values": {
-    "XS": [
-     "0"
-    ],
-    "XO": [
-     "150"
-    ],
-    "YS": [
-     "0"
-    ],
-    "YO": [
-     "30"
-    ]
    }
   },
   "SourceAssetId": {

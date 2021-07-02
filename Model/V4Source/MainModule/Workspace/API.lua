@@ -206,13 +206,13 @@ end
 
 function api:GetCamIdFromName(category, name)
 	if script.Parent.Cameras[category]:FindFirstChild(name,true) then
-		return script.Parent.Cameras[category]:FindFirstChild(name,true).ID.Value
+		return script.Parent.Cameras[category]:FindFirstChild(name,true):WaitForChild("ID").Value
 	end
 end
 
 function clientapi:GetCamIdFromName(category, name)
 	if script.Parent.Cameras[category]:FindFirstChild(name,true) then
-		return script.Parent.Cameras[category]:FindFirstChild(name,true).ID.Value
+		return script.Parent.Cameras[category]:FindFirstChild(name,true):WaitForChild("ID").Value
 	end
 end
 

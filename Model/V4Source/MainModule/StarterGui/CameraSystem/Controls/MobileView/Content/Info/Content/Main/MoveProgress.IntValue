@@ -1,0 +1,33 @@
+{
+ "className": "IntValue",
+ "name": "MoveProgress",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "MoveProgress"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "Value": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "0"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

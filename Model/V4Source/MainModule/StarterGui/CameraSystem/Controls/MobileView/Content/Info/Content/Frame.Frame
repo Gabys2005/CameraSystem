@@ -1,6 +1,6 @@
 {
  "className": "Frame",
- "name": "Right",
+ "name": "Frame",
  "properties": {
   "Active": {
    "_propertyType": "bool",
@@ -17,7 +17,7 @@
   "ClipsDescendants": {
    "_propertyType": "bool",
    "values": {
-    "_": "false"
+    "_": "true"
    }
   },
   "Draggable": {
@@ -42,7 +42,7 @@
    "_propertyType": "Vector2",
    "values": {
     "X": [
-     "0"
+     "0.5"
     ],
     "Y": [
      "0"
@@ -85,13 +85,13 @@
    "_propertyType": "Color3",
    "values": {
     "R": [
-     "0"
+     "0.545098066"
     ],
     "G": [
-     "0"
+     "0.545098066"
     ],
     "B": [
-     "0"
+     "0.545098066"
     ]
    }
   },
@@ -142,7 +142,7 @@
   "Name": {
    "_propertyType": "string",
    "values": {
-    "_": "Right"
+    "_": "Frame"
    }
   },
   "NextSelectionDown": {
@@ -185,13 +185,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1"
+     "0.5"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.300000012"
+     "0.662089944"
     ],
     "YO": [
      "0"
@@ -202,13 +202,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1.5"
+     "0.800000012"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.100000001"
+     "0.0500000007"
     ],
     "YO": [
      "0"

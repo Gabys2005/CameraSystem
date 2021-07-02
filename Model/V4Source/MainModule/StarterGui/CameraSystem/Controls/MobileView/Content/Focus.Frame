@@ -1,6 +1,6 @@
 {
  "className": "Frame",
- "name": "Right",
+ "name": "Focus",
  "properties": {
   "Active": {
    "_propertyType": "bool",
@@ -85,13 +85,13 @@
    "_propertyType": "Color3",
    "values": {
     "R": [
-     "0"
+     "0.156862751"
     ],
     "G": [
-     "0"
+     "0.156862751"
     ],
     "B": [
-     "0"
+     "0.156862751"
     ]
    }
   },
@@ -99,20 +99,20 @@
    "_propertyType": "Color3",
    "values": {
     "R": [
-     "0.105882362"
+     "0"
     ],
     "G": [
-     "0.164705887"
+     "0"
     ],
     "B": [
-     "0.207843155"
+     "0"
     ]
    }
   },
   "BackgroundTransparency": {
    "_propertyType": "float",
    "values": {
-    "_": "0"
+    "_": "0.25"
    }
   },
   "Rotation": {
@@ -142,7 +142,7 @@
   "Name": {
    "_propertyType": "string",
    "values": {
-    "_": "Right"
+    "_": "Focus"
    }
   },
   "NextSelectionDown": {
@@ -185,13 +185,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1"
+     "0.5"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.300000012"
+     "0.5"
     ],
     "YO": [
      "0"
@@ -202,13 +202,13 @@
    "_propertyType": "UDim2",
    "values": {
     "XS": [
-     "1.5"
+     "0.25"
     ],
     "XO": [
      "0"
     ],
     "YS": [
-     "0.100000001"
+     "0.5"
     ],
     "YO": [
      "0"

@@ -179,6 +179,11 @@ for i,v in pairs(cameras.Drones:GetChildren()) do
 		end
 		example.BackgroundColor3 = Color3.fromRGB(35, 167, 28)
 		script.Parent.Categories.Drones.ControlPanel.Visible = true
+		if v:FindFirstChild("Hidden") then
+			script.Parent.Categories.Drones.ControlPanel.Control.Visible = false
+		else
+			script.Parent.Categories.Drones.ControlPanel.Control.Visible = true
+		end
 		if (script.ControlDrone.Start.Value == true and script.ControlDrone.CurrentDrone.Value ~= v) or script.ControlDrone.Start.Value == false then
 			script.SelectionBox.Adornee = v
 		else

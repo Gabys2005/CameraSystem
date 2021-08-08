@@ -237,8 +237,9 @@ end
 
 function api:Fov(fov,timee)
 	timee = timee or 0.1
-	replicated.Shared.FovTweenTime.Value = timee
-	replicated.Server.Fov.Value = math.clamp(fov,1,120)
+	local newFov = math.clamp(fov,1,120)
+	replicated.Server.Fov.Value = newFov
+	replicated.Events.SendToClients.ChangeFov:FireAllClients(newFov, timee)
 	for _,func in pairs(events.FovChange) do
 		spawn(function()
 			func(fov,timee)

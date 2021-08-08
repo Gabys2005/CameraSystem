@@ -200,12 +200,13 @@ local function setBlur(level)
 	ts:Create(lighting.CameraSystemBlur,TweenInfo.new(replicated.Shared.BlurTweenTime.Value),{Size = level}):Play()
 end
 
-local function setFov(fov)
+local function setFov(fov,timee)
 	fov = fov or replicated.Server.Fov.Value
-	if replicated.Shared.FovTweenTime.Value == 0 then
+	timee = timee or 0.1
+	if timee == 0 then
 		replicated.Client.Fov.Value = fov
 	else
-		ts:Create(replicated.Client.Fov,TweenInfo.new(replicated.Shared.FovTweenTime.Value),{Value = fov}):Play()
+		ts:Create(replicated.Client.Fov,TweenInfo.new(timee),{Value = fov}):Play()
 	end
 end
 
@@ -252,7 +253,7 @@ local function setBars(bool)
 end
 
 replicated.Server.Blur.Changed:Connect(setBlur)
-replicated.Server.Fov.Changed:Connect(setFov)
+replicated.Events.SendToClients.ChangeFov.OnClientEvent:Connect(setFov)
 replicated.Shared.BlackoutEnabled.Changed:Connect(setBlackout)
 replicated.Shared.BlackoutColor.Changed:Connect(setBlackout)
 replicated.Server.Saturation.Changed:Connect(setSaturation)

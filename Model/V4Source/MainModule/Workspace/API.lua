@@ -7,7 +7,7 @@ local cameras = workspace.CameraSystem.Cameras
 local ts = game:GetService("TweenService")
 local run = game:GetService("RunService")
 
-local events = {Blackout = {}, CamChange = {}, FocusChange = {}, FovChange = {}, SaturationChange = {}, BlurChange = {}, BarsToggle = {}, TintColorChange = {}, BarSizeChange = {}, TransitionModeChange = {}, CameraOffsetChange = {}}
+local events = {Blackout = {}, CamChange = {}, FocusChange = {}, FovChange = {}, SaturationChange = {}, BlurChange = {}, BarsToggle = {}, TintColorChange = {}, BarSizeChange = {}, TransitionModeChange = {}, CameraOffsetChange = {}, TiltChange = {}}
 local camerasTable = {Static = {}, Moving = {}, Drone = {}}
 for i,v in pairs(cameras.Static:GetDescendants()) do
 	if v:IsA("Part") then
@@ -249,6 +249,22 @@ end
 
 function api:GetFov()
 	return replicated.Server.Fov.Value
+end
+
+function api:Tilt(tilt,timee)
+	timee = timee or 0.1
+	local newTilt = math.clamp(tilt,-90,90)
+	replicated.Server.CameraOrientation.Value = newTilt
+	replicated.Events.SendToClients.ChangeOrientation:FireAllClients(newTilt, timee)
+	for _,func in pairs(events.TiltChange) do
+		spawn(function()
+			func(tilt,timee)
+		end)
+	end
+end
+
+function api:GetTilt()
+	return replicated.Server.CameraOrientation.Value
 end
 
 function api:Blackout(visible,color)

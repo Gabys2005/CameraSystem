@@ -20,15 +20,18 @@ local function watchLoop()
 	end
 	local position = replicated[valContainer].PositionValue.Value
 	local rotation = replicated[valContainer].RotationValue.Value
+	local orientation = replicated.Client.CameraOrientation.Value
 	if replicated.Server.UseDrone.Value then
-		replicated.Client.FinalCFrame.Value = replicated.Server.UseDrone.Value.CFrame * replicated.Shared.CameraOffset.Value
+		replicated.Client.FinalCFrame.Value = replicated.Server.UseDrone.Value.CFrame
 	else
 		if replicated.Shared.FocusedOn.Value then
-			replicated.Client.FinalCFrame.Value = CFrame.new(position,replicated.Shared.FocusedOn.Value.HumanoidRootPart.Position + Vector3.new(0,2,0)) * replicated.Shared.CameraOffset.Value
+			replicated.Client.FinalCFrame.Value = CFrame.new(position,replicated.Shared.FocusedOn.Value.HumanoidRootPart.Position + Vector3.new(0,2,0))
 		else
-			replicated.Client.FinalCFrame.Value = CFrame.new(position.X,position.Y,position.Z) * CFrame.fromOrientation(math.rad(rotation.X),math.rad(rotation.Y),math.rad(rotation.Z)) * replicated.Shared.CameraOffset.Value
+			replicated.Client.FinalCFrame.Value = CFrame.new(position.X,position.Y,position.Z) * CFrame.fromOrientation(math.rad(rotation.X),math.rad(rotation.Y),math.rad(rotation.Z))
 		end
 	end
+	
+	replicated.Client.FinalCFrame.Value = replicated.Client.FinalCFrame.Value * replicated.Shared.CameraOffset.Value * CFrame.fromEulerAnglesYXZ(0,0,math.rad(orientation))
 
 	cameraInstance.CFrame = replicated.Client.FinalCFrame.Value
 end

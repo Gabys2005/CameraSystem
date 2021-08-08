@@ -1,6 +1,6 @@
 {
  "className": "NumberValue",
- "name": "FovTweenTime",
+ "name": "CameraOrientation",
  "properties": {
   "AttributesSerialize": {
    "_propertyType": "BinaryString",
@@ -13,7 +13,7 @@
   "Name": {
    "_propertyType": "string",
    "values": {
-    "_": "FovTweenTime"
+    "_": "CameraOrientation"
    }
   },
   "SourceAssetId": {

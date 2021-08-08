@@ -210,6 +210,16 @@ local function setFov(fov,timee)
 	end
 end
 
+local function setOrientation(orientation,timee)
+	orientation = orientation or replicated.Server.CameraOrientation.Value
+	timee = timee or 0.1
+	if timee == 0 then
+		replicated.Client.CameraOrientation.Value = orientation
+	else
+		ts:Create(replicated.Client.CameraOrientation,TweenInfo.new(timee),{Value = orientation}):Play()
+	end
+end
+
 local function setBlackout()
 	local visible = replicated.Shared.BlackoutEnabled.Value
 	local color = replicated.Shared.BlackoutColor.Value
@@ -254,6 +264,7 @@ end
 
 replicated.Server.Blur.Changed:Connect(setBlur)
 replicated.Events.SendToClients.ChangeFov.OnClientEvent:Connect(setFov)
+replicated.Events.SendToClients.ChangeOrientation.OnClientEvent:Connect(setOrientation)
 replicated.Shared.BlackoutEnabled.Changed:Connect(setBlackout)
 replicated.Shared.BlackoutColor.Changed:Connect(setBlackout)
 replicated.Server.Saturation.Changed:Connect(setSaturation)
@@ -265,6 +276,7 @@ replicated.Server.BarSize.Changed:Connect(setBars)
 -- // Set up after joinin
 setBlur()
 setFov()
+setOrientation()
 setBlackout()
 setSaturation()
 setTintColor()

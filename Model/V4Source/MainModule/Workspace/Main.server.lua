@@ -109,6 +109,12 @@ replicated.Events.SetFov.OnServerEvent:Connect(function(plr,fov,timee)
 	end
 end)
 
+replicated.Events.SetOrientation.OnServerEvent:Connect(function(plr,orientation,timee)
+	if isOwner(plr) then
+		api:Tilt(orientation,timee)
+	end
+end)
+
 replicated.Events.ChangeBlackout.OnServerEvent:Connect(function(plr,visible,color)
 	if isOwner(plr) then
 		api:Blackout(visible,color)
@@ -245,6 +251,10 @@ replicated.Events.RunKeybind.OnServerEvent:Connect(function(plr,run)
 			local camType = args[1] or "Static"
 			local camIdOrName = args[2] or 1
 			api:ChangeCam(camType,camIdOrName)
+		elseif name == "tilt" then
+			local tilt = args[1] or 0
+			local timee = args[2] or 0.1
+			api:Tilt(tilt,timee)
 		elseif name == "macro" then
 			local macroName = args[1]
 			local funcName = args[2]

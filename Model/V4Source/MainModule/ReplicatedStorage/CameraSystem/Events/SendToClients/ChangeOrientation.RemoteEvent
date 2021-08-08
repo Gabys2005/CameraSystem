@@ -1,0 +1,27 @@
+{
+ "className": "RemoteEvent",
+ "name": "ChangeOrientation",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "ChangeOrientation"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

@@ -6,6 +6,7 @@ local players = game.Players
 local cameras = workspace.CameraSystem.Cameras
 local ts = game:GetService("TweenService")
 local run = game:GetService("RunService")
+local lastFovTime = 0.1
 
 local events = {Blackout = {}, CamChange = {}, FocusChange = {}, FovChange = {}, SaturationChange = {}, BlurChange = {}, BarsToggle = {}, TintColorChange = {}, BarSizeChange = {}, TransitionModeChange = {}, CameraOffsetChange = {}, TiltChange = {}}
 local camerasTable = {Static = {}, Moving = {}, Drone = {}}
@@ -236,8 +237,9 @@ function api:GetBlur()
 end
 
 function api:Fov(fov,timee)
-	timee = timee or 0.1
+	timee = timee or lastFovTime
 	local newFov = math.clamp(fov,1,120)
+	lastFovTime = timee
 	replicated.Server.Fov.Value = newFov
 	replicated.Events.SendToClients.ChangeFov:FireAllClients(newFov, timee)
 	for _,func in pairs(events.FovChange) do

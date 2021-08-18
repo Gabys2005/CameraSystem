@@ -1,9 +1,6 @@
 local cameras = script.Parent.Cameras
 local replicated = game.ReplicatedStorage.CameraSystem
 
-
-require(4874365424) -- Topbar+
-
 local ID = 1
 
 for i,v in pairs(cameras.Static:GetDescendants()) do

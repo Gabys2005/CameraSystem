@@ -8,7 +8,7 @@ local ts = game:GetService("TweenService")
 local run = game:GetService("RunService")
 local lastFovTime = 0.1
 
-local events = {Blackout = {}, CamChange = {}, FocusChange = {}, FovChange = {}, SaturationChange = {}, BlurChange = {}, BarsToggle = {}, TintColorChange = {}, BarSizeChange = {}, TransitionModeChange = {}, CameraOffsetChange = {}, TiltChange = {}}
+local events = {Blackout = {}, CamChange = {}, FocusChange = {}, FovChange = {}, SaturationChange = {}, BlurChange = {}, BarsToggle = {}, TintColorChange = {}, BarSizeChange = {}, TransitionModeChange = {}, CameraOffsetChange = {}, TiltChange = {}, DistortionChange = {}}
 local camerasTable = {Static = {}, Moving = {}, Drone = {}}
 for i,v in pairs(cameras.Static:GetDescendants()) do
 	if v:IsA("Part") then
@@ -362,6 +362,25 @@ end
 
 function api:GetCameraOffset()
 	return replicated.Shared.CameraOffset.Value
+end
+
+function api:Distort(position,size)
+	replicated.Shared.CameraDistortion.Value = position.X.Scale .. "," .. position.X.Offset .. "," .. position.Y.Scale .. "," .. position.Y.Offset .. "/" .. size.X.Scale .. "," .. size.X.Offset .. "," .. size.Y.Scale .. "," .. size.Y.Offset
+	for _,func in pairs(events.DistortionChange) do
+		spawn(function()
+			func(position,size)
+		end)
+	end
+end
+
+function api:GetDistortion()
+	local val = replicated.Shared.CameraDistortion.Value
+	local split = string.split(val,"/")
+	local valPos = string.split(split[1],",")
+	local valSize = string.split(split[2],",")
+	local pos = UDim2.new(valPos[1],valPos[2],valPos[3],valPos[4])
+	local size = UDim2.new(valSize[1],valSize[2],valSize[3],valSize[4])
+	return pos, size
 end
 
 function api:AskForValues(plr,data)

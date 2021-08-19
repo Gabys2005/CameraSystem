@@ -6,6 +6,7 @@ local watching = script.Parent.Watching
 local Settings = require(workspace.CameraSystem.Settings)
 local cameras = workspace.CameraSystem.Cameras
 local plrGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+local distort = require(script.Distort)
 
 local function watchLoop()
 	if cameraInstance.CameraType ~= Enum.CameraType.Scriptable then
@@ -32,7 +33,10 @@ local function watchLoop()
 	end
 	
 	replicated.Client.FinalCFrame.Value = replicated.Client.FinalCFrame.Value * replicated.Shared.CameraOffset.Value * CFrame.fromEulerAnglesYXZ(0,0,math.rad(orientation))
-
+	if replicated.Shared.CameraDistortion.Value ~= "0,0,0,0/1,0,1,0" then
+		replicated.Client.FinalCFrame.Value = replicated.Client.FinalCFrame.Value * distort:_getOffset()
+	end
+	
 	cameraInstance.CFrame = replicated.Client.FinalCFrame.Value
 end
 
@@ -101,3 +105,16 @@ if Settings.WatchButton.UseSettings then
 		script.Parent.WatchButton.UICorner:Destroy()
 	end
 end
+
+local function updateDistortSettings()
+	local val = replicated.Shared.CameraDistortion.Value
+	local split = string.split(val,"/")
+	local valPos = string.split(split[1],",")
+	local valSize = string.split(split[2],",")
+	local pos = UDim2.new(valPos[1],valPos[2],valPos[3],valPos[4])
+	local size = UDim2.new(valSize[1],valSize[2],valSize[3],valSize[4])
+	distort.Position = pos
+	distort.Size = size
+end
+replicated.Shared.CameraDistortion.Changed:Connect(updateDistortSettings)
+updateDistortSettings()

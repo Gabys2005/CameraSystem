@@ -1,0 +1,33 @@
+{
+ "className": "StringValue",
+ "name": "CameraDistortion",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "CameraDistortion"
+   }
+  },
+  "Value": {
+   "_propertyType": "string",
+   "values": {
+    "_": "0,0,0,0/1,0,1,0"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

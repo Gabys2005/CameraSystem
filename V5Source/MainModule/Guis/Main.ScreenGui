@@ -1,0 +1,69 @@
+{
+ "className": "ScreenGui",
+ "name": "Main",
+ "properties": {
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "AutoLocalize": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "Enabled": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "IgnoreGuiInset": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "ResetOnSpawn": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "DisplayOrder": {
+   "_propertyType": "int",
+   "values": {
+    "_": "0"
+   }
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "Main"
+   }
+  },
+  "RootLocalizationTable": {
+   "_propertyType": "Ref",
+   "values": {
+    "_": "null"
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "ZIndexBehavior": {
+   "_propertyType": "token",
+   "values": {
+    "_": "1"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

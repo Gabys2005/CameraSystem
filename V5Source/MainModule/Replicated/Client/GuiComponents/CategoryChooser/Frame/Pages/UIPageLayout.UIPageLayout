@@ -1,0 +1,110 @@
+{
+ "className": "UIPageLayout",
+ "name": "UIPageLayout",
+ "properties": {
+  "Animated": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "Circular": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "GamepadInputEnabled": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "ScrollWheelInputEnabled": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "TouchInputEnabled": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "EasingDirection": {
+   "_propertyType": "token",
+   "values": {
+    "_": "1"
+   }
+  },
+  "EasingStyle": {
+   "_propertyType": "token",
+   "values": {
+    "_": "3"
+   }
+  },
+  "FillDirection": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "HorizontalAlignment": {
+   "_propertyType": "token",
+   "values": {
+    "_": "1"
+   }
+  },
+  "SortOrder": {
+   "_propertyType": "token",
+   "values": {
+    "_": "2"
+   }
+  },
+  "VerticalAlignment": {
+   "_propertyType": "token",
+   "values": {
+    "_": "1"
+   }
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "UIPageLayout"
+   }
+  },
+  "Padding": {
+   "_propertyType": "UDim",
+   "values": {
+    "S": [
+     "0"
+    ],
+    "O": [
+     "0"
+    ]
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "TweenTime": {
+   "_propertyType": "float",
+   "values": {
+    "_": "0.5"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

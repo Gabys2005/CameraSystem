@@ -1,0 +1,348 @@
+{
+ "className": "TextButton",
+ "name": "Frame",
+ "properties": {
+  "Active": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "AutoButtonColor": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "AutoLocalize": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "ClipsDescendants": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "Draggable": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "Modal": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "RichText": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "Selectable": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "Selected": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "TextScaled": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "false"
+   }
+  },
+  "TextWrapped": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "Visible": {
+   "_propertyType": "bool",
+   "values": {
+    "_": "true"
+   }
+  },
+  "AnchorPoint": {
+   "_propertyType": "Vector2",
+   "values": {
+    "X": [
+     "0"
+    ],
+    "Y": [
+     "0.5"
+    ]
+   }
+  },
+  "AttributesSerialize": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "Tags": {
+   "_propertyType": "BinaryString",
+   "values": {}
+  },
+  "AutomaticSize": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "BorderMode": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "Font": {
+   "_propertyType": "token",
+   "values": {
+    "_": "3"
+   }
+  },
+  "SizeConstraint": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "Style": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "TextTruncate": {
+   "_propertyType": "token",
+   "values": {
+    "_": "0"
+   }
+  },
+  "TextXAlignment": {
+   "_propertyType": "token",
+   "values": {
+    "_": "2"
+   }
+  },
+  "TextYAlignment": {
+   "_propertyType": "token",
+   "values": {
+    "_": "1"
+   }
+  },
+  "BackgroundColor3": {
+   "_propertyType": "Color3",
+   "values": {
+    "R": [
+     "0.709803939"
+    ],
+    "G": [
+     "0.709803939"
+    ],
+    "B": [
+     "0.709803939"
+    ]
+   }
+  },
+  "BorderColor3": {
+   "_propertyType": "Color3",
+   "values": {
+    "R": [
+     "0.105882362"
+    ],
+    "G": [
+     "0.164705887"
+    ],
+    "B": [
+     "0.207843155"
+    ]
+   }
+  },
+  "TextColor3": {
+   "_propertyType": "Color3",
+   "values": {
+    "R": [
+     "0"
+    ],
+    "G": [
+     "0"
+    ],
+    "B": [
+     "0"
+    ]
+   }
+  },
+  "TextStrokeColor3": {
+   "_propertyType": "Color3",
+   "values": {
+    "R": [
+     "0"
+    ],
+    "G": [
+     "0"
+    ],
+    "B": [
+     "0"
+    ]
+   }
+  },
+  "BackgroundTransparency": {
+   "_propertyType": "float",
+   "values": {
+    "_": "0"
+   }
+  },
+  "LineHeight": {
+   "_propertyType": "float",
+   "values": {
+    "_": "1"
+   }
+  },
+  "Rotation": {
+   "_propertyType": "float",
+   "values": {
+    "_": "0"
+   }
+  },
+  "TextSize": {
+   "_propertyType": "float",
+   "values": {
+    "_": "15"
+   }
+  },
+  "TextStrokeTransparency": {
+   "_propertyType": "float",
+   "values": {
+    "_": "1"
+   }
+  },
+  "TextTransparency": {
+   "_propertyType": "float",
+   "values": {
+    "_": "0"
+   }
+  },
+  "BorderSizePixel": {
+   "_propertyType": "int",
+   "values": {
+    "_": "1"
+   }
+  },
+  "LayoutOrder": {
+   "_propertyType": "int",
+   "values": {
+    "_": "0"
+   }
+  },
+  "MaxVisibleGraphemes": {
+   "_propertyType": "int",
+   "values": {
+    "_": "-1"
+   }
+  },
+  "ZIndex": {
+   "_propertyType": "int",
+   "values": {
+    "_": "1"
+   }
+  },
+  "Name": {
+   "_propertyType": "string",
+   "values": {
+    "_": "Frame"
+   }
+  },
+  "Text": {
+   "_propertyType": "string",
+   "values": {}
+  },
+  "NextSelectionDown": {
+   "_propertyType": "Ref",
+   "values": {
+    "_": "null"
+   }
+  },
+  "NextSelectionLeft": {
+   "_propertyType": "Ref",
+   "values": {
+    "_": "null"
+   }
+  },
+  "NextSelectionRight": {
+   "_propertyType": "Ref",
+   "values": {
+    "_": "null"
+   }
+  },
+  "NextSelectionUp": {
+   "_propertyType": "Ref",
+   "values": {
+    "_": "null"
+   }
+  },
+  "RootLocalizationTable": {
+   "_propertyType": "Ref",
+   "values": {
+    "_": "null"
+   }
+  },
+  "SelectionImageObject": {
+   "_propertyType": "Ref",
+   "values": {
+    "_": "null"
+   }
+  },
+  "Position": {
+   "_propertyType": "UDim2",
+   "values": {
+    "XS": [
+     "0.699999988"
+    ],
+    "XO": [
+     "5"
+    ],
+    "YS": [
+     "0.5"
+    ],
+    "YO": [
+     "0"
+    ]
+   }
+  },
+  "Size": {
+   "_propertyType": "UDim2",
+   "values": {
+    "XS": [
+     "1"
+    ],
+    "XO": [
+     "0"
+    ],
+    "YS": [
+     "0.699999988"
+    ],
+    "YO": [
+     "0"
+    ]
+   }
+  },
+  "SourceAssetId": {
+   "_propertyType": "int64",
+   "values": {
+    "_": "-1"
+   }
+  }
+ },
+ "_exportInfo": "Exported with rbx-export v1.1.0. Contains all properties of this instance."
+}

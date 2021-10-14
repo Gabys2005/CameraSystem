@@ -1,0 +1,87 @@
+{
+    "ClassName": "Frame",
+    "Properties": {
+        "BackgroundTransparency": 1,
+        "Size": [
+            1,
+            0,
+            1,
+            0
+        ]
+    },
+    "Children": [
+        {
+            "ClassName": "Frame",
+            "Name": "Pages",
+            "Properties": {
+                "BackgroundTransparency": 1,
+                "ClipsDescendants": true,
+                "Position": [
+                    0,
+                    0,
+                    0,
+                    25
+                ],
+                "Size": [
+                    1,
+                    0,
+                    1,
+                    -25
+                ]
+            },
+            "Children": [
+                {
+                    "ClassName": "UIPageLayout",
+                    "Name": "UIPageLayout",
+                    "Properties": {
+                        "SortOrder": "LayoutOrder",
+                        "EasingStyle": "Quad",
+                        "GamepadInputEnabled": false,
+                        "ScrollWheelInputEnabled": false,
+                        "TouchInputEnabled": false,
+                        "TweenTime": 0.5
+                    }
+                }
+            ]
+        },
+        {
+            "ClassName": "Frame",
+            "Name": "Categories",
+            "Properties": {
+                "BorderSizePixel": 0,
+                "Size": [
+                    1,
+                    0,
+                    0,
+                    25
+                ]
+            },
+            "Children": [
+                {
+                    "ClassName": "Frame",
+                    "Name": "Selector",
+                    "Properties": {
+                        "AnchorPoint": [
+                            0,
+                            1
+                        ],
+                        "BorderSizePixel": 0,
+                        "Position": [
+                            0,
+                            0,
+                            1,
+                            0
+                        ],
+                        "ZIndex": 2
+                    },
+                    "Children": [
+                        {
+                            "ClassName": "UICorner",
+                            "Name": "UICorner"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

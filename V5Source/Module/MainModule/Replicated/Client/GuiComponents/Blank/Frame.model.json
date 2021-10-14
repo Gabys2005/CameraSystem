@@ -1,0 +1,56 @@
+{
+    "ClassName": "Frame",
+    "Properties": {
+        "BackgroundTransparency": 1,
+        "Size": [
+            1,
+            0,
+            1,
+            0
+        ]
+    },
+    "Children": [
+        {
+            "ClassName": "TextLabel",
+            "Name": "TextLabel",
+            "Properties": {
+                "AnchorPoint": {
+                    "Type": "Vector2",
+                    "Value": [
+                        0.5,
+                        0.5
+                    ]
+                },
+                "BackgroundTransparency": 1,
+                "Position": {
+                    "Type": "UDim2",
+                    "Value": [
+                        0.5,
+                        0,
+                        0.5,
+                        0
+                    ]
+                },
+                "Size": {
+                    "Type": "UDim2",
+                    "Value": [
+                        1,
+                        -50,
+                        1,
+                        -50
+                    ]
+                },
+                "Font": "SourceSans",
+                "Text": "Blank Component",
+                "TextColor3": [
+                    0,
+                    0,
+                    0
+                ],
+                "TextScaled": true,
+                "TextSize": 14,
+                "TextWrapped": true
+            }
+        }
+    ]
+}

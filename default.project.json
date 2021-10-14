@@ -1,0 +1,10 @@
+{
+  "name": "Camera-System",
+  "tree": {
+    "$className": "DataModel",
+    "ServerStorage": {
+      "$className": "ServerStorage",
+      "$path": "V5Source/Module"
+    }
+  }
+}

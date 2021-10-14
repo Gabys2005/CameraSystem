@@ -5,6 +5,12 @@ local data = {
 			Type = "Default",
 			Id = 0,
 			Model = nil
+		},
+		CameraData = {
+			Position = Vector3.new(),
+			Rotation = Vector3.new(),
+			Focus = nil,
+			CFrame = CFrame.new()
 		}
 	},
 	

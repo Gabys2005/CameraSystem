@@ -1,3 +1,1 @@
-local module = {}
-
-return module
+local clientApi = {}

@@ -109,6 +109,7 @@ end--]]
 function Maid:give(taskOrPromise)
 	local taskId
 	if type(taskOrPromise) == "table" and taskOrPromise.isAPromise then
+---@diagnostic disable-next-line: undefined-global
 		_, taskId = self:givePromise(taskOrPromise)
 	else
 		taskId = self:giveTask(taskOrPromise)

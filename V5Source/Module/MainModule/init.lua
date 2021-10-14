@@ -7,8 +7,7 @@ return function(systemFolder)
 	local Settings = require(systemFolder.Settings)
 	local replicatedFolder = script.Replicated
 	local data = require(replicatedFolder.Data)
-	local clientApiModule = script.Apis.ClientApi
-	local serverApiModule = script.Apis.ServerApi
+	local apiModule = script.Apis.Api
 
 	--// Functions
 	local function onPlayerAdded(plr)
@@ -40,10 +39,9 @@ return function(systemFolder)
 	--// Import all assets neccessary
 	replicatedFolder.Name = "CameraSystem"
 	replicatedFolder.Parent = replicatedStorage
-	serverApiModule.Parent = systemFolder
-	clientApiModule.Parent = systemFolder
+	apiModule.Parent = systemFolder
 	--// Get cameras
-	local api = require(serverApiModule)
+	local api = require(apiModule)
 	local camerasByIds = api:GetCamsById()
 
 	data.Shared.CurrentCamera.Type = "Default"

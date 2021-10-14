@@ -9,7 +9,7 @@ export type CategoryChooserTable = {
 	ComponentName: string
 }
 export type CategoryChooserOptions = {
-	Frames: table<CategoryChooserTable>
+	Frames: table
 }
 
 script.MenuButton.BackgroundColor3 = theme.Base

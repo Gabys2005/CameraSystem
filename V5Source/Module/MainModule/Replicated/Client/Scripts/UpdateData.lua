@@ -12,6 +12,10 @@ function updateData:get(name:string)
 	return val
 end
 
+function updateData:getModule()
+	return data
+end
+
 function updateData:set(name:string,val:any)
 	local path = string.split(name,".")
 	local toEdit = data

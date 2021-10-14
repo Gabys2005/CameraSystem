@@ -4,7 +4,7 @@ local replicatedStorage = game:GetService("ReplicatedStorage")
 --// Variables
 local replicated = replicatedStorage:WaitForChild("CameraSystem")
 local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReference")
-local iconModule = replicated.TopbarPlus
+local iconModule = replicated.Client.Dependencies.TopbarPlus
 local data = require(replicated.Data)
 
 --// Functions

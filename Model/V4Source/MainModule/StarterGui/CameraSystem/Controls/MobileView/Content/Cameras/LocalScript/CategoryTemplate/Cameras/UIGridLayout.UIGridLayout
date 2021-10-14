@@ -77,7 +77,7 @@
   "FillDirectionMaxCells": {
    "_propertyType": "int",
    "values": {
-    "_": "0"
+    "_": "2"
    }
   },
   "Name": {

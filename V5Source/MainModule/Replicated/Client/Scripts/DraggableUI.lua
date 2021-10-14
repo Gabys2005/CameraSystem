@@ -54,7 +54,7 @@ return function(gui)
 	local lastCursor = mouse.Icon
 	local function startResize(input,side)
 		if input.UserInputType ~= Enum.UserInputType.MouseButton1 then return end
-		local dragging = true
+		local draggingResize = true
 		resizing = true
 		local startingPosition = input.Position
 		local startingSize = gui.Size
@@ -62,13 +62,13 @@ return function(gui)
 		local startingFramePosition = gui.Position
 		local stopDrag = input:GetPropertyChangedSignal("UserInputState"):Connect(function()
 			if input.UserInputState == Enum.UserInputState.End then
-				dragging = false
+				draggingResize = false
 				resizing = nil
 				mouse.Icon = lastCursor
 			end
 		end)
 
-		while dragging do
+		while draggingResize do
 			if side == "right" then
 				local diff = UserInputService:GetMouseLocation().X - startingPosition.X
 				gui.Size = UDim2.fromOffset(math.max(startingSize.X.Offset + diff,MINIMUM_WIDTH), TOPBAR_SIZE)

@@ -49,9 +49,9 @@ if run:IsServer() then
 end
 
 --// Client only apis
-if run:IsClient() then
+-- if run:IsClient() then
     
-end
+-- end
 
 --// Other junk
 function idCameraFolder(folder)

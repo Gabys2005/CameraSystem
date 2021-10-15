@@ -1,0 +1,24 @@
+{
+    "name": "Camera-System",
+    "tree": {
+      "$className": "DataModel",
+      "ServerStorage": {
+        "$className": "ServerStorage",
+        "$path": "V5Source/Module"
+      },
+      "Workspace": {
+          "$className": "Workspace",
+          "CameraSystem": {
+              "$className": "Folder",
+              "$path": "V5Source/Loader/Loader.rbxmx"
+          }
+      },
+      "ServerScriptService": {
+        "$className": "ServerScriptService",
+        "Tests": {
+            "$className": "Folder",
+            "$path": "Tests"
+        }
+    }
+    }
+  }

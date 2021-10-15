@@ -41,6 +41,12 @@ end
 --// Server only apis
 if run:IsServer() then
     function api:ChangeCam(camType,camId)
+		if typeof(camType) ~= "string" or typeof(camId) ~= "number" then
+			error("[[ Camera System ]] Incorrect types supplied to api:ChangeCam")
+		end
+		if not camerasByIds[camType] or not camerasByIds[camType][camId] then
+			error("[[ Camera System ]] api:ChangeCam called with incorrect CamType or CamId")
+		end
         data.Shared.CurrentCamera.Type = camType
         data.Shared.CurrentCamera.Id = camId
         data.Shared.CurrentCamera.Model = camerasByIds[camType][camId]

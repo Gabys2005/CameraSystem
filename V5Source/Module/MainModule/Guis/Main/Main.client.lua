@@ -15,7 +15,8 @@ local cameraInstance = workspace.CurrentCamera
 
 --===================== CODE =====================--
 api:GetCamsById() -- index
-require(replicated.Client.Scripts.CameraController)
+require(replicated.Client.Controllers.Cameras)
+require(replicated.Client.Controllers.Watch)
 
 replicated.Events.ChangeCam.OnClientEvent:Connect(function(camType,camId)
 	data:set("Shared.CurrentCamera",{

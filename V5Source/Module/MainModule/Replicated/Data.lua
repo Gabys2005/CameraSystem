@@ -9,7 +9,6 @@ local data = {
 		CameraData = {
 			Position = Vector3.new(),
 			Rotation = Vector3.new(),
-			Focus = nil,
 			CFrame = CFrame.new()
 		}
 	},

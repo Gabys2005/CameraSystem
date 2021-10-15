@@ -24,4 +24,10 @@ function utils:Map(n, oldMin, oldMax, min, max)
 	return (min + ((max - min) * ((n - oldMin) / (oldMax - oldMin))))
 end
 
+function utils:CFrameToRotation(cf)
+	local x, y, z = cf:ToEulerAnglesYXZ()
+	local rotation = Vector3.new(math.deg(x),math.deg(y),math.deg(z))
+	return rotation
+end
+
 return utils

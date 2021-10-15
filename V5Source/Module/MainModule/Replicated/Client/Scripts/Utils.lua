@@ -1,5 +1,4 @@
 local utils = {}
-local smoothGrid = require(script.Parent.SmoothGrid)
 
 function utils:NewInstance(insName, params)
 	local ins = Instance.new(insName)

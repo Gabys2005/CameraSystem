@@ -18,6 +18,9 @@ function api:GetCamsById()
         warn("indexing")
 		camerasByIds.Static = idCameraFolder(workspaceFolder.Cameras.Static)
 		camerasByIds.Moving = idCameraFolder(workspaceFolder.Cameras.Moving)
+		if run:IsServer() then
+			timeMovingCams(workspaceFolder.Cameras.Moving)
+		end
 		if workspaceFolder.Cameras:FindFirstChild("Default") then
 			camerasByIds.Default = workspaceFolder.Cameras.Default.CFrame
 		else
@@ -67,8 +70,37 @@ function idCameraFolder(folder)
 			v:SetAttribute("ID",i)
 			camById[i] = v
 		end
+		for i,v in pairs(folder:GetDescendants()) do
+			if v:IsA("BasePart") then
+				v.Transparency = 1
+				v.CanCollide = false
+			end
+		end
 	end
 	return camById
+end
+
+function timeMovingCams(folder)
+	for i,v in pairs(folder:GetChildren()) do
+		local totalTime = v:GetAttribute("Time") or 5
+		local totalDistance = 0
+		local totalPoints = #v:GetChildren()
+		for i = 1,totalPoints-1 do
+			local currentPoint = v[i]
+			local nextPoint = v[i+1]
+			local distance = (currentPoint.Position - nextPoint.Position).magnitude
+			totalDistance += distance
+		end
+		for i = 1,totalPoints-1 do
+			local currentPoint = v[i]
+			local nextPoint = v[i+1]
+			if not currentPoint:GetAttribute("Time") then
+				local distance = (currentPoint.Position - nextPoint.Position).magnitude
+				local timee = totalTime / totalDistance * distance
+				currentPoint:SetAttribute("Time",timee)
+			end
+		end
+	end
 end
 
 return api

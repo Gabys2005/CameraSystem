@@ -5,6 +5,7 @@ local run = game:GetService("RunService")
 local currentConnection
 local lastChangeTime = tick()
 local lerper = require(script.Parent.Parent.Scripts.Lerper)
+local bezier = require(script.Parent.Parent.Dependencies.Bezier)
 
 local function update(pos,rot)
     if not pos then
@@ -36,12 +37,52 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera)
         local cameraCount = #currentCamera.Model:GetChildren()
         local firstCam = currentCamera.Model["1"]
         update(firstCam.Position,firstCam.Orientation)
-        for i = 2, cameraCount do -- First point gets skipped while lerping
-            if lastChangeTime == currentChangeTime then
-                local lerp = lerper.new({LerpTime = 5, Start = currentCamera.Model[i-1].CFrame, End = currentCamera.Model[i].CFrame})
-                while not lerp.ended do
-                    update(lerp.value.Position, lerp.value.Rotation)
-                    task.wait()
+        if currentCamera.Model:GetAttribute("Bezier") then
+            local positionPoints = {}
+            local rotationPoints = {}
+            for i = 1,cameraCount do
+                table.insert(positionPoints,currentCamera.Model[i].Position)
+                table.insert(rotationPoints,currentCamera.Model[i].Orientation)
+            end
+            local positionPath = bezier.new(table.unpack(positionPoints))
+            local rotationPath = bezier.new(table.unpack(rotationPoints))
+            local lerp = lerper.newbezier({
+                LerpTime = currentCamera.Model:GetAttribute("Time") or 5,
+                Start = currentCamera.Model["1"].CFrame,
+                Accelerate = data.Local.Settings.AccelerateStart,
+                Decelerate = data.Local.Settings.DecelerateEnd,
+                PositionCurve = positionPath,
+                RotationCurve = rotationPath
+            })
+            while not lerp.ended do
+                update(lerp.value.Position, lerp.value.Rotation)
+                task.wait()
+            end
+        else
+            for i = 2, cameraCount do -- First point gets skipped while lerping
+                if lastChangeTime == currentChangeTime then
+                    local LerpSettings = {
+                        LerpTime = currentCamera.Model[i-1]:GetAttribute("Time"),
+                        Start = currentCamera.Model[i-1].CFrame,
+                        End = currentCamera.Model[i].CFrame,
+                        Accelerate = false,
+                        Decelerate = false
+                    }
+                    
+                    if cameraCount == 2 and data.Local.Settings.AccelerateStart and data.Local.Settings.DecelerateEnd then
+                        LerpSettings.Accelerate = true
+                        LerpSettings.Decelerate = true
+                    elseif i == 2 and data.Local.Settings.AccelerateStart then
+                        LerpSettings.Accelerate = true
+                    elseif i == cameraCount and data.Local.Settings.DecelerateEnd then
+                        LerpSettings.Decelerate = true
+                    end
+    
+                    local lerp = lerper.new(LerpSettings)
+                    while not lerp.ended do
+                        update(lerp.value.Position, lerp.value.Rotation)
+                        task.wait()
+                    end
                 end
             end
         end

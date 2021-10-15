@@ -1,15 +1,10 @@
 --// Services
 local replicatedStorage = game:GetService("ReplicatedStorage")
-local run = game:GetService("RunService")
 
 --// Variables
 local replicated = replicatedStorage:WaitForChild("CameraSystem")
-local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReference")
-local iconModule = replicated.Client.Dependencies.TopbarPlus
 local data = require(replicated.Client.Scripts.UpdateData)
-local directData = data:getModule()
 local api = require(workspace:WaitForChild("CameraSystem"):WaitForChild("Api"))
-local cameraInstance = workspace.CurrentCamera
 
 --// Functions
 

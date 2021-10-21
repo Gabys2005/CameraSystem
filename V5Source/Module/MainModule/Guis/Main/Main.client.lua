@@ -5,13 +5,19 @@ local replicatedStorage = game:GetService("ReplicatedStorage")
 local replicated = replicatedStorage:WaitForChild("CameraSystem")
 local data = require(replicated.Client.Scripts.UpdateData)
 local api = require(workspace:WaitForChild("CameraSystem"):WaitForChild("Api"))
+local spring = require(replicated.Client.Dependencies.Spring)
 
 --// Functions
 
 --===================== CODE =====================--
 -- Index the cameras and initiate the controllers
 api:GetCamsById()
-require(replicated.Client.Controllers.Cameras) -- TODO put .init functions in them instead of running it like that?
+if data:get("Local.Settings.UseSprings") == true then
+	local spr = spring.new(Vector3.new())
+	spr.Speed = 10
+	data:set("Local.Springs.Focus", spr)
+end
+require(replicated.Client.Controllers.Cameras)
 require(replicated.Client.Controllers.Watch)
 
 replicated.Events.ChangeCam.OnClientEvent:Connect(function(camType, camId)

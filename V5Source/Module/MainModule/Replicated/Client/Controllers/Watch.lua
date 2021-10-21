@@ -8,6 +8,8 @@ local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReferenc
 local iconModule = replicated.Client.Dependencies.TopbarPlus
 local data = require(replicated.Data)
 local cameraInstance = workspace.CurrentCamera
+local spring = data.Local.Springs.Focus
+local utils = require(script.Parent.Parent.Scripts.Utils)
 
 --// Functions
 local function getFocusPosition()
@@ -27,7 +29,17 @@ local function watchLoop()
 	end
 	local finalCFrame = data.Shared.CameraData.CFrame
 	if data.Shared.Focus.Instance then
-		finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, getFocusPosition())
+		if data.Local.Settings.UseSprings then
+			spring.Target = utils:CFrameToRotation(CFrame.lookAt(data.Shared.CameraData.Position, getFocusPosition())) -- TODO find a better way to do that
+			finalCFrame = CFrame.new(data.Shared.CameraData.Position)
+				* CFrame.fromOrientation(
+					math.rad(spring.Position.X),
+					math.rad(spring.Position.Y),
+					math.rad(spring.Position.Z)
+				)
+		else
+			finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, getFocusPosition())
+		end
 	end
 	cameraInstance.CFrame = finalCFrame
 end

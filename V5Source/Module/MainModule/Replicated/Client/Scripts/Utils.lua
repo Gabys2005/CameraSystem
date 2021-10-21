@@ -1,4 +1,5 @@
 local utils = {}
+local data = require(script.Parent.Parent.Parent.Data)
 
 function utils:NewInstance(insName: string, params: table)
 	local ins = Instance.new(insName)
@@ -28,6 +29,11 @@ function utils:CFrameToRotation(cf: CFrame)
 	local x, y, z = cf:ToEulerAnglesYXZ()
 	local rotation = Vector3.new(math.deg(x), math.deg(y), math.deg(z))
 	return rotation
+end
+
+function utils:resetSpringPosition()
+	local spring = data.Local.Springs.Focus
+	spring.Position = data.Shared.CameraData.Rotation
 end
 
 return utils

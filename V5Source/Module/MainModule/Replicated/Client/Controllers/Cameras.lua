@@ -19,7 +19,8 @@ local function update(pos: Vector3, rot: Vector3)
 	end
 	data.Shared.CameraData.Position = pos
 	data.Shared.CameraData.Rotation = rot
-	data.Shared.CameraData.CFrame = CFrame.new(pos) * CFrame.Angles(math.rad(rot.X), math.rad(rot.Y), math.rad(rot.Z))
+	data.Shared.CameraData.CFrame = CFrame.new(pos)
+		* CFrame.fromOrientation(math.rad(rot.X), math.rad(rot.Y), math.rad(rot.Z))
 end
 
 --// Connections

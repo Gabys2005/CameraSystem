@@ -13,10 +13,11 @@ return function(systemFolder)
 		Theme = "string",
 		AccelerateStart = "boolean",
 		DecelerateEnd = "boolean",
+		UseSprings = "boolean",
 	}
 
 	--// Functions
-	local function onPlayerAdded(plr)
+	local function onPlayerAdded(plr: Player)
 		if table.find(Settings.GuiOwners, plr.Name) then
 			local guiClone = script.Guis.Controls:Clone()
 			guiClone.Name = "CameraSystemControls"
@@ -29,7 +30,7 @@ return function(systemFolder)
 
 	local function validateSettings()
 		for i, v in pairs(SettingsWithTypes) do
-			assert(Settings[i], "[[ Camera System ]]: The '" .. i .. "' setting is missing")
+			assert(Settings[i] ~= nil, "[[ Camera System ]]: The '" .. i .. "' setting is missing")
 			assert(
 				typeof(Settings[i]) == v,
 				"[[ Camera System ]]: The '"
@@ -45,6 +46,13 @@ return function(systemFolder)
 		for i, v in pairs(Settings.GuiOwners) do
 			assert(typeof(v) == "string", "[[ Camera System ]]: '" .. v .. "' isn't a string in 'GuiOwners' setting")
 		end
+	end
+
+	local function isOwner(plr: Player)
+		if table.find(Settings.GuiOwners, plr.Name) then
+			return true
+		end
+		return false
 	end
 
 	--===================== CODE =====================--
@@ -86,21 +94,24 @@ return function(systemFolder)
 		return data
 	end
 
-	-- TODO remote event security
 	replicatedFolder.Events.ChangeCam.OnServerEvent:Connect(function(plr, camType, camId)
-		api:ChangeCam(camType, camId)
+		if isOwner(plr) then
+			api:ChangeCam(camType, camId)
+		end
 	end)
 
 	replicatedFolder.Events.ChangeFocus.OnServerEvent:Connect(function(plr, plrString)
-		if plrString then
-			local point = systemFolder.FocusPoints:FindFirstChild(plrString)
-			if point then
-				api:Focus(point)
+		if isOwner(plr) then
+			if plrString then
+				local point = systemFolder.FocusPoints:FindFirstChild(plrString)
+				if point then
+					api:Focus(point)
+				else
+					api:Focus(plrString)
+				end
 			else
-				api:Focus(plrString)
+				api:Focus(nil)
 			end
-		else
-			api:Focus(nil)
 		end
 	end)
 end

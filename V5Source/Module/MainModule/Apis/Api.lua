@@ -38,7 +38,7 @@ end
 
 local function timeMovingCams(folder: Folder)
 	for i, v in pairs(folder:GetChildren()) do
-		local totalTime = v:GetAttribute("Time") or 5 -- TODO put constants like this 5 in a separate module?
+		local totalTime = v:GetAttribute("Time") or 5
 		local totalDistance = 0
 		local totalPoints = #v:GetChildren()
 		-- It needs to loop twice, first to calculate the total distance between all points,

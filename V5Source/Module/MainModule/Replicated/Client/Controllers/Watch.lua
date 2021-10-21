@@ -10,11 +10,26 @@ local data = require(replicated.Data)
 local cameraInstance = workspace.CurrentCamera
 
 --// Functions
+local function getFocusPosition()
+	if data.Shared.Focus.Instance then
+		if data.Shared.Focus.Type == "Part" then
+			return data.Shared.Focus.Instance.Position
+		elseif data.Shared.Focus.Type == "Player" then
+			return data.Shared.Focus.Instance.Position + Vector3.new(0, 3, 0)
+		end
+	end
+	return Vector3.new()
+end
+
 local function watchLoop()
 	if cameraInstance.CameraType ~= Enum.CameraType.Scriptable then
 		cameraInstance.CameraType = Enum.CameraType.Scriptable
 	end
-	cameraInstance.CFrame = data.Shared.CameraData.CFrame
+	local finalCFrame = data.Shared.CameraData.CFrame
+	if data.Shared.Focus.Instance then
+		finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, getFocusPosition())
+	end
+	cameraInstance.CFrame = finalCFrame
 end
 
 --======= Actual code =======--

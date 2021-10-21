@@ -6,10 +6,14 @@ local data = {
 			Id = 0,
 			Model = nil,
 		},
-		CameraData = {
+		CameraData = { -- This is used purely by the lerper and only includes the data of the currently lerped camera
 			Position = Vector3.new(),
 			Rotation = Vector3.new(),
 			CFrame = CFrame.new(),
+		},
+		Focus = {
+			Type = nil, -- Either "Part" or "Player", nil is used when focus is disabled
+			Instance = nil,
 		},
 	},
 

@@ -70,6 +70,12 @@ return function(systemFolder)
 	data.Shared.CurrentCamera.Type = "Default"
 	data.Shared.CurrentCamera.Model = camerasByIds.Default
 
+	--// Hide focus points
+	for i, v in pairs(systemFolder.FocusPoints:GetChildren()) do
+		v.Transparency = 1
+		v.CanCollide = false
+	end
+
 	--// Connect events
 	for i, v in pairs(players:GetPlayers()) do
 		onPlayerAdded(v)
@@ -80,7 +86,21 @@ return function(systemFolder)
 		return data
 	end
 
+	-- TODO remote event security
 	replicatedFolder.Events.ChangeCam.OnServerEvent:Connect(function(plr, camType, camId)
 		api:ChangeCam(camType, camId)
+	end)
+
+	replicatedFolder.Events.ChangeFocus.OnServerEvent:Connect(function(plr, plrString)
+		if plrString then
+			local point = systemFolder.FocusPoints:FindFirstChild(plrString)
+			if point then
+				api:Focus(point)
+			else
+				api:Focus(plrString)
+			end
+		else
+			api:Focus(nil)
+		end
 	end)
 end

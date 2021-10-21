@@ -21,3 +21,7 @@ replicated.Events.ChangeCam.OnClientEvent:Connect(function(camType, camId)
 		Model = api:GetCamById(camType, camId),
 	})
 end)
+
+replicated.Events.ChangeFocus.OnClientEvent:Connect(function(newdata)
+	data:set("Shared.Focus", newdata)
+end)

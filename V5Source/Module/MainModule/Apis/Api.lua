@@ -1,6 +1,7 @@
 --// Services
 local replicated = game:GetService("ReplicatedStorage")
 local run = game:GetService("RunService")
+local players = game:GetService("Players")
 
 --// Variables
 local api = {}
@@ -74,6 +75,18 @@ local function indexCameras()
 	end
 end
 
+local function getPlayerByName(name: string)
+	for i, v in pairs(players:GetPlayers()) do
+		if
+			string.lower(string.sub(v.Name, 1, #name)) == string.lower(name)
+			or string.lower(string.sub(v.DisplayName, 1, #name)) == string.lower(name)
+		then
+			return v
+		end
+	end
+	return nil
+end
+
 --======= EXPORTED =======--
 --// Shared apis
 function api:GetCamsById()
@@ -110,6 +123,33 @@ if run:IsServer() then
 		data.Shared.CurrentCamera.Id = camId
 		data.Shared.CurrentCamera.Model = camerasByIds[camType][camId]
 		replicatedFolder.Events.ChangeCam:FireAllClients(camType, camId)
+	end
+
+	function api:Focus(ins: BasePart | string | nil)
+		if ins then
+			if typeof(ins) == "Instance" and ins:IsA("Part") then
+				data.Shared.Focus = {
+					Type = "Part",
+					Instance = ins,
+				}
+				replicatedFolder.Events.ChangeFocus:FireAllClients(data.Shared.Focus)
+			elseif typeof(ins) == "string" then
+				local player = getPlayerByName(ins)
+				if player then
+					data.Shared.Focus = {
+						Type = "Player",
+						Instance = player.Character.HumanoidRootPart,
+					}
+					replicatedFolder.Events.ChangeFocus:FireAllClients(data.Shared.Focus)
+				end
+			end
+		else
+			data.Shared.Focus = {
+				Type = nil,
+				Instance = nil,
+			}
+			replicatedFolder.Events.ChangeFocus:FireAllClients(data.Shared.Focus)
+		end
 	end
 end
 

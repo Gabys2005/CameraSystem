@@ -2,7 +2,7 @@
 	<Meta name="ExplicitAutoJoints">true</Meta>
 	<External>null</External>
 	<External>nil</External>
-	<Item class="Frame" referent="RBX35AC9D1F5DDE48F7848BAA7AA2EBD822">
+	<Item class="Frame" referent="RBX2C3472BC71E542F3B0B3A095F2CB5609">
 		<Properties>
 			<bool name="Active">false</bool>
 			<Vector2 name="AnchorPoint">
@@ -56,7 +56,7 @@
 			<bool name="Visible">true</bool>
 			<int name="ZIndex">1</int>
 		</Properties>
-		<Item class="TextBox" referent="RBXB3542056246D4680983919300E767EC5">
+		<Item class="TextBox" referent="RBX302F8B551EFC4954B3A129BA2EBA8C3B">
 			<Properties>
 				<bool name="Active">true</bool>
 				<Vector2 name="AnchorPoint">
@@ -71,7 +71,7 @@
 					<G>0.23137255</G>
 					<B>0.23137255</B>
 				</Color3>
-				<float name="BackgroundTransparency">0.5</float>
+				<float name="BackgroundTransparency">0</float>
 				<Color3 name="BorderColor3">
 					<R>0.105882362</R>
 					<G>0.164705887</G>
@@ -79,7 +79,7 @@
 				</Color3>
 				<token name="BorderMode">0</token>
 				<int name="BorderSizePixel">0</int>
-				<bool name="ClearTextOnFocus">true</bool>
+				<bool name="ClearTextOnFocus">false</bool>
 				<bool name="ClipsDescendants">false</bool>
 				<bool name="Draggable">false</bool>
 				<token name="Font">3</token>
@@ -142,7 +142,7 @@
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
-			<Item class="UICorner" referent="RBX4C78521EF76B4BDA9300671FA2C91287">
+			<Item class="UICorner" referent="RBX3BCCE964F5A2453481A577D652D2C895">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<UDim name="CornerRadius">
@@ -155,7 +155,7 @@
 				</Properties>
 			</Item>
 		</Item>
-		<Item class="TextButton" referent="RBXB57E02D398D94B878A4BD775EA045FB1">
+		<Item class="TextButton" referent="RBXFE3D6297F0E74862AFBF693CB4B98E5B">
 			<Properties>
 				<bool name="Active">true</bool>
 				<Vector2 name="AnchorPoint">
@@ -171,7 +171,7 @@
 					<G>0.23137255</G>
 					<B>0.23137255</B>
 				</Color3>
-				<float name="BackgroundTransparency">0.5</float>
+				<float name="BackgroundTransparency">0</float>
 				<Color3 name="BorderColor3">
 					<R>0.105882362</R>
 					<G>0.164705887</G>
@@ -235,7 +235,7 @@
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
-			<Item class="UICorner" referent="RBXF15DADA9B1E640648FD02D6F64BC1092">
+			<Item class="UICorner" referent="RBX16DEED66574240C88ADFBC8348DC6CB5">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<UDim name="CornerRadius">
@@ -248,7 +248,7 @@
 				</Properties>
 			</Item>
 		</Item>
-		<Item class="UIListLayout" referent="RBX388902FD341E4E8DA78E84919A42684A">
+		<Item class="UIListLayout" referent="RBX709A98FD01A145B9931EAB0064885DB8">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<token name="FillDirection">0</token>
@@ -264,7 +264,7 @@
 				<token name="VerticalAlignment">0</token>
 			</Properties>
 		</Item>
-		<Item class="TextButton" referent="RBXAAA743BAFD73437D8FFEB9BE2B42A1F7">
+		<Item class="TextButton" referent="RBX7458ADB4F9C64F6BA24B5FC288C104A3">
 			<Properties>
 				<bool name="Active">true</bool>
 				<Vector2 name="AnchorPoint">
@@ -280,7 +280,7 @@
 					<G>0.23137255</G>
 					<B>0.23137255</B>
 				</Color3>
-				<float name="BackgroundTransparency">0.5</float>
+				<float name="BackgroundTransparency">0</float>
 				<Color3 name="BorderColor3">
 					<R>0.105882362</R>
 					<G>0.164705887</G>
@@ -344,7 +344,7 @@
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
-			<Item class="UICorner" referent="RBX2F3A5326D3D74B6CA0D0EBE7F9AC9314">
+			<Item class="UICorner" referent="RBX4D9F65518B174A29953B1CB2B7A917EF">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<UDim name="CornerRadius">

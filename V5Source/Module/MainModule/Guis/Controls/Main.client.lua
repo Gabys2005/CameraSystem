@@ -9,13 +9,18 @@ local menuNames = {
 	{
 		Name = "Cameras",
 		Width = 220,
-		Height = 300
+		Height = 300,
 	},
 	{
 		Name = "Settings",
 		Width = 220,
-		Height = 150
-	}
+		Height = 150,
+	},
+	{
+		Name = "FocusList",
+		Width = 220,
+		Height = 220,
+	},
 }
 local window = require(replicated.Client.Scripts.NewWindow)
 
@@ -30,16 +35,16 @@ local Icon = require(iconModule)
 window:setParent(script.Parent)
 
 local menuIcons = {}
-for i,v in pairs(menuNames) do
+for i, v in pairs(menuNames) do
 	local gui = window:new({
 		Title = v.Name,
 		Name = v.Name,
 		MinimumWidth = v.Width,
 		MinimumHeight = v.Height,
-		Enabled = false
+		Enabled = false,
 	})
 	local icon = Icon.new():setLabel(v.Name):bindToggleItem(gui)
 	icon.deselectWhenOtherIconSelected = false
-	table.insert(menuIcons,icon)
+	table.insert(menuIcons, icon)
 end
 local controlIcon = Icon.new():setImage(5036765717):setMenu(menuIcons)

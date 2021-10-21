@@ -8,6 +8,12 @@ return function(systemFolder)
 	local replicatedFolder = script.Replicated
 	local data = require(replicatedFolder.Data)
 	local apiModule = script.Apis.Api
+	local SettingsWithTypes = {
+		GuiOwners = "table",
+		Theme = "string",
+		AccelerateStart = "boolean",
+		DecelerateEnd = "boolean",
+	}
 
 	--// Functions
 	local function onPlayerAdded(plr)
@@ -21,6 +27,26 @@ return function(systemFolder)
 		mainGuiClone.Parent = plr.PlayerGui
 	end
 
+	local function validateSettings()
+		for i, v in pairs(SettingsWithTypes) do
+			assert(Settings[i], "[[ Camera System ]]: The '" .. i .. "' setting is missing")
+			assert(
+				typeof(Settings[i]) == v,
+				"[[ Camera System ]]: The '"
+					.. i
+					.. "' setting is the wrong type, it's a '"
+					.. typeof(Settings[i])
+					.. "' while it should be '"
+					.. v
+					.. "'"
+			)
+		end
+		-- Additional setting specific checks
+		for i, v in pairs(Settings.GuiOwners) do
+			assert(typeof(v) == "string", "[[ Camera System ]]: '" .. v .. "' isn't a string in 'GuiOwners' setting")
+		end
+	end
+
 	--===================== CODE =====================--
 
 	--// Check if the system can run
@@ -30,24 +56,19 @@ return function(systemFolder)
 	)
 
 	--// Validate settings
-	assert(Settings.GuiOwners, "[[ Camera System ]]: 'GuiOwners' setting is missing")
-	assert(typeof(Settings.GuiOwners) == "table", "[[ Camera System ]]: 'GuiOwners' setting has to be a table")
-	for i, v in pairs(Settings.GuiOwners) do
-		assert(typeof(v) == "string", "[[ Camera System ]]: '" .. v .. "' isn't a string in 'GuiOwners' setting")
-	end
+	validateSettings()
 
 	--// Import all assets neccessary
 	replicatedFolder.Name = "CameraSystem"
 	replicatedFolder.Parent = replicatedStorage
 	apiModule.Parent = systemFolder
-	--// Get cameras
+
+	--// Get cameras and set the default position
 	local api = require(apiModule)
 	local camerasByIds = api:GetCamsById()
 
 	data.Shared.CurrentCamera.Type = "Default"
 	data.Shared.CurrentCamera.Model = camerasByIds.Default
-
-	print(camerasByIds)
 
 	--// Connect events
 	for i, v in pairs(players:GetPlayers()) do

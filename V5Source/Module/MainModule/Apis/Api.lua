@@ -1,76 +1,31 @@
-local api = {}
+--// Services
 local replicated = game:GetService("ReplicatedStorage")
+local run = game:GetService("RunService")
+
+--// Variables
+local api = {}
 local replicatedFolder = replicated:WaitForChild("CameraSystem")
 local workspaceFolder = workspace:WaitForChild("CameraSystem")
 local data = require(replicatedFolder.Data)
-local run = game:GetService("RunService")
-
 local camerasByIds = {
 	Static = {},
 	Moving = {},
-	Default = nil
+	Default = nil,
 }
 
---// Shared apis
-function api:GetCamsById()
-    warn("running get cams by id")
-	if not camerasByIds.Default then
-        warn("indexing")
-		camerasByIds.Static = idCameraFolder(workspaceFolder.Cameras.Static)
-		camerasByIds.Moving = idCameraFolder(workspaceFolder.Cameras.Moving)
-		if run:IsServer() then
-			timeMovingCams(workspaceFolder.Cameras.Moving)
-		end
-		if workspaceFolder.Cameras:FindFirstChild("Default") then
-			camerasByIds.Default = workspaceFolder.Cameras.Default.CFrame
-		else
-			warn("[[ Camera System ]]: Default camera is missing, using first static camera or fallback position instead")
-			camerasByIds.Default = camerasByIds.Static[1] and camerasByIds.Static[1].CFrame or CFrame.new(0,10,0)
-		end
-	end
-	return camerasByIds
-end
-
-function api:GetCamById(camType,camId)
-    if not camerasByIds then api:getCamsById() end
-    print(camerasByIds)
-    return camerasByIds[camType][camId]
-end
-
-function api:GetDefaultCamPosition()
-    return camerasByIds.Default
-end
-
---// Server only apis
-if run:IsServer() then
-    function api:ChangeCam(camType,camId)
-		if typeof(camType) ~= "string" or typeof(camId) ~= "number" then
-			error("[[ Camera System ]] Incorrect types supplied to api:ChangeCam")
-		end
-		if not camerasByIds[camType] or not camerasByIds[camType][camId] then
-			error("[[ Camera System ]] api:ChangeCam called with incorrect CamType or CamId")
-		end
-        data.Shared.CurrentCamera.Type = camType
-        data.Shared.CurrentCamera.Id = camId
-        data.Shared.CurrentCamera.Model = camerasByIds[camType][camId]
-        replicatedFolder.Events.ChangeCam:FireAllClients(camType,camId)
-    end
-end
-
---// Client only apis
--- if run:IsClient() then
-    
--- end
-
---// Other junk
-function idCameraFolder(folder)
+--// Functions
+local function idCameraFolder(folder: Folder)
 	local camById = {}
 	if folder then
-		for i,v in pairs(folder:GetChildren()) do
-			v:SetAttribute("ID",i)
-			camById[i] = v
+		for i, v in pairs(folder:GetChildren()) do
+			if run:IsServer() then
+				v:SetAttribute("ID", i)
+				camById[i] = v
+			else
+				camById[v:GetAttribute("ID")] = v
+			end
 		end
-		for i,v in pairs(folder:GetDescendants()) do
+		for i, v in pairs(folder:GetDescendants()) do
 			if v:IsA("BasePart") then
 				v.Transparency = 1
 				v.CanCollide = false
@@ -80,27 +35,87 @@ function idCameraFolder(folder)
 	return camById
 end
 
-function timeMovingCams(folder)
-	for i,v in pairs(folder:GetChildren()) do
-		local totalTime = v:GetAttribute("Time") or 5
+local function timeMovingCams(folder: Folder)
+	for i, v in pairs(folder:GetChildren()) do
+		local totalTime = v:GetAttribute("Time") or 5 -- TODO put constants like this 5 in a separate module?
 		local totalDistance = 0
 		local totalPoints = #v:GetChildren()
-		for i = 1,totalPoints-1 do
+		-- It needs to loop twice, first to calculate the total distance between all points,
+		-- then to calculate the individual ones. I don't think there's a better way to do that?
+		for i = 1, totalPoints - 1 do
 			local currentPoint = v[i]
-			local nextPoint = v[i+1]
+			local nextPoint = v[i + 1]
 			local distance = (currentPoint.Position - nextPoint.Position).magnitude
 			totalDistance += distance
 		end
-		for i = 1,totalPoints-1 do
+		for i = 1, totalPoints - 1 do
 			local currentPoint = v[i]
-			local nextPoint = v[i+1]
+			local nextPoint = v[i + 1]
 			if not currentPoint:GetAttribute("Time") then
 				local distance = (currentPoint.Position - nextPoint.Position).magnitude
 				local timee = totalTime / totalDistance * distance
-				currentPoint:SetAttribute("Time",timee)
+				currentPoint:SetAttribute("Time", timee)
 			end
 		end
 	end
 end
+
+local function indexCameras()
+	camerasByIds.Static = idCameraFolder(workspaceFolder.Cameras.Static)
+	camerasByIds.Moving = idCameraFolder(workspaceFolder.Cameras.Moving)
+	if run:IsServer() then
+		timeMovingCams(workspaceFolder.Cameras.Moving)
+	end
+	if workspaceFolder.Cameras:FindFirstChild("Default") then
+		camerasByIds.Default = workspaceFolder.Cameras.Default.CFrame
+	else
+		warn("[[ Camera System ]]: Default camera is missing, using first static camera or fallback position instead")
+		camerasByIds.Default = camerasByIds.Static[1] and camerasByIds.Static[1].CFrame or CFrame.new(0, 10, 0)
+	end
+end
+
+--======= EXPORTED =======--
+--// Shared apis
+function api:GetCamsById()
+	if not camerasByIds.Default then
+		indexCameras()
+	end
+	return camerasByIds
+end
+
+function api:GetCamById(camType: string, camId: number)
+	if not camerasByIds.Default then
+		indexCameras()
+	end
+	return camerasByIds[camType][camId]
+end
+
+function api:GetDefaultCamPosition()
+	if not camerasByIds.Default then
+		indexCameras()
+	end
+	return camerasByIds.Default
+end
+
+--// Server only apis
+if run:IsServer() then
+	function api:ChangeCam(camType: string, camId: number)
+		if typeof(camType) ~= "string" or typeof(camId) ~= "number" then
+			error("[[ Camera System ]] Incorrect types supplied to api:ChangeCam")
+		end
+		if not camerasByIds[camType] or not camerasByIds[camType][camId] then
+			error("[[ Camera System ]] api:ChangeCam called with incorrect CamType or CamId")
+		end
+		data.Shared.CurrentCamera.Type = camType
+		data.Shared.CurrentCamera.Id = camId
+		data.Shared.CurrentCamera.Model = camerasByIds[camType][camId]
+		replicatedFolder.Events.ChangeCam:FireAllClients(camType, camId)
+	end
+end
+
+--// Client only apis
+-- if run:IsClient() then
+
+-- end
 
 return api

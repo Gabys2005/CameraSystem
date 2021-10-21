@@ -1,39 +1,45 @@
+--// Services
 local replicatedStorage = game:GetService("ReplicatedStorage")
 local run = game:GetService("RunService")
+
+--// Variables
 local replicated = replicatedStorage:WaitForChild("CameraSystem")
 local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReference")
 local iconModule = replicated.Client.Dependencies.TopbarPlus
 local data = require(replicated.Data)
 local cameraInstance = workspace.CurrentCamera
 
+--// Functions
 local function watchLoop()
-    if cameraInstance.CameraType ~= Enum.CameraType.Scriptable then
-        cameraInstance.CameraType = Enum.CameraType.Scriptable
-    end
-    cameraInstance.CFrame = data.Shared.CameraData.CFrame
+	if cameraInstance.CameraType ~= Enum.CameraType.Scriptable then
+		cameraInstance.CameraType = Enum.CameraType.Scriptable
+	end
+	cameraInstance.CFrame = data.Shared.CameraData.CFrame
 end
 
+--======= Actual code =======--
 if topbarPlusReference then
 	iconModule = topbarPlusReference.Value
 end
 local Icon = require(iconModule)
-local watchButton = Icon.new():setLabel("Watch"):setMid():setLabel("Exit","selected"):setSize(100,32)
+local watchButton = Icon.new():setLabel("Watch"):setMid():setLabel("Exit", "selected"):setSize(100, 32)
 watchButton.selected:Connect(function()
-    run:BindToRenderStep("CameraSystemWatchLoop", Enum.RenderPriority.Camera.Value - 1, watchLoop)
+	run:BindToRenderStep("CameraSystemWatchLoop", Enum.RenderPriority.Camera.Value - 1, watchLoop)
 end)
 watchButton.deselected:Connect(function()
-    run:UnbindFromRenderStep("CameraSystemWatchLoop")
-    cameraInstance.CameraType = Enum.CameraType.Custom
+	run:UnbindFromRenderStep("CameraSystemWatchLoop")
+	cameraInstance.CameraType = Enum.CameraType.Custom
 end)
 
+--======= Exported =======--
 local controller = {}
 
 function controller:Watch()
-    watchButton:select()
+	watchButton:select()
 end
 
 function controller:Unwatch()
-    watchButton:deselect()
+	watchButton:deselect()
 end
 
 return controller

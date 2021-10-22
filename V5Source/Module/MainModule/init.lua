@@ -119,4 +119,10 @@ return function(systemFolder)
 			api:ChangeFov(fov)
 		end
 	end)
+
+	replicatedFolder.Events.ChangeAutoFov.OnServerEvent:Connect(function(plr, bool)
+		if isOwner(plr) then
+			api:ChangeAutoFov(bool)
+		end
+	end)
 end

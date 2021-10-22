@@ -20,7 +20,9 @@ local data = {
 				Value = 70,
 				Time = 0.1,
 			},
-			-- AutoFov = true, -- TODO uncomment once it's a toggleable setting
+		},
+		Settings = {
+			AutoFov = false,
 		},
 	},
 

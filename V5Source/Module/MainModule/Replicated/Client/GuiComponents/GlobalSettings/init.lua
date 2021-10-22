@@ -1,7 +1,14 @@
-local dotslider = require(script.Parent.DotSlider)
+local switch = require(script.Parent.Switch)
 
 return function()
 	local copy = script.Frame:Clone()
-	--dotslider({Name = "Bar size", Min = 0, Max = 50, Round = 0}).Parent = copy.SomeSlider
+
+	switch({
+		Name = "Auto FOV: ",
+		Setting = "Shared.Settings.AutoFov",
+		EventToFire = script.Parent.Parent.Parent.Events.ChangeAutoFov,
+	}).Parent =
+		copy.AutoFov
+
 	return copy
 end

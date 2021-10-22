@@ -32,3 +32,7 @@ replicated.Events.ChangeFov.OnClientEvent:Connect(function(newfov)
 	data:set("Shared.Effects.Fov", newfov)
 	lerper.data({ LerpTime = newfov.Time, Setting = "Local.LerpedValues.Fov", Goal = newfov.Value })
 end)
+
+replicated.Events.ChangeAutoFov.OnClientEvent:Connect(function(bool)
+	data:set("Shared.Settings.AutoFov", bool)
+end)

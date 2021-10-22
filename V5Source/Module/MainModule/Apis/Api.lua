@@ -160,6 +160,11 @@ if run:IsServer() then
 		}
 		replicatedFolder.Events.ChangeFov:FireAllClients(data.Shared.Effects.Fov)
 	end
+
+	function api:ChangeAutoFov(bool: boolean)
+		data.Shared.Settings.AutoFov = bool
+		replicatedFolder.Events.ChangeAutoFov:FireAllClients(bool)
+	end
 end
 
 --// Client only apis

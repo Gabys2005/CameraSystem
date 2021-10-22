@@ -46,6 +46,7 @@ for i, v in pairs(menuNames) do
 		Name = v.Name,
 		MinimumWidth = v.Width,
 		MinimumHeight = v.Height,
+		Position = UDim2.fromOffset(250 * (i - 1) + 20, 50),
 		Enabled = false,
 	})
 	local icon = Icon.new():setLabel(v.Name):bindToggleItem(gui)

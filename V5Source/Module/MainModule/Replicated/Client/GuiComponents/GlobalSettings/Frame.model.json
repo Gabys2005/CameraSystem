@@ -1,0 +1,27 @@
+{
+    "ClassName": "Frame",
+    "Properties": {
+        "Size": [
+            1,
+            0,
+            1,
+            0
+        ],
+        "BackgroundTransparency": 1
+    },
+    "Children": [
+        {
+            "ClassName": "Frame",
+            "Name": "AutoFov",
+            "Properties": {
+                "BackgroundTransparency": 1,
+                "Size": [
+                    0,
+                    220,
+                    0,
+                    30
+                ]
+            }
+        }
+    ]
+}

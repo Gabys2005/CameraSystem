@@ -28,19 +28,21 @@ local function getAutoFov(focusPosition: Vector3)
 end
 
 local function watchLoop()
+	-- For some reason sometimes CameraType doesn't change if you only change it once
 	if cameraInstance.CameraType ~= Enum.CameraType.Scriptable then
 		cameraInstance.CameraType = Enum.CameraType.Scriptable
 	end
 	local finalCFrame = data.Shared.CameraData.CFrame
-	if data.Shared.Focus.Instance then
+	if data.Shared.Focus.Instance then -- If focusing on anything
 		local focusPosition = getFocusPosition()
 		finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, focusPosition)
-		-- if data.Shared.Effects.AutoFov then
-		-- 	cameraInstance.FieldOfView = getAutoFov(focusPosition)
-		-- end
+		if data.Shared.Settings.AutoFov then
+			cameraInstance.FieldOfView = getAutoFov(focusPosition)
+		else
+			cameraInstance.FieldOfView = data.Local.LerpedValues.Fov
+		end
 	end
 	cameraInstance.CFrame = finalCFrame
-	cameraInstance.FieldOfView = data.Local.LerpedValues.Fov
 end
 
 --======= Actual code =======--

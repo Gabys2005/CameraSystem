@@ -9,8 +9,9 @@ script.Frame.Frame.TextColor3 = theme.BaseText
 
 export type CheckboxParams = {
 	Name: string,
-	Checked: boolean,
+	Checked: boolean?,
 	Setting: string,
+	EventToFire: RemoteEvent?,
 }
 
 return function(params: CheckboxParams)
@@ -38,7 +39,12 @@ return function(params: CheckboxParams)
 	end
 	updateColors()
 	copy.Frame.MouseButton1Click:Connect(function()
-		data:set(params.Setting, not data:get(params.Setting))
+		local newval = not data:get(params.Setting)
+		if params.EventToFire then
+			params.EventToFire:FireServer(newval)
+		else
+			data:set(params.Setting, not data:get(params.Setting))
+		end
 	end)
 	data:onChange(params.Setting, function(newval)
 		updateColors()

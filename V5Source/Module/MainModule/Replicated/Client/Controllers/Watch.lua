@@ -8,8 +8,6 @@ local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReferenc
 local iconModule = replicated.Client.Dependencies.TopbarPlus
 local data = require(replicated.Data)
 local cameraInstance = workspace.CurrentCamera
-local spring = data.Local.Springs.Focus
-local utils = require(script.Parent.Parent.Scripts.Utils)
 
 --// Functions
 local function getFocusPosition()
@@ -23,25 +21,26 @@ local function getFocusPosition()
 	return Vector3.new()
 end
 
+local function getAutoFov(focusPosition: Vector3)
+	local distance = (focusPosition - data.Shared.CameraData.Position).magnitude
+	local fov = 48 / (1 / 10 * distance)
+	return fov
+end
+
 local function watchLoop()
 	if cameraInstance.CameraType ~= Enum.CameraType.Scriptable then
 		cameraInstance.CameraType = Enum.CameraType.Scriptable
 	end
 	local finalCFrame = data.Shared.CameraData.CFrame
 	if data.Shared.Focus.Instance then
-		if data.Local.Settings.UseSprings then
-			spring.Target = utils:CFrameToRotation(CFrame.lookAt(data.Shared.CameraData.Position, getFocusPosition())) -- TODO find a better way to do that
-			finalCFrame = CFrame.new(data.Shared.CameraData.Position)
-				* CFrame.fromOrientation(
-					math.rad(spring.Position.X),
-					math.rad(spring.Position.Y),
-					math.rad(spring.Position.Z)
-				)
-		else
-			finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, getFocusPosition())
-		end
+		local focusPosition = getFocusPosition()
+		finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, focusPosition)
+		-- if data.Shared.Effects.AutoFov then
+		-- 	cameraInstance.FieldOfView = getAutoFov(focusPosition)
+		-- end
 	end
 	cameraInstance.CFrame = finalCFrame
+	cameraInstance.FieldOfView = data.Local.LerpedValues.Fov
 end
 
 --======= Actual code =======--
@@ -52,13 +51,13 @@ local Icon = require(iconModule)
 local watchButton = Icon.new():setLabel("Watch"):setMid():setLabel("Exit", "selected"):setSize(100, 32)
 watchButton.selected:Connect(function()
 	run:BindToRenderStep("CameraSystemWatchLoop", Enum.RenderPriority.Camera.Value - 1, watchLoop)
-	cameraInstance.FieldOfView = data.Shared.Effects.Fov.Value
 	data.Local.Watching = true
 end)
 watchButton.deselected:Connect(function()
 	run:UnbindFromRenderStep("CameraSystemWatchLoop")
 	cameraInstance.CameraType = Enum.CameraType.Custom
 	data.Local.Watching = false
+	cameraInstance.FieldOfView = 70
 end)
 
 --======= Exported =======--

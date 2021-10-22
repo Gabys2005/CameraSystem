@@ -8,6 +8,7 @@ local currentConnection
 local lastChangeTime = tick()
 local lerper = require(script.Parent.Parent.Scripts.Lerper)
 local bezier = require(script.Parent.Parent.Dependencies.Bezier)
+local utils = require(script.Parent.Parent.Scripts.Utils)
 
 --// Functions
 local function update(pos: Vector3, rot: Vector3)

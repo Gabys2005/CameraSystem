@@ -9,7 +9,7 @@ return function()
 		Max = 120,
 		Round = 0,
 		Default = 70,
-		SettingToUpdate = "Shared.Effects.Fov",
+		Setting = "Shared.Effects.Fov",
 		EventToFire = script.Parent.Parent.Parent.Events.ChangeFov,
 	}).Parent =
 		copy.FovSlider

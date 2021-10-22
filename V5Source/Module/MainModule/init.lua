@@ -13,7 +13,6 @@ return function(systemFolder)
 		Theme = "string",
 		AccelerateStart = "boolean",
 		DecelerateEnd = "boolean",
-		UseSprings = "boolean",
 	}
 
 	--// Functions

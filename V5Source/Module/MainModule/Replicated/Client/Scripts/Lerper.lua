@@ -2,6 +2,7 @@
 local lerper = {}
 local run = game:GetService("RunService")
 local utils = require(script.Parent.Utils)
+local data = require(script.Parent.UpdateData)
 
 local lerpFunctions = {
 	InSine = function(T)
@@ -12,6 +13,9 @@ local lerpFunctions = {
 	end,
 	InOutSine = function(T)
 		return (1 - math.cos(3.1415926535898 * T)) / 2
+	end,
+	OutQuad = function(T)
+		return T * (2 - T)
 	end,
 }
 export type LerperParams = {
@@ -28,6 +32,12 @@ export type BezierLerperParams = {
 	Decelerate: boolean,
 	PositionCurve: table,
 	RotationCurve: table,
+}
+
+export type DataLerperParams = {
+	LerpTime: number,
+	Setting: string,
+	Goal: any,
 }
 
 -- Lerper for normal cameras that just need to move between points
@@ -101,6 +111,25 @@ function lerper.newbezier(params: BezierLerperParams)
 	end)
 
 	return lerp
+end
+
+local lastLerpTimes = {}
+
+function lerper.data(params: DataLerperParams)
+	local startTime = tick()
+	local endTime = tick() + params.LerpTime
+	lastLerpTimes[params.Setting] = startTime
+	local startValue = data:get(params.Setting)
+	local connection
+	connection = run.RenderStepped:Connect(function()
+		if lastLerpTimes[params.Setting] ~= startTime or tick() > endTime then
+			connection:Disconnect()
+		else
+			local timeProgress = utils:Map(tick(), startTime, endTime, 0, 1)
+			local progress = lerpFunctions.OutQuad(timeProgress)
+			data:set(params.Setting, utils:Map(progress, 0, 1, startValue, params.Goal))
+		end
+	end)
 end
 
 return lerper

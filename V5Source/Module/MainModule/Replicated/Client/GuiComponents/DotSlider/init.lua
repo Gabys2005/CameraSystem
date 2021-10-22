@@ -10,7 +10,7 @@ export type DotSliderParams = {
 	Max: number,
 	Round: number,
 	Default: number,
-	SettingToUpdate: string, -- TODO rename
+	Setting: string,
 	EventToFire: RemoteEvent?,
 }
 
@@ -33,9 +33,11 @@ return function(params: DotSliderParams)
 			return
 		end
 		local dragging = true
-		local stopDrag = Input:GetPropertyChangedSignal("UserInputState"):Connect(function()
+		local stopDrag
+		stopDrag = Input:GetPropertyChangedSignal("UserInputState"):Connect(function()
 			if Input.UserInputState == Enum.UserInputState.End then
 				dragging = false
+				stopDrag:Disconnect()
 			end
 		end)
 
@@ -46,7 +48,7 @@ return function(params: DotSliderParams)
 			if params.EventToFire then
 				params.EventToFire:FireServer(value)
 			else
-				data:set(params.SettingToUpdate, value)
+				data:set(params.Setting, value)
 			end
 			task.wait()
 		end
@@ -55,21 +57,22 @@ return function(params: DotSliderParams)
 	end)
 
 	local function update(newval)
-		local newval = newval or data:get(params.SettingToUpdate)
-		if newval.Value then
+		local newval = newval or data:get(params.Setting)
+		if typeof(newval) == "table" and newval.Value then
 			newval = newval.Value
 		end
 		local val = util:Map(newval, params.Min, params.Max, 0, 1)
 		ts:Create(copy.Slider.Frame.Frame, TweenInfo.new(0.05), { Size = UDim2.fromScale(val, 1) }):Play()
 		copy.Value.Text = util:Round(newval, params.Round)
 	end
-	data:onChange(params.SettingToUpdate, update)
+	data:onChange(params.Setting, update)
+	update()
 
 	copy.Reset.MouseButton1Click:Connect(function()
 		if params.EventToFire then
 			params.EventToFire:FireServer(params.Default)
 		else
-			data:set(params.SettingToUpdate, params.Default)
+			data:set(params.Setting, params.Default)
 		end
 	end)
 

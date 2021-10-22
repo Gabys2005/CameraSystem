@@ -75,11 +75,13 @@ return function(gui: GuiObject)
 		local startingSize = gui.Size
 		local startingContentSize = gui.Content.Size
 		local startingFramePosition = gui.Position
-		local stopDrag = input:GetPropertyChangedSignal("UserInputState"):Connect(function()
+		local stopDrag
+		stopDrag = input:GetPropertyChangedSignal("UserInputState"):Connect(function()
 			if input.UserInputState == Enum.UserInputState.End then
 				draggingResize = false
 				resizing = nil
 				mouse.Icon = lastCursor
+				stopDrag:Disconnect()
 			end
 		end)
 

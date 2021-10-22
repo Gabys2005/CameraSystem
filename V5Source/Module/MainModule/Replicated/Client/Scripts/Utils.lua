@@ -31,9 +31,4 @@ function utils:CFrameToRotation(cf: CFrame)
 	return rotation
 end
 
-function utils:resetSpringPosition()
-	local spring = data.Local.Springs.Focus
-	spring.Position = data.Shared.CameraData.Rotation
-end
-
 return utils

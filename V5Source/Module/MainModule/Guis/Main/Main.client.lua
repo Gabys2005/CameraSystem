@@ -5,18 +5,13 @@ local replicatedStorage = game:GetService("ReplicatedStorage")
 local replicated = replicatedStorage:WaitForChild("CameraSystem")
 local data = require(replicated.Client.Scripts.UpdateData)
 local api = require(workspace:WaitForChild("CameraSystem"):WaitForChild("Api"))
-local spring = require(replicated.Client.Dependencies.Spring)
+local lerper = require(replicated.Client.Scripts.Lerper)
 
 --// Functions
 
 --===================== CODE =====================--
 -- Index the cameras and initiate the controllers
 api:GetCamsById()
-if data:get("Local.Settings.UseSprings") == true then
-	local spr = spring.new(Vector3.new())
-	spr.Speed = 10
-	data:set("Local.Springs.Focus", spr)
-end
 require(replicated.Client.Controllers.Cameras)
 require(replicated.Client.Controllers.Effects)
 require(replicated.Client.Controllers.Watch)
@@ -35,4 +30,5 @@ end)
 
 replicated.Events.ChangeFov.OnClientEvent:Connect(function(newfov)
 	data:set("Shared.Effects.Fov", newfov)
+	lerper.data({ LerpTime = newfov.Time, Setting = "Local.LerpedValues.Fov", Goal = newfov.Value })
 end)

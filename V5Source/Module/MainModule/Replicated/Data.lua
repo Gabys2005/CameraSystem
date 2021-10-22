@@ -20,6 +20,7 @@ local data = {
 				Value = 70,
 				Time = 0.1,
 			},
+			-- AutoFov = true, -- TODO uncomment once it's a toggleable setting
 		},
 	},
 
@@ -33,6 +34,9 @@ local data = {
 			Focus = nil,
 		},
 		Watching = false,
+		LerpedValues = {
+			Fov = 70,
+		},
 	},
 }
 
@@ -42,7 +46,7 @@ if run:IsClient() then
 	local serverData = script.Parent.Events.RequestCurrentData:InvokeServer()
 	data.Shared = serverData.Shared
 	local SettingsModule = require(workspace:WaitForChild("CameraSystem").Settings)
-	local SettingsToImport = { "AccelerateStart", "DecelerateEnd", "UseSprings" }
+	local SettingsToImport = { "AccelerateStart", "DecelerateEnd" }
 	for i, v in pairs(SettingsToImport) do
 		data.Local.Settings[v] = SettingsModule[v]
 	end

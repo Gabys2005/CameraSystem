@@ -10,31 +10,37 @@ script.Frame.Frame.TextColor3 = theme.BaseText
 export type CheckboxParams = {
 	Name: string,
 	Checked: boolean,
-	SettingToUpdate: string
+	Setting: string,
 }
 
-return function(params:CheckboxParams)
+return function(params: CheckboxParams)
 	local copy = script.Frame:Clone()
 	copy.TextLabel.Text = params.Name
 	local function updateColors()
-		local position = UDim2.fromScale(0.95,0.5)
-		local anchorpoint = Vector2.new(1,0.5)
+		local position = UDim2.fromScale(0.95, 0.5)
+		local anchorpoint = Vector2.new(1, 0.5)
 		local ffbackground = theme.Underline
 		local fbackground = theme.Base
-		if not data:get(params.SettingToUpdate) then
-			position = UDim2.fromScale(0.05,0.5)
-			anchorpoint = Vector2.new(0,0.5)
+		if not data:get(params.Setting) then
+			position = UDim2.fromScale(0.05, 0.5)
+			anchorpoint = Vector2.new(0, 0.5)
 			ffbackground = theme.BaseDarker2
 			fbackground = theme.BaseDarker
 		end
-		ts:Create(copy.Frame.Frame,TweenInfo.new(0.2),{Position = position, AnchorPoint = anchorpoint, BackgroundColor3 = ffbackground}):Play()
-		ts:Create(copy.Frame,TweenInfo.new(0.2),{BackgroundColor3 = fbackground}):Play()
+		ts
+			:Create(
+				copy.Frame.Frame,
+				TweenInfo.new(0.2),
+				{ Position = position, AnchorPoint = anchorpoint, BackgroundColor3 = ffbackground }
+			)
+			:Play()
+		ts:Create(copy.Frame, TweenInfo.new(0.2), { BackgroundColor3 = fbackground }):Play()
 	end
 	updateColors()
 	copy.Frame.MouseButton1Click:Connect(function()
-		data:set(params.SettingToUpdate,not data:get(params.SettingToUpdate))
+		data:set(params.Setting, not data:get(params.Setting))
 	end)
-	data:onChange(params.SettingToUpdate,function(newval)
+	data:onChange(params.Setting, function(newval)
 		updateColors()
 	end)
 	return copy

@@ -17,7 +17,7 @@ local function getFocusPosition()
 		if data.Shared.Focus.Type == "Part" then
 			return data.Shared.Focus.Instance.Position
 		elseif data.Shared.Focus.Type == "Player" then
-			return data.Shared.Focus.Instance.Position + Vector3.new(0, 3, 0)
+			return data.Shared.Focus.Instance.Position + Vector3.new(0, 2.5, 0)
 		end
 	end
 	return Vector3.new()
@@ -52,10 +52,13 @@ local Icon = require(iconModule)
 local watchButton = Icon.new():setLabel("Watch"):setMid():setLabel("Exit", "selected"):setSize(100, 32)
 watchButton.selected:Connect(function()
 	run:BindToRenderStep("CameraSystemWatchLoop", Enum.RenderPriority.Camera.Value - 1, watchLoop)
+	cameraInstance.FieldOfView = data.Shared.Effects.Fov.Value
+	data.Local.Watching = true
 end)
 watchButton.deselected:Connect(function()
 	run:UnbindFromRenderStep("CameraSystemWatchLoop")
 	cameraInstance.CameraType = Enum.CameraType.Custom
+	data.Local.Watching = false
 end)
 
 --======= Exported =======--

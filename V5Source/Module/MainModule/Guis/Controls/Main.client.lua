@@ -21,6 +21,11 @@ local menuNames = {
 		Width = 220,
 		Height = 220,
 	},
+	{
+		Name = "Effects",
+		Width = 220,
+		Height = 220,
+	},
 }
 local window = require(replicated.Client.Scripts.NewWindow)
 

@@ -1,0 +1,27 @@
+{
+    "ClassName": "Frame",
+    "Properties": {
+        "BackgroundTransparency": 1,
+        "Size": [
+            1,
+            0,
+            1,
+            0
+        ]
+    },
+    "Children": [
+        {
+            "ClassName": "Frame",
+            "Name": "FovSlider",
+            "Properties": {
+                "BackgroundTransparency": 1,
+                "Size": [
+                    1,
+                    0,
+                    0,
+                    50
+                ]
+            }
+        }
+    ]
+}

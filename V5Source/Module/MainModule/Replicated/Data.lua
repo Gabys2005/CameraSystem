@@ -15,6 +15,12 @@ local data = {
 			Type = nil, -- Either "Part" or "Player", nil is used when focus is disabled
 			Instance = nil,
 		},
+		Effects = {
+			Fov = {
+				Value = 70,
+				Time = 0.1,
+			},
+		},
 	},
 
 	Local = {
@@ -26,6 +32,7 @@ local data = {
 		Springs = {
 			Focus = nil,
 		},
+		Watching = false,
 	},
 }
 

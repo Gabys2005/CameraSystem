@@ -18,6 +18,7 @@ if data:get("Local.Settings.UseSprings") == true then
 	data:set("Local.Springs.Focus", spr)
 end
 require(replicated.Client.Controllers.Cameras)
+require(replicated.Client.Controllers.Effects)
 require(replicated.Client.Controllers.Watch)
 
 replicated.Events.ChangeCam.OnClientEvent:Connect(function(camType, camId)
@@ -30,4 +31,8 @@ end)
 
 replicated.Events.ChangeFocus.OnClientEvent:Connect(function(newdata)
 	data:set("Shared.Focus", newdata)
+end)
+
+replicated.Events.ChangeFov.OnClientEvent:Connect(function(newfov)
+	data:set("Shared.Effects.Fov", newfov)
 end)

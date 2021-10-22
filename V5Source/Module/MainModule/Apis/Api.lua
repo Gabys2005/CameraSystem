@@ -151,6 +151,15 @@ if run:IsServer() then
 			replicatedFolder.Events.ChangeFocus:FireAllClients(data.Shared.Focus)
 		end
 	end
+
+	function api:ChangeFov(fov: number, time: number?)
+		time = time or 0.1
+		data.Shared.Effects.Fov = {
+			Value = fov,
+			Time = time,
+		}
+		replicatedFolder.Events.ChangeFov:FireAllClients(data.Shared.Effects.Fov)
+	end
 end
 
 --// Client only apis

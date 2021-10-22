@@ -9,7 +9,9 @@ export type DotSliderParams = {
 	Min: number,
 	Max: number,
 	Round: number,
-	SettingToUpdate: string
+	Default: number,
+	SettingToUpdate: string, -- TODO rename
+	EventToFire: RemoteEvent?,
 }
 
 script.Frame.Reset.BackgroundColor3 = theme.Base
@@ -20,14 +22,16 @@ script.Frame.Slider.Frame.BackgroundColor3 = theme.BaseDarker
 script.Frame.Slider.Frame.Frame.BackgroundColor3 = theme.Base
 script.Frame.Slider.Frame.Frame.Frame.BackgroundColor3 = theme.Base
 
-return function(params:DotSliderParams)
+return function(params: DotSliderParams)
 	local copy = script.Frame:Clone()
 	params.Round = params.Round or 0
-	
+
 	copy.Namer.Text = params.Name
-	
-	copy.Slider.Hitbox.InputBegan:Connect(function(Input:InputObject)
-		if Input.UserInputType ~= Enum.UserInputType.MouseButton1 then return end
+
+	copy.Slider.Hitbox.InputBegan:Connect(function(Input: InputObject)
+		if Input.UserInputType ~= Enum.UserInputType.MouseButton1 then
+			return
+		end
 		local dragging = true
 		local stopDrag = Input:GetPropertyChangedSignal("UserInputState"):Connect(function()
 			if Input.UserInputState == Enum.UserInputState.End then
@@ -37,36 +41,37 @@ return function(params:DotSliderParams)
 
 		while dragging do
 			local relativePositionX = uis:GetMouseLocation().X - copy.Slider.Frame.AbsolutePosition.X
-			local scaleX = math.clamp(relativePositionX / copy.Slider.Frame.AbsoluteSize.X,0,1)
+			local scaleX = math.clamp(relativePositionX / copy.Slider.Frame.AbsoluteSize.X, 0, 1)
 			local value = scaleX * (params.Max - params.Min) + params.Min
-			--ts:Create(copy.Slider.Frame.Frame,TweenInfo.new(0.05),{Size = UDim2.fromScale(scaleX,1)}):Play()
-			--copy.Slider.Frame.Frame.Size = UDim2.fromScale(scaleX,1)
-			--copy.Value.Text = util:Round(value,params.Round)
-			data:set(params.SettingToUpdate,value)
-			--event:FireServer(value)
+			if params.EventToFire then
+				params.EventToFire:FireServer(value)
+			else
+				data:set(params.SettingToUpdate, value)
+			end
 			task.wait()
 		end
 
 		Input:Destroy()
 	end)
-	
-	local function update()
-		local newval = data:get(params.SettingToUpdate)
-		local val = util:Map(newval,params.Min,params.Max,0,1)
-		ts:Create(copy.Slider.Frame.Frame,TweenInfo.new(0.05),{Size = UDim2.fromScale(val,1)}):Play()
-		copy.Value.Text = util:Round(newval,params.Round)
+
+	local function update(newval)
+		local newval = newval or data:get(params.SettingToUpdate)
+		if newval.Value then
+			newval = newval.Value
+		end
+		local val = util:Map(newval, params.Min, params.Max, 0, 1)
+		ts:Create(copy.Slider.Frame.Frame, TweenInfo.new(0.05), { Size = UDim2.fromScale(val, 1) }):Play()
+		copy.Value.Text = util:Round(newval, params.Round)
 	end
-	update()
-	data:onChange(params.SettingToUpdate,update)
+	data:onChange(params.SettingToUpdate, update)
 
-	--event.OnClientEvent:Connect(function(val)
-	--	sliderFrame.Background.Slider.Size = UDim2.fromScale(util:Map(val,min,max,0,1),1)
-	--	sliderFrame.Value.Text = util:Round(val,round)
-	--end)
+	copy.Reset.MouseButton1Click:Connect(function()
+		if params.EventToFire then
+			params.EventToFire:FireServer(params.Default)
+		else
+			data:set(params.SettingToUpdate, params.Default)
+		end
+	end)
 
-	--sliderFrame.Reset.MouseButton1Click:Connect(function()
-	--	event:FireServer(default)
-	--end)
-	
 	return copy
 end

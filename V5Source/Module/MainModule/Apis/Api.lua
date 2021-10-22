@@ -161,9 +161,15 @@ if run:IsServer() then
 		replicatedFolder.Events.ChangeFov:FireAllClients(data.Shared.Effects.Fov)
 	end
 
+	-- TODO find a replacement for repeated functions like this
 	function api:ChangeAutoFov(bool: boolean)
 		data.Shared.Settings.AutoFov = bool
 		replicatedFolder.Events.ChangeAutoFov:FireAllClients(bool)
+	end
+
+	function api:ChangeUseSprings(bool: boolean)
+		data.Shared.Settings.UseSprings = bool
+		replicatedFolder.Events.UseSprings:FireAllClients(bool)
 	end
 end
 

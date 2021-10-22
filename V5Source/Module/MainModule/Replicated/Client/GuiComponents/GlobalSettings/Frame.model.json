@@ -22,6 +22,25 @@
                     30
                 ]
             }
+        },
+        {
+            "ClassName": "Frame",
+            "Name": "UseSprings",
+            "Properties": {
+                "BackgroundTransparency": 1,
+                "Position": [
+                    0,
+                    0,
+                    0,
+                    30
+                ],
+                "Size": [
+                    0,
+                    220,
+                    0,
+                    30
+                ]
+            }
         }
     ]
 }

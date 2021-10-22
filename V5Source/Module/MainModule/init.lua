@@ -125,4 +125,10 @@ return function(systemFolder)
 			api:ChangeAutoFov(bool)
 		end
 	end)
+
+	replicatedFolder.Events.UseSprings.OnServerEvent:Connect(function(plr, bool)
+		if isOwner(plr) then
+			api:ChangeUseSprings(bool)
+		end
+	end)
 end

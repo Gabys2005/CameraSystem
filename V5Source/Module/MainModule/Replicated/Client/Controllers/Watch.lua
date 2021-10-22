@@ -8,6 +8,7 @@ local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReferenc
 local iconModule = replicated.Client.Dependencies.TopbarPlus
 local data = require(replicated.Data)
 local cameraInstance = workspace.CurrentCamera
+local utils = require(script.Parent.Parent.Scripts.Utils)
 
 --// Functions
 local function getFocusPosition()
@@ -35,7 +36,13 @@ local function watchLoop()
 	local finalCFrame = data.Shared.CameraData.CFrame
 	if data.Shared.Focus.Instance then -- If focusing on anything
 		local focusPosition = getFocusPosition()
-		finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, focusPosition)
+		if data.Shared.Settings.UseSprings then
+			local spr = data.Local.Springs.Focus
+			finalCFrame = CFrame.new(data.Shared.CameraData.Position)
+				* CFrame.fromOrientation(math.rad(spr.Position.X), math.rad(spr.Position.Y), math.rad(spr.Position.Z))
+		else
+			finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, focusPosition)
+		end
 		if data.Shared.Settings.AutoFov then
 			cameraInstance.FieldOfView = getAutoFov(focusPosition)
 		else
@@ -60,6 +67,14 @@ watchButton.deselected:Connect(function()
 	cameraInstance.CameraType = Enum.CameraType.Custom
 	data.Local.Watching = false
 	cameraInstance.FieldOfView = 70
+end)
+
+run.RenderStepped:Connect(function()
+	if data.Shared.Focus.Instance then
+		data.Local.Springs.Focus.Target = utils:CFrameToRotation(
+			CFrame.lookAt(data.Shared.CameraData.Position, getFocusPosition())
+		) -- TODO find a better way to do that
+	end
 end)
 
 --======= Exported =======--

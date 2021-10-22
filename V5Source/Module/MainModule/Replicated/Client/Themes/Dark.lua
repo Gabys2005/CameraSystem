@@ -8,7 +8,7 @@ return {
 	Highlighted = Color3.fromRGB(168, 168, 168),
 
 	BaseDarker = Color3.fromRGB(53, 53, 53),
-	BaseDarker2 = Color3.fromRGB(0, 0, 0),
+	BaseDarker2 = Color3.fromRGB(116, 116, 116),
 
 	BaseText = Color3.fromRGB(255, 255, 255),
 

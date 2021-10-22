@@ -31,4 +31,15 @@ function utils:CFrameToRotation(cf: CFrame)
 	return rotation
 end
 
+function utils:getFocusPosition()
+	if data.Shared.Focus.Instance then
+		if data.Shared.Focus.Type == "Part" then
+			return data.Shared.Focus.Instance.Position
+		elseif data.Shared.Focus.Type == "Player" then
+			return data.Shared.Focus.Instance.Position + Vector3.new(0, 2.5, 0)
+		end
+	end
+	return Vector3.new()
+end
+
 return utils

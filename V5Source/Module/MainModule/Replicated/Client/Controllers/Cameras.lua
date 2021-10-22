@@ -24,6 +24,12 @@ local function update(pos: Vector3, rot: Vector3)
 		* CFrame.fromOrientation(math.rad(rot.X), math.rad(rot.Y), math.rad(rot.Z))
 end
 
+local function resetSpringPosition()
+	data.Local.Springs.Focus.Position = utils:CFrameToRotation(
+		CFrame.lookAt(data.Shared.CameraData.Position, utils:getFocusPosition())
+	)
+end
+
 --// Connections
 dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO export all types in 1 script for easier use?
 	local currentChangeTime = tick()
@@ -34,6 +40,7 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 	end
 	if currentCamera.Type == "Static" then
 		update()
+		resetSpringPosition()
 		if currentCamera.Model:GetAttribute("Update") then
 			currentConnection = run.RenderStepped:Connect(function()
 				update()
@@ -43,6 +50,7 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 		local cameraCount = #currentCamera.Model:GetChildren()
 		local firstCam = currentCamera.Model["1"]
 		update(firstCam.Position, firstCam.Orientation)
+		resetSpringPosition()
 		if currentCamera.Model:GetAttribute("Bezier") then
 			-- Bezier cameras
 			local positionPoints = {}

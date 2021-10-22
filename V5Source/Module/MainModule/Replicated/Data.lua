@@ -23,6 +23,7 @@ local data = {
 		},
 		Settings = {
 			AutoFov = false,
+			UseSprings = false,
 		},
 	},
 

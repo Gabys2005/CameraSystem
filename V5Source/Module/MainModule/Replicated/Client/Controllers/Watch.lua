@@ -43,11 +43,11 @@ local function watchLoop()
 		else
 			finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, focusPosition)
 		end
-		if data.Shared.Settings.AutoFov then
-			cameraInstance.FieldOfView = getAutoFov(focusPosition)
-		else
-			cameraInstance.FieldOfView = data.Local.LerpedValues.Fov
-		end
+	end
+	if data.Shared.Settings.AutoFov and data.Shared.Focus.Instance then
+		cameraInstance.FieldOfView = getAutoFov(getFocusPosition())
+	else
+		cameraInstance.FieldOfView = data.Local.LerpedValues.Fov
 	end
 	cameraInstance.CFrame = finalCFrame
 end

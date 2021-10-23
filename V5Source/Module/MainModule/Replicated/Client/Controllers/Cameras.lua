@@ -71,6 +71,9 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 				RotationCurve = rotationPath,
 			})
 			while not lerp.ended do
+				if lastChangeTime ~= currentChangeTime then
+					break
+				end
 				update(lerp.value.Position, lerp.value.Rotation)
 				task.wait()
 			end
@@ -101,6 +104,9 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 
 					local lerp = lerper.new(LerpSettings)
 					while not lerp.ended do
+						if lastChangeTime ~= currentChangeTime then
+							break
+						end
 						update(lerp.value.Position, lerp.value.Rotation)
 						task.wait()
 					end

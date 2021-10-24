@@ -1,6 +1,7 @@
 --// Services
 local replicatedStorage = game:GetService("ReplicatedStorage")
 local run = game:GetService("RunService")
+local lighting = game:GetService("Lighting")
 
 --// Variables
 local replicated = replicatedStorage:WaitForChild("CameraSystem")
@@ -61,12 +62,14 @@ local watchButton = Icon.new():setLabel("Watch"):setMid():setLabel("Exit", "sele
 watchButton.selected:Connect(function()
 	run:BindToRenderStep("CameraSystemWatchLoop", Enum.RenderPriority.Camera.Value - 1, watchLoop)
 	data.Local.Watching = true
+	lighting.CameraSystemBlur.Enabled = true
 end)
 watchButton.deselected:Connect(function()
 	run:UnbindFromRenderStep("CameraSystemWatchLoop")
 	cameraInstance.CameraType = Enum.CameraType.Custom
 	data.Local.Watching = false
 	cameraInstance.FieldOfView = 70
+	lighting.CameraSystemBlur.Enabled = false
 end)
 
 run.RenderStepped:Connect(function()

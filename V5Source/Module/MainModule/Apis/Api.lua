@@ -171,6 +171,15 @@ if run:IsServer() then
 		data.Shared.Settings.UseSprings = bool
 		replicatedFolder.Events.UseSprings:FireAllClients(bool)
 	end
+
+	function api:ChangeBlur(blur: number, time: number?)
+		time = time or 0.1
+		data.Shared.Effects.Blur = {
+			Value = blur,
+			Time = time,
+		}
+		replicatedFolder.Events.ChangeBlur:FireAllClients(data.Shared.Effects.Blur)
+	end
 end
 
 --// Client only apis

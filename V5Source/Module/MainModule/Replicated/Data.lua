@@ -20,6 +20,10 @@ local data = {
 				Value = 70,
 				Time = 0.1,
 			},
+			Blur = {
+				Value = 0,
+				Time = 0.1,
+			},
 		},
 		Settings = {
 			AutoFov = false,

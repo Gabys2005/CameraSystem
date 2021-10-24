@@ -14,5 +14,16 @@ return function()
 	}).Parent =
 		copy.FovSlider
 
+	slider({
+		Name = "Blur",
+		Min = 0,
+		Max = 56,
+		Round = 0,
+		Default = 0,
+		Setting = "Shared.Effects.Blur",
+		EventToFire = script.Parent.Parent.Parent.Events.ChangeBlur,
+	}).Parent =
+		copy.BlurSlider
+
 	return copy
 end

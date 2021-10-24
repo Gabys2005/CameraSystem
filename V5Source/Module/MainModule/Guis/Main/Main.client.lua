@@ -52,3 +52,7 @@ replicated.Events.UseSprings.OnClientEvent:Connect(function(bool)
 	end
 	data:set("Shared.Settings.UseSprings", bool)
 end)
+
+replicated.Events.ChangeBlur.OnClientEvent:Connect(function(blur)
+	data:set("Shared.Effects.Blur", blur)
+end)

@@ -2,6 +2,7 @@ return function(systemFolder)
 	--// Services
 	local players = game:GetService("Players")
 	local replicatedStorage = game:GetService("ReplicatedStorage")
+	local lighting = game:GetService("Lighting")
 
 	--// Variables
 	local Settings = require(systemFolder.Settings)
@@ -70,6 +71,8 @@ return function(systemFolder)
 	replicatedFolder.Parent = replicatedStorage
 	apiModule.Parent = systemFolder
 
+	script.Lighting.CameraSystemBlur.Parent = lighting
+
 	--// Get cameras and set the default position
 	local api = require(apiModule)
 	local camerasByIds = api:GetCamsById()
@@ -129,6 +132,12 @@ return function(systemFolder)
 	replicatedFolder.Events.UseSprings.OnServerEvent:Connect(function(plr, bool)
 		if isOwner(plr) then
 			api:ChangeUseSprings(bool)
+		end
+	end)
+
+	replicatedFolder.Events.ChangeBlur.OnServerEvent:Connect(function(plr, blur)
+		if isOwner(plr) then
+			api:ChangeBlur(blur)
 		end
 	end)
 end

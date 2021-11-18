@@ -24,10 +24,14 @@ local data = {
 				Value = 0,
 				Time = 0.1,
 			},
+			Saturation = {
+				Value = 0,
+				Time = 0.1,
+			},
 		},
 		Settings = {
 			AutoFov = false,
-			UseSprings = false,
+			SmoothFocus = false,
 		},
 	},
 

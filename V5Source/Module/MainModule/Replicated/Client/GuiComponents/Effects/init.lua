@@ -25,5 +25,16 @@ return function()
 	}).Parent =
 		copy.BlurSlider
 
+	slider({
+		Name = "Saturation",
+		Min = -1,
+		Max = 1,
+		Round = 2,
+		Default = 0,
+		Setting = "Shared.Effects.Saturation",
+		EventToFire = script.Parent.Parent.Parent.Events.ChangeSaturation,
+	}).Parent =
+		copy.SaturationSlider
+
 	return copy
 end

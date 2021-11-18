@@ -37,7 +37,7 @@ local function watchLoop()
 	local finalCFrame = data.Shared.CameraData.CFrame
 	if data.Shared.Focus.Instance then -- If focusing on anything
 		local focusPosition = getFocusPosition()
-		if data.Shared.Settings.UseSprings then
+		if data.Shared.Settings.SmoothFocus then
 			local spr = data.Local.Springs.Focus
 			finalCFrame = CFrame.new(data.Shared.CameraData.Position)
 				* CFrame.fromOrientation(math.rad(spr.Position.X), math.rad(spr.Position.Y), math.rad(spr.Position.Z))

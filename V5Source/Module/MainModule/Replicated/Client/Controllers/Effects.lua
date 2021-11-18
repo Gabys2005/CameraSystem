@@ -14,4 +14,14 @@ dataEvent:onChange("Shared.Effects.Blur", function(newblur)
 	ts:Create(lighting.CameraSystemBlur, TweenInfo.new(newblur.Time), { Size = newblur.Value }):Play()
 end)
 
+dataEvent:onChange("Shared.Effects.Saturation", function(newsaturation)
+	ts
+		:Create(
+			lighting.CameraSystemColorCorrection,
+			TweenInfo.new(newsaturation.Time),
+			{ Saturation = newsaturation.Value }
+		)
+		:Play()
+end)
+
 return nil

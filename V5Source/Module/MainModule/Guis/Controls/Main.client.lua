@@ -12,17 +12,17 @@ local menuNames = {
 		Height = 300,
 	},
 	{
-		Name = "Settings",
-		Width = 220,
-		Height = 150,
-	},
-	{
-		Name = "FocusList",
+		Name = "Effects",
 		Width = 220,
 		Height = 220,
 	},
 	{
-		Name = "Effects",
+		Name = "Settings",
+		Width = 220,
+		Height = 160,
+	},
+	{
+		Name = "FocusList",
 		Width = 220,
 		Height = 220,
 	},

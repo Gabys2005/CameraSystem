@@ -72,6 +72,7 @@ return function(systemFolder)
 	apiModule.Parent = systemFolder
 
 	script.Lighting.CameraSystemBlur.Parent = lighting
+	script.Lighting.CameraSystemColorCorrection.Parent = lighting
 
 	--// Get cameras and set the default position
 	local api = require(apiModule)
@@ -129,15 +130,21 @@ return function(systemFolder)
 		end
 	end)
 
-	replicatedFolder.Events.UseSprings.OnServerEvent:Connect(function(plr, bool)
+	replicatedFolder.Events.SmoothFocus.OnServerEvent:Connect(function(plr, bool)
 		if isOwner(plr) then
-			api:ChangeUseSprings(bool)
+			api:ChangeSmoothFocus(bool)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeBlur.OnServerEvent:Connect(function(plr, blur)
 		if isOwner(plr) then
 			api:ChangeBlur(blur)
+		end
+	end)
+
+	replicatedFolder.Events.ChangeSaturation.OnServerEvent:Connect(function(player, saturation)
+		if isOwner(player) then
+			api:ChangeSaturation(saturation)
 		end
 	end)
 end

@@ -11,11 +11,11 @@ return function()
 		copy.AutoFov
 
 	switch({
-		Name = "Smooth focus: ",
-		Setting = "Shared.Settings.UseSprings",
-		EventToFire = script.Parent.Parent.Parent.Events.UseSprings,
+		Name = "[BETA] Smooth focus: ",
+		Setting = "Shared.Settings.SmoothFocus",
+		EventToFire = script.Parent.Parent.Parent.Events.SmoothFocus,
 	}).Parent =
-		copy.UseSprings
+		copy.SmoothFocus
 
 	return copy
 end

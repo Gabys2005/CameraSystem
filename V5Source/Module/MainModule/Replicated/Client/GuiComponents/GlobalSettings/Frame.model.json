@@ -25,7 +25,7 @@
         },
         {
             "ClassName": "Frame",
-            "Name": "UseSprings",
+            "Name": "SmoothFocus",
             "Properties": {
                 "BackgroundTransparency": 1,
                 "Position": [

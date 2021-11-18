@@ -44,15 +44,19 @@ replicated.Events.ChangeAutoFov.OnClientEvent:Connect(function(bool)
 	data:set("Shared.Settings.AutoFov", bool)
 end)
 
-replicated.Events.UseSprings.OnClientEvent:Connect(function(bool)
+replicated.Events.SmoothFocus.OnClientEvent:Connect(function(bool)
 	if bool then
 		data:get("Local.Springs.Focus").Position = utils:CFrameToRotation(
 			CFrame.lookAt(data:get("Shared.CameraData.Position"), utils:getFocusPosition())
 		)
 	end
-	data:set("Shared.Settings.UseSprings", bool)
+	data:set("Shared.Settings.SmoothFocus", bool)
 end)
 
 replicated.Events.ChangeBlur.OnClientEvent:Connect(function(blur)
 	data:set("Shared.Effects.Blur", blur)
+end)
+
+replicated.Events.ChangeSaturation.OnClientEvent:Connect(function(saturation)
+	data:set("Shared.Effects.Saturation", saturation)
 end)

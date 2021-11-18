@@ -167,9 +167,9 @@ if run:IsServer() then
 		replicatedFolder.Events.ChangeAutoFov:FireAllClients(bool)
 	end
 
-	function api:ChangeUseSprings(bool: boolean)
-		data.Shared.Settings.UseSprings = bool
-		replicatedFolder.Events.UseSprings:FireAllClients(bool)
+	function api:ChangeSmoothFocus(bool: boolean)
+		data.Shared.Settings.SmoothFocus = bool
+		replicatedFolder.Events.SmoothFocus:FireAllClients(bool)
 	end
 
 	function api:ChangeBlur(blur: number, time: number?)
@@ -179,6 +179,15 @@ if run:IsServer() then
 			Time = time,
 		}
 		replicatedFolder.Events.ChangeBlur:FireAllClients(data.Shared.Effects.Blur)
+	end
+
+	function api:ChangeSaturation(saturation: number, time: number?)
+		time = time or 0.1
+		data.Shared.Effects.Saturation = {
+			Value = saturation,
+			Time = time,
+		}
+		replicatedFolder.Events.ChangeSaturation:FireAllClients(data.Shared.Effects.Saturation)
 	end
 end
 

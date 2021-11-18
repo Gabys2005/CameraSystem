@@ -60,3 +60,8 @@ end)
 replicated.Events.ChangeSaturation.OnClientEvent:Connect(function(saturation)
 	data:set("Shared.Effects.Saturation", saturation)
 end)
+
+replicated.Events.ChangeTilt.OnClientEvent:Connect(function(tilt)
+	data:set("Shared.Effects.Tilt", tilt)
+	lerper.data({ LerpTime = tilt.Time, Setting = "Local.LerpedValues.Tilt", Goal = tilt.Value })
+end)

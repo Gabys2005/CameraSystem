@@ -36,5 +36,16 @@ return function()
 	}).Parent =
 		copy.SaturationSlider
 
+	slider({
+		Name = "Tilt",
+		Min = -90,
+		Max = 90,
+		Round = 0,
+		Default = 0,
+		Setting = "Shared.Effects.Tilt",
+		EventToFire = script.Parent.Parent.Parent.Events.ChangeTilt,
+	}).Parent =
+		copy.TiltSlider
+
 	return copy
 end

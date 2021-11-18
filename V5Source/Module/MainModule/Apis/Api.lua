@@ -189,6 +189,15 @@ if run:IsServer() then
 		}
 		replicatedFolder.Events.ChangeSaturation:FireAllClients(data.Shared.Effects.Saturation)
 	end
+
+	function api:ChangeTilt(tilt: number, time: number?)
+		time = time or 0.1
+		data.Shared.Effects.Tilt = {
+			Value = tilt,
+			Time = time,
+		}
+		replicatedFolder.Events.ChangeTilt:FireAllClients(data.Shared.Effects.Tilt)
+	end
 end
 
 --// Client only apis

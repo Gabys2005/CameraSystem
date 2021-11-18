@@ -147,4 +147,10 @@ return function(systemFolder)
 			api:ChangeSaturation(saturation)
 		end
 	end)
+
+	replicatedFolder.Events.ChangeTilt.OnServerEvent:Connect(function(plr, tilt)
+		if isOwner(plr) then
+			api:ChangeTilt(tilt)
+		end
+	end)
 end

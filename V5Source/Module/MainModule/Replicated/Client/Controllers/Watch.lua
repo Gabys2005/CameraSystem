@@ -50,6 +50,7 @@ local function watchLoop()
 	else
 		cameraInstance.FieldOfView = data.Local.LerpedValues.Fov
 	end
+	finalCFrame = finalCFrame * CFrame.fromOrientation(0, 0, math.rad(data.Local.LerpedValues.Tilt))
 	cameraInstance.CFrame = finalCFrame
 end
 

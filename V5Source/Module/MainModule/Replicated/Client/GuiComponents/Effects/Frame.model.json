@@ -60,6 +60,25 @@
                     100
                 ]
             }
+        },
+        {
+            "ClassName": "Frame",
+            "Name": "TiltSlider",
+            "Properties": {
+                "BackgroundTransparency": 1,
+                "Size": [
+                    1,
+                    0,
+                    0,
+                    50
+                ],
+                "Position": [
+                    0,
+                    0,
+                    0,
+                    150
+                ]
+            }
         }
     ]
 }

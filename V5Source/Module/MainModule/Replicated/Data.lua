@@ -28,6 +28,10 @@ local data = {
 				Value = 0,
 				Time = 0.1,
 			},
+			Tilt = {
+				Value = 0,
+				Time = 0.1,
+			},
 		},
 		Settings = {
 			AutoFov = false,
@@ -47,6 +51,7 @@ local data = {
 		Watching = false,
 		LerpedValues = {
 			Fov = 70,
+			Tilt = 0,
 		},
 	},
 }

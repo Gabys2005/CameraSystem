@@ -2,6 +2,7 @@
 local replicatedStorage = game:GetService("ReplicatedStorage")
 local run = game:GetService("RunService")
 local lighting = game:GetService("Lighting")
+local players = game:GetService("Players")
 
 --// Variables
 local replicated = replicatedStorage:WaitForChild("CameraSystem")
@@ -10,6 +11,8 @@ local iconModule = replicated.Client.Dependencies.TopbarPlus
 local data = require(replicated.Data)
 local cameraInstance = workspace.CurrentCamera
 local utils = require(script.Parent.Parent.Scripts.Utils)
+local playerGui = players.LocalPlayer.PlayerGui
+local mainGui = playerGui.CameraSystemMain
 
 --// Functions
 local function getFocusPosition()
@@ -64,6 +67,8 @@ watchButton.selected:Connect(function()
 	run:BindToRenderStep("CameraSystemWatchLoop", Enum.RenderPriority.Camera.Value - 1, watchLoop)
 	data.Local.Watching = true
 	lighting.CameraSystemBlur.Enabled = true
+	lighting.CameraSystemColorCorrection.Enabled = true
+	mainGui.Enabled = true
 end)
 watchButton.deselected:Connect(function()
 	run:UnbindFromRenderStep("CameraSystemWatchLoop")
@@ -71,6 +76,8 @@ watchButton.deselected:Connect(function()
 	data.Local.Watching = false
 	cameraInstance.FieldOfView = 70
 	lighting.CameraSystemBlur.Enabled = false
+	lighting.CameraSystemColorCorrection.Enabled = false
+	mainGui.Enabled = false
 end)
 
 run.RenderStepped:Connect(function()

@@ -65,3 +65,7 @@ replicated.Events.ChangeTilt.OnClientEvent:Connect(function(tilt)
 	data:set("Shared.Effects.Tilt", tilt)
 	lerper.data({ LerpTime = tilt.Time, Setting = "Local.LerpedValues.Tilt", Goal = tilt.Value })
 end)
+
+replicated.Events.ChangeBlackout.OnClientEvent:Connect(function(blackout)
+	data:set("Shared.Effects.Blackout", blackout)
+end)

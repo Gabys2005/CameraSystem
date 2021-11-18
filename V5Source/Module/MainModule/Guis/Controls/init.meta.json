@@ -1,3 +1,6 @@
 {
-    "className": "ScreenGui"
+    "className": "ScreenGui",
+    "properties": {
+        "DisplayOrder": 20
+    }
 }

@@ -153,4 +153,10 @@ return function(systemFolder)
 			api:ChangeTilt(tilt)
 		end
 	end)
+
+	replicatedFolder.Events.ChangeBlackout.OnServerEvent:Connect(function(plr, bool)
+		if isOwner(plr) then
+			api:ChangeBlackout(bool)
+		end
+	end)
 end

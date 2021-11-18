@@ -198,6 +198,14 @@ if run:IsServer() then
 		}
 		replicatedFolder.Events.ChangeTilt:FireAllClients(data.Shared.Effects.Tilt)
 	end
+
+	function api:ChangeBlackout(enabled: boolean)
+		if enabled == nil then
+			enabled = not data.Shared.Effects.Blackout
+		end
+		data.Shared.Effects.Blackout = enabled
+		replicatedFolder.Events.ChangeBlackout:FireAllClients(enabled)
+	end
 end
 
 --// Client only apis

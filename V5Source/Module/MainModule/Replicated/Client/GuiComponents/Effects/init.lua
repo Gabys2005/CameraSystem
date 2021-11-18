@@ -1,7 +1,16 @@
 local slider = require(script.Parent.DotSlider)
+local button = require(script.Parent.ResponsiveButton)
 
 return function()
 	local copy = script.Frame:Clone()
+
+	button({
+		Name = "Blackout",
+		Setting = "Shared.Effects.Blackout",
+		Size = UDim2.new(0, 100, 0, 30),
+		EventToFire = script.Parent.Parent.Parent.Events.ChangeBlackout,
+	}).Parent =
+		copy.Buttons
 
 	slider({
 		Name = "Fov",
@@ -12,7 +21,7 @@ return function()
 		Setting = "Shared.Effects.Fov",
 		EventToFire = script.Parent.Parent.Parent.Events.ChangeFov,
 	}).Parent =
-		copy.FovSlider
+		copy.Sliders.FovSlider
 
 	slider({
 		Name = "Blur",
@@ -23,7 +32,7 @@ return function()
 		Setting = "Shared.Effects.Blur",
 		EventToFire = script.Parent.Parent.Parent.Events.ChangeBlur,
 	}).Parent =
-		copy.BlurSlider
+		copy.Sliders.BlurSlider
 
 	slider({
 		Name = "Saturation",
@@ -34,7 +43,7 @@ return function()
 		Setting = "Shared.Effects.Saturation",
 		EventToFire = script.Parent.Parent.Parent.Events.ChangeSaturation,
 	}).Parent =
-		copy.SaturationSlider
+		copy.Sliders.SaturationSlider
 
 	slider({
 		Name = "Tilt",
@@ -45,7 +54,7 @@ return function()
 		Setting = "Shared.Effects.Tilt",
 		EventToFire = script.Parent.Parent.Parent.Events.ChangeTilt,
 	}).Parent =
-		copy.TiltSlider
+		copy.Sliders.TiltSlider
 
 	return copy
 end

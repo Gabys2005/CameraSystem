@@ -12,7 +12,7 @@
     "Children": [
         {
             "ClassName": "Frame",
-            "Name": "FovSlider",
+            "Name": "Buttons",
             "Properties": {
                 "BackgroundTransparency": 1,
                 "Size": [
@@ -21,18 +21,28 @@
                     0,
                     50
                 ]
-            }
+            },
+            "Children": [
+                {
+                    "ClassName": "UIListLayout",
+                    "Name": "UIListLayout",
+                    "Properties": {
+                        "FillDirection": "Horizontal",
+                        "HorizontalAlignment": "Center"
+                    }
+                }
+            ]
         },
         {
             "ClassName": "Frame",
-            "Name": "BlurSlider",
+            "Name": "Sliders",
             "Properties": {
                 "BackgroundTransparency": 1,
                 "Size": [
                     1,
                     0,
                     0,
-                    50
+                    200
                 ],
                 "Position": [
                     0,
@@ -40,45 +50,79 @@
                     0,
                     50
                 ]
-            }
-        },
-        {
-            "ClassName": "Frame",
-            "Name": "SaturationSlider",
-            "Properties": {
-                "BackgroundTransparency": 1,
-                "Size": [
-                    1,
-                    0,
-                    0,
-                    50
-                ],
-                "Position": [
-                    0,
-                    0,
-                    0,
-                    100
-                ]
-            }
-        },
-        {
-            "ClassName": "Frame",
-            "Name": "TiltSlider",
-            "Properties": {
-                "BackgroundTransparency": 1,
-                "Size": [
-                    1,
-                    0,
-                    0,
-                    50
-                ],
-                "Position": [
-                    0,
-                    0,
-                    0,
-                    150
-                ]
-            }
+            },
+            "Children": [
+                {
+                    "ClassName": "Frame",
+                    "Name": "FovSlider",
+                    "Properties": {
+                        "BackgroundTransparency": 1,
+                        "Size": [
+                            1,
+                            0,
+                            0,
+                            50
+                        ]
+                    }
+                },
+                {
+                    "ClassName": "Frame",
+                    "Name": "BlurSlider",
+                    "Properties": {
+                        "BackgroundTransparency": 1,
+                        "Size": [
+                            1,
+                            0,
+                            0,
+                            50
+                        ],
+                        "Position": [
+                            0,
+                            0,
+                            0,
+                            50
+                        ]
+                    }
+                },
+                {
+                    "ClassName": "Frame",
+                    "Name": "SaturationSlider",
+                    "Properties": {
+                        "BackgroundTransparency": 1,
+                        "Size": [
+                            1,
+                            0,
+                            0,
+                            50
+                        ],
+                        "Position": [
+                            0,
+                            0,
+                            0,
+                            100
+                        ]
+                    }
+                },
+                {
+                    "ClassName": "Frame",
+                    "Name": "TiltSlider",
+                    "Properties": {
+                        "BackgroundTransparency": 1,
+                        "Size": [
+                            1,
+                            0,
+                            0,
+                            50
+                        ],
+                        "Position": [
+                            0,
+                            0,
+                            0,
+                            150
+                        ]
+                    }
+                }
+            ]
         }
     ]
 }

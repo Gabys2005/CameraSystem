@@ -1,3 +1,6 @@
 {
-    "ClassName": "ColorCorrectionEffect"
+    "ClassName": "ColorCorrectionEffect",
+    "Properties": {
+        "Enabled": false
+    }
 }

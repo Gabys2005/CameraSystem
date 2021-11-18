@@ -63,6 +63,7 @@ if topbarPlusReference then
 end
 local Icon = require(iconModule)
 local watchButton = Icon.new():setLabel("Watch"):setMid():setLabel("Exit", "selected"):setSize(100, 32)
+
 watchButton.selected:Connect(function()
 	run:BindToRenderStep("CameraSystemWatchLoop", Enum.RenderPriority.Camera.Value - 1, watchLoop)
 	data.Local.Watching = true
@@ -70,6 +71,7 @@ watchButton.selected:Connect(function()
 	lighting.CameraSystemColorCorrection.Enabled = true
 	mainGui.Enabled = true
 end)
+
 watchButton.deselected:Connect(function()
 	run:UnbindFromRenderStep("CameraSystemWatchLoop")
 	cameraInstance.CameraType = Enum.CameraType.Custom

@@ -33,4 +33,14 @@ dataEvent:onChange("Shared.Effects.Blackout", function(enabled)
 	end
 end)
 
+dataEvent:onChange("Shared.Effects.BarsEnabled", function(enabled)
+	if enabled then
+		ts:Create(mainGui.Bars.Top, TweenInfo.new(0.5), { AnchorPoint = Vector2.new(0, 0) }):Play()
+		ts:Create(mainGui.Bars.Bottom, TweenInfo.new(0.5), { AnchorPoint = Vector2.new(0, 1) }):Play()
+	else
+		ts:Create(mainGui.Bars.Top, TweenInfo.new(0.5), { AnchorPoint = Vector2.new(0, 1) }):Play()
+		ts:Create(mainGui.Bars.Bottom, TweenInfo.new(0.5), { AnchorPoint = Vector2.new(0, 0) }):Play()
+	end
+end)
+
 return nil

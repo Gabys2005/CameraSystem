@@ -33,6 +33,7 @@ local data = {
 				Time = 0.1,
 			},
 			Blackout = false,
+			BarsEnabled = false,
 		},
 		Settings = {
 			AutoFov = false,

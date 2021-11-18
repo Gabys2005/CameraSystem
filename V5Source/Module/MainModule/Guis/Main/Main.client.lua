@@ -69,3 +69,7 @@ end)
 replicated.Events.ChangeBlackout.OnClientEvent:Connect(function(blackout)
 	data:set("Shared.Effects.Blackout", blackout)
 end)
+
+replicated.Events.ChangeBarsEnabled.OnClientEvent:Connect(function(enabled)
+	data:set("Shared.Effects.BarsEnabled", enabled)
+end)

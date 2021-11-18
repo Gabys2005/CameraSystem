@@ -12,6 +12,14 @@ return function()
 	}).Parent =
 		copy.Buttons
 
+	button({
+		Name = "Bars",
+		Setting = "Shared.Effects.BarsEnabled",
+		Size = UDim2.new(0, 100, 0, 30),
+		EventToFire = script.Parent.Parent.Parent.Events.ChangeBarsEnabled,
+	}).Parent =
+		copy.Buttons
+
 	slider({
 		Name = "Fov",
 		Min = 1,

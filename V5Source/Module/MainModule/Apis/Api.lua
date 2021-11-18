@@ -206,6 +206,14 @@ if run:IsServer() then
 		data.Shared.Effects.Blackout = enabled
 		replicatedFolder.Events.ChangeBlackout:FireAllClients(enabled)
 	end
+
+	function api:ChangeBarsEnabled(enabled: boolean)
+		if enabled == nil then
+			enabled = not data.Shared.Effects.BarsEnabled
+		end
+		data.Shared.Effects.BarsEnabled = enabled
+		replicatedFolder.Events.ChangeBarsEnabled:FireAllClients(enabled)
+	end
 end
 
 --// Client only apis

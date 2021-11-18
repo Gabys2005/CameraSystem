@@ -159,4 +159,10 @@ return function(systemFolder)
 			api:ChangeBlackout(bool)
 		end
 	end)
+
+	replicatedFolder.Events.ChangeBarsEnabled.OnServerEvent:Connect(function(plr, enabled)
+		if isOwner(plr) then
+			api:ChangeBarsEnabled(enabled)
+		end
+	end)
 end

@@ -44,7 +44,7 @@ function window:new(params: NewWindowParams, options: any)
 		windowCopy:Destroy()
 	end)
 
-	local content = require(script.Parent.Parent.GuiComponents[params.Name])(params, options)
+	local content = require(script.Parent.Parent.GuiComponents.Windows[params.Name])(params, options)
 	content.Parent = windowCopy.Content.Content
 	windowCopy.Parent = parent
 	draggableUi(windowCopy)

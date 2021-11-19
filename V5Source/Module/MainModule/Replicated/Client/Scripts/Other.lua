@@ -1,7 +1,7 @@
 -- This generated buttons for the camera switcher guis, put it in a separete
 -- module because both Static and Moving cameras use it
 local utils = require(script.Parent.Utils)
-local button = require(script.Parent.Parent.GuiComponents.RoundedButton)
+local button = require(script.Parent.Parent.GuiComponents.Basic.RoundedButton)
 local smoothGrid = require(script.Parent.SmoothGrid)
 local other = {}
 

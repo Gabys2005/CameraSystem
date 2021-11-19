@@ -28,7 +28,14 @@
                     "Name": "UIListLayout",
                     "Properties": {
                         "FillDirection": "Horizontal",
-                        "HorizontalAlignment": "Center"
+                        "HorizontalAlignment": "Center",
+                        "Padding": {
+                            "Type": "UDim",
+                            "Value": [
+                                0,
+                                5
+                            ]
+                        }
                     }
                 }
             ]
@@ -48,7 +55,7 @@
                     0,
                     0,
                     0,
-                    50
+                    35
                 ]
             },
             "Children": [

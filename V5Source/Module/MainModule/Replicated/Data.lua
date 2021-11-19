@@ -43,7 +43,7 @@ local data = {
 
 	Local = {
 		Settings = {
-			TransparentBlackout = false,
+			TransparentOverlays = false,
 			Keybinds = false,
 			DroneSpeed = 1,
 		},

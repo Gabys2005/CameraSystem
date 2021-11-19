@@ -7,7 +7,7 @@ return function()
 	button({
 		Name = "Blackout",
 		Setting = "Shared.Effects.Blackout",
-		Size = UDim2.new(0, 100, 0, 30),
+		Size = UDim2.new(0, 90, 0, 30),
 		EventToFire = script.Parent.Parent.Parent.Events.ChangeBlackout,
 	}).Parent =
 		copy.Buttons
@@ -15,7 +15,7 @@ return function()
 	button({
 		Name = "Bars",
 		Setting = "Shared.Effects.BarsEnabled",
-		Size = UDim2.new(0, 100, 0, 30),
+		Size = UDim2.new(0, 90, 0, 30),
 		EventToFire = script.Parent.Parent.Parent.Events.ChangeBarsEnabled,
 	}).Parent =
 		copy.Buttons

@@ -12,6 +12,7 @@ export type DotSliderParams = {
 	Default: number,
 	Setting: string,
 	EventToFire: RemoteEvent?,
+	Suffix: string?,
 }
 
 script.Frame.Reset.BackgroundColor3 = theme.Base
@@ -25,6 +26,7 @@ script.Frame.Slider.Frame.Frame.Frame.BackgroundColor3 = theme.Base
 return function(params: DotSliderParams)
 	local copy = script.Frame:Clone()
 	params.Round = params.Round or 0
+	params.Suffix = params.Suffix or ""
 
 	copy.Namer.Text = params.Name
 
@@ -63,7 +65,7 @@ return function(params: DotSliderParams)
 		end
 		local val = util:Map(newval, params.Min, params.Max, 0, 1)
 		ts:Create(copy.Slider.Frame.Frame, TweenInfo.new(0.05), { Size = UDim2.fromScale(val, 1) }):Play()
-		copy.Value.Text = util:Round(newval, params.Round)
+		copy.Value.Text = util:Round(newval, params.Round) .. params.Suffix
 	end
 	data:onChange(params.Setting, update)
 	update()

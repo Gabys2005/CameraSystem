@@ -51,6 +51,11 @@ dataEvent:onChange("Shared.Effects.BarsEnabled", function(enabled)
 	end
 end)
 
+dataEvent:onChange("Shared.Settings.BarSize", function(data)
+	ts:Create(mainGui.Bars.Top, TweenInfo.new(data.Time), { Size = UDim2.fromScale(1, data.Value / 100) }):Play()
+	ts:Create(mainGui.Bars.Bottom, TweenInfo.new(data.Time), { Size = UDim2.fromScale(1, data.Value / 100) }):Play()
+end)
+
 dataEvent:onChange("Local.Settings.TransparentOverlays", function(enabled)
 	if enabled then
 		ts:Create(mainGui.Bars.Top, TweenInfo.new(0.5), { BackgroundTransparency = 0.5 }):Play()

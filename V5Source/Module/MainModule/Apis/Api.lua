@@ -214,6 +214,15 @@ if run:IsServer() then
 		data.Shared.Effects.BarsEnabled = enabled
 		replicatedFolder.Events.ChangeBarsEnabled:FireAllClients(enabled)
 	end
+
+	function api:ChangeBarSize(size: number, time: number?)
+		time = time or 0.1
+		data.Shared.Settings.BarSize = {
+			Value = size,
+			Time = time,
+		}
+		replicatedFolder.Events.ChangeBarSize:FireAllClients(data.Shared.Settings.BarSize)
+	end
 end
 
 --// Client only apis

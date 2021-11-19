@@ -41,6 +41,25 @@
                     30
                 ]
             }
+        },
+        {
+            "ClassName": "Frame",
+            "Name": "BarSize",
+            "Properties": {
+                "BackgroundTransparency": 1,
+                "Position": [
+                    0,
+                    0,
+                    0,
+                    60
+                ],
+                "Size": [
+                    0,
+                    220,
+                    0,
+                    50
+                ]
+            }
         }
     ]
 }

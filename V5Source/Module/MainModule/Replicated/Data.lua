@@ -38,6 +38,10 @@ local data = {
 		Settings = {
 			AutoFov = false,
 			SmoothFocus = false,
+			BarSize = {
+				Value = 20,
+				Time = 0.1,
+			},
 		},
 	},
 

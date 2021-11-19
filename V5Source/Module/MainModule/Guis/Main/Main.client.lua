@@ -73,3 +73,7 @@ end)
 replicated.Events.ChangeBarsEnabled.OnClientEvent:Connect(function(enabled)
 	data:set("Shared.Effects.BarsEnabled", enabled)
 end)
+
+replicated.Events.ChangeBarSize.OnClientEvent:Connect(function(size)
+	data:set("Shared.Settings.BarSize", size)
+end)

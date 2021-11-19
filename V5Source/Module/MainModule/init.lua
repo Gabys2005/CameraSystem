@@ -165,4 +165,10 @@ return function(systemFolder)
 			api:ChangeBarsEnabled(enabled)
 		end
 	end)
+
+	replicatedFolder.Events.ChangeBarSize.OnServerEvent:Connect(function(plr, size)
+		if isOwner(plr) then
+			api:ChangeBarSize(size)
+		end
+	end)
 end

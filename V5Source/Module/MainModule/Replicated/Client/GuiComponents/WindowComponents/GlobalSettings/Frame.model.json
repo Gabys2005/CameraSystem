@@ -60,6 +60,60 @@
                     50
                 ]
             }
+        },
+        {
+            "ClassName": "Frame",
+            "Name": "TransitionTime",
+            "Properties": {
+                "BackgroundTransparency": 1,
+                "Position": [
+                    0,
+                    0,
+                    0,
+                    110
+                ],
+                "Size": [
+                    0,
+                    220,
+                    0,
+                    50
+                ]
+            }
+        },
+        {
+            "ClassName": "Frame",
+            "Name": "Transition",
+            "Properties": {
+                "BackgroundTransparency": 1,
+                "Position": [
+                    0,
+                    0,
+                    0,
+                    160
+                ],
+                "Size": [
+                    0,
+                    220,
+                    0,
+                    30
+                ]
+            },
+            "Children": [
+                {
+                    "ClassName": "UIGridLayout",
+                    "Name": "UIGridLayout",
+                    "Properties": {
+                        "CellSize": [
+                            0,
+                            90,
+                            0,
+                            30
+                        ],
+                        "HorizontalAlignment": "Center",
+                        "SortOrder": "LayoutOrder"
+                    }
+                }
+            ]
         }
     ]
 }

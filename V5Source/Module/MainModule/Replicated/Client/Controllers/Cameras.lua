@@ -1,5 +1,7 @@
 --// Services
 local run = game:GetService("RunService")
+local ts = game:GetService("TweenService")
+local players = game:GetService("Players")
 
 --// Variables
 local dataEvent = require(script.Parent.Parent.Scripts.UpdateData)
@@ -9,6 +11,8 @@ local lastChangeTime = tick()
 local lerper = require(script.Parent.Parent.Scripts.Lerper)
 local bezier = require(script.Parent.Parent.Dependencies.Bezier)
 local utils = require(script.Parent.Parent.Scripts.Utils)
+local playerGui = players.LocalPlayer.PlayerGui
+local mainGui = playerGui.CameraSystemMain
 
 --// Functions
 local function update(pos: Vector3, rot: Vector3)
@@ -30,6 +34,26 @@ local function resetSpringPosition()
 	)
 end
 
+local function hideTransition(transitionType)
+	if transitionType == "Black" then
+		ts
+			:Create(
+				mainGui.TransitionFrames.Black,
+				TweenInfo.new(data.Shared.Settings.TransitionTimes.Black),
+				{ BackgroundTransparency = 1 }
+			)
+			:Play()
+	elseif transitionType == "White" then
+		ts
+			:Create(
+				mainGui.TransitionFrames.White,
+				TweenInfo.new(data.Shared.Settings.TransitionTimes.White),
+				{ BackgroundTransparency = 1 }
+			)
+			:Play()
+	end
+end
+
 --// Connections
 dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO export all types in 1 script for easier use?
 	local currentChangeTime = tick()
@@ -38,9 +62,22 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 		currentConnection:Disconnect()
 		currentConnection = nil
 	end
+	local transitionType = data.Shared.Settings.Transition
+	if transitionType == "Black" then
+		local transitionTime = data.Shared.Settings.TransitionTimes.Black
+			* (data.Shared.Settings.TransitionTimes.Multiplier / 100)
+		ts:Create(mainGui.TransitionFrames.Black, TweenInfo.new(transitionTime), { BackgroundTransparency = 0 }):Play()
+		task.wait(transitionTime)
+	elseif transitionType == "White" then
+		local transitionTime = data.Shared.Settings.TransitionTimes.White
+			* (data.Shared.Settings.TransitionTimes.Multiplier / 100)
+		ts:Create(mainGui.TransitionFrames.White, TweenInfo.new(transitionTime), { BackgroundTransparency = 0 }):Play()
+		task.wait(transitionTime)
+	end
 	if currentCamera.Type == "Static" then
 		update()
 		resetSpringPosition()
+		hideTransition(transitionType)
 		if currentCamera.Model:GetAttribute("Update") then
 			currentConnection = run.RenderStepped:Connect(function()
 				update()
@@ -51,6 +88,7 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 		local firstCam = currentCamera.Model["1"]
 		update(firstCam.Position, firstCam.Orientation)
 		resetSpringPosition()
+		hideTransition(transitionType)
 		if currentCamera.Model:GetAttribute("Bezier") then
 			-- Bezier cameras
 			local positionPoints = {}

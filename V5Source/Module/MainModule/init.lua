@@ -171,4 +171,16 @@ return function(systemFolder)
 			api:ChangeBarSize(size)
 		end
 	end)
+
+	replicatedFolder.Events.ChangeTransition.OnServerEvent:Connect(function(plr, transitionName)
+		if isOwner(plr) then
+			api:ChangeTransition(transitionName)
+		end
+	end)
+
+	replicatedFolder.Events.ChangeTransitionSpeed.OnServerEvent:Connect(function(plr, speed)
+		if isOwner(plr) then
+			api:ChangeTransitionSpeed(speed)
+		end
+	end)
 end

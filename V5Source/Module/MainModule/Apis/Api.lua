@@ -223,6 +223,16 @@ if run:IsServer() then
 		}
 		replicatedFolder.Events.ChangeBarSize:FireAllClients(data.Shared.Settings.BarSize)
 	end
+
+	function api:ChangeTransition(name: string)
+		data.Shared.Settings.Transition = name
+		replicatedFolder.Events.ChangeTransition:FireAllClients(name)
+	end
+
+	function api:ChangeTransitionSpeed(speed: number)
+		data.Shared.Settings.TransitionTimes.Multiplier = speed
+		replicatedFolder.Events.ChangeTransitionSpeed:FireAllClients(speed)
+	end
 end
 
 --// Client only apis

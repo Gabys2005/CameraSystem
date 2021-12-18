@@ -77,3 +77,11 @@ end)
 replicated.Events.ChangeBarSize.OnClientEvent:Connect(function(size)
 	data:set("Shared.Settings.BarSize", size)
 end)
+
+replicated.Events.ChangeTransition.OnClientEvent:Connect(function(transition)
+	data:set("Shared.Settings.Transition", transition)
+end)
+
+replicated.Events.ChangeTransitionSpeed.OnClientEvent:Connect(function(speed)
+	data:set("Shared.Settings.TransitionTimes.Multiplier", speed)
+end)

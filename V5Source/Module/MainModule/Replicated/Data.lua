@@ -42,6 +42,12 @@ local data = {
 				Value = 20,
 				Time = 0.1,
 			},
+			Transition = "None",
+			TransitionTimes = {
+				Multiplier = 100,
+				Black = 0.3,
+				White = 0.3,
+			},
 		},
 	},
 

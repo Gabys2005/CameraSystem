@@ -128,6 +128,25 @@
                             150
                         ]
                     }
+                },
+                {
+                    "ClassName": "Frame",
+                    "Name": "ShakeSlider",
+                    "Properties": {
+                        "BackgroundTransparency": 1,
+                        "Size": [
+                            1,
+                            0,
+                            0,
+                            50
+                        ],
+                        "Position": [
+                            0,
+                            0,
+                            0,
+                            200
+                        ]
+                    }
                 }
             ]
         }

@@ -233,6 +233,11 @@ if run:IsServer() then
 		data.Shared.Settings.TransitionTimes.Multiplier = speed
 		replicatedFolder.Events.ChangeTransitionSpeed:FireAllClients(speed)
 	end
+
+	function api:ChangeShake(shake: number)
+		data.Shared.Effects.Shake = shake
+		replicatedFolder.Events.ChangeShake:FireAllClients(shake)
+	end
 end
 
 --// Client only apis

@@ -183,4 +183,10 @@ return function(systemFolder)
 			api:ChangeTransitionSpeed(speed)
 		end
 	end)
+
+	replicatedFolder.Events.ChangeShake.OnServerEvent:Connect(function(plr, shake)
+		if isOwner(plr) then
+			api:ChangeShake(shake)
+		end
+	end)
 end

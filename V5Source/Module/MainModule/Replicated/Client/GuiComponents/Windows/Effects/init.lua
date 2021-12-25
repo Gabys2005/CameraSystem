@@ -66,5 +66,16 @@ return function()
 	}).Parent =
 		copy.Sliders.TiltSlider
 
+	slider({
+		Name = "Shake",
+		Min = 0,
+		Max = 10,
+		Round = 1,
+		Default = 0,
+		Setting = "Shared.Effects.Shake",
+		EventToFire = events.ChangeShake,
+	}).Parent =
+		copy.Sliders.ShakeSlider
+
 	return copy
 end

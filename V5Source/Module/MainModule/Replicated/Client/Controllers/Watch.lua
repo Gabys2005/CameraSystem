@@ -9,10 +9,14 @@ local replicated = replicatedStorage:WaitForChild("CameraSystem")
 local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReference")
 local iconModule = replicated.Client.Dependencies.TopbarPlus
 local data = require(replicated.Data)
+local dataEvent = require(script.Parent.Parent.Scripts.UpdateData)
 local cameraInstance = workspace.CurrentCamera
 local utils = require(script.Parent.Parent.Scripts.Utils)
 local playerGui = players.LocalPlayer.PlayerGui
 local mainGui = playerGui.CameraSystemMain
+local CameraShaker = require(script.Parent.Parent.Dependencies.CameraShaker)
+local shakeCFGlobal = CFrame.new()
+local previousShake
 
 --// Functions
 local function getFocusPosition()
@@ -31,6 +35,12 @@ local function getAutoFov(focusPosition: Vector3)
 	local fov = 48 / (1 / 10 * distance)
 	return fov
 end
+
+local function setShakeCF(shakeCF: CFrame)
+	shakeCFGlobal = shakeCF
+end
+
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value + 1, setShakeCF)
 
 local function watchLoop()
 	-- For some reason sometimes CameraType doesn't change if you only change it once
@@ -53,7 +63,7 @@ local function watchLoop()
 	else
 		cameraInstance.FieldOfView = data.Local.LerpedValues.Fov
 	end
-	finalCFrame = finalCFrame * CFrame.fromOrientation(0, 0, math.rad(data.Local.LerpedValues.Tilt))
+	finalCFrame = finalCFrame * CFrame.fromOrientation(0, 0, math.rad(data.Local.LerpedValues.Tilt)) * shakeCFGlobal
 	cameraInstance.CFrame = finalCFrame
 end
 
@@ -64,12 +74,20 @@ end
 local Icon = require(iconModule)
 local watchButton = Icon.new():setLabel("Watch"):setMid():setLabel("Exit", "selected"):setSize(100, 32)
 
+dataEvent:onChange("Shared.Effects.Shake", function(newValue)
+	if previousShake then
+		previousShake:StartFadeOut(0)
+	end
+	previousShake = camShake:StartShake(newValue, newValue)
+end)
+
 watchButton.selected:Connect(function()
 	run:BindToRenderStep("CameraSystemWatchLoop", Enum.RenderPriority.Camera.Value - 1, watchLoop)
 	data.Local.Watching = true
 	lighting.CameraSystemBlur.Enabled = true
 	lighting.CameraSystemColorCorrection.Enabled = true
 	mainGui.Enabled = true
+	camShake:Start()
 end)
 
 watchButton.deselected:Connect(function()
@@ -80,6 +98,7 @@ watchButton.deselected:Connect(function()
 	lighting.CameraSystemBlur.Enabled = false
 	lighting.CameraSystemColorCorrection.Enabled = false
 	mainGui.Enabled = false
+	camShake:Stop()
 end)
 
 run.RenderStepped:Connect(function()

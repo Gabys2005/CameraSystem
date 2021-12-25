@@ -32,6 +32,7 @@ local data = {
 				Value = 0,
 				Time = 0.1,
 			},
+			Shake = 0,
 			Blackout = false,
 			BarsEnabled = false,
 		},

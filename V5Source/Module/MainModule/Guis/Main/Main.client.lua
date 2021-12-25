@@ -85,3 +85,7 @@ end)
 replicated.Events.ChangeTransitionSpeed.OnClientEvent:Connect(function(speed)
 	data:set("Shared.Settings.TransitionTimes.Multiplier", speed)
 end)
+
+replicated.Events.ChangeShake.OnClientEvent:Connect(function(shake)
+	data:set("Shared.Effects.Shake", shake)
+end)

@@ -13,6 +13,7 @@ local camerasByIds = {
 	Moving = {},
 	Default = nil,
 }
+local signal = require(replicatedFolder.Client.Dependencies.Signal)
 
 --// Functions
 local function idCameraFolder(folder: Folder)
@@ -241,8 +242,9 @@ if run:IsServer() then
 end
 
 --// Client only apis
--- if run:IsClient() then
-
--- end
+if run:IsClient() then
+	api.StartedWatching = signal.new()
+	api.StoppedWatching = signal.new()
+end
 
 return api

@@ -17,6 +17,7 @@ local mainGui = playerGui.CameraSystemMain
 local CameraShaker = require(script.Parent.Parent.Dependencies.CameraShaker)
 local shakeCFGlobal = CFrame.new()
 local previousShake
+local api = require(workspace.CameraSystem.Api)
 
 --// Functions
 local function getFocusPosition()
@@ -93,6 +94,7 @@ watchButton.selected:Connect(function()
 			playerGui[v].Enabled = true
 		end
 	end
+	api.StartedWatching:Fire()
 end)
 
 watchButton.deselected:Connect(function()
@@ -109,6 +111,7 @@ watchButton.deselected:Connect(function()
 			playerGui[v].Enabled = false
 		end
 	end
+	api.StoppedWatching:Fire()
 end)
 
 run.RenderStepped:Connect(function()

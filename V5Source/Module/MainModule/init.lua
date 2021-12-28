@@ -14,6 +14,7 @@ return function(systemFolder)
 		Theme = "string",
 		AccelerateStart = "boolean",
 		DecelerateEnd = "boolean",
+		ToggleGui = "table",
 	}
 
 	--// Functions

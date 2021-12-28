@@ -88,6 +88,11 @@ watchButton.selected:Connect(function()
 	lighting.CameraSystemColorCorrection.Enabled = true
 	mainGui.Enabled = true
 	camShake:Start()
+	for _, v in pairs(data.Local.Settings.ToggleGui) do
+		if playerGui:FindFirstChild(v) then
+			playerGui[v].Enabled = true
+		end
+	end
 end)
 
 watchButton.deselected:Connect(function()
@@ -99,6 +104,11 @@ watchButton.deselected:Connect(function()
 	lighting.CameraSystemColorCorrection.Enabled = false
 	mainGui.Enabled = false
 	camShake:Stop()
+	for _, v in pairs(data.Local.Settings.ToggleGui) do
+		if playerGui:FindFirstChild(v) then
+			playerGui[v].Enabled = false
+		end
+	end
 end)
 
 run.RenderStepped:Connect(function()

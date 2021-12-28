@@ -75,7 +75,7 @@ if run:IsClient() then
 	local serverData = script.Parent.Events.RequestCurrentData:InvokeServer()
 	data.Shared = serverData.Shared
 	local SettingsModule = require(workspace:WaitForChild("CameraSystem").Settings)
-	local SettingsToImport = { "AccelerateStart", "DecelerateEnd" }
+	local SettingsToImport = { "AccelerateStart", "DecelerateEnd", "ToggleGui" }
 	for i, v in pairs(SettingsToImport) do
 		data.Local.Settings[v] = SettingsModule[v]
 	end

@@ -16,15 +16,35 @@ local camerasByIds = {
 local signal = require(replicatedFolder.Client.Dependencies.Signal)
 
 --// Functions
-local function idCameraFolder(folder: Folder)
+local function idCameraFolder(folder: Folder, camType: string)
+	local id = 1
 	local camById = {}
 	if folder then
 		for i, v in pairs(folder:GetChildren()) do
 			if run:IsServer() then
-				v:SetAttribute("ID", i)
-				camById[i] = v
+				if v:IsA("Part") or v:IsA("Model") then
+					v:SetAttribute("ID", id)
+					camById[id] = v
+					id += 1
+				elseif v:IsA("Folder") or v:IsA("Color3Value") then
+					for a, b in pairs(v:GetChildren()) do
+						if b:IsA("Part") or b:IsA("Model") then
+							b:SetAttribute("ID", id)
+							camById[id] = b
+							id += 1
+						end
+					end
+				end
 			else
-				camById[v:GetAttribute("ID")] = v
+				if v:IsA("Part") or v:IsA("Model") then
+					camById[v:GetAttribute("ID")] = v
+				elseif v:IsA("Folder") or v:IsA("Color3Value") then
+					for a, b in pairs(v:GetChildren()) do
+						if b:IsA("Part") or b:IsA("Model") then
+							camById[b:GetAttribute("ID")] = b
+						end
+					end
+				end
 			end
 		end
 		for i, v in pairs(folder:GetDescendants()) do
@@ -114,6 +134,7 @@ end
 --// Server only apis
 if run:IsServer() then
 	function api:ChangeCam(camType: string, camId: number)
+		print(camType, camId)
 		if typeof(camType) ~= "string" or typeof(camId) ~= "number" then
 			error("[[ Camera System ]] Incorrect types supplied to api:ChangeCam")
 		end

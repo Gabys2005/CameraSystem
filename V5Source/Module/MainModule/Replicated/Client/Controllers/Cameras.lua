@@ -78,6 +78,11 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 		update()
 		resetSpringPosition()
 		hideTransition(transitionType)
+		local cameraFov = currentCamera.Model:GetAttribute("Fov")
+		if cameraFov then
+			dataEvent:set("Shared.Effects.Fov", { Value = cameraFov, Time = data.Shared.Effects.Fov.Time })
+			data.Local.LerpedValues.Fov = cameraFov
+		end
 		if currentCamera.Model:GetAttribute("Update") then
 			currentConnection = run.RenderStepped:Connect(function()
 				update()
@@ -108,6 +113,15 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 				PositionCurve = positionPath,
 				RotationCurve = rotationPath,
 			})
+			local lastPointFov = currentCamera.Model[cameraCount]:GetAttribute("Fov")
+			if lastPointFov then
+				dataEvent:set("Shared.Effects.Fov", { Value = lastPointFov, Time = data.Shared.Effects.Fov.Time })
+				lerper.data({
+					LerpTime = currentCamera.Model:GetAttribute("Time") or 5,
+					Setting = "Local.LerpedValues.Fov",
+					Goal = lastPointFov,
+				})
+			end
 			while not lerp.ended do
 				if lastChangeTime ~= currentChangeTime then
 					break
@@ -127,6 +141,18 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 						Decelerate = false,
 					}
 
+					local nextFov = {
+						Fov = nil,
+						Time = 0,
+					}
+					for z = i, cameraCount do
+						nextFov.Time += currentCamera.Model[z - 1]:GetAttribute("Time")
+						if currentCamera.Model[z]:GetAttribute("Fov") then
+							nextFov.Fov = currentCamera.Model[z]:GetAttribute("Fov")
+							break
+						end
+					end
+
 					if
 						cameraCount == 2
 						and data.Local.Settings.AccelerateStart
@@ -141,6 +167,19 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 					end
 
 					local lerp = lerper.new(LerpSettings)
+
+					if nextFov.Fov ~= nil then
+						dataEvent:set(
+							"Shared.Effects.Fov",
+							{ Value = nextFov.Fov, Time = data.Shared.Effects.Fov.Time }
+						)
+						lerper.data({
+							LerpTime = nextFov.Time,
+							Setting = "Local.LerpedValues.Fov",
+							Goal = nextFov.Fov,
+						})
+					end
+
 					while not lerp.ended do
 						if lastChangeTime ~= currentChangeTime then
 							break

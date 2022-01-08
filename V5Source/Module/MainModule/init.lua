@@ -15,6 +15,8 @@ return function(systemFolder)
 		AccelerateStart = "boolean",
 		DecelerateEnd = "boolean",
 		ToggleGui = "table",
+		WatchButtonPosition = "string",
+		Keybinds = "table",
 	}
 
 	--// Functions
@@ -188,6 +190,33 @@ return function(systemFolder)
 	replicatedFolder.Events.ChangeShake.OnServerEvent:Connect(function(plr, shake)
 		if isOwner(plr) then
 			api:ChangeShake(shake)
+		end
+	end)
+
+	replicatedFolder.Events.RunKeybind.OnServerEvent:Connect(function(plr, keybindData)
+		print(plr, keybindData)
+		if isOwner(plr) then
+			if keybindData[1] == "Fov" then
+				api:ChangeFov(keybindData[2], keybindData[3])
+			elseif keybindData[1] == "Blackout" then
+				api:ChangeBlackout(keybindData[2])
+			elseif keybindData[1] == "Bars" then
+				api:ChangeBarsEnabled(keybindData[2])
+			elseif keybindData[1] == "Transition" then
+				api:ChangeTransition(keybindData[2])
+			elseif keybindData[1] == "TransitionSpeed" then
+				api:ChangeTransitionSpeed(keybindData[2])
+			elseif keybindData[1] == "Shake" then
+				api:ChangeShake(keybindData[2])
+			elseif keybindData[1] == "Blur" then
+				api:ChangeBlur(keybindData[2], keybindData[3])
+			elseif keybindData[1] == "Saturation" then
+				api:ChangeSaturation(keybindData[2], keybindData[3])
+			elseif keybindData[1] == "Tilt" then
+				api:ChangeTilt(keybindData[2], keybindData[3])
+			elseif keybindData[1] == "Camera" then
+				api:ChangeCam(keybindData[2], keybindData[3])
+			end
 		end
 	end)
 end

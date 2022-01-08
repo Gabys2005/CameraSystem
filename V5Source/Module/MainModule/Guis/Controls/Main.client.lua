@@ -1,5 +1,6 @@
 --// Services
 local replicatedStorage = game:GetService("ReplicatedStorage")
+local uis = game:GetService("UserInputService")
 
 --// Variables
 local replicated = replicatedStorage:WaitForChild("CameraSystem")
@@ -28,6 +29,7 @@ local menuNames = {
 	},
 }
 local window = require(replicated.Client.Scripts.NewWindow)
+local data = require(replicated.Data)
 
 --// Functions
 
@@ -54,3 +56,34 @@ for i, v in pairs(menuNames) do
 	table.insert(menuIcons, icon)
 end
 local controlIcon = Icon.new():setImage(5036765717):setMenu(menuIcons)
+
+local keysToGetAffectedBy = {}
+
+for i, v in pairs(data.Local.Settings.Keybinds) do
+	for _, key in pairs(v.Keys) do
+		if not keysToGetAffectedBy[key] then
+			keysToGetAffectedBy[key] = {}
+		end
+	end
+end
+
+uis.InputBegan:Connect(function(input, processed)
+	if processed or not data.Local.Settings.KeybindsEnabled then
+		return
+	end
+	if keysToGetAffectedBy[input.KeyCode] then
+		for i, v in pairs(data.Local.Settings.Keybinds) do
+			local shouldRun = true
+			for _, key in pairs(v.Keys) do
+				if not uis:IsKeyDown(key) then
+					shouldRun = false
+					break
+				end
+			end
+			if shouldRun then
+				replicated.Events.RunKeybind:FireServer(v.Action)
+				break
+			end
+		end
+	end
+end)

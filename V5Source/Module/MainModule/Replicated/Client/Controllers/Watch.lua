@@ -73,7 +73,15 @@ if topbarPlusReference then
 	iconModule = topbarPlusReference.Value
 end
 local Icon = require(iconModule)
-local watchButton = Icon.new():setLabel("Watch"):setMid():setLabel("Exit", "selected"):setSize(100, 32)
+local watchButton = Icon.new():setLabel("Watch"):setLabel("Exit", "selected"):setSize(100, 32)
+local watchButtonPosition = data.Local.Settings.WatchButtonPosition
+if watchButtonPosition == "Center" then
+	watchButton:setMid()
+elseif watchButtonPosition == "Left" then
+	watchButton:setLeft()
+elseif watchButtonPosition == "Right" then
+	watchButton:setRight()
+end
 
 dataEvent:onChange("Shared.Effects.Shake", function(newValue)
 	if previousShake then

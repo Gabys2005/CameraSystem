@@ -13,7 +13,7 @@ return function()
 
 	switch({
 		Name = "Keybinds:",
-		Setting = "Local.Settings.Keybinds",
+		Setting = "Local.Settings.KeybindsEnabled",
 	}).Parent = copy.TopSwitches.Keybinds
 
 	dotslider({

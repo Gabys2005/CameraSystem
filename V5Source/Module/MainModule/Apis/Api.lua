@@ -117,6 +117,14 @@ function api:GetCamsById()
 	return camerasByIds
 end
 
+function api:GetCamIdByName(camType: string, camName: string)
+	for i, v in pairs(camerasByIds[camType]) do
+		if v.Name == camName then
+			return i
+		end
+	end
+end
+
 function api:GetCamById(camType: string, camId: number)
 	if not camerasByIds.Default then
 		indexCameras()
@@ -133,13 +141,18 @@ end
 
 --// Server only apis
 if run:IsServer() then
-	function api:ChangeCam(camType: string, camId: number)
-		print(camType, camId)
-		if typeof(camType) ~= "string" or typeof(camId) ~= "number" then
+	function api:ChangeCam(camType: string, camIdOrName: number | string)
+		if typeof(camType) ~= "string" or (typeof(camIdOrName) ~= "number" and typeof(camIdOrName) ~= "string") then
 			error("[[ Camera System ]] Incorrect types supplied to api:ChangeCam")
 		end
-		if not camerasByIds[camType] or not camerasByIds[camType][camId] then
-			error("[[ Camera System ]] api:ChangeCam called with incorrect CamType or CamId")
+		local camId
+		if typeof(camIdOrName) == "number" then
+			camId = camIdOrName
+		else
+			camId = api:GetCamIdByName(camType, camIdOrName)
+		end
+		if not camId then
+			error("[[ Camera System ]] Camera not found")
 		end
 		data.Shared.CurrentCamera.Type = camType
 		data.Shared.CurrentCamera.Id = camId

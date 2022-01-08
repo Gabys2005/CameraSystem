@@ -1,0 +1,77 @@
+{
+    "ClassName": "Frame",
+    "Properties": {
+        "BackgroundTransparency": 1,
+        "Size": [
+            1,
+            0,
+            1,
+            0
+        ]
+    },
+    "Children": [
+        {
+            "Name": "DroneChooser",
+            "ClassName": "ScrollingFrame",
+            "Properties": {
+                "BackgroundTransparency": 1,
+                "Position": [
+                    0,
+                    0,
+                    0,
+                    0
+                ],
+                "Size": [
+                    1,
+                    -90,
+                    1,
+                    0
+                ],
+                "BorderSizePixel": 0
+            }
+        },
+        {
+            "Name": "DroneActions",
+            "ClassName": "Frame",
+            "Properties": {
+                "BackgroundTransparency": 1,
+                "Position": [
+                    1,
+                    0,
+                    0,
+                    0
+                ],
+                "Size": [
+                    0,
+                    90,
+                    1,
+                    0
+                ],
+                "AnchorPoint": {
+                    "Type": "Vector2",
+                    "Value": [
+                        1,
+                        0
+                    ]
+                },
+                "Visible": false
+            },
+            "Children": [
+                {
+                    "Name": "UIListLayout",
+                    "ClassName": "UIListLayout",
+                    "Properties": {
+                        "SortOrder": "LayoutOrder",
+                        "Padding": {
+                            "Type": "UDim",
+                            "Value": [
+                                0,
+                                5
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

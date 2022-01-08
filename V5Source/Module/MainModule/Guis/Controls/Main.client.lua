@@ -9,22 +9,22 @@ local iconModule = replicated.Client.Dependencies.TopbarPlus
 local menuNames = {
 	{
 		Name = "Cameras",
-		Width = 220,
+		Width = 225,
 		Height = 300,
 	},
 	{
 		Name = "Effects",
-		Width = 220,
+		Width = 225,
 		Height = 220,
 	},
 	{
 		Name = "Settings",
-		Width = 220,
+		Width = 225,
 		Height = 160,
 	},
 	{
 		Name = "FocusList",
-		Width = 220,
+		Width = 225,
 		Height = 220,
 	},
 }

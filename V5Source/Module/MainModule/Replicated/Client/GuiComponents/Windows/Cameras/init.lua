@@ -21,8 +21,8 @@ return function()
 			},
 			{
 				Name = "Drones",
-				Frame = require(basicComponents.Blank)(),
-				ComponentName = "Blank",
+				Frame = require(windowComponents.Drones)(),
+				ComponentName = "Drones",
 			},
 		},
 	})

@@ -18,6 +18,10 @@ local CameraShaker = require(script.Parent.Parent.Dependencies.CameraShaker)
 local shakeCFGlobal = CFrame.new()
 local previousShake
 local api = require(workspace.CameraSystem.Api)
+local controller = {
+	IsWatching = false,
+}
+local other = require(script.Parent.Parent.Scripts.Other)
 
 --// Functions
 local function getFocusPosition()
@@ -49,7 +53,7 @@ local function watchLoop()
 		cameraInstance.CameraType = Enum.CameraType.Scriptable
 	end
 	local finalCFrame = data.Shared.CameraData.CFrame
-	if data.Shared.Focus.Instance then -- If focusing on anything
+	if data.Shared.Focus.Instance and not data.Shared.CurrentCamera.Type == "Drones" then -- If focusing on anything
 		local focusPosition = getFocusPosition()
 		if data.Shared.Settings.SmoothFocus then
 			local spr = data.Local.Springs.Focus
@@ -59,13 +63,22 @@ local function watchLoop()
 			finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, focusPosition)
 		end
 	end
-	if data.Shared.Settings.AutoFov and data.Shared.Focus.Instance then
-		cameraInstance.FieldOfView = getAutoFov(getFocusPosition())
-	else
-		cameraInstance.FieldOfView = data.Local.LerpedValues.Fov
-	end
 	finalCFrame = finalCFrame * CFrame.fromOrientation(0, 0, math.rad(data.Local.LerpedValues.Tilt)) * shakeCFGlobal
 	cameraInstance.CFrame = finalCFrame
+end
+
+local function fovLoop()
+	if data.Local.Watching or data.Local.ControllingDrone then
+		if
+			data.Shared.Settings.AutoFov
+			and data.Shared.Focus.Instance
+			and not data.Shared.CurrentCamera.Type == "Drones"
+		then
+			cameraInstance.FieldOfView = getAutoFov(getFocusPosition())
+		else
+			cameraInstance.FieldOfView = data.Local.LerpedValues.Fov
+		end
+	end
 end
 
 --======= Actual code =======--
@@ -82,6 +95,8 @@ elseif watchButtonPosition == "Left" then
 elseif watchButtonPosition == "Right" then
 	watchButton:setRight()
 end
+
+run:BindToRenderStep("CameraSystemFovLoop", Enum.RenderPriority.Camera.Value - 2, fovLoop)
 
 dataEvent:onChange("Shared.Effects.Shake", function(newValue)
 	if previousShake then
@@ -103,6 +118,8 @@ watchButton.selected:Connect(function()
 		end
 	end
 	api.StartedWatching:Fire()
+	controller.IsWatching = true
+	other:updateDroneVisibility()
 end)
 
 watchButton.deselected:Connect(function()
@@ -120,6 +137,8 @@ watchButton.deselected:Connect(function()
 		end
 	end
 	api.StoppedWatching:Fire()
+	controller.IsWatching = false
+	other:updateDroneVisibility()
 end)
 
 run.RenderStepped:Connect(function()
@@ -131,14 +150,21 @@ run.RenderStepped:Connect(function()
 end)
 
 --======= Exported =======--
-local controller = {}
 
 function controller:Watch()
 	watchButton:select()
 end
 
+function controller:Lock()
+	watchButton:lock()
+end
+
 function controller:Unwatch()
 	watchButton:deselect()
+end
+
+function controller:Unlock()
+	watchButton:unlock()
 end
 
 return controller

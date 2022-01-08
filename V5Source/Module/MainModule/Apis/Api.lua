@@ -11,24 +11,25 @@ local data = require(replicatedFolder.Data)
 local camerasByIds = {
 	Static = {},
 	Moving = {},
+	Drones = {},
 	Default = nil,
 }
 local signal = require(replicatedFolder.Client.Dependencies.Signal)
 
 --// Functions
-local function idCameraFolder(folder: Folder, camType: string)
+local function idCameraFolder(folder: Folder, hideCams: boolean)
 	local id = 1
 	local camById = {}
 	if folder then
 		for i, v in pairs(folder:GetChildren()) do
 			if run:IsServer() then
-				if v:IsA("Part") or v:IsA("Model") then
+				if v:IsA("BasePart") or v:IsA("Model") then
 					v:SetAttribute("ID", id)
 					camById[id] = v
 					id += 1
 				elseif v:IsA("Folder") or v:IsA("Color3Value") then
 					for a, b in pairs(v:GetChildren()) do
-						if b:IsA("Part") or b:IsA("Model") then
+						if b:IsA("BasePart") or b:IsA("Model") then
 							b:SetAttribute("ID", id)
 							camById[id] = b
 							id += 1
@@ -36,29 +37,32 @@ local function idCameraFolder(folder: Folder, camType: string)
 					end
 				end
 			else
-				if v:IsA("Part") or v:IsA("Model") then
+				if v:IsA("BasePart") or v:IsA("Model") then
 					camById[v:GetAttribute("ID")] = v
 				elseif v:IsA("Folder") or v:IsA("Color3Value") then
 					for a, b in pairs(v:GetChildren()) do
-						if b:IsA("Part") or b:IsA("Model") then
+						if b:IsA("BasePart") or b:IsA("Model") then
 							camById[b:GetAttribute("ID")] = b
 						end
 					end
 				end
 			end
 		end
-		for i, v in pairs(folder:GetDescendants()) do
-			if v:IsA("BasePart") then
-				v.Transparency = 1
-				v.CanCollide = false
+		if not hideCams then
+			for i, v in pairs(folder:GetDescendants()) do
+				if v:IsA("BasePart") then
+					v.Transparency = 1
+					v.CanCollide = false
+				end
 			end
 		end
 	end
 	return camById
 end
 
-local function timeMovingCams(folder: Folder)
-	for i, v in pairs(folder:GetChildren()) do
+local function timeMovingCams()
+	local cams = camerasByIds.Moving
+	for i, v in pairs(cams) do
 		local totalTime = v:GetAttribute("Time") or 5
 		local totalDistance = 0
 		local totalPoints = #v:GetChildren()
@@ -85,6 +89,7 @@ end
 local function indexCameras()
 	camerasByIds.Static = idCameraFolder(workspaceFolder.Cameras.Static)
 	camerasByIds.Moving = idCameraFolder(workspaceFolder.Cameras.Moving)
+	camerasByIds.Drones = idCameraFolder(workspaceFolder.Cameras.Drones, true)
 	if run:IsServer() then
 		timeMovingCams(workspaceFolder.Cameras.Moving)
 	end

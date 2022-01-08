@@ -66,6 +66,7 @@ local data = {
 			Fov = 70,
 			Tilt = 0,
 		},
+		ControllingDrone = false,
 	},
 }
 

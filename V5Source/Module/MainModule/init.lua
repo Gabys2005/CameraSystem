@@ -194,7 +194,6 @@ return function(systemFolder)
 	end)
 
 	replicatedFolder.Events.RunKeybind.OnServerEvent:Connect(function(plr, keybindData)
-		print(plr, keybindData)
 		if isOwner(plr) then
 			if keybindData[1] == "Fov" then
 				api:ChangeFov(keybindData[2], keybindData[3])
@@ -219,4 +218,26 @@ return function(systemFolder)
 			end
 		end
 	end)
+
+	replicatedFolder.Events.RequestDrone.OnServerInvoke = function(plr: Player, drone: BasePart)
+		if isOwner(plr) then
+			drone:SetNetworkOwner(plr)
+			drone.CamPos:SetNetworkOwner(plr)
+		end
+	end
+
+	replicatedFolder.Events.SendDroneLocation.OnServerInvoke = function(plr: Player, drone: BasePart, location: CFrame)
+		if isOwner(plr) then
+			drone:SetNetworkOwner()
+			drone.CamPos:SetNetworkOwner()
+			local nx, ny, nz = location:ToOrientation()
+			local finalCFrame = location * CFrame.Angles(-nx, 0, 0)
+			drone.BodyPosition.Position = location.Position
+			drone.BodyGyro.CFrame = finalCFrame
+			drone.CamPos.BodyPosition.Position = location.Position
+			drone.CamPos.BodyGyro.CFrame = location
+			drone.CFrame = finalCFrame
+			drone.CamPos.CFrame = location
+		end
+	end
 end

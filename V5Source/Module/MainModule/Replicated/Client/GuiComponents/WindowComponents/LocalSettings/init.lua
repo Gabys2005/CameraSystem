@@ -21,6 +21,7 @@ return function()
 		Min = 0,
 		Max = 2,
 		Round = 2,
+		Default = 1,
 		Setting = "Local.Settings.DroneSpeed",
 	}).Parent =
 		copy.SomeSlider

@@ -88,6 +88,12 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 				update()
 			end)
 		end
+	elseif currentCamera.Type == "Drones" then
+		resetSpringPosition()
+		hideTransition(transitionType)
+		currentConnection = run.RenderStepped:Connect(function()
+			update(currentCamera.Model.CamPos.Position, currentCamera.Model.CamPos.Orientation)
+		end)
 	elseif currentCamera.Type == "Moving" then
 		local cameraCount = #currentCamera.Model:GetChildren()
 		local firstCam = currentCamera.Model["1"]

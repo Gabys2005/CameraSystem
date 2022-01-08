@@ -2,7 +2,9 @@
 -- module because both Static and Moving cameras use it
 local utils = require(script.Parent.Utils)
 local button = require(script.Parent.Parent.GuiComponents.Basic.RoundedButton)
-local smoothGrid = require(script.Parent.SmoothGrid)
+local data = require(script.Parent.Parent.Parent.Data)
+local api = require(workspace.CameraSystem:WaitForChild("Api"))
+local drones = api:GetCamsById().Drones
 local other = {}
 
 local function getCamerasInFolder(folder: Folder | Color3Value)
@@ -93,6 +95,18 @@ function other:generateButtonsForFolder(folder: Folder, parent: GuiObject, camTy
 		Cameras = uncategorised,
 	}, camType).Parent =
 		frame
+end
+
+function other:updateDroneVisibility()
+	if data.Local.Watching or data.Local.ControllingDrone then
+		for i, v in pairs(drones) do
+			v.Transparency = 1
+		end
+	else
+		for i, v in pairs(drones) do
+			v.Transparency = 0
+		end
+	end
 end
 
 return other

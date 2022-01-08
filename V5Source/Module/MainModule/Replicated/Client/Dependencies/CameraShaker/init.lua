@@ -106,7 +106,7 @@ end
 
 
 function CameraShaker:Start()
-	if (self._running) then return end
+	if self._running then return end
 	self._running = true
 	local callback = self._callback
 	game:GetService("RunService"):BindToRenderStep(self._renderName, self._renderPriority, function(dt)
@@ -119,7 +119,7 @@ end
 
 
 function CameraShaker:Stop()
-	if (not self._running) then return end
+	if not self._running then return end
 	game:GetService("RunService"):UnbindFromRenderStep(self._renderName)
 	self._running = false
 end
@@ -127,7 +127,7 @@ end
 
 function CameraShaker:StopSustained(duration)
 	for _,c in pairs(self._camShakeInstances) do
-		if (c.fadeOutDuration == 0) then
+		if c.fadeOutDuration == 0 then
 			c:StartFadeOut(duration or c.fadeInDuration)
 		end
 	end
@@ -147,9 +147,9 @@ function CameraShaker:Update(dt)
 		local c = instances[i]
 		local state = c:GetState()
 		
-		if (state == CameraShakeState.Inactive and c.DeleteOnInactive) then
+		if state == CameraShakeState.Inactive and c.DeleteOnInactive then
 			self._removeInstances[#self._removeInstances + 1] = i
-		elseif (state ~= CameraShakeState.Inactive) then
+		elseif state ~= CameraShakeState.Inactive then
 			local shake = c:UpdateShake(dt)
 			posAddShake = posAddShake + (shake * c.PositionInfluence)
 			rotAddShake = rotAddShake + (shake * c.RotationInfluence)

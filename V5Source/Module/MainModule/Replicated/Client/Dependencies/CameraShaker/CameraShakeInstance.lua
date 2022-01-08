@@ -27,8 +27,8 @@ CameraShakeInstance.CameraShakeState = {
 
 function CameraShakeInstance.new(magnitude, roughness, fadeInTime, fadeOutTime)
 	
-	if (fadeInTime == nil) then fadeInTime = 0 end
-	if (fadeOutTime == nil) then fadeOutTime = 0 end
+	if fadeInTime == nil then fadeInTime = 0 end
+	if fadeOutTime == nil then fadeOutTime = 0 end
 	
 	assert(type(magnitude) == "number", "Magnitude must be a number")
 	assert(type(roughness) == "number", "Roughness must be a number")
@@ -67,19 +67,19 @@ function CameraShakeInstance:UpdateShake(dt)
 		NOISE(_tick, _tick) * 0.5
 	)
 	
-	if (self.fadeInDuration > 0 and self.sustain) then
-		if (currentFadeTime < 1) then
+	if self.fadeInDuration > 0 and self.sustain then
+		if currentFadeTime < 1 then
 			currentFadeTime = currentFadeTime + (dt / self.fadeInDuration)
-		elseif (self.fadeOutDuration > 0) then
+		elseif self.fadeOutDuration > 0 then
 			self.sustain = false
 		end
 	end
 	
-	if (not self.sustain) then
+	if not self.sustain then
 		currentFadeTime = currentFadeTime - (dt / self.fadeOutDuration)
 	end
 	
-	if (self.sustain) then
+	if self.sustain then
 		self.tick = _tick + (dt * self.Roughness * self.roughMod)
 	else
 		self.tick = _tick + (dt * self.Roughness * self.roughMod * currentFadeTime)
@@ -93,7 +93,7 @@ end
 
 
 function CameraShakeInstance:StartFadeOut(fadeOutTime)
-	if (fadeOutTime == 0) then
+	if fadeOutTime == 0 then
 		self.currentFadeTime = 0
 	end
 	self.fadeOutDuration = fadeOutTime
@@ -103,7 +103,7 @@ end
 
 
 function CameraShakeInstance:StartFadeIn(fadeInTime)
-	if (fadeInTime == 0) then
+	if fadeInTime == 0 then
 		self.currentFadeTime = 1
 	end
 	self.fadeInDuration = fadeInTime or self.fadeInDuration
@@ -138,26 +138,26 @@ end
 
 
 function CameraShakeInstance:IsShaking()
-	return (self.currentFadeTime > 0 or self.sustain)
+	return self.currentFadeTime > 0 or self.sustain
 end
 
 
 function CameraShakeInstance:IsFadingOut()
-	return ((not self.sustain) and self.currentFadeTime > 0)
+	return (not self.sustain) and self.currentFadeTime > 0
 end
 
 
 function CameraShakeInstance:IsFadingIn()
-	return (self.currentFadeTime < 1 and self.sustain and self.fadeInDuration > 0)
+	return self.currentFadeTime < 1 and self.sustain and self.fadeInDuration > 0
 end
 
 
 function CameraShakeInstance:GetState()
-	if (self:IsFadingIn()) then
+	if self:IsFadingIn() then
 		return CameraShakeInstance.CameraShakeState.FadingIn
-	elseif (self:IsFadingOut()) then
+	elseif self:IsFadingOut() then
 		return CameraShakeInstance.CameraShakeState.FadingOut
-	elseif (self:IsShaking()) then
+	elseif self:IsShaking() then
 		return CameraShakeInstance.CameraShakeState.Sustained
 	else
 		return CameraShakeInstance.CameraShakeState.Inactive

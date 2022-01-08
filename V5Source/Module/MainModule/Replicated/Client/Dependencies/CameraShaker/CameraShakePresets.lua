@@ -97,7 +97,7 @@ local CameraShakePresets = {
 return setmetatable({}, {
 	__index = function(t, i)
 		local f = CameraShakePresets[i]
-		if (type(f) == "function") then
+		if type(f) == "function" then
 			return f()
 		end
 		error("No preset found with index \"" .. i .. "\"")

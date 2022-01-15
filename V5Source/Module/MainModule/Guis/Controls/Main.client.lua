@@ -43,6 +43,7 @@ window:setParent(script.Parent)
 
 local menuIcons = {}
 for i, v in pairs(menuNames) do
+	local icon = Icon.new():setLabel(v.Name)
 	local gui = window:new({
 		Title = v.Name,
 		Name = v.Name,
@@ -50,12 +51,16 @@ for i, v in pairs(menuNames) do
 		MinimumHeight = v.Height,
 		Position = UDim2.fromOffset(250 * (i - 1) + 20, 50),
 		Enabled = false,
+		DeleteWhenClosed = false,
+		Icon = icon,
 	})
-	local icon = Icon.new():setLabel(v.Name):bindToggleItem(gui)
+	icon:bindToggleItem(gui)
 	icon.deselectWhenOtherIconSelected = false
 	table.insert(menuIcons, icon)
 end
 local controlIcon = Icon.new():setImage(5036765717):setMenu(menuIcons)
+
+--// Keybinds
 
 local keysToGetAffectedBy = {}
 

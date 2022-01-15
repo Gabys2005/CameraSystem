@@ -95,6 +95,8 @@ local function indexCameras()
 	end
 	if workspaceFolder.Cameras:FindFirstChild("Default") then
 		camerasByIds.Default = workspaceFolder.Cameras.Default.CFrame
+		workspaceFolder.Cameras.Default.Transparency = 1
+		workspaceFolder.Cameras.Default.CanCollide = false
 	else
 		warn("[[ Camera System ]]: Default camera is missing, using first static camera or fallback position instead")
 		camerasByIds.Default = camerasByIds.Static[1] and camerasByIds.Static[1].CFrame or CFrame.new(0, 10, 0)

@@ -28,7 +28,29 @@
                     0
                 ],
                 "BorderSizePixel": 0
-            }
+            },
+            "Children": [
+                {
+                    "Name": "UIGridLayout",
+                    "ClassName": "UIGridLayout",
+                    "Properties": {
+                        "CellPadding": [
+                            0,
+                            5,
+                            0,
+                            5
+                        ],
+                        "CellSize": [
+                            0,
+                            100,
+                            0,
+                            30
+                        ],
+                        "HorizontalAlignment": "Left",
+                        "VerticalAlignment": "Top"
+                    }
+                }
+            ]
         },
         {
             "Name": "DroneActions",

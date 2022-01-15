@@ -53,7 +53,7 @@ local function watchLoop()
 		cameraInstance.CameraType = Enum.CameraType.Scriptable
 	end
 	local finalCFrame = data.Shared.CameraData.CFrame
-	if data.Shared.Focus.Instance and not data.Shared.CurrentCamera.Type == "Drones" then -- If focusing on anything
+	if data.Shared.Focus.Instance and data.Shared.CurrentCamera.Type ~= "Drones" then -- If focusing on anything
 		local focusPosition = getFocusPosition()
 		if data.Shared.Settings.SmoothFocus then
 			local spr = data.Local.Springs.Focus

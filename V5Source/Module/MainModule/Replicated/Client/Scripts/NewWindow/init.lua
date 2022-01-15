@@ -22,6 +22,8 @@ export type NewWindowParams = {
 	MinimumHeight: number,
 	Position: UDim2,
 	Enabled: boolean,
+	DeleteWhenClosed: boolean?,
+	Icon: any?,
 }
 
 function window:setParent(instance: GuiObject)
@@ -41,7 +43,11 @@ function window:new(params: NewWindowParams, options: any)
 	windowCopy.TextLabel.Text = params.Title
 
 	windowCopy.Close.MouseButton1Click:Connect(function()
-		windowCopy:Destroy()
+		if params.DeleteWhenClosed then
+			windowCopy:Destroy()
+		else
+			params.Icon:deselect()
+		end
 	end)
 
 	local content = require(script.Parent.Parent.GuiComponents.Windows[params.Name])(params, options)

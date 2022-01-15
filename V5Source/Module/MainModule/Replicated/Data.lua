@@ -80,6 +80,8 @@ if run:IsClient() then
 	for i, v in pairs(SettingsToImport) do
 		data.Local.Settings[v] = SettingsModule[v]
 	end
+	data.Local.LerpedValues.Fov = data.Shared.Effects.Fov.Value
+	data.Local.LerpedValues.Tilt = data.Shared.Effects.Tilt.Value
 end
 
 return data

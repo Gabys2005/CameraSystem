@@ -2,7 +2,7 @@
 	<Meta name="ExplicitAutoJoints">true</Meta>
 	<External>null</External>
 	<External>nil</External>
-	<Item class="ScrollingFrame" referent="RBX064935C19E1F4743BF3B3B7828DC45F9">
+	<Item class="ScrollingFrame" referent="RBX430C3AD6C3304F9991CF9501BAFE7FF5">
 		<Properties>
 			<bool name="Active">false</bool>
 			<Vector2 name="AnchorPoint">
@@ -82,12 +82,12 @@
 			<bool name="Visible">true</bool>
 			<int name="ZIndex">1</int>
 		</Properties>
-		<Item class="Frame" referent="RBXC8D86D4A793F495E85D9C39B25A24859">
+		<Item class="Frame" referent="RBX6948DFE506A94E71A97F3F8665638DF8">
 			<Properties>
 				<bool name="Active">false</bool>
 				<Vector2 name="AnchorPoint">
 					<X>0.5</X>
-					<Y>0.5</Y>
+					<Y>0</Y>
 				</Vector2>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<bool name="AutoLocalize">true</bool>
@@ -116,7 +116,7 @@
 				<UDim2 name="Position">
 					<XS>0.5</XS>
 					<XO>0</XO>
-					<YS>0.5</YS>
+					<YS>0</YS>
 					<YO>0</YO>
 				</UDim2>
 				<Ref name="RootLocalizationTable">null</Ref>
@@ -136,22 +136,6 @@
 				<bool name="Visible">true</bool>
 				<int name="ZIndex">1</int>
 			</Properties>
-			<Item class="UIListLayout" referent="RBX3570B6349E64425FB1FD0F727233A241">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<token name="FillDirection">1</token>
-					<token name="HorizontalAlignment">1</token>
-					<string name="Name">UIListLayout</string>
-					<UDim name="Padding">
-						<S>0</S>
-						<O>0</O>
-					</UDim>
-					<token name="SortOrder">2</token>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<token name="VerticalAlignment">1</token>
-				</Properties>
-			</Item>
 		</Item>
 	</Item>
 </roblox>

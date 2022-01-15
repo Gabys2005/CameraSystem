@@ -13,6 +13,7 @@ local bezier = require(script.Parent.Parent.Dependencies.Bezier)
 local utils = require(script.Parent.Parent.Scripts.Utils)
 local playerGui = players.LocalPlayer.PlayerGui
 local mainGui = playerGui.CameraSystemMain
+local api = require(workspace.CameraSystem:WaitForChild("Api"))
 
 --// Functions
 local function update(pos: Vector3, rot: Vector3)
@@ -54,8 +55,7 @@ local function hideTransition(transitionType)
 	end
 end
 
---// Connections
-dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO export all types in 1 script for easier use?
+local function onCameraChange(currentCamera)
 	local currentChangeTime = tick()
 	lastChangeTime = currentChangeTime
 	if currentConnection then
@@ -88,6 +88,11 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 				update()
 			end)
 		end
+	elseif currentCamera.Type == "Default" then
+		resetSpringPosition()
+		hideTransition(transitionType)
+		local camPosition = api:GetDefaultCamPosition()
+		update(camPosition.Position, utils:CFrameToRotation(camPosition))
 	elseif currentCamera.Type == "Drones" then
 		resetSpringPosition()
 		hideTransition(transitionType)
@@ -197,6 +202,10 @@ dataEvent:onChange("Shared.CurrentCamera", function(currentCamera) -- TODO expor
 			end
 		end
 	end
-end)
+end
+
+--// Connections
+dataEvent:onChange("Shared.CurrentCamera", onCameraChange)
+onCameraChange(data.Shared.CurrentCamera)
 
 return nil

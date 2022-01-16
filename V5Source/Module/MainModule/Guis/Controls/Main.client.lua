@@ -4,7 +4,7 @@ local uis = game:GetService("UserInputService")
 
 --// Variables
 local replicated = replicatedStorage:WaitForChild("CameraSystem")
-local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReference")
+-- local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReference")
 local iconModule = replicated.Client.Dependencies.TopbarPlus
 local menuNames = {
 	{
@@ -34,8 +34,8 @@ local data = require(replicated.Data)
 --// Functions
 
 --===================== CODE =====================--
-if topbarPlusReference then
-	iconModule = topbarPlusReference.Value
+if replicatedStorage:FindFirstChild("TopbarPlus") then
+	iconModule = replicatedStorage:FindFirstChild("TopbarPlus")
 end
 local Icon = require(iconModule)
 

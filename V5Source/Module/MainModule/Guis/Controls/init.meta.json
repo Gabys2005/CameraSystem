@@ -1,6 +1,7 @@
 {
     "className": "ScreenGui",
     "properties": {
-        "DisplayOrder": 20
+        "DisplayOrder": 20,
+        "ResetOnSpawn": false
     }
 }

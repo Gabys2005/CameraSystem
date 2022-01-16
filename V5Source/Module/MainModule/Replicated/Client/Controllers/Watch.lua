@@ -6,7 +6,7 @@ local players = game:GetService("Players")
 
 --// Variables
 local replicated = replicatedStorage:WaitForChild("CameraSystem")
-local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReference")
+-- local topbarPlusReference = replicatedStorage:FindFirstChild("TopbarPlusReference")
 local iconModule = replicated.Client.Dependencies.TopbarPlus
 local data = require(replicated.Data)
 local dataEvent = require(script.Parent.Parent.Scripts.UpdateData)
@@ -82,8 +82,8 @@ local function fovLoop()
 end
 
 --======= Actual code =======--
-if topbarPlusReference then
-	iconModule = topbarPlusReference.Value
+if replicatedStorage:FindFirstChild("TopbarPlus") then
+	iconModule = replicatedStorage:FindFirstChild("TopbarPlus")
 end
 local Icon = require(iconModule)
 local watchButton = Icon.new():setLabel("Watch"):setLabel("Exit", "selected"):setSize(100, 32)

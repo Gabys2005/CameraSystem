@@ -8,7 +8,11 @@ return function()
 	for i, v in pairs(points:GetChildren()) do
 		local button = button(v.Name)
 		button.MouseButton1Click:Connect(function()
-			replicated.Events.ChangeFocus:FireServer(v)
+			if v:IsA("BasePart") then
+				replicated.Events.ChangeFocus:FireServer(v)
+			else
+				replicated.Events.ChangeFocus:FireServer(v.Value)
+			end
 		end)
 		button.Parent = copy
 	end

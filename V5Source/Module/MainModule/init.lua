@@ -86,8 +86,10 @@ return function(systemFolder)
 
 	--// Hide focus points
 	for i, v in pairs(systemFolder.FocusPoints:GetChildren()) do
-		v.Transparency = 1
-		v.CanCollide = false
+		if v:IsA("BasePart") then
+			v.Transparency = 1
+			v.CanCollide = false
+		end
 	end
 
 	--// Connect events
@@ -111,7 +113,11 @@ return function(systemFolder)
 			if plrString then
 				local point = systemFolder.FocusPoints:FindFirstChild(plrString)
 				if point then
-					api:Focus(point)
+					if point:IsA("BasePart") then
+						api:Focus(point)
+					else
+						api:Focus(point.Value)
+					end
 				else
 					api:Focus(plrString)
 				end

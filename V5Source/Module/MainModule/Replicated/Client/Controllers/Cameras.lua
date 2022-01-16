@@ -141,6 +141,13 @@ local function onCameraChange(currentCamera)
 				task.wait()
 			end
 		else
+			if currentCamera.Model[1]:GetAttribute("Fov") then
+				dataEvent:set(
+					"Shared.Effects.Fov",
+					{ Value = currentCamera.Model[1]:GetAttribute("Fov"), Time = data.Shared.Effects.Fov.Time }
+				)
+				data.Local.LerpedValues.Fov = currentCamera.Model[1]:GetAttribute("Fov")
+			end
 			-- Non bezier cameras
 			for i = 2, cameraCount do -- First point gets skipped while lerping
 				if lastChangeTime == currentChangeTime then

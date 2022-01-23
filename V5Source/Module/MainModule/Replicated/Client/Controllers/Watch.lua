@@ -72,7 +72,7 @@ local function fovLoop()
 		if
 			data.Shared.Settings.AutoFov
 			and data.Shared.Focus.Instance
-			and not data.Shared.CurrentCamera.Type == "Drones"
+			and data.Shared.CurrentCamera.Type ~= "Drones"
 		then
 			cameraInstance.FieldOfView = getAutoFov(getFocusPosition())
 		else

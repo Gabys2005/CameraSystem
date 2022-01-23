@@ -41,16 +41,24 @@ function window:new(params: NewWindowParams, options: any)
 	windowCopy.Position = pos
 	windowCopy.Visible = params.Enabled or false
 	windowCopy.TextLabel.Text = params.Title
+	if params.DeleteWhenClosed == nil then
+		params.DeleteWhenClosed = true
+	end
 
 	windowCopy.Close.MouseButton1Click:Connect(function()
-		if params.DeleteWhenClosed then
+		if params.DeleteWhenClosed == true then
 			windowCopy:Destroy()
 		else
 			params.Icon:deselect()
 		end
 	end)
 
-	local content = require(script.Parent.Parent.GuiComponents.Windows[params.Name])(params, options)
+	local content
+	if script.Parent.Parent.GuiComponents.Windows:FindFirstChild(params.Name) then
+		content = require(script.Parent.Parent.GuiComponents.Windows[params.Name])(params, options)
+	else
+		content = require(script.Parent.Parent.GuiComponents.WindowComponents[params.Name])(params, options)
+	end
 	content.Parent = windowCopy.Content.Content
 	windowCopy.Parent = parent
 	draggableUi(windowCopy)

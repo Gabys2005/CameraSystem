@@ -1,0 +1,46 @@
+site_name: Camera System
+theme:
+  logo: img/camera2.png
+  favicon: img/camera2.png
+  name: material
+  features:
+    - navigation.tracking
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+plugins:
+  - search
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+nav:
+  - Installation: index.md
+  - Updating From V4 to V5: updating.md
+  - Basic Information: basicinfo.md
+  - Camera Categories: cameracategories.md
+  - Camera Types:
+    - Static Cameras: camera-types/staticcams.md
+    - Moving Cameras: camera-types/movingcams.md
+    - Default Camera: camera-types/defaultcam.md
+    - Drones: camera-types/drones.md
+  - Focus Points: focuspoints.md
+  - Keybinds: keybinds.md
+  - Frequently Asked Questions: faq.md
+  - API: api.md

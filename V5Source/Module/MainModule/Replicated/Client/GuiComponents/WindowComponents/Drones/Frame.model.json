@@ -14,16 +14,17 @@
             "Name": "DroneChooser",
             "ClassName": "ScrollingFrame",
             "Properties": {
+                "ScrollBarThickness": 5,
                 "BackgroundTransparency": 1,
                 "Position": [
                     0,
-                    0,
+                    5,
                     0,
                     0
                 ],
                 "Size": [
                     1,
-                    -90,
+                    -5,
                     1,
                     0
                 ],
@@ -59,13 +60,13 @@
                 "BackgroundTransparency": 1,
                 "Position": [
                     1,
-                    0,
+                    100,
                     0,
                     0
                 ],
                 "Size": [
                     0,
-                    90,
+                    100,
                     1,
                     0
                 ],
@@ -76,7 +77,7 @@
                         0
                     ]
                 },
-                "Visible": false
+                "Visible": true
             },
             "Children": [
                 {
@@ -84,6 +85,7 @@
                     "ClassName": "UIListLayout",
                     "Properties": {
                         "SortOrder": "LayoutOrder",
+                        "HorizontalAlignment": "Center",
                         "Padding": {
                             "Type": "UDim",
                             "Value": [

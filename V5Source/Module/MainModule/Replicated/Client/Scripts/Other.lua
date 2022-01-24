@@ -33,6 +33,10 @@ local function makeCategory(data, camType: string)
 		Text = data.Name,
 		Parent = frame,
 	})
+	local categoryTitleUiCorner = utils:NewInstance("UICorner", {
+		CornerRadius = UDim.new(0, 8),
+		Parent = categoryTitle,
+	})
 	local buttonsFrame = utils:NewInstance("Frame", {
 		BackgroundTransparency = 1,
 		Size = UDim2.fromScale(1, 0),

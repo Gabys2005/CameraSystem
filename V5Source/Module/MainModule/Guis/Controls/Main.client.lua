@@ -87,7 +87,7 @@ uis.InputBegan:Connect(function(input, processed)
 			end
 			if shouldRun then
 				replicated.Events.RunKeybind:FireServer(v.Action)
-				break
+				-- break
 			end
 		end
 	end

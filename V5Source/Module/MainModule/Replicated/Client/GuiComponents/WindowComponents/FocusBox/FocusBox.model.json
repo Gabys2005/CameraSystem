@@ -1,0 +1,114 @@
+{
+    "ClassName": "Frame",
+    "Properties": {
+        "BackgroundTransparency": 1,
+        "Size": [
+            1,
+            0,
+            1,
+            0
+        ]
+    },
+    "Children": [
+        {
+            "ClassName": "UIListLayout",
+            "Name": "UIListLayout",
+            "Properties": {
+                "Padding": {
+                    "Type": "UDim",
+                    "Value": [
+                        0,
+                        5
+                    ]
+                },
+                "FillDirection": "Horizontal",
+                "HorizontalAlignment": "Center",
+                "SortOrder": "LayoutOrder",
+                "VerticalAlignment": "Center"
+            }
+        },
+        {
+            "ClassName": "TextButton",
+            "Name": "Focus",
+            "Properties": {
+                "LayoutOrder": 1,
+                "Size": [
+                    0.2,
+                    -5,
+                    1,
+                    0
+                ],
+                "Font": "SourceSans",
+                "Text": "Focus",
+                "TextColor3": [
+                    1,
+                    1,
+                    1
+                ],
+                "TextSize": 14
+            },
+            "Children": [
+                {
+                    "ClassName": "UICorner",
+                    "Name": "UICorner"
+                }
+            ]
+        },
+        {
+            "ClassName": "TextButton",
+            "Name": "StopFocus",
+            "Properties": {
+                "LayoutOrder": 2,
+                "Size": [
+                    0.2,
+                    -5,
+                    1,
+                    0
+                ],
+                "Font": "SourceSans",
+                "Text": "Stop",
+                "TextColor3": [
+                    1,
+                    1,
+                    1
+                ],
+                "TextSize": 14
+            },
+            "Children": [
+                {
+                    "ClassName": "UICorner",
+                    "Name": "UICorner"
+                }
+            ]
+        },
+        {
+            "ClassName": "TextBox",
+            "Name": "UsernameBox",
+            "Properties": {
+                "LayoutOrder": 0,
+                "ClearTextOnFocus": false,
+                "Size": [
+                    0.6,
+                    -5,
+                    1,
+                    0
+                ],
+                "Font": "SourceSans",
+                "PlaceholderText": "Username",
+                "Text": "",
+                "TextColor3": [
+                    1,
+                    1,
+                    1
+                ],
+                "TextSize": 14
+            },
+            "Children": [
+                {
+                    "ClassName": "UICorner",
+                    "Name": "UICorner"
+                }
+            ]
+        }
+    ]
+}

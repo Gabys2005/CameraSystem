@@ -3,8 +3,10 @@
 local utils = require(script.Parent.Utils)
 local button = require(script.Parent.Parent.GuiComponents.Basic.RoundedButton)
 local data = require(script.Parent.Parent.Parent.Data)
+local theme = require(script.Parent.Parent.Themes.Current)
 local api = require(workspace.CameraSystem:WaitForChild("Api"))
 local drones = api:GetCamsById().Drones
+local smoothGrid = require(script.Parent.SmoothGrid)
 local other = {}
 
 local function getCamerasInFolder(folder: Folder | Color3Value)
@@ -27,13 +29,14 @@ local function makeCategory(data, camType: string)
 		BackgroundColor3 = data.Color,
 		BorderSizePixel = 0,
 		Size = UDim2.new(1, 0, 0, 20),
+		TextColor3 = theme.BaseText,
 		Text = data.Name,
 		Parent = frame,
 	})
 	local buttonsFrame = utils:NewInstance("Frame", {
 		BackgroundTransparency = 1,
 		Size = UDim2.fromScale(1, 0),
-		Position = UDim2.fromOffset(0, 20),
+		Position = UDim2.fromOffset(0, 25),
 		AutomaticSize = Enum.AutomaticSize.Y,
 		Parent = frame,
 	})
@@ -53,6 +56,7 @@ local function makeCategory(data, camType: string)
 			script.Parent.Parent.Parent.Events.ChangeCam:FireServer(camType, v:GetAttribute("ID"))
 		end)
 	end
+	smoothGrid(buttonsFrame, uigridlayout)
 	return frame
 end
 
@@ -65,13 +69,14 @@ function other:generateButtonsForFolder(folder: Folder, parent: GuiObject, camTy
 	})
 	local uilistlayout = utils:NewInstance("UIListLayout", {
 		SortOrder = Enum.SortOrder.LayoutOrder,
+		Padding = UDim.new(0, 5),
 		Parent = frame,
 	})
 	local uncategorised = getCamerasInFolder(folder)
 	local categorised = {}
 	for i, v in pairs(folder:GetChildren()) do
 		if v:IsA("Folder") or v:IsA("Color3Value") then
-			local color = Color3.fromRGB(255, 255, 255)
+			local color = theme.Base
 			if v:IsA("Color3Value") then
 				color = v.Value
 			end
@@ -91,7 +96,7 @@ function other:generateButtonsForFolder(folder: Folder, parent: GuiObject, camTy
 	end
 	makeCategory({
 		Name = "Uncategorised",
-		Color = Color3.fromRGB(255, 255, 255),
+		Color = theme.Base,
 		Cameras = uncategorised,
 	}, camType).Parent =
 		frame

@@ -91,7 +91,7 @@ local function indexCameras()
 	camerasByIds.Moving = idCameraFolder(workspaceFolder.Cameras.Moving)
 	camerasByIds.Drones = idCameraFolder(workspaceFolder.Cameras.Drones, true)
 	if run:IsServer() then
-		timeMovingCams(workspaceFolder.Cameras.Moving)
+		timeMovingCams()
 	end
 	if workspaceFolder.Cameras:FindFirstChild("Default") then
 		camerasByIds.Default = workspaceFolder.Cameras.Default.CFrame

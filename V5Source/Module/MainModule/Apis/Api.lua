@@ -86,11 +86,44 @@ local function timeMovingCams()
 	end
 end
 
+local function fixCameras(cameraGroup)
+	for i,camera in pairs(cameraGroup) do
+		local isBroken = false
+		if camera:FindFirstChild("FOV") then
+			isBroken = true
+			camera:SetAttribute("Fov",camera.FOV.Value)
+			camera.FOV:Destroy()
+		end
+		if camera:FindFirstChild("Time") then
+			isBroken = true
+			camera:SetAttribute("Time",camera.Time.Value)
+			camera.Time:Destroy()
+		end
+		for i,v in pairs(camera:GetChildren()) do
+			if v:FindFirstChild("FOV") then
+				isBroken = true
+				v:SetAttribute("Fov",v.FOV.Value)
+				v.FOV:Destroy()
+			end
+			if v:FindFirstChild("Time") then
+				isBroken = true
+				v:SetAttribute("Time",v.Time.Value)
+				v.Time:Destroy()
+			end
+		end
+		if isBroken then
+			warn("[[ Camera System ]]: " .. camera.Name .. " is using an outdated format, consider changing the Values to Attributes.")
+		end
+	end
+end
+
 local function indexCameras()
 	camerasByIds.Static = idCameraFolder(workspaceFolder.Cameras.Static)
 	camerasByIds.Moving = idCameraFolder(workspaceFolder.Cameras.Moving)
 	camerasByIds.Drones = idCameraFolder(workspaceFolder.Cameras.Drones, true)
 	if run:IsServer() then
+		fixCameras(camerasByIds.Static) -- In case someone uses the V4 plugin
+		fixCameras(camerasByIds.Moving)
 		timeMovingCams()
 	end
 	if workspaceFolder.Cameras:FindFirstChild("Default") then

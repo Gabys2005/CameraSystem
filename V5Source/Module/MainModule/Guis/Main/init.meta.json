@@ -1,9 +1,9 @@
 {
-    "className": "ScreenGui",
-    "properties": {
-        "IgnoreGuiInset": true,
-        "DisplayOrder": 9,
-        "Enabled": false,
-        "ResetOnSpawn": false
-    }
+	"className": "ScreenGui",
+	"properties": {
+		"IgnoreGuiInset": true,
+		"DisplayOrder": -2,
+		"Enabled": false,
+		"ResetOnSpawn": false
+	}
 }

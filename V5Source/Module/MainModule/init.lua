@@ -129,7 +129,7 @@ return function(systemFolder)
 
 	replicatedFolder.Events.ChangeFov.OnServerEvent:Connect(function(plr, fov)
 		if isOwner(plr) then
-			api:ChangeFov(fov)
+			api:ChangeFov(fov, data.Shared.Effects.Fov.Time)
 		end
 	end)
 

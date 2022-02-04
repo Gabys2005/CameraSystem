@@ -1,4 +1,5 @@
 --// Services
+local players = game:GetService("Players")
 local replicatedStorage = game:GetService("ReplicatedStorage")
 
 --// Variables
@@ -8,6 +9,7 @@ local api = require(workspace:WaitForChild("CameraSystem"):WaitForChild("Api"))
 local lerper = require(replicated.Client.Scripts.Lerper)
 local spring = require(replicated.Client.Dependencies.Spring)
 local utils = require(replicated.Client.Scripts.Utils)
+local localPlayer = players.LocalPlayer
 
 --// Functions
 
@@ -16,6 +18,13 @@ local utils = require(replicated.Client.Scripts.Utils)
 local focusSpring = spring.new(Vector3.new())
 focusSpring.Speed = 10
 data:set("Local.Springs.Focus", focusSpring)
+
+-- Offset bars
+local barsOffset = data:get("Local.Settings.BarsOffset")
+if table.find(barsOffset.Players, localPlayer.Name) then
+	script.Parent.Bars.Position = UDim2.fromOffset(0, barsOffset.Offset)
+	script.Parent.Bars.Size = UDim2.new(1, 0, 1, -barsOffset.Offset)
+end
 
 -- Index the cameras and initiate the controllers
 api:GetCamsById()

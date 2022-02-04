@@ -17,6 +17,20 @@ return function(systemFolder)
 		ToggleGui = "table",
 		WatchButtonPosition = "string",
 		Keybinds = "table",
+		BarsOffset = "table",
+	}
+	local DefaultSettings = {
+		GuiOwners = {},
+		Theme = "Dark",
+		AccelerateStart = true,
+		DecelerateEnd = true,
+		ToggleGui = {},
+		WatchButtonPosition = "Center",
+		Keybinds = {},
+		BarsOffset = {
+			Players = {},
+			Offset = 36,
+		},
 	}
 
 	--// Functions
@@ -33,17 +47,22 @@ return function(systemFolder)
 
 	local function validateSettings()
 		for i, v in pairs(SettingsWithTypes) do
-			assert(Settings[i] ~= nil, "[[ Camera System ]]: The '" .. i .. "' setting is missing")
-			assert(
-				typeof(Settings[i]) == v,
-				"[[ Camera System ]]: The '"
-					.. i
-					.. "' setting is the wrong type, it's a '"
-					.. typeof(Settings[i])
-					.. "' while it should be '"
-					.. v
-					.. "'"
-			)
+			if Settings[i] == nil then
+				warn("[[ Camera System ]]: The '" .. i .. "' setting is missing")
+				Settings[i] = DefaultSettings[i]
+			end
+			if type(Settings[i]) ~= v then
+				warn(
+					"[[ Camera System ]]: The '"
+						.. i
+						.. "' setting is the wrong type, it's a '"
+						.. typeof(Settings[i])
+						.. "' while it should be '"
+						.. v
+						.. "'"
+				)
+				Settings[i] = DefaultSettings[i]
+			end
 		end
 		-- Additional setting specific checks
 		for i, v in pairs(Settings.GuiOwners) do

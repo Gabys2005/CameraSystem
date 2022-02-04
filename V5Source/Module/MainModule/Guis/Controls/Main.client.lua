@@ -27,6 +27,12 @@ local menuNames = {
 		Width = 225,
 		Height = 220,
 	},
+	{
+		Name = "Info",
+		Title = "[Beta] Info",
+		Width = 225,
+		Height = 225,
+	},
 }
 local window = require(replicated.Client.Scripts.NewWindow)
 local data = require(replicated.Data)
@@ -45,7 +51,7 @@ local menuIcons = {}
 for i, v in pairs(menuNames) do
 	local icon = Icon.new():setLabel(v.Name)
 	local gui = window:new({
-		Title = v.Name,
+		Title = v.Title or v.Name,
 		Name = v.Name,
 		MinimumWidth = v.Width,
 		MinimumHeight = v.Height,

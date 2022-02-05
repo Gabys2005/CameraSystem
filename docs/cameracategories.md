@@ -11,7 +11,7 @@ A camera category can be a Folder or a Color3Value
 If a camera isn't in a category then it'll go into a category named `Uncategorised` at the bottom of the camera chooser
 
 !!! example
-In the image below:
+    In the image below:
 
     * `Cam1` and `This should be in test folder` are in the `TestFolder` category, `Cam2` and `Yass` are in the `C3ValueTest` category, and `Cam3` and `Updating` are in the `Uncategorised` category
     * `TestFolder` category will have a green banner, while `C3ValueTest` category will have a red banner

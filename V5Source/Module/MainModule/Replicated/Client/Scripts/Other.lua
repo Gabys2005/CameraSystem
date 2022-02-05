@@ -22,6 +22,7 @@ end
 local function makeCategory(data, camType: string)
 	local frame = utils:NewInstance("Frame", {
 		BackgroundTransparency = 1,
+		LayoutOrder = data.Order,
 		Size = UDim2.fromScale(1, 0),
 		AutomaticSize = Enum.AutomaticSize.Y,
 	})
@@ -89,6 +90,7 @@ function other:generateButtonsForFolder(folder: Folder, parent: GuiObject, camTy
 			end
 			table.insert(categorised, {
 				Name = v.Name,
+				Order = v:GetAttribute("Order") or 998,
 				Color = color,
 				Cameras = getCamerasInFolder(v),
 			})
@@ -101,6 +103,7 @@ function other:generateButtonsForFolder(folder: Folder, parent: GuiObject, camTy
 	makeCategory({
 		Name = "Uncategorised",
 		Color = theme.Base,
+		Order = 999,
 		Cameras = uncategorised,
 	}, camType).Parent =
 		frame

@@ -24,6 +24,7 @@ export type NewWindowParams = {
 	Enabled: boolean,
 	DeleteWhenClosed: boolean?,
 	Icon: any?,
+	Content: Frame?,
 }
 
 function window:setParent(instance: GuiObject)
@@ -54,7 +55,9 @@ function window:new(params: NewWindowParams, options: any)
 	end)
 
 	local content
-	if script.Parent.Parent.GuiComponents.Windows:FindFirstChild(params.Name) then
+	if params.Content then
+		content = params.Content
+	elseif script.Parent.Parent.GuiComponents.Windows:FindFirstChild(params.Name) then
 		content = require(script.Parent.Parent.GuiComponents.Windows[params.Name])(params, options)
 	else
 		content = require(script.Parent.Parent.GuiComponents.WindowComponents[params.Name])(params, options)

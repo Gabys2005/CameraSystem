@@ -18,6 +18,7 @@ return function(systemFolder)
 		WatchButtonPosition = "string",
 		Keybinds = "table",
 		BarsOffset = "table",
+		BeforeLoad = "function",
 	}
 	local DefaultSettings = {
 		GuiOwners = {},
@@ -31,6 +32,7 @@ return function(systemFolder)
 			Players = {},
 			Offset = 36,
 		},
+		BeforeLoad = function() end,
 	}
 
 	--// Functions
@@ -96,6 +98,7 @@ return function(systemFolder)
 	script.Lighting.CameraSystemBlur.Parent = lighting
 	script.Lighting.CameraSystemColorCorrection.Parent = lighting
 
+	Settings.BeforeLoad()
 	--// Get cameras and set the default position
 	local api = require(apiModule)
 	local camerasByIds = api:GetCamsById()

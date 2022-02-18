@@ -18,3 +18,4 @@ Installing the Camera System is very simple. Here are the steps:
 -   `WatchButtonPosition` - Where the button should be positioned on the topbar, either `Left`, `Center` or `Right`
 -   `Keybinds` - Check out the Keybinds section for an explanation
 -   `BarOffsets` - This setting will move the bars down by X pixels for specified people, this is mainly for streamers to keep the bars even
+-   `BeforeLoad` - This function will run before the clients load, useful for adding cameras by other scripts etc.

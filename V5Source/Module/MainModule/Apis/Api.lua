@@ -87,32 +87,36 @@ local function timeMovingCams()
 end
 
 local function fixCameras(cameraGroup)
-	for i,camera in pairs(cameraGroup) do
+	for i, camera in pairs(cameraGroup) do
 		local isBroken = false
 		if camera:FindFirstChild("FOV") then
 			isBroken = true
-			camera:SetAttribute("Fov",camera.FOV.Value)
+			camera:SetAttribute("Fov", camera.FOV.Value)
 			camera.FOV:Destroy()
 		end
 		if camera:FindFirstChild("Time") then
 			isBroken = true
-			camera:SetAttribute("Time",camera.Time.Value)
+			camera:SetAttribute("Time", camera.Time.Value)
 			camera.Time:Destroy()
 		end
-		for i,v in pairs(camera:GetChildren()) do
+		for i, v in pairs(camera:GetChildren()) do
 			if v:FindFirstChild("FOV") then
 				isBroken = true
-				v:SetAttribute("Fov",v.FOV.Value)
+				v:SetAttribute("Fov", v.FOV.Value)
 				v.FOV:Destroy()
 			end
 			if v:FindFirstChild("Time") then
 				isBroken = true
-				v:SetAttribute("Time",v.Time.Value)
+				v:SetAttribute("Time", v.Time.Value)
 				v.Time:Destroy()
 			end
 		end
 		if isBroken then
-			warn("[[ Camera System ]]: " .. camera.Name .. " is using an outdated format, consider changing the Values to Attributes.")
+			warn(
+				"[[ Camera System ]]: "
+					.. camera.Name
+					.. " is using an outdated format, consider changing the Values to Attributes."
+			)
 		end
 	end
 end
@@ -177,6 +181,10 @@ function api:GetDefaultCamPosition()
 		indexCameras()
 	end
 	return camerasByIds.Default
+end
+
+function api:GetFocus()
+	return data.Shared.Focus
 end
 
 --// Server only apis
@@ -317,8 +325,26 @@ end
 
 --// Client only apis
 if run:IsClient() then
+	local makeWindow = require(replicatedFolder.Client.Scripts.NewWindow)
+
 	api.StartedWatching = signal.new()
 	api.StoppedWatching = signal.new()
+
+	function api:MakeWindow(Settings: any)
+		return makeWindow:new(Settings)
+	end
+
+	api.Components = {}
+	function api.Components:CategoryChooser(Settings)
+		return require(replicatedFolder.Client.GuiComponents.Basic.CategoryChooser)(Settings)
+	end
+	function api.Components:Button(text)
+		return require(replicatedFolder.Client.GuiComponents.Basic.RoundedButton)(text)
+	end
+
+	function api:GetTheme()
+		return require(replicatedFolder.Client.Themes.Current)
+	end
 end
 
 return api

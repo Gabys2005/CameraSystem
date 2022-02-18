@@ -76,6 +76,15 @@ api:Focus(nil) -- unfocus
 
 ---
 
+#### GetFocus()
+Returns the current focus point
+```lua
+local focus = api:GetFocus()
+print(focus) -- { Type = "Player", Instance = HumanoidRootPart } OR { Type = "Part", Instance = Part }
+```
+
+---
+
 #### ChangeFov(fov: number, time: number?)
 Change the fov. By default time is 0.1
 ```lua

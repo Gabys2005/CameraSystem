@@ -9,6 +9,7 @@ Moving cameras are cameras that move on the defined track. The individual parts 
 ## Optional attributes
 
 * `Bezier` - type: `boolean` - if set to true, the track will be a Bezier curve. *Note: current implementation is pretty bad and could cause a lot of lag with a lot of points*
+* `DisableFocus` - type: `boolean` - if set to `true`, focusing on someone won't change the camera angle on this camera
 
 ## Point attributes
 

@@ -10,7 +10,7 @@ Installing the Camera System is very simple. Here are the steps:
 
 ## Settings
 
--   `GuiOwners` - This setting tells the system who should have access to the control panel. If you want to add more people then do it like `{"Username1","Username2"}`
+-   `GuiOwners` - This setting tells the system who should have access to the control panel. If you want to add more people then do it like `{"Username1", "Username2"}`
 -   `Theme` - The color theme of the control panel, either `Light` or `Dark`
 -   `AccelerateStart` - If set to `true`, moving cameras will start slow and speed up
 -   `DecelerateEnd` - If set to `true`, moving cameras will start slowing down at the end of their path
@@ -19,3 +19,4 @@ Installing the Camera System is very simple. Here are the steps:
 -   `Keybinds` - Check out the Keybinds section for an explanation
 -   `BarOffsets` - This setting will move the bars down by X pixels for specified people, this is mainly for streamers to keep the bars even
 -   `BeforeLoad` - This function will run before the clients load, useful for adding cameras by other scripts etc.
+-   `FreeAdmin` - Who should be able to bypass the `GuiOwners` setting, `None`: nobody, `Owners`: private server owners, `All`: everybody

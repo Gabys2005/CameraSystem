@@ -1,17 +1,13 @@
 {
-    "ClassName": "Frame",
-    "Properties": {
-        "BackgroundColor3": [
-            0,
-            0,
-            0
-        ],
-        "Size": [
-            1,
-            0,
-            1,
-            0
-        ],
-        "BackgroundTransparency": 1
-    }
+	"ClassName": "Frame",
+	"Properties": {
+		"BackgroundColor3": [0, 0, 0],
+		"Size": {
+			"UDim2": [
+				[1, 0],
+				[1, 0]
+			]
+		},
+		"BackgroundTransparency": 1
+	}
 }

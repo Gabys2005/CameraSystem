@@ -64,6 +64,12 @@ api:ChangeCam("Static", "Test")
 api:ChangeCam("Static", 1)
 ```
 
+#### GetCurrentCamera()
+Used to get basic information about the current camera
+```lua
+print(api:GetCurrentCamera()) -- { Id = 1, Model = <Model>, Type = "Static" }
+```
+
 ---
 
 #### Focus(whoToFocusOn: BasePart|string|nil)
@@ -188,6 +194,200 @@ api:ChangeTransitionSpeed(50)
 Change the shake intensity.
 ```lua
 api:ChangeShake(5)
+```
+
+---
+
+#### GetFov()
+Returns the current FOV
+```lua
+print(api:GetFov()) -- { Value = 70, Time = 0.1 }
+```
+
+---
+
+#### GetBlur()
+Returns the current blur
+```lua
+print(api:GetBlur()) -- { Value = 0, Time = 0.1 }
+```
+
+---
+
+#### GetSaturation()
+Returns the current saturation
+```lua
+print(api:GetSaturation()) -- { Value = 0, Time = 0.1 }
+```
+
+---
+
+#### GetTilt()
+Returns the current tilt
+```lua
+print(api:GetTilt()) -- { Value = 0, Time = 0.1 }
+```
+
+---
+
+#### GetBarsEnabled()
+Returns a boolean indicating whether or not bars are enabled
+```lua
+print(api:GetBarsEnabled()) -- false
+```
+
+---
+
+#### GetBarSize()
+Returns the current bar size
+```lua
+print(api:GetBarSize()) -- 0
+```
+
+---
+
+#### GetTransition()
+Returns the current transition's name
+```lua
+print(api:GetTransition()) -- "Black"
+```
+
+---
+
+#### GetTransitionSpeed()
+Returns the current transition speed
+```lua
+print(api:GetTransitionSpeed()) -- 100
+```
+
+---
+
+#### GetShake()
+Returns the current shake intensity
+```lua
+print(api:GetShake()) -- 0
+```
+
+### Events
+---
+
+#### api.CameraChanged
+Fired when the camera changes
+```lua
+api.CameraChanged:Connect(function(camType, camId)
+    print("Camera changed to a " .. camType .. " camera with an id of " .. camId)
+end)
+```
+
+---
+
+#### api.FocusChanged
+Fired when the focus changes
+```lua
+api.FocusChanged:Connect(function(focusData)
+    print("Focus changed:", focusData)
+end)
+```
+
+---
+
+#### api.FovChanged
+Fired when the fov changes
+```lua
+api.FovChanged:Connect(function(newFov, changeTime)
+    print("Fov changed to:", newFov, "in", changeTime, "seconds")
+end)
+```
+
+---
+
+
+#### api.BlurChanged
+Fired when the blur changes
+```lua
+api.BlurChanged:Connect(function(newBlur, changeTime)
+    print("Blur changed to:", newBlur, "in", changeTime, "seconds")
+end)
+```
+
+---
+
+#### api.SaturationChanged
+Fired when the saturation changes
+```lua
+api.SaturationChanged:Connect(function(newSaturation, changeTime)
+    print("Saturation changed to:", newSaturation, "in", changeTime, "seconds")
+end)
+```
+
+---
+
+#### api.TiltChanged
+Fired when the blur changes
+```lua
+api.TiltChanged:Connect(function(newTilt, changeTime)
+    print("Tilt changed to:", newTilt, "in", changeTime, "seconds")
+end)
+```
+
+---
+
+#### api.BlackoutChanged
+Fired when the blackout gets enabled or disabled
+```lua
+api.BlackoutChanged:Connect(function(isEnabled)
+    print("Blackout is now", if isEnabled then "Enabled" else "Disabled")
+end)
+```
+
+---
+
+#### api.BarsEnabledChanged
+Fired when the bars get enabled or disabled
+```lua
+api.BarsEnabledChanged:Connect(function(isEnabled)
+    print("Bars are now", if isEnabled then "Enabled" else "Disabled")
+end)
+```
+
+---
+
+#### api.BarSizeChanged
+Fired when the bar size changes
+```lua
+api.BarSizeChanged:Connect(function(newSize, changeTime)
+    print("Bar size changed to:", newSize, "in", changeTime, "seconds")
+end)
+```
+
+---
+
+#### api.TransitionChanged
+Fired when the transition type changes
+```lua
+api.TransitionChanged:Connect(function(transitionName)
+    print("Bar size changed to:", transitionName)
+end)
+```
+
+---
+
+#### api.TransitionSpeedChanged
+Fired when the transition speed changes
+```lua
+api.TransitionSpeedChanged:Connect(function(newSpeed)
+    print("Transition speed changed to:", newSpeed)
+end)
+```
+
+---
+
+#### api.ShakeChanged
+Fired when the shake intensity changes
+```lua
+api.ShakeChanged:Connect(function(newIntensity)
+    print("Shake intensity changed to:", newIntensity)
+end)
 ```
 
 ## Client-only

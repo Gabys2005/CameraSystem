@@ -1,50 +1,47 @@
 {
-    "ClassName": "Frame",
-    "Properties": {
-        "BackgroundTransparency": 1,
-        "Size": [
-            1,
-            0,
-            1,
-            0
-        ]
-    },
-    "Children": [
-        {
-            "Name": "FocusBox",
-            "ClassName": "Frame",
-            "Properties": {
-                "AnchorPoint": [
-                    0,
-                    1
-                ],
-                "BackgroundTransparency": 1,
-                "Position": [
-                    0,
-                    0,
-                    1,
-                    -3
-                ],
-                "Size": [
-                    1,
-                    0,
-                    0,
-                    22
-                ]
-            }
-        },
-        {
-            "ClassName": "Frame",
-            "Name": "Cameras",
-            "Properties": {
-                "BackgroundTransparency": 1,
-                "Size": [
-                    1,
-                    0,
-                    1,
-                    -25
-                ]
-            }
-        }
-    ]
+	"ClassName": "Frame",
+	"Properties": {
+		"BackgroundTransparency": 1,
+		"Size": {
+			"UDim2": [
+				[1, 0],
+				[1, 0]
+			]
+		}
+	},
+	"Children": [
+		{
+			"Name": "FocusBox",
+			"ClassName": "Frame",
+			"Properties": {
+				"AnchorPoint": [0, 1],
+				"BackgroundTransparency": 1,
+				"Position": {
+					"UDim2": [
+						[0, 0],
+						[1, -3]
+					]
+				},
+				"Size": {
+					"UDim2": [
+						[1, 0],
+						[0, 22]
+					]
+				}
+			}
+		},
+		{
+			"ClassName": "Frame",
+			"Name": "Cameras",
+			"Properties": {
+				"BackgroundTransparency": 1,
+				"Size": {
+					"UDim2": [
+						[1, 0],
+						[1, -25]
+					]
+				}
+			}
+		}
+	]
 }

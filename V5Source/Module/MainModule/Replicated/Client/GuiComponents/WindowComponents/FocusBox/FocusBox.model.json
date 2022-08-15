@@ -2,7 +2,12 @@
 	"ClassName": "Frame",
 	"Properties": {
 		"BackgroundTransparency": 1,
-		"Size": [1, 0, 1, 0]
+		"Size": {
+			"UDim2": [
+				[1, 0],
+				[1, 0]
+			]
+		}
 	},
 	"Children": [
 		{
@@ -10,8 +15,7 @@
 			"Name": "UIListLayout",
 			"Properties": {
 				"Padding": {
-					"Type": "UDim",
-					"Value": [0, 5]
+					"UDim": [0, 5]
 				},
 				"FillDirection": "Horizontal",
 				"HorizontalAlignment": "Center",
@@ -24,7 +28,12 @@
 			"Name": "Focus",
 			"Properties": {
 				"LayoutOrder": 1,
-				"Size": [0, 50, 1, 0],
+				"Size": {
+					"UDim2": [
+						[0, 50],
+						[1, 0]
+					]
+				},
 				"Font": "SourceSans",
 				"Text": "Focus",
 				"TextColor3": [1, 1, 1],
@@ -42,7 +51,12 @@
 			"Name": "StopFocus",
 			"Properties": {
 				"LayoutOrder": 2,
-				"Size": [0, 50, 1, 0],
+				"Size": {
+					"UDim2": [
+						[0, 50],
+						[1, 0]
+					]
+				},
 				"Font": "SourceSans",
 				"Text": "Stop",
 				"TextColor3": [1, 1, 1],
@@ -61,7 +75,12 @@
 			"Properties": {
 				"LayoutOrder": 0,
 				"ClearTextOnFocus": false,
-				"Size": [1, -120, 1, 0],
+				"Size": {
+					"UDim2": [
+						[1, -120],
+						[1, 0]
+					]
+				},
 				"Font": "SourceSans",
 				"PlaceholderText": "Username",
 				"Text": "",

@@ -1,119 +1,119 @@
 {
-    "ClassName": "Frame",
-    "Properties": {
-        "Size": [
-            1,
-            0,
-            1,
-            0
-        ],
-        "BackgroundTransparency": 1
-    },
-    "Children": [
-        {
-            "ClassName": "Frame",
-            "Name": "AutoFov",
-            "Properties": {
-                "BackgroundTransparency": 1,
-                "Size": [
-                    0,
-                    220,
-                    0,
-                    30
-                ]
-            }
-        },
-        {
-            "ClassName": "Frame",
-            "Name": "SmoothFocus",
-            "Properties": {
-                "BackgroundTransparency": 1,
-                "Position": [
-                    0,
-                    0,
-                    0,
-                    30
-                ],
-                "Size": [
-                    0,
-                    220,
-                    0,
-                    30
-                ]
-            }
-        },
-        {
-            "ClassName": "Frame",
-            "Name": "BarSize",
-            "Properties": {
-                "BackgroundTransparency": 1,
-                "Position": [
-                    0,
-                    0,
-                    0,
-                    60
-                ],
-                "Size": [
-                    0,
-                    220,
-                    0,
-                    50
-                ]
-            }
-        },
-        {
-            "ClassName": "Frame",
-            "Name": "TransitionTime",
-            "Properties": {
-                "BackgroundTransparency": 1,
-                "Position": [
-                    0,
-                    0,
-                    0,
-                    110
-                ],
-                "Size": [
-                    0,
-                    220,
-                    0,
-                    50
-                ]
-            }
-        },
-        {
-            "ClassName": "Frame",
-            "Name": "Transition",
-            "Properties": {
-                "BackgroundTransparency": 1,
-                "Position": [
-                    0,
-                    0,
-                    0,
-                    160
-                ],
-                "Size": [
-                    0,
-                    220,
-                    0,
-                    30
-                ]
-            },
-            "Children": [
-                {
-                    "ClassName": "UIGridLayout",
-                    "Name": "UIGridLayout",
-                    "Properties": {
-                        "CellSize": [
-                            0,
-                            90,
-                            0,
-                            30
-                        ],
-                        "HorizontalAlignment": "Center",
-                        "SortOrder": "LayoutOrder"
-                    }
-                }
-            ]
-        }
-    ]
+	"ClassName": "Frame",
+	"Properties": {
+		"Size": {
+			"UDim2": [
+				[1, 0],
+				[1, 0]
+			]
+		},
+		"BackgroundTransparency": 1
+	},
+	"Children": [
+		{
+			"ClassName": "Frame",
+			"Name": "AutoFov",
+			"Properties": {
+				"BackgroundTransparency": 1,
+				"Size": {
+					"UDim2": [
+						[0, 220],
+						[0, 30]
+					]
+				}
+			}
+		},
+		{
+			"ClassName": "Frame",
+			"Name": "SmoothFocus",
+			"Properties": {
+				"BackgroundTransparency": 1,
+				"Position": {
+					"UDim2": [
+						[0, 0],
+						[0, 30]
+					]
+				},
+				"Size": {
+					"UDim2": [
+						[0, 220],
+						[0, 30]
+					]
+				}
+			}
+		},
+		{
+			"ClassName": "Frame",
+			"Name": "BarSize",
+			"Properties": {
+				"BackgroundTransparency": 1,
+				"Position": {
+					"UDim2": [
+						[0, 0],
+						[0, 60]
+					]
+				},
+				"Size": {
+					"UDim2": [
+						[0, 220],
+						[0, 50]
+					]
+				}
+			}
+		},
+		{
+			"ClassName": "Frame",
+			"Name": "TransitionTime",
+			"Properties": {
+				"BackgroundTransparency": 1,
+				"Position": {
+					"UDim2": [
+						[0, 0],
+						[0, 110]
+					]
+				},
+				"Size": {
+					"UDim2": [
+						[0, 220],
+						[0, 50]
+					]
+				}
+			}
+		},
+		{
+			"ClassName": "Frame",
+			"Name": "Transition",
+			"Properties": {
+				"BackgroundTransparency": 1,
+				"Position": {
+					"UDim2": [
+						[0, 0],
+						[0, 160]
+					]
+				},
+				"Size": {
+					"UDim2": [
+						[0, 220],
+						[0, 30]
+					]
+				}
+			},
+			"Children": [
+				{
+					"ClassName": "UIGridLayout",
+					"Name": "UIGridLayout",
+					"Properties": {
+						"CellSize": {
+							"UDim2": [
+								[0, 90],
+								[0, 30]
+							]
+						},
+						"HorizontalAlignment": "Center",
+						"SortOrder": "LayoutOrder"
+					}
+				}
+			]
+		}
+	]
 }

@@ -1,65 +1,50 @@
 {
-    "ClassName": "Frame",
-    "Name": "Bars",
-    "Properties": {
-        "BackgroundTransparency": 1,
-        "Size": [
-            1,
-            0,
-            1,
-            0
-        ]
-    },
-    "Children": [
-        {
-            "ClassName": "Frame",
-            "Name": "Top",
-            "Properties": {
-                "BorderSizePixel": 0,
-                "BackgroundColor3": [
-                    0,
-                    0,
-                    0
-                ],
-                "Size": [
-                    1,
-                    0,
-                    0.2,
-                    0
-                ],
-                "AnchorPoint": [
-                    0,
-                    1
-                ]
-            }
-        },
-        {
-            "ClassName": "Frame",
-            "Name": "Bottom",
-            "Properties": {
-                "BorderSizePixel": 0,
-                "BackgroundColor3": [
-                    0,
-                    0,
-                    0
-                ],
-                "Size": [
-                    1,
-                    0,
-                    0.2,
-                    0
-                ],
-                "AnchorPoint": [
-                    0,
-                    0
-                ],
-                "Position": [
-                    0,
-                    0,
-                    1,
-                    0
-                ]
-            }
-        }
-    ]
+	"ClassName": "Frame",
+	"Properties": {
+		"BackgroundTransparency": 1,
+		"Size": {
+			"UDim2": [
+				[1, 0],
+				[1, 0]
+			]
+		}
+	},
+	"Children": [
+		{
+			"ClassName": "Frame",
+			"Name": "Top",
+			"Properties": {
+				"BorderSizePixel": 0,
+				"BackgroundColor3": [0, 0, 0],
+				"Size": {
+					"UDim2": [
+						[1, 0],
+						[0.2, 0]
+					]
+				},
+				"AnchorPoint": [0, 1]
+			}
+		},
+		{
+			"ClassName": "Frame",
+			"Name": "Bottom",
+			"Properties": {
+				"BorderSizePixel": 0,
+				"BackgroundColor3": [0, 0, 0],
+				"Size": {
+					"UDim2": [
+						[1, 0],
+						[0.2, 0]
+					]
+				},
+				"AnchorPoint": [0, 0],
+				"Position": {
+					"UDim2": [
+						[0, 0],
+						[1, 0]
+					]
+				}
+			}
+		}
+	]
 }

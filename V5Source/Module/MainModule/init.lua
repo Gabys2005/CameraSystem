@@ -19,6 +19,7 @@ return function(systemFolder)
 		Keybinds = "table",
 		BarsOffset = "table",
 		BeforeLoad = "function",
+		FreeAdmin = "string",
 	}
 	local DefaultSettings = {
 		GuiOwners = {},
@@ -33,11 +34,25 @@ return function(systemFolder)
 			Offset = 36,
 		},
 		BeforeLoad = function() end,
+		FreeAdmin = "None",
 	}
 
 	--// Functions
-	local function onPlayerAdded(plr: Player)
+	local function isOwner(plr: Player)
+		if Settings.FreeAdmin == "All" then
+			return true
+		end
+		if Settings.FreeAdmin == "Owners" and game.PrivateServerOwnerId == plr.UserId then
+			return true
+		end
 		if table.find(Settings.GuiOwners, plr.Name) then
+			return true
+		end
+		return false
+	end
+
+	local function onPlayerAdded(plr: Player)
+		if isOwner(plr) then
 			local guiClone = script.Guis.Controls:Clone()
 			guiClone.Name = "CameraSystemControls"
 			guiClone.Parent = plr.PlayerGui
@@ -70,13 +85,6 @@ return function(systemFolder)
 		for i, v in pairs(Settings.GuiOwners) do
 			assert(typeof(v) == "string", "[[ Camera System ]]: '" .. v .. "' isn't a string in 'GuiOwners' setting")
 		end
-	end
-
-	local function isOwner(plr: Player)
-		if table.find(Settings.GuiOwners, plr.Name) then
-			return true
-		end
-		return false
 	end
 
 	--===================== CODE =====================--

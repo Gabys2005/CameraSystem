@@ -206,6 +206,11 @@ if run:IsServer() then
 		data.Shared.CurrentCamera.Id = camId
 		data.Shared.CurrentCamera.Model = camerasByIds[camType][camId]
 		replicatedFolder.Events.ChangeCam:FireAllClients(camType, camId)
+		api.CameraChanged:Fire(camType, camId)
+	end
+
+	function api:GetCurrentCamera()
+		return data.Shared.CurrentCamera
 	end
 
 	function api:Focus(ins: BasePart | string | nil)
@@ -233,6 +238,7 @@ if run:IsServer() then
 			}
 			replicatedFolder.Events.ChangeFocus:FireAllClients(data.Shared.Focus)
 		end
+		api.FocusChanged:Fire(data.Shared.Focus)
 	end
 
 	function api:ChangeFov(fov: number, time: number?)
@@ -242,6 +248,11 @@ if run:IsServer() then
 			Time = time,
 		}
 		replicatedFolder.Events.ChangeFov:FireAllClients(data.Shared.Effects.Fov)
+		api.FovChanged:Fire(fov, time)
+	end
+
+	function api:GetFov()
+		return data.Shared.Effects.Fov
 	end
 
 	-- TODO find a replacement for repeated functions like this
@@ -262,6 +273,11 @@ if run:IsServer() then
 			Time = time,
 		}
 		replicatedFolder.Events.ChangeBlur:FireAllClients(data.Shared.Effects.Blur)
+		api.BlurChanged:Fire(blur, time)
+	end
+
+	function api:GetBlur()
+		return data.Shared.Effects.Blur
 	end
 
 	function api:ChangeSaturation(saturation: number, time: number?)
@@ -271,6 +287,11 @@ if run:IsServer() then
 			Time = time,
 		}
 		replicatedFolder.Events.ChangeSaturation:FireAllClients(data.Shared.Effects.Saturation)
+		api.SaturationChanged:Fire(saturation, time)
+	end
+
+	function api:GetSaturation()
+		return data.Shared.Effects.Saturation
 	end
 
 	function api:ChangeTilt(tilt: number, time: number?)
@@ -280,6 +301,11 @@ if run:IsServer() then
 			Time = time,
 		}
 		replicatedFolder.Events.ChangeTilt:FireAllClients(data.Shared.Effects.Tilt)
+		api.TiltChanged:Fire(tilt, time)
+	end
+
+	function api:GetTilt()
+		return data.Shared.Effects.Tilt
 	end
 
 	function api:ChangeBlackout(enabled: boolean)
@@ -288,6 +314,11 @@ if run:IsServer() then
 		end
 		data.Shared.Effects.Blackout = enabled
 		replicatedFolder.Events.ChangeBlackout:FireAllClients(enabled)
+		api.BlackoutChanged:Fire(enabled)
+	end
+
+	function api:GetBlackout()
+		return data.Shared.Effects.Blackout
 	end
 
 	function api:ChangeBarsEnabled(enabled: boolean)
@@ -296,6 +327,11 @@ if run:IsServer() then
 		end
 		data.Shared.Effects.BarsEnabled = enabled
 		replicatedFolder.Events.ChangeBarsEnabled:FireAllClients(enabled)
+		api.BarsEnabledChanged:Fire(enabled)
+	end
+
+	function api:GetBarsEnabled()
+		return data.Shared.Effects.BarsEnabled
 	end
 
 	function api:ChangeBarSize(size: number, time: number?)
@@ -305,22 +341,55 @@ if run:IsServer() then
 			Time = time,
 		}
 		replicatedFolder.Events.ChangeBarSize:FireAllClients(data.Shared.Settings.BarSize)
+		api.BarSizeChanged:Fire(size, time)
+	end
+
+	function api:GetBarSize()
+		return data.Shared.Settings.BarSize
 	end
 
 	function api:ChangeTransition(name: string)
 		data.Shared.Settings.Transition = name
 		replicatedFolder.Events.ChangeTransition:FireAllClients(name)
+		api.TransitionChanged:Fire(name)
+	end
+
+	function api:GetTransition()
+		return data.Shared.Settings.Transition
 	end
 
 	function api:ChangeTransitionSpeed(speed: number)
 		data.Shared.Settings.TransitionTimes.Multiplier = speed
 		replicatedFolder.Events.ChangeTransitionSpeed:FireAllClients(speed)
+		api.TransitionSpeedChanged:Fire(speed)
+	end
+
+	function api:GetTransitionSpeed()
+		return data.Shared.Settings.TransitionTimes.Multiplier
 	end
 
 	function api:ChangeShake(shake: number)
 		data.Shared.Effects.Shake = shake
 		replicatedFolder.Events.ChangeShake:FireAllClients(shake)
+		api.ShakeChanged:Fire(shake)
 	end
+
+	function api:GetShake()
+		return data.Shared.Effects.Shake
+	end
+
+	api.CameraChanged = signal.new()
+	api.FocusChanged = signal.new()
+	api.FovChanged = signal.new()
+	api.BlurChanged = signal.new()
+	api.SaturationChanged = signal.new()
+	api.TiltChanged = signal.new()
+	api.BlackoutChanged = signal.new()
+	api.BarsEnabledChanged = signal.new()
+	api.BarSizeChanged = signal.new()
+	api.TransitionChanged = signal.new()
+	api.TransitionSpeedChanged = signal.new()
+	api.ShakeChanged = signal.new()
 end
 
 --// Client only apis

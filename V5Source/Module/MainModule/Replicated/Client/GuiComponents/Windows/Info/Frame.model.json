@@ -2,7 +2,12 @@
 	"ClassName": "Frame",
 	"Properties": {
 		"BackgroundTransparency": 1,
-		"Size": [1, 0, 1, 0]
+		"Size": {
+			"UDim2": [
+				[1, 0],
+				[1, 0]
+			]
+		}
 	},
 	"Children": [
 		{
@@ -15,7 +20,12 @@
 			"Name": "Type",
 			"Properties": {
 				"BackgroundTransparency": 1,
-				"Size": [1, 0, 0.25, 0],
+				"Size": {
+					"UDim2": [
+						[1, 0],
+						[0.25, 0]
+					]
+				},
 				"Text": "Type: Default",
 				"TextSize": 18,
 				"Font": "Gotham",
@@ -27,8 +37,18 @@
 			"Name": "Namer",
 			"Properties": {
 				"BackgroundTransparency": 1,
-				"Size": [1, 0, 0.25, 0],
-				"Position": [0, 0, 0.25, 0],
+				"Size": {
+					"UDim2": [
+						[1, 0],
+						[0.25, 0]
+					]
+				},
+				"Position": {
+					"UDim2": [
+						[0, 0],
+						[0.25, 0]
+					]
+				},
 				"Text": "Name: Egg",
 				"TextSize": 18,
 				"Font": "Gotham",
@@ -40,8 +60,18 @@
 			"Name": "MoveProgress",
 			"Properties": {
 				"BackgroundTransparency": 1,
-				"Size": [1, 0, 0.25, 0],
-				"Position": [0, 0, 0.5, 0],
+				"Size": {
+					"UDim2": [
+						[1, 0],
+						[0.25, 0]
+					]
+				},
+				"Position": {
+					"UDim2": [
+						[0, 0],
+						[0.5, 0]
+					]
+				},
 				"Text": "Move Progress: 100%",
 				"TextSize": 18,
 				"Font": "Gotham",
@@ -53,8 +83,18 @@
 			"Name": "MoveProgressBar",
 			"Properties": {
 				"BorderSizePixel": 0,
-				"Size": [1, 0, 0.25, 0],
-				"Position": [0, 0, 0.75, 0],
+				"Size": {
+					"UDim2": [
+						[1, 0],
+						[0.25, 0]
+					]
+				},
+				"Position": {
+					"UDim2": [
+						[0, 0],
+						[0.75, 0]
+					]
+				},
 				"ClipsDescendants": true
 			},
 			"Children": [
@@ -64,12 +104,19 @@
 					"Properties": {
 						"BorderSizePixel": 0,
 						"BackgroundColor3": [0, 1, 0],
-						"Size": [1, 0, 1, 0],
-						"Position": [0, 0, 0, 0],
-						"AnchorPoint": {
-							"Type": "Vector2",
-							"Value": [1, 0]
-						}
+						"Size": {
+							"UDim2": [
+								[1, 0],
+								[1, 0]
+							]
+						},
+						"Position": {
+							"UDim2": [
+								[0, 0],
+								[0, 0]
+							]
+						},
+						"AnchorPoint": [1, 0]
 					}
 				}
 			]

@@ -15,23 +15,23 @@ local menuNames = {
 	{
 		Name = "Effects",
 		Width = 225,
-		Height = 220,
+		Height = 300,
 	},
 	{
 		Name = "Settings",
 		Width = 225,
-		Height = 160,
+		Height = 280,
 	},
 	{
 		Name = "FocusList",
 		Width = 225,
-		Height = 220,
+		Height = 100,
 	},
 	{
 		Name = "Info",
 		Title = "[Beta] Info",
 		Width = 225,
-		Height = 225,
+		Height = 150,
 	},
 }
 local window = require(replicated.Client.Scripts.NewWindow)

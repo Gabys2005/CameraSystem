@@ -10,7 +10,7 @@ local Value = Fusion.Value
 local New = Fusion.New
 local Children = Fusion.Children
 
-local visible = Value(false)
+local visible = Value(true)
 
 local topbarButton = Icon.new():setLabel("Cameras"):autoDeselect(false)
 TopbarMenu:AddIcon(topbarButton)
@@ -29,6 +29,8 @@ local window = Window {
 	[Children] = New "TextLabel" {
 		Text = "haiii",
 		Size = UDim2.fromScale(1, 1),
+		BackgroundTransparency = 1,
+		TextColor3 = Color3.fromRGB(255, 255, 255),
 	},
 	Visible = visible,
 	Parent = Gui,

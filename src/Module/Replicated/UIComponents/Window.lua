@@ -1,9 +1,11 @@
 local uis = game:GetService "UserInputService"
+local players = game:GetService "Players"
 
 local replicated = script.Parent.Parent
 local Fusion = require(replicated.Dependencies.Fusion)
 local Theme = require(replicated.Data.Theme):Get()
 local FusionTypes = require(replicated.Dependencies.Fusion.PubTypes)
+local DragFrames = require(script.Parent.DragFrames)
 
 local New = Fusion.New
 local Children = Fusion.Children
@@ -13,6 +15,8 @@ local OnEvent = Fusion.OnEvent
 local Computed = Fusion.Computed
 local Cleanup = Fusion.Cleanup
 
+local mouse = players.LocalPlayer:GetMouse()
+
 export type WindowProps = {
 	Parent: Instance,
 	Visible: FusionTypes.CanBeState<boolean>,
@@ -21,10 +25,12 @@ export type WindowProps = {
 }
 
 return function(props: WindowProps)
+	local resizing = nil
 	local isMinimised = Value(false)
 	local isHoveringOverX = Value(false)
 	local isHoveringOverMinimise = Value(false)
 	local windowPosition = Value(props.Position or UDim2.fromOffset(50, 50))
+	local size = Value(props.Size or UDim2.fromOffset(200, 200))
 
 	local xButtonTransparency = Spring(
 		Computed(function()
@@ -58,14 +64,17 @@ return function(props: WindowProps)
 		isMinimised:set(not isMinimised:get())
 	end
 
-	local size = props.Size or UDim2.fromOffset(200, 200)
+	local mainWindowSizeComputed = Computed(function()
+		return if isMinimised:get() then UDim2.fromOffset(size:get().X.Offset, 30) else size:get()
+	end)
 
-	local mainWindowSize = Spring(
-		Computed(function()
-			return if isMinimised:get() then UDim2.fromOffset(size.X.Offset, 30) else size
-		end),
-		15
-	)
+	local mainWindowSize = Spring(mainWindowSizeComputed, 15)
+
+	local contentSizeComputed = Computed(function()
+		return size:get() - UDim2.fromOffset(10, 35)
+	end)
+
+	local contentSize = Spring(contentSizeComputed, 15)
 
 	local dragging
 	local dragInput
@@ -73,10 +82,12 @@ return function(props: WindowProps)
 	local startPos
 
 	local function update(input)
-		local delta = input.Position - dragStart
-		windowPosition:set(
-			UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-		)
+		if resizing == nil then
+			local delta = input.Position - dragStart
+			windowPosition:set(
+				UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+			)
+		end
 	end
 
 	local function onInputBegan(input)
@@ -111,6 +122,113 @@ return function(props: WindowProps)
 		end
 	end)
 
+	-- Resizing
+
+	-- TODO: change
+	local ROBLOX_TOPBAR_SIZE = 36
+	local TOPBAR_SIZE = 30
+	local MINIMUM_HEIGHT = size:get().X.Offset
+	local MINIMUM_WIDTH = size:get().Y.Offset
+	local lastCursor = mouse.Icon
+	local function startResize(input: InputObject, side: string)
+		if input.UserInputType ~= Enum.UserInputType.MouseButton1 then
+			return
+		end
+		local draggingResize = true
+		resizing = true
+		local startingPosition = input.Position
+		local startingSize = size:get()
+		local mouseOffset = input.Position.X - windowPosition:get().X.Offset
+		-- local startingContentSize = gui.Content.Size
+		local startingFramePosition = windowPosition:get()
+		local stopDrag
+
+		stopDrag = input:GetPropertyChangedSignal("UserInputState"):Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				draggingResize = false
+				resizing = nil
+				mouse.Icon = lastCursor
+				stopDrag:Disconnect()
+			end
+		end)
+
+		while draggingResize do
+			if side == "right" then
+				local diff = uis:GetMouseLocation().X - startingPosition.X
+				size:set(UDim2.fromOffset(math.max(startingSize.X.Offset + diff, MINIMUM_WIDTH), startingSize.Y.Offset))
+			elseif side == "bottom" and not isMinimised:get() then
+				local diff = uis:GetMouseLocation().Y - startingPosition.Y
+				size:set(
+					UDim2.new(
+						0,
+						startingSize.X.Offset,
+						0,
+						math.max(startingSize.Y.Offset + diff - ROBLOX_TOPBAR_SIZE, MINIMUM_HEIGHT)
+					)
+				)
+			elseif side == "left" then
+				local diff = startingPosition.X - uis:GetMouseLocation().X
+				if startingSize.X.Offset + diff > MINIMUM_WIDTH then
+					size:set(
+						UDim2.fromOffset(math.max(startingSize.X.Offset + diff, MINIMUM_WIDTH), startingSize.Y.Offset)
+					)
+					windowPosition:set(
+						UDim2.fromOffset(uis:GetMouseLocation().X - mouseOffset, startingFramePosition.Y.Offset)
+					)
+				end
+			elseif side == "bottomleft" then
+				local Xdiff = startingPosition.X - uis:GetMouseLocation().X
+				local Ydiff = uis:GetMouseLocation().Y - startingPosition.Y
+				size:set(
+					UDim2.new(
+						0,
+						math.max(startingSize.X.Offset + Xdiff, MINIMUM_WIDTH),
+						0,
+						if isMinimised:get()
+							then startingSize.Y.Offset
+							else math.max(startingSize.Y.Offset + Ydiff - ROBLOX_TOPBAR_SIZE, MINIMUM_HEIGHT)
+					)
+				)
+				if startingSize.X.Offset + Xdiff > MINIMUM_WIDTH then
+					-- size:set(UDim2.fromOffset(math.max(startingSize.X.Offset + Xdiff, MINIMUM_WIDTH), TOPBAR_SIZE))
+					windowPosition:set(
+						UDim2.fromOffset(uis:GetMouseLocation().X - mouseOffset, startingFramePosition.Y.Offset)
+					)
+				end
+			elseif side == "bottomright" then
+				local Xdiff = uis:GetMouseLocation().X - startingPosition.X
+				local Ydiff = uis:GetMouseLocation().Y - startingPosition.Y
+				size:set(
+					UDim2.new(
+						0,
+						math.max(startingSize.X.Offset + Xdiff, MINIMUM_WIDTH),
+						0,
+						if isMinimised:get()
+							then startingSize.Y.Offset
+							else math.max(startingSize.Y.Offset + Ydiff - ROBLOX_TOPBAR_SIZE, MINIMUM_HEIGHT)
+					)
+				)
+				-- gui.Size = UDim2.fromOffset(math.max(startingSize.X.Offset + Xdiff, MINIMUM_WIDTH), TOPBAR_SIZE)
+			end
+			mainWindowSize:setPosition(mainWindowSizeComputed:get())
+			contentSize:setPosition(contentSizeComputed:get())
+			task.wait()
+		end
+	end
+
+	local function showIcon(iconString: string)
+		if not resizing then
+			lastCursor = mouse.Icon
+			mouse.Icon = iconString
+		end
+	end
+
+	local function hideIcon()
+		if not resizing then
+			mouse.Icon = ""
+		end
+	end
+
 	return New "Frame" {
 		Size = mainWindowSize,
 		BackgroundColor3 = Theme.General.BackgroundDark,
@@ -119,6 +237,11 @@ return function(props: WindowProps)
 
 		[Children] = {
 			New "UICorner" {},
+			DragFrames {
+				OnInput = startResize,
+				ShowIcon = showIcon,
+				HideIcon = hideIcon,
+			},
 
 			New "Frame" {
 				Name = "Topbar",
@@ -199,7 +322,7 @@ return function(props: WindowProps)
 
 			New "Frame" {
 				Name = "ContentContainer",
-				Size = size - UDim2.fromOffset(10, 35),
+				Size = contentSize,
 				Position = UDim2.fromOffset(5, 30),
 				BackgroundTransparency = 1,
 				ClipsDescendants = true,

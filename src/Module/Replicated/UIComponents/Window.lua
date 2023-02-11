@@ -1,6 +1,9 @@
+local uis = game:GetService "UserInputService"
+
 local replicated = script.Parent.Parent
 local Fusion = require(replicated.Dependencies.Fusion)
 local Theme = require(replicated.Data.Theme):Get()
+local FusionTypes = require(replicated.Dependencies.Fusion.PubTypes)
 
 local New = Fusion.New
 local Children = Fusion.Children
@@ -8,11 +11,20 @@ local Value = Fusion.Value
 local Spring = Fusion.Spring
 local OnEvent = Fusion.OnEvent
 local Computed = Fusion.Computed
+local Cleanup = Fusion.Cleanup
 
-return function(props) -- TODO: types
+export type WindowProps = {
+	Parent: Instance,
+	Visible: FusionTypes.CanBeState<boolean>,
+	Position: UDim2?,
+	Size: UDim2?,
+}
+
+return function(props: WindowProps)
 	local isMinimised = Value(false)
 	local isHoveringOverX = Value(false)
 	local isHoveringOverMinimise = Value(false)
+	local windowPosition = Value(props.Position or UDim2.fromOffset(50, 50))
 
 	local xButtonTransparency = Spring(
 		Computed(function()
@@ -55,10 +67,55 @@ return function(props) -- TODO: types
 		15
 	)
 
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+
+	local function update(input)
+		local delta = input.Position - dragStart
+		windowPosition:set(
+			UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		)
+	end
+
+	local function onInputBegan(input)
+		if
+			input.UserInputType == Enum.UserInputType.MouseButton1
+			or input.UserInputType == Enum.UserInputType.Touch
+		then
+			dragging = true
+			dragStart = input.Position
+			startPos = windowPosition:get()
+
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end
+
+	local function onInputChanged(input)
+		if
+			input.UserInputType == Enum.UserInputType.MouseMovement
+			or input.UserInputType == Enum.UserInputType.Touch
+		then
+			dragInput = input
+		end
+	end
+
+	local uisConnection = uis.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+
 	return New "Frame" {
 		Size = mainWindowSize,
 		BackgroundColor3 = Theme.General.BackgroundDark,
-		Position = UDim2.fromOffset(50, 50),
+		Position = windowPosition,
+		Visible = props.Visible,
 
 		[Children] = {
 			New "UICorner" {},
@@ -82,6 +139,8 @@ return function(props) -- TODO: types
 							PaddingRight = UDim.new(0, 5),
 							PaddingTop = UDim.new(0, 5),
 						},
+						[OnEvent "InputBegan"] = onInputBegan,
+						[OnEvent "InputChanged"] = onInputChanged,
 					},
 					New "TextButton" {
 						Name = "CloseButton",
@@ -158,6 +217,7 @@ return function(props) -- TODO: types
 				},
 			},
 		},
+		[Cleanup] = uisConnection,
 		Parent = props.Parent,
 	}
 end

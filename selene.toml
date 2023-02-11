@@ -1,4 +1,5 @@
 std = "roblox"
+exclude = ["src/Module/Replicated/Dependencies/*"]
 
 [rules]
 unused_variable = "allow"

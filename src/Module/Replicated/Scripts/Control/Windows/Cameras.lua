@@ -30,6 +30,7 @@ local window = Window {
 		Text = "haiii",
 		Size = UDim2.fromScale(1, 1),
 	},
+	Visible = visible,
 	Parent = Gui,
 }
 

@@ -1,6 +1,7 @@
 {
 	"className": "ScreenGui",
 	"properties": {
-		"ResetOnSpawn": false
+		"ResetOnSpawn": false,
+		"IgnoreGuiInset": true
 	}
 }

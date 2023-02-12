@@ -1,3 +1,3 @@
-local replicated = game:GetService("ReplicatedStorage"):WaitForChild("CameraSystem")
+local replicated = game:GetService("ReplicatedStorage"):WaitForChild "CameraSystem"
 
-require(replicated.Scripts.Init)(script.Parent)
+require(replicated.Scripts.Initialise)(script.Parent)

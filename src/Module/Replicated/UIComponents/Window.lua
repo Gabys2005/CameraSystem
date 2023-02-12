@@ -3,7 +3,7 @@ local players = game:GetService "Players"
 
 local replicated = script.Parent.Parent
 local Fusion = require(replicated.Dependencies.Fusion)
-local Theme = require(replicated.Data.Theme):Get()
+local Theme = require(replicated.Data.Themes):Get()
 local FusionTypes = require(replicated.Dependencies.Fusion.PubTypes)
 local DragFrames = require(script.Parent.DragFrames)
 
@@ -20,6 +20,7 @@ local mouse = players.LocalPlayer:GetMouse()
 export type WindowProps = {
 	Parent: Instance,
 	Visible: FusionTypes.CanBeState<boolean>,
+	Title: FusionTypes.CanBeState<string>,
 	Position: UDim2?,
 	Size: UDim2?,
 	OnClose: () -> any,
@@ -127,7 +128,6 @@ return function(props: WindowProps)
 
 	-- TODO: change
 	local ROBLOX_TOPBAR_SIZE = 36
-	local TOPBAR_SIZE = 30
 	local MINIMUM_HEIGHT = size:get().X.Offset
 	local MINIMUM_WIDTH = size:get().Y.Offset
 	local lastCursor = mouse.Icon
@@ -140,7 +140,6 @@ return function(props: WindowProps)
 		local startingPosition = input.Position
 		local startingSize = size:get()
 		local mouseOffset = input.Position.X - windowPosition:get().X.Offset
-		-- local startingContentSize = gui.Content.Size
 		local startingFramePosition = windowPosition:get()
 		local stopDrag
 
@@ -191,7 +190,6 @@ return function(props: WindowProps)
 					)
 				)
 				if startingSize.X.Offset + Xdiff > MINIMUM_WIDTH then
-					-- size:set(UDim2.fromOffset(math.max(startingSize.X.Offset + Xdiff, MINIMUM_WIDTH), TOPBAR_SIZE))
 					windowPosition:set(
 						UDim2.fromOffset(uis:GetMouseLocation().X - mouseOffset, startingFramePosition.Y.Offset)
 					)
@@ -209,7 +207,6 @@ return function(props: WindowProps)
 							else math.max(startingSize.Y.Offset + Ydiff - ROBLOX_TOPBAR_SIZE, MINIMUM_HEIGHT)
 					)
 				)
-				-- gui.Size = UDim2.fromOffset(math.max(startingSize.X.Offset + Xdiff, MINIMUM_WIDTH), TOPBAR_SIZE)
 			end
 			mainWindowSize:setPosition(mainWindowSizeComputed:get())
 			contentSize:setPosition(contentSizeComputed:get())
@@ -252,7 +249,7 @@ return function(props: WindowProps)
 					New "TextLabel" {
 						Name = "WindowName",
 						Size = UDim2.new(1, -55, 1, 0),
-						Text = props.Name or "Window",
+						Text = props.Title,
 						TextXAlignment = Enum.TextXAlignment.Left,
 						Font = Enum.Font.Gotham,
 						BackgroundTransparency = 1,

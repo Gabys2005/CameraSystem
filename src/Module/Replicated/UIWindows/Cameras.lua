@@ -1,5 +1,5 @@
 local CamerasWindow = {}
-local replicated = script.Parent.Parent.Parent.Parent
+local replicated = script.Parent.Parent
 local TopbarMenu = require(replicated.Scripts.Control.TopbarMenu)
 local Icon = require(replicated.Dependencies.TopbarPlus)
 local Fusion = require(replicated.Dependencies.Fusion)
@@ -23,8 +23,6 @@ topbarButton.deselected:Connect(function()
 	visible:set(false)
 end)
 
-print("GUI: ", Gui)
-
 local window = Window {
 	[Children] = New "TextLabel" {
 		Text = "haiii",
@@ -34,6 +32,7 @@ local window = Window {
 	},
 	Visible = visible,
 	Parent = Gui,
+	Title = "Cameras",
 	OnClose = function()
 		topbarButton:deselect()
 	end,

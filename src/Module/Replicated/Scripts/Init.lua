@@ -12,7 +12,7 @@ return function(gui: ScreenGui)
 
 	require(script.Parent.Main.WatchButton)
 
-	if IsAdmin(game.Players.LocalPlayer.Name) then
+	if IsAdmin(game.Players.LocalPlayer) then
 		require(script.Parent.Control.TopbarMenu)
 		require(script.Parent.Control.Windows.Cameras)
 	end

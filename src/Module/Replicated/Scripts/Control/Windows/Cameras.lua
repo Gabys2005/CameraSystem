@@ -34,6 +34,9 @@ local window = Window {
 	},
 	Visible = visible,
 	Parent = Gui,
+	OnClose = function()
+		topbarButton:deselect()
+	end,
 }
 
 return CamerasWindow

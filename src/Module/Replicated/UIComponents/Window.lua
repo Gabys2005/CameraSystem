@@ -22,6 +22,7 @@ export type WindowProps = {
 	Visible: FusionTypes.CanBeState<boolean>,
 	Position: UDim2?,
 	Size: UDim2?,
+	OnClose: () -> any,
 }
 
 return function(props: WindowProps)
@@ -285,6 +286,7 @@ return function(props: WindowProps)
 						[OnEvent "MouseLeave"] = function()
 							isHoveringOverX:set(false)
 						end,
+						[OnEvent "Activated"] = props.OnClose,
 					},
 					New "TextButton" {
 						Name = "MinimiseButton",

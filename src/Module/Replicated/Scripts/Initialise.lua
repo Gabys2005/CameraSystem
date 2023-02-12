@@ -21,5 +21,6 @@ return function(gui: ScreenGui)
 	if IsAdmin(game.Players.LocalPlayer) then
 		require(script.Parent.Control.TopbarMenu)
 		require(script.Parent.Parent.UIWindows.Cameras)
+		require(script.Parent.Parent.UIWindows.Settings)
 	end
 end

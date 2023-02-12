@@ -1,5 +1,5 @@
-local Window = require(script.Parent.Window)
-local replicated = script.Parent.Parent
+local Window = require(script.Parent.Parent.Window)
+local replicated = script.Parent.Parent.Parent
 local Fusion = require(replicated.Dependencies.Fusion)
 
 local Children = Fusion.Children
@@ -14,6 +14,7 @@ return function(target)
 
 	local window = Window {
 		Parent = target,
+		Title = "Window",
 		[Children] = New "TextLabel" {
 			Size = UDim2.fromOffset(50, 50),
 			Position = UDim2.fromScale(0.5, 0.5),

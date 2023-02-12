@@ -1,4 +1,9 @@
 local Themes = {}
+local replicated = script.Parent.Parent
+local Fusion = require(replicated.Dependencies.Fusion)
+
+local Value = Fusion.Value
+local Spring = Fusion.Spring
 
 Themes._current = {
 	Data = {
@@ -23,8 +28,28 @@ Themes._themes = {
 	Default = Themes._current.Data,
 }
 
+Themes._fusionValues = {
+	General = {
+		BackgroundDark = Value(Themes._current.Data.General.BackgroundDark),
+		Background = Value(Themes._current.Data.General.Background),
+	},
+	Button = {
+		Primary = Value(Themes._current.Data.Button.Primary),
+		Error = Value(Themes._current.Data.Button.Error),
+		Text = Value(Themes._current.Data.Button.Text),
+		Font = Value(Themes._current.Data.Button.Font),
+	},
+	Label = {
+		Text = Value(Themes._current.Data.Label.Text),
+	},
+}
+
 function Themes:Get()
 	return Themes._current.Data
+end
+
+function Themes:GetFusion()
+	return Themes._fusionValues
 end
 
 function Themes:GetName()
@@ -36,9 +61,18 @@ function Themes:Add(name, data)
 end
 
 function Themes:SetCurrent(name)
-	Themes._current = { Data = Themes._themes[name], Name = name }
+	local data = Themes._themes[name]
+	Themes._current = { Data = data, Name = name }
+	-- TODO: clean this up
+	for name, value in data.General do
+		Themes._fusionValues.General[name]:set(value)
+	end
+	for name, value in data.Button do
+		Themes._fusionValues.Button[name]:set(value)
+	end
+	for name, value in data.Label do
+		Themes._fusionValues.Label[name]:set(value)
+	end
 end
-
---TODO: fusion
 
 return Themes

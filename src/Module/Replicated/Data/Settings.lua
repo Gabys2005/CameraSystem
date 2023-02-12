@@ -12,6 +12,7 @@ local defaultSettings: Settings = {
 	Theme = "Default",
 }
 
+-- selene: allow(incorrect_standard_library_use)
 Settings._settings = table.clone(defaultSettings)
 
 function Settings:Get(setting: string)

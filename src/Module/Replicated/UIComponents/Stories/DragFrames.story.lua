@@ -1,5 +1,5 @@
-local DragFrames = require(script.Parent.DragFrames)
-local replicated = script.Parent.Parent
+local DragFrames = require(script.Parent.Parent.DragFrames)
+local replicated = script.Parent.Parent.Parent
 local Fusion = require(replicated.Dependencies.Fusion)
 
 local New = Fusion.New

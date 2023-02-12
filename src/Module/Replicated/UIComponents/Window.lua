@@ -1,9 +1,10 @@
-local uis = game:GetService "UserInputService"
-local players = game:GetService "Players"
+local uis = game:GetService("UserInputService")
+local players = game:GetService("Players")
 
 local replicated = script.Parent.Parent
+local playerGui = players.LocalPlayer.PlayerGui
 local Fusion = require(replicated.Dependencies.Fusion)
-local Theme = require(replicated.Data.Themes):Get()
+local Theme = require(replicated.Data.Themes):GetFusion()
 local FusionTypes = require(replicated.Dependencies.Fusion.PubTypes)
 local DragFrames = require(script.Parent.DragFrames)
 
@@ -14,6 +15,7 @@ local Spring = Fusion.Spring
 local OnEvent = Fusion.OnEvent
 local Computed = Fusion.Computed
 local Cleanup = Fusion.Cleanup
+local Ref = Fusion.Ref
 
 local mouse = players.LocalPlayer:GetMouse()
 
@@ -26,6 +28,14 @@ export type WindowProps = {
 	OnClose: () -> any,
 }
 
+local function findFirstWindow(instances)
+	for _, ins in instances do
+		if ins.Name == "CameraSystemWindow" then
+			return ins
+		end
+	end
+end
+
 return function(props: WindowProps)
 	local resizing = nil
 	local isMinimised = Value(false)
@@ -33,6 +43,7 @@ return function(props: WindowProps)
 	local isHoveringOverMinimise = Value(false)
 	local windowPosition = Value(props.Position or UDim2.fromOffset(50, 50))
 	local size = Value(props.Size or UDim2.fromOffset(200, 200))
+	local thisWindow = Value()
 
 	local xButtonTransparency = Spring(
 		Computed(function()
@@ -92,7 +103,14 @@ return function(props: WindowProps)
 		end
 	end
 
-	local function onInputBegan(input)
+	local function onInputBegan(input, processed)
+		if processed then
+			return
+		end
+		local guisAtThisPosition = playerGui:GetGuiObjectsAtPosition(input.Position.X, input.Position.Y)
+		if findFirstWindow(guisAtThisPosition) ~= thisWindow:get() then
+			return
+		end
 		if
 			input.UserInputType == Enum.UserInputType.MouseButton1
 			or input.UserInputType == Enum.UserInputType.Touch
@@ -109,7 +127,10 @@ return function(props: WindowProps)
 		end
 	end
 
-	local function onInputChanged(input)
+	local function onInputChanged(input, processed)
+		if processed then
+			return
+		end
 		if
 			input.UserInputType == Enum.UserInputType.MouseMovement
 			or input.UserInputType == Enum.UserInputType.Touch
@@ -227,26 +248,28 @@ return function(props: WindowProps)
 		end
 	end
 
-	return New "Frame" {
+	return New("Frame") {
 		Size = mainWindowSize,
 		BackgroundColor3 = Theme.General.BackgroundDark,
 		Position = windowPosition,
 		Visible = props.Visible,
+		Name = "CameraSystemWindow", -- TODO: custom names
+		[Ref] = thisWindow,
 
 		[Children] = {
-			New "UICorner" {},
+			New("UICorner") {},
 			DragFrames {
 				OnInput = startResize,
 				ShowIcon = showIcon,
 				HideIcon = hideIcon,
 			},
 
-			New "Frame" {
+			New("Frame") {
 				Name = "Topbar",
 				BackgroundTransparency = 1,
 				Size = UDim2.new(1, 0, 0, 30),
 				[Children] = {
-					New "TextLabel" {
+					New("TextLabel") {
 						Name = "WindowName",
 						Size = UDim2.new(1, -55, 1, 0),
 						Text = props.Title,
@@ -254,16 +277,16 @@ return function(props: WindowProps)
 						Font = Enum.Font.Gotham,
 						BackgroundTransparency = 1,
 						TextColor3 = Theme.Label.Text,
-						[Children] = New "UIPadding" {
+						[Children] = New("UIPadding") {
 							PaddingBottom = UDim.new(0, 5),
 							PaddingLeft = UDim.new(0, 15),
 							PaddingRight = UDim.new(0, 5),
 							PaddingTop = UDim.new(0, 5),
 						},
-						[OnEvent "InputBegan"] = onInputBegan,
-						[OnEvent "InputChanged"] = onInputChanged,
+						[OnEvent("InputBegan")] = onInputBegan,
+						[OnEvent("InputChanged")] = onInputChanged,
 					},
-					New "TextButton" {
+					New("TextButton") {
 						Name = "CloseButton",
 						Text = "X",
 						Font = Enum.Font.GothamBlack,
@@ -272,20 +295,20 @@ return function(props: WindowProps)
 						Size = UDim2.fromOffset(20, 20),
 						AnchorPoint = Vector2.new(1, 0.5),
 						Position = UDim2.new(1, -5, 0.5, 0),
-						[Children] = New "UICorner" {
+						[Children] = New("UICorner") {
 							CornerRadius = UDim.new(0, 5),
 						},
 						BackgroundTransparency = xButtonTransparency,
 						BackgroundColor3 = Theme.Button.Error,
-						[OnEvent "MouseEnter"] = function()
+						[OnEvent("MouseEnter")] = function()
 							isHoveringOverX:set(true)
 						end,
-						[OnEvent "MouseLeave"] = function()
+						[OnEvent("MouseLeave")] = function()
 							isHoveringOverX:set(false)
 						end,
-						[OnEvent "Activated"] = props.OnClose,
+						[OnEvent("Activated")] = props.OnClose,
 					},
-					New "TextButton" {
+					New("TextButton") {
 						Name = "MinimiseButton",
 						Size = UDim2.fromOffset(20, 20),
 						AnchorPoint = Vector2.new(1, 0.5),
@@ -293,10 +316,10 @@ return function(props: WindowProps)
 						BackgroundColor3 = Theme.Button.Primary,
 						BackgroundTransparency = minimiseButtonTransparency,
 						[Children] = {
-							New "UICorner" {
+							New("UICorner") {
 								CornerRadius = UDim.new(0, 5),
 							},
-							New "ImageButton" {
+							New("ImageButton") {
 								BackgroundTransparency = 1,
 								AnchorPoint = Vector2.new(0.5, 0.5),
 								Position = UDim2.fromScale(0.5, 0.5),
@@ -305,34 +328,40 @@ return function(props: WindowProps)
 								Rotation = minimiseButtonRotation,
 								Size = UDim2.fromScale(0.6, 0.6),
 								ImageColor3 = Theme.Button.Text,
-								[OnEvent "Activated"] = changeMinimise,
+								[OnEvent("Activated")] = changeMinimise,
 							},
 						},
-						[OnEvent "Activated"] = changeMinimise,
-						[OnEvent "MouseEnter"] = function()
+						[OnEvent("Activated")] = changeMinimise,
+						[OnEvent("MouseEnter")] = function()
 							isHoveringOverMinimise:set(true)
 						end,
-						[OnEvent "MouseLeave"] = function()
+						[OnEvent("MouseLeave")] = function()
 							isHoveringOverMinimise:set(false)
 						end,
 					},
 				},
 			},
 
-			New "Frame" {
+			New("Frame") {
 				Name = "ContentContainer",
 				Size = contentSize,
 				Position = UDim2.fromOffset(5, 30),
 				BackgroundTransparency = 1,
 				ClipsDescendants = true,
-				[Children] = New "Frame" {
+				[Children] = New("Frame") {
 					Name = "Content",
 					Size = UDim2.fromScale(1, 1),
 					Position = contentPositionSpring,
 					BackgroundColor3 = Theme.General.Background,
 					[Children] = {
-						New "UICorner" {
+						New("UICorner") {
 							CornerRadius = UDim.new(0, 5),
+						},
+						New("UIPadding") {
+							PaddingTop = UDim.new(0, 5),
+							PaddingBottom = UDim.new(0, 5),
+							PaddingRight = UDim.new(0, 5),
+							PaddingLeft = UDim.new(0, 5),
 						},
 						props[Children],
 					},

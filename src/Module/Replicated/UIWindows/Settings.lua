@@ -7,13 +7,12 @@ local Fusion = require(replicated.Dependencies.Fusion)
 local Gui = require(replicated.Data.Gui):Get()
 local Window = require(replicated.UIComponents.Window)
 local CategorySwitcher = require(replicated.UIComponents.CategorySwitcher)
-local Button = require(replicated.UIComponents.Button)
 local Theme = require(replicated.Data.Themes)
+local Dropdown = require(replicated.UIComponents.Dropdown)
 
 local New = Fusion.New
 local Value = Fusion.Value
 local Children = Fusion.Children
-local ForValues = Fusion.ForValues
 
 local visible = Value(true)
 
@@ -41,17 +40,16 @@ local window = Window {
 					BackgroundTransparency = 1,
 					Size = UDim2.fromScale(1, 1),
 					[Children] = {
-						New("UIGridLayout") {
-							CellSize = UDim2.fromOffset(150, 30),
+						Dropdown {
+							Items = { "Default", "Light" },
+							SelectionChanged = function(id)
+								if id == 1 then
+									Theme:SetCurrent("Default")
+								else
+									Theme:SetCurrent("Light")
+								end
+							end,
 						},
-						ForValues({ "Light", "Default" }, function(theme)
-							return Button {
-								Text = theme,
-								OnClick = function()
-									Theme:SetCurrent(theme)
-								end,
-							}
-						end, Fusion.cleanup),
 					},
 				},
 			},

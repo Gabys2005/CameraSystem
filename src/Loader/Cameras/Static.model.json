@@ -1,0 +1,17 @@
+{
+	"ClassName": "Folder",
+	"Children": [
+		{
+			"Name": "Test1",
+			"ClassName": "Part",
+			"Properties": {
+				"TopSurface": "Smooth",
+				"BottomSurface": "Smooth",
+				"FrontSurface": "Hinge",
+				"Color": [0, 0, 1],
+				"Size": [2, 2, 2],
+				"Position": [0, 2, 5]
+			}
+		}
+	]
+}

@@ -4,9 +4,9 @@ local TopbarMenu = require(replicated.Scripts.Control.TopbarMenu)
 local Icon = require(replicated.Dependencies.TopbarPlus)
 local Fusion = require(replicated.Dependencies.Fusion)
 local Gui = require(replicated.Data.Gui):Get()
+local Guis = require(replicated.Data.Guis):GetCameraSectionsFusion()
 local Window = require(replicated.UIComponents.Window)
-local Button = require(replicated.UIComponents.Button)
-local Theme = require(replicated.Data.Themes)
+local CategorySwitcher = require(replicated.UIComponents.CategorySwitcher)
 
 local Value = Fusion.Value
 local New = Fusion.New
@@ -28,18 +28,8 @@ end)
 local isLight = false
 
 local window = Window {
-	[Children] = Button {
-		Text = "Change",
-		Position = UDim2.fromScale(0.5, 0.5),
-		AnchorPoint = Vector2.new(0.5, 0.5),
-		OnClick = function()
-			if isLight then
-				Theme:SetCurrent("Default")
-			else
-				Theme:SetCurrent("Light")
-			end
-			isLight = not isLight
-		end,
+	[Children] = CategorySwitcher {
+		Content = Guis,
 	},
 	Visible = visible,
 	Parent = Gui,

@@ -2,7 +2,7 @@ local uis = game:GetService("UserInputService")
 local players = game:GetService("Players")
 
 local replicated = script.Parent.Parent
-local playerGui = players.LocalPlayer.PlayerGui
+local playerGui = players.LocalPlayer:FindFirstChild("PlayerGui") or game:GetService("StarterGui")
 local Fusion = require(replicated.Dependencies.Fusion)
 local Theme = require(replicated.Data.Themes):GetFusion()
 local FusionTypes = require(replicated.Dependencies.Fusion.PubTypes)
@@ -274,7 +274,7 @@ return function(props: WindowProps)
 						Size = UDim2.new(1, -55, 1, 0),
 						Text = props.Title,
 						TextXAlignment = Enum.TextXAlignment.Left,
-						Font = Enum.Font.Gotham,
+						FontFace = Theme.Label.Font,
 						BackgroundTransparency = 1,
 						TextColor3 = Theme.Label.Text,
 						[Children] = New("UIPadding") {
@@ -289,7 +289,9 @@ return function(props: WindowProps)
 					New("TextButton") {
 						Name = "CloseButton",
 						Text = "X",
-						Font = Enum.Font.GothamBlack,
+						FontFace = Computed(function()
+							return Font.new(Theme.Button.Font:get().Family, Enum.FontWeight.ExtraBold)
+						end),
 						TextSize = 12,
 						TextColor3 = Theme.Button.Text,
 						Size = UDim2.fromOffset(20, 20),

@@ -11,6 +11,7 @@ local Computed = Fusion.Computed
 
 export type DropdownProps = {
 	Items: { string },
+	Size: UDim2?,
 	SelectionChanged: (number) -> any,
 }
 
@@ -21,16 +22,16 @@ return function(props: DropdownProps)
 	local selectedItemIndex = Value(1)
 
 	return New("Frame") {
-		Size = UDim2.fromOffset(200, 30), -- TODO: customise size
+		Size = props.Size or UDim2.fromOffset(200, 30),
 		BackgroundTransparency = 1,
 
 		[Children] = {
 			New("TextButton") {
 				Name = "Current",
 				Size = UDim2.fromScale(1, 1),
-				BackgroundColor3 = Theme.General.BackgroundDark,
+				BackgroundColor3 = Theme.Dropdown.Background,
 				TextColor3 = Theme.Button.Text,
-				Font = Theme.Button.Font,
+				FontFace = Theme.Button.Font,
 				AutoButtonColor = true,
 				Text = Computed(function()
 					return props.Items[selectedItemIndex:get()]
@@ -57,7 +58,7 @@ return function(props: DropdownProps)
 							Position = UDim2.fromOffset(0, itemHeight * (i - 1)),
 							BackgroundColor3 = Theme.Button.Primary,
 							TextColor3 = Theme.Button.Text,
-							Font = Theme.Button.Font,
+							FontFace = Theme.Button.Font,
 							Text = itemName,
 							AutoButtonColor = true,
 							[OnEvent("Activated")] = function()

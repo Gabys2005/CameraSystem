@@ -22,7 +22,7 @@ return function(props: ButtonProps)
 		Text = props.Text,
 		BackgroundColor3 = Theme.Button.Primary,
 		TextColor3 = Theme.Button.Text,
-		Font = Theme.Button.Font,
+		FontFace = Theme.Button.Font,
 		AutoButtonColor = true,
 		TextScaled = props.TextScaled,
 		TextSize = props.TextSize,

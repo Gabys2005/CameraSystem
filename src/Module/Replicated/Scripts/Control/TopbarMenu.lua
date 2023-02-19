@@ -12,6 +12,4 @@ function TopbarMenu:AddIcon(icon)
 	TopbarMenu.Menu:setMenu(TopbarMenu._Icons)
 end
 
--- TODO: remove icon
-
 return TopbarMenu

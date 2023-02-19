@@ -16,7 +16,6 @@ function Cameras:AddCamera(camType: string, customData: any)
 	local id = http:GenerateGUID(false)
 	Cameras._types[camType].Cameras[id] = customData
 	Cameras._byId[id] = { Type = camType, Data = customData }
-	print(Cameras._types)
 end
 
 function Cameras:GetCameras(camType: string)
@@ -25,9 +24,7 @@ end
 
 function Cameras:SetCurrent(id)
 	local cam = Cameras._byId[id]
-	print(cam)
 	Cameras._current = cam
-	print(`Switched cameras`)
 end
 
 function Cameras:GetCurrent()

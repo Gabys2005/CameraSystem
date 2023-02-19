@@ -3,7 +3,7 @@ local GuisApi = {
 	Utils = {},
 }
 local replicated = script.Parent.Parent
-local GuisData = require(replicated.Data.Guis)
+local GuisData = require(replicated.Data.ControlGuis)
 local Fusion = require(replicated.Dependencies.Fusion)
 local Button = require(replicated.UIComponents.Button)
 
@@ -16,8 +16,7 @@ function GuisApi.Cameras:AddSection(name: string, content: any)
 end
 
 function GuisApi.Utils.GenerateCameraGrid(camType: string)
-	local names = replicated.Functions.GetNames:InvokeServer(camType)
-	print(names)
+	local names = replicated.Functions.GetAllCameras:InvokeServer(camType)
 	return New("Frame") {
 		BackgroundTransparency = 1,
 		[Children] = {
@@ -25,11 +24,11 @@ function GuisApi.Utils.GenerateCameraGrid(camType: string)
 				CellSize = UDim2.fromOffset(100, 30),
 			},
 
-			ForValues(names, function(name)
+			ForValues(names, function(data)
 				return Button {
-					Text = name.Name,
+					Text = data.Data.Name,
 					OnClick = function()
-						replicated.Functions.ChangeCamera:FireServer(name.ID)
+						replicated.Functions.ChangeCamera:FireServer(data.ID)
 					end,
 				}
 			end, Fusion.cleanup),

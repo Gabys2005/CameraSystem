@@ -23,6 +23,8 @@ topbarButton.toggled:Connect(function(isToggled)
 	visible:set(isToggled)
 end)
 
+local temp_themes = { "Dark", "Light", "Test" }
+
 local window = Window {
 	Visible = visible,
 	Parent = Gui,
@@ -41,14 +43,11 @@ local window = Window {
 					Size = UDim2.fromScale(1, 1),
 					[Children] = {
 						Dropdown {
-							Items = { "Default", "Light" },
-							SelectionChanged = function(id)
-								if id == 1 then
-									Theme:SetCurrent("Default")
-								else
-									Theme:SetCurrent("Light")
-								end
+							Items = temp_themes,
+							SelectionChanged = function(i)
+								Theme:SetCurrent(temp_themes[i])
 							end,
+							Size = UDim2.new(1, 0, 0, 30),
 						},
 					},
 				},

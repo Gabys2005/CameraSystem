@@ -7,9 +7,9 @@ return function(Settings, Folder)
 	local replicated = script.Replicated
 	local apiScript = script.Api
 	local api = require(apiScript)
-	local systemFolder = require(replicated.Data.SystemFolder)
-
-	systemFolder:Set(Folder)
+	local isAdmin = require(replicated.Scripts.Utils.IsAdmin)
+	local apiData = require(replicated.Data.Api)
+	local SettingsData = require(replicated.Data.Settings)
 
 	local function onPlayerAdded(plr: Player)
 		mainGui:Clone().Parent = plr.PlayerGui
@@ -20,7 +20,9 @@ return function(Settings, Folder)
 	replicated.Parent = replicatedStorage
 	apiScript.Parent = Folder
 
-	api:_SetApis(replicated)
+	api:_SetApis(replicated, Folder)
+	apiData:Set(apiScript)
+	SettingsData:SetAll(Settings)
 
 	for _, themeModule in Folder.Themes:GetChildren() do
 		local themeData = require(themeModule)
@@ -33,18 +35,19 @@ return function(Settings, Folder)
 			Settings = Settings,
 			Themes = { All = api.Themes:GetAll(), Current = api.Themes:GetCurrentName() },
 			Folder = Folder,
+			Api = apiScript,
 		}
 	end
 
-	replicated.Functions.GetNames.OnServerInvoke = function(plr, camType)
-		print(camType)
-		local cams = api.Cameras.GetTypeByName(camType):GetCameras()
-		local toReturn = {}
-		for id, data in cams do
-			table.insert(toReturn, { ID = id, Name = data.Name })
+	replicated.Functions.GetAllCameras.OnServerInvoke = function(plr, camType)
+		if isAdmin(plr) then
+			local cams = api.Cameras.GetTypeByName(camType):GetCameras()
+			local toReturn = {}
+			for id, data in cams do
+				table.insert(toReturn, { ID = id, Data = data })
+			end
+			return toReturn
 		end
-		print(cams)
-		return toReturn
 	end
 
 	replicated.Functions.ChangeCamera.OnServerEvent:Connect(function(player, id)
@@ -52,7 +55,7 @@ return function(Settings, Folder)
 		api.Cameras:Change(id)
 	end)
 
-	require(replicated.Scripts.DefaultCameraTypes.Static)
+	require(replicated.Scripts.Main.DefaultCameraTypes.Static)
 
 	for _, plr: Player in players:GetPlayers() do
 		onPlayerAdded(plr)

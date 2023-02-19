@@ -3,7 +3,7 @@
 local Settings: Settings = {
 	Admins = { "gabys2005" },
 	FreeAdmin = "Disabled",
-	Theme = "Default",
+	Theme = "Dark",
 }
 
 -- Type definitions for better auto completion, don't touch

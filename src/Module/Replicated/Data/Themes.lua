@@ -3,7 +3,18 @@ local replicated = script.Parent.Parent
 local Fusion = require(replicated.Dependencies.Fusion)
 
 local Value = Fusion.Value
-local Spring = Fusion.Spring
+
+local function deepCopy(t)
+	local returnedTable = {}
+	for i, v in t do
+		if typeof(v) == "table" then
+			returnedTable[i] = deepCopy(v)
+		else
+			returnedTable[i] = Value(v)
+		end
+	end
+	return returnedTable
+end
 
 Themes._current = {
 	Data = {
@@ -15,34 +26,28 @@ Themes._current = {
 			Primary = Color3.fromRGB(94, 94, 94),
 			Error = Color3.fromRGB(161, 0, 0),
 			Text = Color3.fromRGB(255, 255, 255),
-			Font = Enum.Font.Gotham,
+			Font = Font.fromName("GothamSSm"),
 		},
 		Label = {
 			Text = Color3.fromRGB(255, 255, 255),
+			Font = Font.fromName("GothamSSm"),
+		},
+		CategorySwitcher = {
+			Background = Color3.fromRGB(27, 27, 27),
+			ScrollBarColor = Color3.fromRGB(255, 255, 255),
+		},
+		Dropdown = {
+			Background = Color3.fromRGB(27, 27, 27),
 		},
 	},
-	Name = "Default",
+	Name = "Dark",
 }
 
 Themes._themes = {
-	Default = Themes._current.Data,
+	Dark = Themes._current.Data,
 }
 
-Themes._fusionValues = {
-	General = {
-		BackgroundDark = Value(Themes._current.Data.General.BackgroundDark),
-		Background = Value(Themes._current.Data.General.Background),
-	},
-	Button = {
-		Primary = Value(Themes._current.Data.Button.Primary),
-		Error = Value(Themes._current.Data.Button.Error),
-		Text = Value(Themes._current.Data.Button.Text),
-		Font = Value(Themes._current.Data.Button.Font),
-	},
-	Label = {
-		Text = Value(Themes._current.Data.Label.Text),
-	},
-}
+Themes._fusionValues = deepCopy(Themes._current.Data)
 
 function Themes:Get()
 	return Themes._current.Data
@@ -72,6 +77,12 @@ function Themes:SetCurrent(name)
 	end
 	for name, value in data.Label do
 		Themes._fusionValues.Label[name]:set(value)
+	end
+	for name, value in data.CategorySwitcher do
+		Themes._fusionValues.CategorySwitcher[name]:set(value)
+	end
+	for name, value in data.Dropdown do
+		Themes._fusionValues.Dropdown[name]:set(value)
 	end
 end
 

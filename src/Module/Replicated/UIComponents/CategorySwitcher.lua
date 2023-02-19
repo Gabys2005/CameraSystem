@@ -28,8 +28,7 @@ return function(props: CategorySwitcherProps)
 		[Children] = {
 			New("Frame") {
 				Size = UDim2.new(1, 0, 0, 35),
-				-- BackgroundTransparency = 1,
-				BackgroundColor3 = Theme.General.BackgroundDark,
+				BackgroundColor3 = Theme.CategorySwitcher.Background,
 				[Children] = {
 					New("UICorner") {},
 					New("UIPadding") {
@@ -43,7 +42,7 @@ return function(props: CategorySwitcherProps)
 						AutomaticCanvasSize = if props.FullWidth then Enum.AutomaticSize.None else Enum.AutomaticSize.X,
 						CanvasSize = UDim2.fromScale(0, 0),
 						BackgroundTransparency = 1,
-						ScrollBarImageColor3 = Theme.Label.Text, -- TODO change
+						ScrollBarImageColor3 = Theme.CategorySwitcher.ScrollBarColor,
 						ScrollBarThickness = 2,
 						[Children] = {
 							New("UIListLayout") {
@@ -65,9 +64,9 @@ return function(props: CategorySwitcherProps)
 										LayoutOrder = i,
 										BackgroundColor3 = if selectedPage:get() == i
 											then Theme.Button.Primary
-											else Theme.General.BackgroundDark,
+											else Theme.CategorySwitcher.Background,
 										TextColor3 = Theme.Button.Text,
-										Font = Theme.Button.Font,
+										FontFace = Theme.Button.Font,
 										[Children] = {
 											New("UIPadding") {
 												PaddingRight = UDim.new(0, 20),

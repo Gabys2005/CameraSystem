@@ -38,6 +38,8 @@ iconButton.BorderSizePixel = 0
 iconButton.AutoButtonColor = false
 iconButton.Parent = iconContainer
 iconButton.Active = true
+iconButton.TextTransparency = 1
+iconButton.RichText = true
 
 local iconImage = Instance.new("ImageLabel")
 iconImage.BackgroundTransparency = 1
@@ -59,8 +61,18 @@ iconLabel.RichText = true
 iconLabel.TextScaled = false
 iconLabel.ClipsDescendants = true
 iconLabel.ZIndex = 11--3
-iconLabel.Parent = iconButton
 iconLabel.Active = false
+iconLabel.AutoLocalize = true
+iconLabel.Parent = iconButton
+
+local fakeIconLabel = iconLabel:Clone()
+fakeIconLabel.Name = "FakeIconLabel"
+fakeIconLabel.AnchorPoint = Vector2.new(0, 0)
+fakeIconLabel.Position = UDim2.new(0, 0, 0, 0)
+fakeIconLabel.Size = UDim2.new(1, 0, 1, 0)
+fakeIconLabel.TextTransparency = 1
+fakeIconLabel.AutoLocalize = false
+fakeIconLabel.Parent = iconLabel.Parent
 
 local iconGradient = Instance.new("UIGradient")
 iconGradient.Name = "IconGradient"
@@ -211,6 +223,7 @@ tipLabel.TextSize = 12
 tipLabel.Position = UDim2.new(0,3,0,3)
 tipLabel.Size = UDim2.new(1,-6,1,-6)
 tipLabel.ZIndex = 41
+tipLabel.RichText = true
 tipLabel.Parent = tipFrame
 tipLabel.Active = false
 
@@ -225,6 +238,7 @@ dropdownContainer.ZIndex = -2
 dropdownContainer.ClipsDescendants = true
 dropdownContainer.Visible = true
 dropdownContainer.Parent = iconContainer
+dropdownContainer.Selectable = false
 dropdownContainer.Active = false
 
 local dropdownFrame = Instance.new("ScrollingFrame")
@@ -243,6 +257,8 @@ dropdownFrame.VerticalScrollBarInset = Enum.ScrollBarInset.Always
 dropdownFrame.VerticalScrollBarPosition = Enum.VerticalScrollBarPosition.Right
 dropdownFrame.Parent = dropdownContainer
 dropdownFrame.Active = false
+dropdownFrame.Selectable = false
+dropdownFrame.ScrollingEnabled = false
 
 local dropdownList = Instance.new("UIListLayout")
 dropdownList.Name = "DropdownList"
@@ -258,8 +274,6 @@ dropdownPadding.Parent = dropdownFrame
 
 -- Menus
 local menuContainer = Instance.new("Frame")
-menuContainer.Active = true
-menuContainer.Selectable = false
 menuContainer.Name = "MenuContainer"
 menuContainer.BackgroundTransparency = 1
 menuContainer.BorderSizePixel = 0
@@ -270,10 +284,9 @@ menuContainer.ClipsDescendants = true
 menuContainer.Visible = true
 menuContainer.Parent = iconContainer
 menuContainer.Active = false
+menuContainer.Selectable = false
 
 local menuFrame = Instance.new("ScrollingFrame")
-menuFrame.Active = true
-menuFrame.Selectable = true
 menuFrame.Name = "MenuFrame"
 menuFrame.BackgroundTransparency = 1
 menuFrame.BorderSizePixel = 0
@@ -289,6 +302,8 @@ menuFrame.HorizontalScrollBarInset = Enum.ScrollBarInset.Always
 menuFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
 menuFrame.Parent = menuContainer
 menuFrame.Active = false
+menuFrame.Selectable = false
+menuFrame.ScrollingEnabled = false
 
 local menuList = Instance.new("UIListLayout")
 menuList.Name = "MenuList"

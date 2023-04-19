@@ -49,8 +49,8 @@ window:setParent(script.Parent)
 
 local menuIcons = {}
 for i, v in pairs(menuNames) do
-	local icon = Icon.new():setLabel(v.Name)
-	local gui = window:new({
+	local icon = Icon.new():setLabel(v.Name):setName(`CameraSystemControls-{v.Name}`)
+	local gui = window:new {
 		Title = v.Title or v.Name,
 		Name = v.Name,
 		MinimumWidth = v.Width,
@@ -59,12 +59,12 @@ for i, v in pairs(menuNames) do
 		Enabled = false,
 		DeleteWhenClosed = false,
 		Icon = icon,
-	})
+	}
 	icon:bindToggleItem(gui)
 	icon.deselectWhenOtherIconSelected = false
 	table.insert(menuIcons, icon)
 end
-local controlIcon = Icon.new():setImage(5036765717):setMenu(menuIcons)
+local controlIcon = Icon.new():setImage(5036765717):setMenu(menuIcons):setName("CameraSystemControls")
 
 --// Keybinds
 

@@ -1,603 +1,39 @@
---[[ icon:header
-[themes]: https://1foreverhd.github.io/TopbarPlus/features/#themes
-[set method]: https://1foreverhd.github.io/TopbarPlus/api/icon/#set
-
-## Construtors
-
-#### new
-```lua
-local icon = Icon.new()
-```
-Constructs an empty ``32x32`` icon on the topbar.
-
-----
-
-
-
-## Methods
-
-#### set
-{chainable}
-```lua
-icon:set(settingName, value, iconState)
-```
-Applies a specific setting to an icon. All settings can be found [here](https://github.com/1ForeverHD/TopbarPlus/blob/main/src/Icon/Themes/Default.lua). If the setting falls under the 'toggleable' category then an iconState can be specified. For most scenarious it's recommended instead to apply settings using [themes].
-
-----
-#### get
-```lua
-local value = icon:get(settingName, iconState)
-```
-Retrieves the given settings value. If the setting falls under the 'toggleable' category then an iconState can be specified.
-
-----
-#### getToggleState
-```lua
-local selectedOrDeselectedString = icon:getToggleState()
-```
-Returns the current toggleState, either "deselected" or "selected".
-
-----
-#### setTheme
-{chainable}
-```lua
-icon:setTheme(theme)
-```
-Applies a theme to the given icon. See [themes] for more information.
-
-----
-#### setEnabled
-{chainable}
-```lua
-icon:setEnabled(bool)
-```
-When set to ``false``, the icon will be disabled and hidden.
-
-----
-#### setName
-{chainable}
-```lua
-icon:setName(string)
-```
-Associates the given name to the icon which enables it to be retrieved with ``IconController.getIcon(name)``.
-
-----
-#### setProperty
-{chainable}
-```lua
-icon:setProperty(propertyName, value)
-```
-An alternative way of doing ``zone[propertyName] = value``. This enables the easy-configuration of icon properties within chained methods.
-
-----
-#### select
-{chainable}
-```lua
-icon:select()
-```
-Selects the icon (as if it were clicked once).
-
-----
-#### deselect
-{chainable}
-```lua
-icon:deselect()
-```
-Deselects the icon (as if it were clicked, then clicked again).
-
-----
-#### notify
-{chainable}
-```lua
-icon:notify(clearNoticeEvent)
-```
-Prompts a notice bubble which accumulates the further it is prompted. If the icon belongs to a dropdown or menu, then the notice will appear on the parent icon when the parent icon is deselected.
-
-----
-#### clearNotices
-{chainable}
-```lua
-icon:clearNotices()
-```
-
-----
-#### disableStateOverlay
-{chainable}
-```lua
-icon:disableStateOverlay(bool)
-```
-When set to ``true``, disables the shade effect which appears when the icon is pressed and released.
-
-----
-#### convertLabelToNumberSpinner
-{chainable}
-```lua
-icon:convertLabelToNumberSpinner(numberSpinner)
-```
-Takes a [NumberSpinner](https://devforum.roblox.com/t/numberspinner-module/1105961) object (by boatbomber) and converts it into the icons label.
-
-Example usage:
-
-```lua
-Icon.new()
-    :setName("CashSpinnerIcon")
-    :setRight()
-    :lock()
-    :setSize(100, 32)
-    :give(function(icon)
-        local NumberSpinner = require(replicatedStorage.NumberSpinner)
-        local labelSpinner = NumberSpinner.new()
-        icon:convertLabelToNumberSpinner(labelSpinner)
-        labelSpinner.Name = "LabelSpinner"
-        labelSpinner.Decimals = 3
-        labelSpinner.Duration = 0.25
-        coroutine.wrap(function()
-            while wait(0.5) do
-                labelSpinner.Value = math.random(100000)/1000
-            end
-        end)()
-    end)
-```
-
-----
-#### setImage
-{chainable} {toggleable}
-```lua
-icon:setImage(imageId, iconState)
-```
-Applies an image to the icon based on the given ``imaageId``. ``imageId`` can be an assetId or a complete asset string.
-
-----
-#### setLabel
-{chainable} {toggleable}
-```lua
-icon:setLabel(text, iconState)
-```
-
-----
-#### setOrder
-{chainable} {toggleable}
-```lua
-icon:setOrder(order, iconState)
-```
-
-----
-#### setCornerRadius
-{chainable} {toggleable}
-```lua
-icon:setCornerRadius(scale, offset, iconState)
-```
-
-----
-#### setLeft
-{chainable} {toggleable}
-```lua
-icon:setLeft(iconState)
-```
-
-----
-#### setMid
-{chainable} {toggleable}
-```lua
-icon:setMid(iconState)
-```
-
-----
-#### setRight
-{chainable} {toggleable}
-```lua
-icon:setRight(iconState)
-```
-
-----
-#### setImageYScale
-{chainable} {toggleable}
-```lua
-icon:setImageYScale(YScale, iconState)
-```
-Defines the proportional space the icons image takes up within the icons container.
-
-----
-#### setImageRatio
-{chainable} {toggleable}
-```lua
-icon:setImageRatio(ratio, iconState)
-```
-Defines the x:y ratio dimensions as a number. By default ``ratio`` is ``1.00``.
-
-----
-#### setLabelYScale
-{chainable} {toggleable}
-```lua
-icon:setLabelYScale(YScale, iconState)
-```
-Defines how large label text appears.By default ``YScale`` is ``0.45``.
-
-----
-#### setBaseZIndex
-{chainable} {toggleable}
-```lua
-icon:setBaseZIndex(ZIndex, iconState)
-```
-Calculates the difference between the existing baseZIndex (i.e. ``instances.iconContainer.ZIndex``) and new value, then updates the ZIndex of all objects within the icon accoridngly using this difference.
-
-----
-#### setSize
-{chainable} {toggleable}
-```lua
-icon:setSize(XOffset, YOffset, iconState)
-```
-Determines the icons container size. By default ``XOffset`` and ``YOffset`` are ``32``.
-
-----
-#### bindToggleItem
-{chainable}
-```lua
-icon:bindToggleItem(guiObjectOrLayerCollector)
-```
-Binds a GuiObject or LayerCollector to appear and disappeared when the icon is toggled.
-
-----
-#### unbindToggleItem
-{chainable}
-```lua
-icon:unbindToggleItem(guiObjectOrLayerCollector)
-```
-Unbinds the given GuiObject or LayerCollector from the toggle.
-
-----
-#### bindEvent
-{chainable}
-```lua
-icon:bindEvent(iconEventName, eventFunction)
-```
-Connects to an [icon event](https://1foreverhd.github.io/TopbarPlus/api/icon/#events) based upon the given ``iconEventName`` and call ``eventFunction`` with arguments ``(self, ...)`` when the event is triggered.
-
-----
-#### unbindEvent
-{chainable}
-```lua
-icon:unbindEvent(iconEventName)
-```
-Unbinds the connection of the associated ``iconEventName``.
-
-----
-#### bindToggleKey
-{chainable}
-```lua
-icon:bindToggleKey(keyCodeEnum)
-```
-Binds a [keycode](https://developer.roblox.com/en-us/api-reference/enum/KeyCode) which toggles the icon when pressed.
-
-----
-#### unbindToggleKey
-{chainable}
-```lua
-icon:unbindToggleKey(keyCodeEnum)
-```
-Unbinds the given keycode.
-
-----
-#### give
-{chainable}
-```lua
-icon:give(userdata)
-```
-Passes the given userdata to the Icons maid to be destroyed/disconnected on the icons destruction. If a function is passed, it will be executed right away with its self (the icon) being passed as the first argument. The return value is then given to the maid (instead of the function).
-
-----
-#### lock
-{chainable}
-```lua
-icon:lock()
-```
-Prevents the icon from being pressed and toggled.
-
-----
-#### unlock
-{chainable}
-```lua
-icon:unlock()
-```
-Enables the icon to be pressed and toggled.
-
-----
-#### setTopPadding
-{chainable}
-```lua
-icon:setTopPadding(offset, scale)
-```
-The gap between the top of the screen and the icon.
-
-----
-#### setTip
-{chainable}
-```lua
-icon:setTip(text)
-```
-Sets a tip. To remove, pass ``nil`` as ``text``.
-
-----
-#### setCaption
-{chainable}
-```lua
-icon:setCaption(text)
-```
-Sets a caption. To remove, pass ``nil`` as ``text``.
-
-----
-#### join
-{chainable}
-```lua
-icon:join(parentIcon, featureName)
-```
-Parents the icon to the given parentIcon under the specified feature, either "dropdown" or "menu".
-
-----
-#### leave
-{chainable}
-```lua
-icon:leave()
-```
-Unparents an icon from a parentIcon if it belongs to a dropdown or menu.
-
-----
-#### setDropdown
-{chainable}
-```lua
-icon:setDropdown(arrayOfIcons)
-```
-Creates a vertical dropdown based upon the given ``table array`` of ``icons``. Pass an empty table ``{}`` to remove the dropdown. Dropdown settings can be configured using [themes] or the [set method].
-
-----
-#### setMenu
-{chainable}
-```lua
-icon:setMenu(arrayOfIcons)
-```
-Creates a horizontal menu based upon the given ``table array`` of ``icons``. Pass an empty table ``{}`` to remove the menu. Menu settings can be configured using [themes] or the [set method].
-
-----
-#### destroy
-{chainable}
-```lua
-icon:destroy()
-```
-Clears all connections and destroys all instances associated with the icon.
-
-----
-
-
-
-## Events
-#### selected 
-```lua
-icon.selected:Connect(function()
-    print("The icon was selected")
-end)
-```
-
-----
-#### deselected 
-```lua
-icon.deselected:Connect(function()
-    print("The icon was deselected")
-end)
-```
-
-----
-#### toggled 
-```lua
-icon.toggled:Connect(function(isSelected)
-    print(("The icon was %s"):format(icon:getToggleState(isSelected)))
-end)
-```
-
-----
-#### hoverStarted 
-```lua
-icon.hoverStarted:Connect(function()
-    print("A mouse, finger or controller selection is hovering over the icon")
-end)
-```
-
-----
-#### hoverEnded 
-```lua
-icon.hoverEnded:Connect(function()
-    print("The item is no longer hovering over the icon")
-end)
-```
-
-----
-#### dropdownOpened 
-```lua
-icon.dropdownOpened:Connect(function()
-    print("The dropdown was opened")
-end)
-```
-
-----
-#### dropdownClosed 
-```lua
-icon.dropdownClosed:Connect(function()
-    print("The dropdown was closed")
-end)
-```
-
-----
-#### menuOpened 
-```lua
-icon.menuOpened:Connect(function()
-    print("The menu was opened")
-end)
-```
-
-----
-#### menuClosed 
-```lua
-icon.menuClosed:Connect(function()
-    print("The menu was closed")
-end)
-```
-
-----
-#### notified 
-```lua
-icon.notified:Connect(function()
-    print("New notice")
-end)
-```
-
-----
-
-
-
-## Properties
-#### deselectWhenOtherIconSelected
-```lua
-local bool = icon.deselectWhenOtherIconSelected --[default: 'true']
-```
-A bool deciding whether the icon will be deselected when another icon is selected. Defaults to ``true``.
-
-----
-#### accountForWhenDisabled
-```lua
-local bool = icon.accountForWhenDisabled --[default: 'false']
-```
-A bool deciding whether to continue accounting for and updating the icons position on the topbar when disabled
-
-----
-#### name
-{read-only}
-```lua
-local string = icon.name --[default: '"Unnamed Icon"']
-```
-
-----
-#### isSelected
-{read-only}
-```lua
-local bool = icon.isSelected
-```
-
-----
-#### enabled
-{read-only}
-```lua
-local bool = icon.enabled
-```
-
-----
-#### hovering
-{read-only}
-```lua
-local bool = icon.hovering
-```
-
-----
-#### tipText
-{read-only}
-```lua
-local stringOrNil = icon.tipText
-```
-
-----
-#### captionText
-{read-only}
-```lua
-local stringOrNil = icon.captionText
-```
-
-----
-#### totalNotices
-{read-only}
-```lua
-local int = icon.totalNotices
-```
-
-----
-#### dropdownIcons
-{read-only}
-```lua
-local arrayOfIcons = icon.dropdownIcons
-```
-
-----
-#### menuIcons
-{read-only}
-```lua
-local arrayOfIcons = icon.menuIcons
-```
-
-----
-#### dropdownOpen
-{read-only}
-```lua
-local bool = icon.dropdownOpen
-```
-
-----
-#### menuOpen
-{read-only}
-```lua
-local bool = icon.menuOpen
-```
-
-----
-#### locked
-{read-only}
-```lua
-local bool = icon.locked
-```
-
-----
-#### topPadding
-{read-only}
-```lua
-local udim = icon.topPadding
-```
-
-----
-#### targetPosition
-{read-only}
-```lua
-local udim2 = icon.targetPosition
-```
-The position the icon is at or aims to move to.
---]]
-
-
-
 -- LOCAL
+local LocalizationService = game:GetService("LocalizationService")
 local tweenService = game:GetService("TweenService")
-local replicatedStorage = game:GetService("ReplicatedStorage")
 local debris = game:GetService("Debris")
 local userInputService = game:GetService("UserInputService")
 local httpService = game:GetService("HttpService") -- This is to generate GUIDs
 local runService = game:GetService("RunService")
 local textService = game:GetService("TextService")
-local guiService = game:GetService("GuiService")
 local starterGui = game:GetService("StarterGui")
-local players = game:GetService("Players")
-local IconController = require(script.IconController)
-local Signal = require(script.Signal)
-local Maid = require(script.Maid)
-local TopbarPlusGui = require(script.TopbarPlusGui)
-local TopbarPlusReference = require(script.TopbarPlusReference)
+local guiService = game:GetService("GuiService")
+local localizationService = game:GetService("LocalizationService")
+local playersService = game:GetService("Players")
+local localPlayer = playersService.LocalPlayer
+local iconModule = script
+local TopbarPlusReference = require(iconModule.TopbarPlusReference)
 local referenceObject = TopbarPlusReference.getObject()
-local Themes = require(script.Themes)
+local leadPackage = referenceObject and referenceObject.Value
+if leadPackage and leadPackage ~= iconModule then
+	return require(leadPackage)
+end
+if not referenceObject then
+    TopbarPlusReference.addToReplicatedStorage()
+end
+local Icon = {}
+Icon.__index = Icon
+local IconController = require(iconModule.IconController)
+local Signal = require(iconModule.Signal)
+local Maid = require(iconModule.Maid)
+local TopbarPlusGui = require(iconModule.TopbarPlusGui)
+local Themes = require(iconModule.Themes)
 local activeItems = TopbarPlusGui.ActiveItems
 local topbarContainer = TopbarPlusGui.TopbarContainer
 local iconTemplate = topbarContainer["IconContainer"]
 local DEFAULT_THEME = Themes.Default
 local THUMB_OFFSET = 55
 local DEFAULT_FORCED_GROUP_VALUES = {}
-local Icon = (referenceObject and require(referenceObject.Value)) or {}
-Icon.__index = Icon
-if not referenceObject then
-	TopbarPlusReference.addToReplicatedStorage()
-end
 
 
 
@@ -623,6 +59,7 @@ function Icon.new()
 	instances["iconButton"] = iconContainer.IconButton
 	instances["iconImage"] = instances.iconButton.IconImage
 	instances["iconLabel"] = instances.iconButton.IconLabel
+	instances["fakeIconLabel"] = instances.iconButton.FakeIconLabel
 	instances["iconGradient"] = instances.iconButton.IconGradient
 	instances["iconCorner"] = instances.iconButton.IconCorner
 	instances["iconOverlay"] = iconContainer.IconOverlay
@@ -670,12 +107,13 @@ function Icon.new()
 			["iconImageColor"] = {instanceNames = {"iconImage"}, propertyName = "ImageColor3"},
 			["iconImageTransparency"] = {instanceNames = {"iconImage"}, propertyName = "ImageTransparency"},
 			["iconScale"] = {instanceNames = {"iconButton"}, propertyName = "Size"},
-			["forcedIconSize"] = {},
+			["forcedIconSizeX"] = {},
+			["forcedIconSizeY"] = {},
 			["iconSize"] = {callSignals = {self.updated}, callMethods = {self._updateIconSize}, instanceNames = {"iconContainer"}, propertyName = "Size", tweenAction = "resizeInfo"},
 			["iconOffset"] = {instanceNames = {"iconButton"}, propertyName = "Position"},
 			["iconText"] = {callMethods = {self._updateIconSize}, instanceNames = {"iconLabel"}, propertyName = "Text"},
 			["iconTextColor"] = {instanceNames = {"iconLabel"}, propertyName = "TextColor3"},
-			["iconFont"] = {instanceNames = {"iconLabel"}, propertyName = "Font"},
+			["iconFont"] = {callMethods = {self._updateIconSize}, instanceNames = {"iconLabel"}, propertyName = "Font"},
 			["iconImageYScale"] = {callMethods = {self._updateIconSize}},
 			["iconImageRatio"] = {callMethods = {self._updateIconSize}},
 			["iconLabelYScale"] = {callMethods = {self._updateIconSize}},
@@ -799,12 +237,13 @@ function Icon.new()
 				newValue = UDim2.new(0, XOffset, 0, 0)
 				isOpen = false
 			end
+			-- if #self.dropdownIcons > 0 and isOpen and hidePlayerlist and self._parentIcon == nil and self._bringBackPlayerlist == nil then
 			if #self.dropdownIcons > 0 and isOpen and hidePlayerlist then
 				if starterGui:GetCoreGuiEnabled(Enum.CoreGuiType.PlayerList) then
+					IconController._bringBackPlayerlist = (IconController._bringBackPlayerlist and IconController._bringBackPlayerlist + 1) or 1
+					self._bringBackPlayerlist = true
 					starterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 				end
-				IconController._bringBackPlayerlist = (IconController._bringBackPlayerlist and IconController._bringBackPlayerlist + 1) or 1
-				self._bringBackPlayerlist = true
 			elseif self._bringBackPlayerlist and not isOpen and IconController._bringBackPlayerlist then
 				IconController._bringBackPlayerlist -= 1
 				if IconController._bringBackPlayerlist <= 0 then
@@ -821,10 +260,11 @@ function Icon.new()
 			end)
 			tween:Play()
 			if isOpen then
-				dropdownFrame.CanvasPosition = self._dropdownCanvasPos
+				--dropdownFrame.CanvasPosition = self._dropdownCanvasPos
 			else
 				self._dropdownCanvasPos = dropdownFrame.CanvasPosition
 			end
+			dropdownFrame.ScrollingEnabled = isOpen -- It's important scrolling is only enabled when the dropdown is visible otherwise it could block the scrolling behaviour of other icons
 			self.dropdownOpen = isOpen
 			self:_decideToCallSignal("dropdown")
 		end,
@@ -866,6 +306,7 @@ function Icon.new()
 			else
 				self._menuCanvasPos = menuFrame.CanvasPosition
 			end
+			menuFrame.ScrollingEnabled = isOpen -- It's important scrolling is only enabled when the menu is visible otherwise it could block the scrolling behaviour of other icons
 			self.menuOpen = isOpen
 			self:_decideToCallSignal("menu")
 		end,
@@ -900,6 +341,9 @@ function Icon.new()
 	self.selected = maid:give(Signal.new())
     self.deselected = maid:give(Signal.new())
     self.toggled = maid:give(Signal.new())
+	self.userSelected = maid:give(Signal.new())
+	self.userDeselected = maid:give(Signal.new())
+	self.userToggled = maid:give(Signal.new())
 	self.hoverStarted = maid:give(Signal.new())
 	self.hoverEnded = maid:give(Signal.new())
 	self.dropdownOpened = maid:give(Signal.new())
@@ -961,6 +405,8 @@ function Icon.new()
 	self.targetPosition = nil
 	self.toggleItems = {}
 	self.lockedSettings = {}
+	self.UID = httpService:GenerateGUID(true)
+	self.blockBackBehaviourChecks = {}
 	
 	-- Private Properties
 	self._draggingFinger = false
@@ -977,6 +423,7 @@ function Icon.new()
 	-- Input handlers
 	-- Calls deselect/select when the icon is clicked
 	--[[instances.iconButton.MouseButton1Click:Connect(function()
+		if self.locked then return end
 		if self._draggingFinger then
 			return false
 		elseif self.isSelected then
@@ -986,11 +433,16 @@ function Icon.new()
 		self:select()
 	end)--]]
 	instances.iconButton.MouseButton1Click:Connect(function()
+		if self.locked then return end
 		if self.isSelected then
 			self:deselect()
+			self.userDeselected:Fire()
+			self.userToggled:Fire(false)
 			return true
 		end
 		self:select()
+		self.userSelected:Fire()
+		self.userToggled:Fire(true)
 	end)
 	instances.iconButton.MouseButton2Click:Connect(function()
 		self._rightClicking = true
@@ -1009,7 +461,7 @@ function Icon.new()
 		self:_updateStateOverlay(0.7, Color3.new(0, 0, 0))
 	end)
 	instances.iconButton.MouseButton1Up:Connect(function()
-		if self.locked then return end
+		if self.overlayLocked then return end
 		self:_updateStateOverlay(0.9, Color3.new(1, 1, 1))
 	end)
 
@@ -1032,11 +484,15 @@ function Icon.new()
 			self._tappingAway = false
 		end
 		--
-		if self._bindedToggleKeys[input.KeyCode] and not touchingAnObject then
+		if self._bindedToggleKeys[input.KeyCode] and not touchingAnObject and not self.locked then
 			if self.isSelected then
 				self:deselect()
+				self.userDeselected:Fire()
+				self.userToggled:Fire(false)
 			else
 				self:select()
+				self.userSelected:Fire()
+				self.userToggled:Fire(true)
 			end
 		end
 		--
@@ -1154,7 +610,7 @@ function Icon.mimic(coreIconToMimic)
 			starterGui:SetCoreGuiEnabled("Chat", icon.enabled)
 		end
 		-- Tap into chat module
-		local chatMainModule = players.LocalPlayer.PlayerScripts:WaitForChild("ChatScript").ChatMain
+		local chatMainModule = localPlayer.PlayerScripts:WaitForChild("ChatScript").ChatMain
 		local ChatMain = require(chatMainModule)
 		local function displayChatBar(visibility)
 			icon.ignoreVisibilityStateChange = true
@@ -1438,6 +894,11 @@ function Icon:_updateAll(iconState, customTweenInfo)
 			self:_update(settingName, iconState, customTweenInfo)
 		end
 	end
+	-- It's important we adapt the size of anything that could be changed through Localization
+	-- In this case, the icon label, caption and tip
+	self:_updateIconSize()
+	self:_updateCaptionSize()
+	self:_updateTipSize()
 end
 
 function Icon:_updateHovering(customTweenInfo)
@@ -1580,7 +1041,7 @@ function Icon:_playClickSound()
 end
 
 function Icon:select(byIcon)
-	if self.locked then return self end
+	--if self.locked then return self end
 	self.isSelected = true
 	self:_setToggleItemsVisible(true, byIcon)
 	self:_updateNotice()
@@ -1589,13 +1050,49 @@ function Icon:select(byIcon)
 	if #self.dropdownIcons > 0 or #self.menuIcons > 0 then
 		IconController:_updateSelectionGroup()
 	end
-    self.selected:Fire()
+	if userInputService.GamepadEnabled then
+		-- If a corresponding guiObject is found (set via :setToggleItem()) then this automatically
+		-- moves the controller selection to a selectable and active instance within that guiObject.
+		-- It also support back (Controller B) being pressed by navigating to previous pages or
+		-- closing the icon and focusing selection back on the controller navigation topbar.
+		for toggleItem, buttonInstancesArray in pairs(self.toggleItems) do
+			if #buttonInstancesArray > 0 then
+				local focusMaid = Maid.new()
+				guiService:AddSelectionTuple(self.UID, unpack(buttonInstancesArray))
+				guiService.SelectedObject = buttonInstancesArray[1]
+				IconController.activeButtonBCallbacks += 1
+				focusMaid:give(userInputService.InputEnded:Connect(function(input, processed)
+					local blockBackBehaviour = false
+					for _, func in pairs(self.blockBackBehaviourChecks) do
+						if func() == true then
+							blockBackBehaviour = true
+							break
+						end
+					end
+					if input.KeyCode == Enum.KeyCode.ButtonB and not blockBackBehaviour then
+						guiService.SelectedObject = self.instances.iconButton
+						self:deselect()
+					end
+				end))
+				focusMaid:give(self.deselected:Connect(function()
+					focusMaid:clean()
+				end))
+				focusMaid:give(function()
+					IconController.activeButtonBCallbacks -= 1
+					if IconController.activeButtonBCallbacks < 0 then
+						IconController.activeButtonBCallbacks = 0
+					end
+				end)
+			end
+		end
+	end
+	self.selected:Fire()
     self.toggled:Fire(self.isSelected)
 	return self
 end
 
 function Icon:deselect(byIcon)
-	if self.locked then return self end
+	--if self.locked then return self end
 	self.isSelected = false
 	self:_setToggleItemsVisible(false, byIcon)
 	self:_updateNotice()
@@ -1606,6 +1103,9 @@ function Icon:deselect(byIcon)
 	end
     self.deselected:Fire()
     self.toggled:Fire(self.isSelected)
+	if userInputService.GamepadEnabled then
+		guiService:RemoveSelectionGroup(self.UID)
+	end
 	return self
 end
 
@@ -1752,17 +1252,56 @@ function Icon:_updateBaseZIndex(baseValue)
 	local difference = newBaseValue - container.ZIndex
 	if difference == 0 then return "The baseValue is the same" end
 	for _, object in pairs(self.instances) do
-		object.ZIndex = object.ZIndex + difference
+		if object:IsA("GuiObject") then
+			object.ZIndex = object.ZIndex + difference
+		end
 	end
 	return true
 end
 
 function Icon:setSize(XOffset, YOffset, iconState)
+	if tonumber(XOffset) then
+		self.forcefullyAppliedXSize = true
+		self:set("forcedIconSizeX", tonumber(XOffset), iconState)
+	else
+		self.forcefullyAppliedXSize = false
+		self:set("forcedIconSizeX", 32, iconState)
+	end
+	if tonumber(YOffset) then
+		self.forcefullyAppliedYSize = true
+		self:set("forcedIconSizeY", tonumber(YOffset), iconState)
+	else
+		self.forcefullyAppliedYSize = false
+		self:set("forcedIconSizeY", 32, iconState)
+	end
 	local newXOffset = tonumber(XOffset) or 32
-	local newYOffset = tonumber(YOffset) or newXOffset
-	self:set("forcedIconSize", UDim2.new(0, newXOffset, 0, newYOffset), iconState)
+	local newYOffset = tonumber(YOffset) or (YOffset ~= "_NIL" and newXOffset) or 32
 	self:set("iconSize", UDim2.new(0, newXOffset, 0, newYOffset), iconState)
 	return self
+end
+
+function Icon:setXSize(XOffset, iconState)
+	self:setSize(XOffset, "_NIL", iconState)
+	return self
+end
+
+function Icon:setYSize(YOffset, iconState)
+	self:setSize("_NIL", YOffset, iconState)
+	return self
+end
+
+function Icon:_getContentText(text)
+	-- This converts richtext (e.g. "<b>Shop</b>") to normal text (e.g. "Shop")
+	-- This also converts richtext/normaltext into its localized (translated) version
+	-- This is important when calculating the size of the label/box for instance
+	self.instances.fakeIconLabel.Text = text
+	local textToTranslate = self.instances.fakeIconLabel.ContentText
+	local translatedContentText = typeof(self.instances.iconLabel) == "Instance" and IconController.translator:Translate(self.instances.iconLabel, textToTranslate)
+	if typeof(translatedContentText) ~= "string" or translatedContentText == "" then
+		translatedContentText = textToTranslate
+	end
+	self.instances.fakeIconLabel.Text = ""
+	return translatedContentText
 end
 
 function Icon:_updateIconSize(_, iconState)
@@ -1776,7 +1315,7 @@ function Icon:_updateIconSize(_, iconState)
 		iconText = self:get("iconText", iconState) or "_NIL",
 		iconFont = self:get("iconFont", iconState) or "_NIL",
 		iconSize = self:get("iconSize", iconState) or "_NIL",
-		forcedIconSize = self:get("forcedIconSize", iconState) or "_NIL",
+		forcedIconSizeX = self:get("forcedIconSizeX", iconState) or "_NIL",
 		iconImageYScale = self:get("iconImageYScale", iconState) or "_NIL",
 		iconImageRatio = self:get("iconImageRatio", iconState) or "_NIL",
 		iconLabelYScale = self:get("iconLabelYScale", iconState) or "_NIL",
@@ -1795,13 +1334,14 @@ function Icon:_updateIconSize(_, iconState)
 	local cellSizeXOffset = values.iconSize.X.Offset
 	local cellSizeXScale = values.iconSize.X.Scale
 	local cellWidth = cellSizeXOffset + (cellSizeXScale * iconContainer.Parent.AbsoluteSize.X)
-	local minCellWidth = values.forcedIconSize.X.Offset--cellWidth
-	local maxCellWidth = (cellSizeXScale > 0 and cellWidth) or 9999
+	local minCellWidth = values.forcedIconSizeX--cellWidth
+	local maxCellWidth = (cellSizeXScale > 0 and cellWidth) or (self.forcefullyAppliedXSize and minCellWidth) or 9999
 	local cellSizeYOffset = values.iconSize.Y.Offset
 	local cellSizeYScale = values.iconSize.Y.Scale
 	local cellHeight = cellSizeYOffset + (cellSizeYScale * iconContainer.Parent.AbsoluteSize.Y)
 	local labelHeight = cellHeight * values.iconLabelYScale
-	local labelWidth = textService:GetTextSize(values.iconText, labelHeight, values.iconFont, Vector2.new(10000, labelHeight)).X
+	local iconContentText = self:_getContentText(values.iconText)
+	local labelWidth = textService:GetTextSize(iconContentText, labelHeight, values.iconFont, Vector2.new(10000, labelHeight)).X
 	local imageWidth = cellHeight * values.iconImageYScale * values.iconImageRatio
 	
 	local usingImage = values.iconImage ~= ""
@@ -1811,6 +1351,7 @@ function Icon:_updateIconSize(_, iconState)
 	local preventClippingOffset = labelHeight/2
 	
 	if usingImage and not usingText then
+		desiredCellWidth = 0
 		notifPosYScale = 0.45
 		self:set("iconImageVisible", true, iconState)
 		self:set("iconImageAnchorPoint", Vector2.new(0.5, 0.5), iconState)
@@ -1906,12 +1447,36 @@ function Icon:unbindToggleKey(keyCodeEnum)
 end
 
 function Icon:lock()
+	self.instances.iconButton.Active = false
 	self.locked = true
+	task.defer(function()
+		-- We do this to prevent the overlay remaining enabled if :lock is called right after an icon is selected
+		if self.locked then
+			self.overlayLocked = true
+		end
+	end)
 	return self
 end
 
 function Icon:unlock()
+	self.instances.iconButton.Active = true
 	self.locked = false
+	self.overlayLocked = false
+	return self
+end
+
+function Icon:debounce(seconds)
+	self:lock()
+	task.wait(seconds)
+	self:unlock()
+	return self
+end
+
+function Icon:autoDeselect(bool)
+	if bool == nil then
+		bool = true
+	end
+	self.deselectWhenOtherIconSelected = bool
 	return self
 end
 
@@ -1928,6 +1493,29 @@ function Icon:bindToggleItem(guiObjectOrLayerCollector)
 		error("Toggle item must be a GuiObject or LayerCollector!")
 	end
 	self.toggleItems[guiObjectOrLayerCollector] = true
+	self:updateSelectionInstances()
+	return self
+end
+
+function Icon:updateSelectionInstances()
+	-- This is to assist with controller navigation and selection
+	for guiObjectOrLayerCollector, _ in pairs(self.toggleItems) do
+		local buttonInstancesArray = {}
+		for _, instance in pairs(guiObjectOrLayerCollector:GetDescendants()) do
+			if (instance:IsA("TextButton") or instance:IsA("ImageButton")) and instance.Active then
+				table.insert(buttonInstancesArray, instance)
+			end
+		end
+		self.toggleItems[guiObjectOrLayerCollector] = buttonInstancesArray
+	end
+end
+
+function Icon:addBackBlocker(func)
+	-- This is custom behaviour that can block the default behaviour of going back or closing a page when Controller B is pressed
+	-- If the function returns ``true`` then the B Back behaviour is blocked
+	-- This is useful for instance when a user is purchasing an item and you don't want them to return to the previous page
+	-- if they pressed B during this pending period
+	table.insert(self.blockBackBehaviourChecks, func)
 	return self
 end
 
@@ -1946,6 +1534,11 @@ function Icon:_setToggleItemsVisible(bool, byIcon)
 			toggleItem[property] = bool
 		end
 	end
+end
+
+function Icon:call(func)
+	task.spawn(func, self)
+	return self
 end
 
 function Icon:give(userdata)
@@ -1971,12 +1564,11 @@ function Icon:setTip(text)
 	assert(typeof(text) == "string" or text == nil, "Expected string, got "..typeof(text))
 	local realText = text or ""
 	local isVisible = realText ~= ""
-	local textSize = textService:GetTextSize(realText, 12, Enum.Font.GothamSemibold, Vector2.new(1000, 20-6))
+	self.tipText = text
 	self.instances.tipLabel.Text = realText
-	self.instances.tipFrame.Size = (isVisible and UDim2.new(0, textSize.X+6, 0, 20)) or UDim2.new(0, 0, 0, 0)
 	self.instances.tipFrame.Parent = (isVisible and activeItems) or self.instances.iconContainer
 	self._maid.tipFrame = self.instances.tipFrame
-	self.tipText = text
+	self:_updateTipSize()
 	
 	local tipMaid = Maid.new()
 	self._maid.tipMaid = tipMaid
@@ -1997,6 +1589,14 @@ function Icon:setTip(text)
 	end
 	self:displayTip(self.hovering and isVisible)
 	return self
+end
+
+function Icon:_updateTipSize()
+	local realText = self.tipText or ""
+	local isVisible = realText ~= ""
+	local iconContentText = self:_getContentText(realText)
+	local textSize = textService:GetTextSize(iconContentText, 12, Enum.Font.GothamSemibold, Vector2.new(1000, 20-6))
+	self.instances.tipFrame.Size = (isVisible and UDim2.new(0, textSize.X+6, 0, 20)) or UDim2.new(0, 0, 0, 0)
 end
 
 function Icon:displayTip(bool)
@@ -2105,7 +1705,12 @@ function Icon:setCaption(text)
 			end
 		end))
 	end
+	self:_updateCaptionSize()
+	self:displayCaption(self.hovering and isVisible)
+	return self
+end
 
+function Icon:_updateCaptionSize()
 	-- This adapts the caption size
 	local CAPTION_X_MARGIN = 6
 	local CAPTION_CONTAINER_Y_SIZE_SCALE = 0.8
@@ -2117,12 +1722,15 @@ function Icon:setCaption(text)
 		local cellSizeYScale = iconSize.Y.Scale
 		local iconContainer = self.instances.iconContainer
 		local captionContainer = self.instances.captionContainer
+		local realText = self.captionText or ""
+		local isVisible = realText ~= ""
 		if isVisible then
 			local cellHeight = cellSizeYOffset + (cellSizeYScale * iconContainer.Parent.AbsoluteSize.Y)
 			local captionLabel = self.instances.captionLabel
 			local captionContainerHeight = cellHeight * CAPTION_CONTAINER_Y_SIZE_SCALE
 			local captionLabelHeight = captionContainerHeight * CAPTION_LABEL_Y_SCALE
-			local textWidth = textService:GetTextSize(self.captionText, captionLabelHeight, labelFont, Vector2.new(10000, captionLabelHeight)).X
+			local iconContentText = self:_getContentText(self.captionText)
+			local textWidth = textService:GetTextSize(iconContentText, captionLabelHeight, labelFont, Vector2.new(10000, captionLabelHeight)).X
 			captionLabel.TextSize = captionLabelHeight
 			captionLabel.Size = UDim2.new(0, textWidth, CAPTION_LABEL_Y_SCALE, 0)
 			captionContainer.Size = UDim2.new(0, textWidth + CAPTION_X_MARGIN*2, 0, cellHeight*CAPTION_CONTAINER_Y_SIZE_SCALE)
@@ -2130,9 +1738,6 @@ function Icon:setCaption(text)
 			captionContainer.Size = UDim2.new(0, 0, 0, 0)
 		end
 	end
-
-	self:displayCaption(self.hovering and isVisible)
-	return self
 end
 
 function Icon:displayCaption(bool)
@@ -2194,7 +1799,11 @@ function Icon:join(parentIcon, featureName, dontUpdate)
 	local array = parentIcon[newFeatureName.."Icons"]
 	table.insert(array, self)
 	if not dontUpdate then
-		parentIcon:_updateDropdown()
+		if featureName == "dropdown" then
+			parentIcon:_updateDropdown()
+		elseif featureName == "menu" then
+			parentIcon:_updateMenu()
+		end
 	end
 	parentIcon.deselectWhenOtherIconSelected = false
 	--
@@ -2369,6 +1978,11 @@ function Icon:_updateDropdown()
 		if otherIconWidth > newMinWidth then
 			newMinWidth = otherIconWidth
 		end
+		-- This ensures the dropdown is navigated fully and correctly with a controller
+		local prevIcon = (i == 1 and self) or self.dropdownIcons[i-1]
+		local nextIcon = self.dropdownIcons[i+1]
+		otherIcon.instances.iconButton.NextSelectionUp = prevIcon and prevIcon.instances.iconButton
+		otherIcon.instances.iconButton.NextSelectionDown = nextIcon and nextIcon.instances.iconButton
 	end
 
 	local finalCanvasSizeY = (lastVisibleIconIndex == totalIcons and 0) or newCanvasSizeY
@@ -2478,6 +2092,11 @@ function Icon:_updateMenu()
 		if otherIconHeight > newMinHeight then
 			newMinHeight = otherIconHeight
 		end
+		-- This ensures the menu is navigated fully and correctly with a controller
+		local prevIcon = self.menuIcons[i-1]
+		local nextIcon = self.menuIcons[i+1]
+		otherIcon.instances.iconButton.NextSelectionRight = prevIcon and prevIcon.instances.iconButton
+		otherIcon.instances.iconButton.NextSelectionLeft = nextIcon and nextIcon.instances.iconButton
 	end
 
 	local canvasSize = (lastVisibleIconIndex == totalIcons and 0) or newCanvasSizeX + XPadding
@@ -2525,7 +2144,7 @@ function Icon:destroy()
 	self._destroyed = true
 	self._maid:clean()
 end
-Icon.Destroy = Icon.destroy -- an alias for you maid-using Pascal lovers
+Icon.Destroy = Icon.destroy
 
 
 

@@ -93,7 +93,8 @@ if replicatedStorage:FindFirstChild("TopbarPlus") then
 	iconModule = replicatedStorage:FindFirstChild("TopbarPlus")
 end
 local Icon = require(iconModule)
-local watchButton = Icon.new():setLabel("Watch"):setLabel("Exit", "selected"):setSize(100, 32)
+local watchButton =
+	Icon.new():setLabel("Watch"):setLabel("Exit", "selected"):setSize(100, 32):setName("CameraSystemWatch")
 local watchButtonPosition = data.Local.Settings.WatchButtonPosition
 if watchButtonPosition == "Center" then
 	watchButton:setMid()
@@ -113,6 +114,7 @@ dataEvent:onChange("Shared.Effects.Shake", function(newValue)
 end)
 
 watchButton.selected:Connect(function()
+	run:UnbindFromRenderStep("CameraSystemWatchLoop")
 	run:BindToRenderStep("CameraSystemWatchLoop", Enum.RenderPriority.Camera.Value - 1, watchLoop)
 	data.Local.Watching = true
 	lighting.CameraSystemBlur.Enabled = true
@@ -150,9 +152,8 @@ end)
 
 run.RenderStepped:Connect(function()
 	if data.Shared.Focus.Instance then
-		data.Local.Springs.Focus.Target = utils:CFrameToRotation(
-			CFrame.lookAt(data.Shared.CameraData.Position, getFocusPosition())
-		) -- TODO find a better way to do that
+		data.Local.Springs.Focus.Target =
+			utils:CFrameToRotation(CFrame.lookAt(data.Shared.CameraData.Position, getFocusPosition())) -- TODO find a better way to do that
 	end
 end)
 

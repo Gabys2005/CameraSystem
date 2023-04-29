@@ -6,7 +6,8 @@ Installing the Camera System is very simple. Here are the steps:
 
 -   Get the model on Roblox from [this](https://www.roblox.com/library/7734733797/Cameras-v5) link
 -   Insert it into **Workspace**
--   Change the settings
+-   Change the settings (make sure to add your username to the `GuiOwners` setting)
+-   Done! When you start the game, you should see a camera icon on your topbar, next to the chat icon
 
 ## Settings
 

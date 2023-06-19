@@ -26,13 +26,14 @@ local function makeCategory(data, camType: string)
 		Size = UDim2.fromScale(1, 0),
 		AutomaticSize = Enum.AutomaticSize.Y,
 	})
-	local categoryTitle = utils:NewInstance("TextLabel", {
+	local categoryTitle = utils:NewInstance("TextButton", {
 		BackgroundColor3 = data.Color,
 		BorderSizePixel = 0,
 		Size = UDim2.new(1, 0, 0, 20),
 		TextColor3 = theme.BaseText,
 		Text = data.Name,
 		Parent = frame,
+		AutoButtonColor = true,
 	})
 	local categoryTitleUiCorner = utils:NewInstance("UICorner", {
 		CornerRadius = UDim.new(0, 8),
@@ -61,6 +62,13 @@ local function makeCategory(data, camType: string)
 			script.Parent.Parent.Parent.Events.ChangeCam:FireServer(camType, v:GetAttribute("ID"))
 		end)
 	end
+
+	categoryTitle.MouseButton1Click:Connect(function()
+		local visible = not buttonsFrame.Visible
+		buttonsFrame.Visible = visible
+		buttonsFrame.AutomaticSize = if visible then Enum.AutomaticSize.Y else Enum.AutomaticSize.None
+	end)
+
 	smoothGrid(buttonsFrame, uigridlayout)
 	return frame
 end

@@ -20,6 +20,7 @@ return function(systemFolder)
 		BarsOffset = "table",
 		BeforeLoad = "function",
 		FreeAdmin = "string",
+		LogActions = "boolean",
 	}
 	local DefaultSettings = {
 		GuiOwners = {},
@@ -35,6 +36,7 @@ return function(systemFolder)
 		},
 		BeforeLoad = function() end,
 		FreeAdmin = "None",
+		LogActions = false,
 	}
 
 	--// Functions
@@ -49,6 +51,12 @@ return function(systemFolder)
 			return true
 		end
 		return false
+	end
+
+	local function log(text)
+		if Settings.LogActions then
+			print(`[[ Camera System ]]: {text}`)
+		end
 	end
 
 	local function onPlayerAdded(plr: Player)
@@ -134,12 +142,14 @@ return function(systemFolder)
 
 	replicatedFolder.Events.ChangeCam.OnServerEvent:Connect(function(plr, camType, camId)
 		if isOwner(plr) then
+			log(`{plr.Name} changed camera to {camType} {camId}`)
 			api:ChangeCam(camType, camId)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeFocus.OnServerEvent:Connect(function(plr, plrString)
 		if isOwner(plr) then
+			log(`{plr.Name} changed focus to {plrString}`)
 			if plrString then
 				local point = systemFolder.FocusPoints:FindFirstChild(plrString)
 				if point then
@@ -159,78 +169,91 @@ return function(systemFolder)
 
 	replicatedFolder.Events.ChangeFov.OnServerEvent:Connect(function(plr, fov)
 		if isOwner(plr) then
+			log(`{plr.Name} changed fov to {fov}`)
 			api:ChangeFov(fov, data.Shared.Effects.Fov.Time)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeAutoFov.OnServerEvent:Connect(function(plr, bool)
 		if isOwner(plr) then
+			log(`{plr.Name} changed auto fov to {tostring(bool)}`)
 			api:ChangeAutoFov(bool)
 		end
 	end)
 
 	replicatedFolder.Events.SmoothFocus.OnServerEvent:Connect(function(plr, bool)
 		if isOwner(plr) then
+			log(`{plr.Name} changed smooth focus to {tostring(bool)}`)
 			api:ChangeSmoothFocus(bool)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeBlur.OnServerEvent:Connect(function(plr, blur)
 		if isOwner(plr) then
+			log(`{plr.Name} changed blur to {blur}`)
 			api:ChangeBlur(blur)
 		end
 	end)
 
-	replicatedFolder.Events.ChangeSaturation.OnServerEvent:Connect(function(player, saturation)
-		if isOwner(player) then
+	replicatedFolder.Events.ChangeSaturation.OnServerEvent:Connect(function(plr, saturation)
+		if isOwner(plr) then
+			log(`{plr.Name} changed saturation to {saturation}`)
 			api:ChangeSaturation(saturation)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeTilt.OnServerEvent:Connect(function(plr, tilt)
 		if isOwner(plr) then
+			log(`{plr.Name} changed tilt to {tilt}`)
 			api:ChangeTilt(tilt)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeBlackout.OnServerEvent:Connect(function(plr, bool)
 		if isOwner(plr) then
+			log(`{plr.Name} changed blackout to {tostring(bool)}`)
 			api:ChangeBlackout(bool)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeBarsEnabled.OnServerEvent:Connect(function(plr, enabled)
 		if isOwner(plr) then
+			log(`{plr.Name} changed bars enabled to {tostring(enabled)}`)
 			api:ChangeBarsEnabled(enabled)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeBarSize.OnServerEvent:Connect(function(plr, size)
 		if isOwner(plr) then
+			log(`{plr.Name} changed bar size to {size}`)
 			api:ChangeBarSize(size)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeTransition.OnServerEvent:Connect(function(plr, transitionName)
 		if isOwner(plr) then
+			log(`{plr.Name} changed transition to {transitionName}`)
 			api:ChangeTransition(transitionName)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeTransitionSpeed.OnServerEvent:Connect(function(plr, speed)
 		if isOwner(plr) then
+			log(`{plr.Name} changed transition speed to {speed}`)
 			api:ChangeTransitionSpeed(speed)
 		end
 	end)
 
 	replicatedFolder.Events.ChangeShake.OnServerEvent:Connect(function(plr, shake)
 		if isOwner(plr) then
+			log(`{plr.Name} changed shake value to {shake}`)
 			api:ChangeShake(shake)
 		end
 	end)
 
 	replicatedFolder.Events.RunKeybind.OnServerEvent:Connect(function(plr, keybindData)
 		if isOwner(plr) then
+			log(`{plr.Name} ran a keybind: {keybindData[1]} {tostring(keybindData[2])} {tostring(keybindData[3])}`)
 			if keybindData[1] == "Fov" then
 				api:ChangeFov(keybindData[2], keybindData[3])
 			elseif keybindData[1] == "Blackout" then
@@ -255,18 +278,18 @@ return function(systemFolder)
 		end
 	end)
 
-	replicatedFolder.Events.RequestDrone.OnServerInvoke = function(plr: Player, drone: BasePart)
+	replicatedFolder.Events.RequestDrone.OnServerInvoke = function(plr: Player, drone)
 		if isOwner(plr) then
 			drone:SetNetworkOwner(plr)
 			drone.CamPos:SetNetworkOwner(plr)
 		end
 	end
 
-	replicatedFolder.Events.SendDroneLocation.OnServerInvoke = function(plr: Player, drone: BasePart, location: CFrame)
+	replicatedFolder.Events.SendDroneLocation.OnServerInvoke = function(plr: Player, drone, location: CFrame)
 		if isOwner(plr) then
 			drone:SetNetworkOwner()
 			drone.CamPos:SetNetworkOwner()
-			local nx, ny, nz = location:ToOrientation()
+			local nx = location:ToOrientation()
 			local finalCFrame = location * CFrame.Angles(-nx, 0, 0)
 			drone.BodyPosition.Position = location.Position
 			drone.BodyGyro.CFrame = finalCFrame

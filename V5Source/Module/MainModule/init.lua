@@ -97,20 +97,31 @@ return function(systemFolder)
 
 	--===================== CODE =====================--
 
+	--// Import all neccessary assets
+	replicatedFolder.Name = "CameraSystem"
+	replicatedFolder.Parent = replicatedStorage
+
 	--// Check if the system can run
-	assert(
-		workspace.StreamingEnabled == false,
-		"[[ Camera System ]]: StreamingEnabled can't be enabled for the cameras to work, disable it in Workspace's properties"
-	)
+	if workspace.StreamingEnabled then
+		local function onPlrAdded(plr: Player)
+			if isOwner(plr) then
+				script.Guis.StreamingWarning:Clone().Parent = plr:WaitForChild("PlayerGui")
+			end
+		end
+
+		players.PlayerAdded:Connect(onPlrAdded)
+		for _, plr in players:GetPlayers() do
+			onPlrAdded(plr)
+		end
+		error(
+			"[[ Camera System ]]: StreamingEnabled can't be enabled for the cameras to work, disable it in Workspace's properties"
+		)
+	end
 
 	--// Validate settings
 	validateSettings()
 
-	--// Import all assets neccessary
-	replicatedFolder.Name = "CameraSystem"
-	replicatedFolder.Parent = replicatedStorage
 	apiModule.Parent = systemFolder
-
 	script.Lighting.CameraSystemBlur.Parent = lighting
 	script.Lighting.CameraSystemColorCorrection.Parent = lighting
 

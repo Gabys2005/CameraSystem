@@ -22,14 +22,28 @@ local controller = {
 	IsWatching = false,
 }
 local other = require(script.Parent.Parent.Scripts.Other)
+local previousFocus = {
+	instance = nil,
+	position = Vector3.new(0, 2.5, 0),
+}
 
 --// Functions
 local function getFocusPosition()
 	if data.Shared.Focus.Instance then
+		local ins = data.Shared.Focus.Instance
 		if data.Shared.Focus.Type == "Part" then
-			return data.Shared.Focus.Instance.Position
+			previousFocus.instance = nil
+			return ins.Position
 		elseif data.Shared.Focus.Type == "Player" then
-			return data.Shared.Focus.Instance.Position + Vector3.new(0, 2.5, 0)
+			if previousFocus.instance ~= ins then
+				previousFocus.instance = ins
+				local humanoid = ins.Parent
+				local rootPart = humanoid.HumanoidRootPart
+				local head = humanoid.Head
+				local distance = (rootPart.Position - head.Position).Magnitude
+				previousFocus.position = Vector3.new(0, distance, 0)
+			end
+			return ins.Position + previousFocus.position
 		end
 	end
 	return Vector3.new()
@@ -53,8 +67,9 @@ local function watchLoop()
 		cameraInstance.CameraType = Enum.CameraType.Scriptable
 	end
 	local finalCFrame = data.Shared.CameraData.CFrame
+	local focusInstance = data.Shared.Focus.Instance
 	if
-		data.Shared.Focus.Instance
+		focusInstance
 		and data.Shared.CurrentCamera.Type ~= "Drones"
 		and (
 			data.Shared.CurrentCamera.Type == "Default"
@@ -69,6 +84,8 @@ local function watchLoop()
 		else
 			finalCFrame = CFrame.lookAt(data.Shared.CameraData.Position, focusPosition)
 		end
+	elseif not focusInstance then
+		previousFocus.instance = nil
 	end
 	finalCFrame = finalCFrame * CFrame.fromOrientation(0, 0, math.rad(data.Local.LerpedValues.Tilt)) * shakeCFGlobal
 	cameraInstance.CFrame = finalCFrame

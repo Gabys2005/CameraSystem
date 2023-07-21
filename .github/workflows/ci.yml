@@ -25,6 +25,6 @@ jobs:
               run: selene V5Source
 
             - name: "Upload"
-              run: rojo upload -cookie "$ROBLOSECURITY" --asset_id 14142114135 V5Source
+              run: rojo upload --cookie "$ROBLOSECURITY" --asset_id 14142114135 V5Source
               env:
                   ROBLOSECURITY: ${{ secrets.ROBLOSECURITY }}

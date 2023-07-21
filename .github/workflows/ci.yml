@@ -24,7 +24,16 @@ jobs:
             - name: Run Selene
               run: selene V5Source
 
-            - name: "Upload"
-              run: rojo upload --cookie "$ROBLOSECURITY" --asset_id 14142114135 .github/upload.project.json
+            - name: Install Node
+              uses: actions/setup-node@v3
+
+            - name: Install noblox.js
+              run: npm ci
+
+            - name: Build
+              run: rojo build -o module.rbxm .github/upload.project.json
+
+            - name: Upload
+              run: node .github/upload.js
               env:
                   ROBLOSECURITY: ${{ secrets.ROBLOSECURITY }}

@@ -3,7 +3,7 @@ local data = {
 	Shared = {
 		CurrentCamera = {
 			Type = "Default",
-			Id = 0,
+			Id = 1,
 			Model = nil,
 		},
 		CameraData = { -- This is used purely by the lerper and only includes the data of the currently lerped camera

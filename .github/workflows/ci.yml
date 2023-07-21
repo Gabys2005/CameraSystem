@@ -25,6 +25,6 @@ jobs:
               run: selene V5Source
 
             - name: "Upload"
-              run: rojo upload --cookie "$ROBLOSECURITY" --asset_id 14142114135 ./upload.project.json
+              run: rojo upload --cookie "$ROBLOSECURITY" --asset_id 14142114135 .github/upload.project.json
               env:
                   ROBLOSECURITY: ${{ secrets.ROBLOSECURITY }}

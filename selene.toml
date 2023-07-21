@@ -1,5 +1,9 @@
 std = "roblox"
-exclude = ["src/Module/Replicated/Dependencies/*"]
+exclude = [ "src/Module/Replicated/Dependencies/*", "V5Source/Module/MainModule/Replicated/Client/Dependencies/*" ]
 
 [rules]
 multiple_statements = "allow"
+
+# TODO: delete this when done with code cleanup
+unused_variable = "allow"
+shadowing = "allow"

@@ -34,7 +34,11 @@ return function(props: DropdownProps)
 				FontFace = Theme.Button.Font,
 				AutoButtonColor = true,
 				Text = Computed(function()
-					return props.Items[selectedItemIndex:get()]
+					if props.Items.type == "State" then
+						return props.Items:get()[selectedItemIndex:get()]
+					else
+						return props.Items[selectedItemIndex:get()]
+					end
 				end),
 
 				[OnEvent("Activated")] = function()

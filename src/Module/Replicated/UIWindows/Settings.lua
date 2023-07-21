@@ -23,7 +23,17 @@ topbarButton.toggled:Connect(function(isToggled)
 	visible:set(isToggled)
 end)
 
-local temp_themes = { "Dark", "Light", "Test" }
+local themes = {}
+local themesFusion = Value {}
+for name, _ in Theme:GetAll() do
+	print(name)
+	table.insert(themes, name)
+end
+themesFusion:set(themes)
+Theme.ThemeAdded:Connect(function(name)
+	table.insert(themes, name)
+	themesFusion:set(name)
+end)
 
 local window = Window {
 	Visible = visible,
@@ -43,9 +53,9 @@ local window = Window {
 					Size = UDim2.fromScale(1, 1),
 					[Children] = {
 						Dropdown {
-							Items = temp_themes,
+							Items = themesFusion,
 							SelectionChanged = function(i)
-								Theme:SetCurrent(temp_themes[i])
+								Theme:SetCurrent(themes[i])
 							end,
 							Size = UDim2.new(1, 0, 0, 30),
 						},

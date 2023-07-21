@@ -1,6 +1,7 @@
 local Themes = {}
 local replicated = script.Parent.Parent
 local Fusion = require(replicated.Dependencies.Fusion)
+local Signal = require(replicated.Dependencies.Signal)
 
 local Value = Fusion.Value
 
@@ -15,6 +16,9 @@ local function deepCopy(t)
 	end
 	return returnedTable
 end
+
+Themes.ThemeChanged = Signal.new()
+Themes.ThemeAdded = Signal.new()
 
 Themes._current = {
 	Data = {
@@ -53,6 +57,10 @@ function Themes:Get()
 	return Themes._current.Data
 end
 
+function Themes:GetAll()
+	return Themes._themes
+end
+
 function Themes:GetFusion()
 	return Themes._fusionValues
 end
@@ -63,6 +71,7 @@ end
 
 function Themes:Add(name, data)
 	Themes._themes[name] = data
+	Themes.ThemeAdded:Fire(name, data)
 end
 
 function Themes:SetCurrent(name)
@@ -84,6 +93,7 @@ function Themes:SetCurrent(name)
 	for name, value in data.Dropdown do
 		Themes._fusionValues.Dropdown[name]:set(value)
 	end
+	Themes.ThemeChanged:Fire(name, data)
 end
 
 return Themes

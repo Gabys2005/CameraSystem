@@ -2,6 +2,4 @@ std = "roblox"
 exclude = ["src/Module/Replicated/Dependencies/*"]
 
 [rules]
-unused_variable = "allow"
 multiple_statements = "allow"
-shadowing = "allow"

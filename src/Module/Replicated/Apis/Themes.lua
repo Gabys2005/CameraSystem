@@ -1,5 +1,9 @@
 local ThemesApi = {}
-local ThemesData = require(script.Parent.Parent.Data.Themes)
+local replicated = script.Parent.Parent
+local ThemesData = require(replicated.Data.Themes)
+
+ThemesApi.ThemeChanged = ThemesData.ThemeChanged
+ThemesApi.ThemeAdded = ThemesData.ThemeAdded
 
 function ThemesApi:AddTheme(name, themeData)
 	ThemesData:Add(name, themeData)

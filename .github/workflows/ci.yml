@@ -23,15 +23,3 @@ jobs:
 
             - name: Run Selene
               run: selene V5Source
-
-            - name: Build
-              run: rojo build -o module.rbxm .github/upload.project.json
-
-            - name: Upload
-              uses: fjogeleit/http-request-action@v1
-              with:
-                  url: "${{ secrets.UPLOAD_URL }}"
-                  method: "POST"
-                  file: "module.rbxm"
-                  customHeaders: '{ "secret": "${{ secrets.SECRET }}" }'
-                  timeout: 10000

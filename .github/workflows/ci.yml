@@ -24,9 +24,6 @@ jobs:
             - name: Run Selene
               run: selene V5Source
 
-            - name: Install noblox.js
-              run: npm ci
-
             - name: Build
               run: rojo build -o module.rbxm .github/upload.project.json
 

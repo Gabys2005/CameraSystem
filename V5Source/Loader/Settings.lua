@@ -19,6 +19,9 @@ return {
 	--// Where the Watch button should be, "Left", "Center" or "Right"
 	WatchButtonPosition = "Center",
 
+	--// Same as above but for the control (camera) button
+	ControlButtonPosition = "Left",
+
 	--// Check website documentation for more info
 	Keybinds = {
 		{ Keys = { Enum.KeyCode.X }, Action = { "Fov", 30, 5 } },

@@ -16,6 +16,7 @@ return function(systemFolder)
 		DecelerateEnd = "boolean",
 		ToggleGui = "table",
 		WatchButtonPosition = "string",
+		ControlButtonPosition = "string",
 		Keybinds = "table",
 		BarsOffset = "table",
 		BeforeLoad = "function",
@@ -29,6 +30,7 @@ return function(systemFolder)
 		DecelerateEnd = true,
 		ToggleGui = {},
 		WatchButtonPosition = "Center",
+		ControlButtonPosition = "Left",
 		Keybinds = {},
 		BarsOffset = {
 			Players = {},

@@ -8,7 +8,7 @@
 ]]
 
 -- Stable release, tested, use this most of the time
-require(8560288484)(script.Parent)
+-- require(8560288484)(script.Parent)
 
 -- "Nightly" release, most likely contains bugs, might be broken,
 -- contains the newest features. You shouldn't use it unless
@@ -16,4 +16,4 @@ require(8560288484)(script.Parent)
 --require(14142114135)(script.Parent)
 
 -- Local development
---require(game.ServerStorage.MainModule)(script.Parent)
+require(game.ServerStorage.MainModule)(script.Parent)

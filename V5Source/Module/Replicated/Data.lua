@@ -81,6 +81,7 @@ if run:IsClient() then
 		"DecelerateEnd",
 		"ToggleGui",
 		"WatchButtonPosition",
+		"ControlButtonPosition",
 		"Keybinds",
 		"BarsOffset",
 	}

@@ -1,5 +1,5 @@
 std = "roblox"
-exclude = [ "src/Module/Replicated/Dependencies/*", "V5Source/Module/MainModule/Replicated/Client/Dependencies/*" ]
+exclude = [ "src/Module/Replicated/Dependencies/*", "V5Source/Module/Replicated/Client/Dependencies/*" ]
 
 [rules]
 multiple_statements = "allow"

@@ -50,7 +50,7 @@ window:setParent(script.Parent)
 local menuIcons = {}
 for i, v in pairs(menuNames) do
 	local icon = Icon.new():setLabel(v.Name):setName(`CameraSystemControls-{v.Name}`)
-	local gui = window:new {
+	local gui = window:new({
 		Title = v.Title or v.Name,
 		Name = v.Name,
 		MinimumWidth = v.Width,
@@ -59,12 +59,26 @@ for i, v in pairs(menuNames) do
 		Enabled = false,
 		DeleteWhenClosed = false,
 		Icon = icon,
-	}
+	})
 	icon:bindToggleItem(gui)
 	icon.deselectWhenOtherIconSelected = false
 	table.insert(menuIcons, icon)
 end
-local controlIcon = Icon.new():setImage(5036765717):setMenu(menuIcons):setName("CameraSystemControls")
+
+local controlIcon = Icon.new():setImage(5036765717):setName("CameraSystemControls")
+local controlButtonPosition = data.Local.Settings.ControlButtonPosition
+
+if controlButtonPosition == "Left" then
+	controlIcon:setLeft()
+elseif controlButtonPosition == "Center" then
+	controlIcon:setMid()
+elseif controlButtonPosition == "Right" then
+	controlIcon:setRight()
+end
+
+-- If :setMenu is called before :setLeft/Mid/Right, then
+-- it doesn't open properly
+controlIcon:setMenu(menuIcons)
 
 --// Keybinds
 

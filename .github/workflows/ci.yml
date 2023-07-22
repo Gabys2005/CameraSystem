@@ -7,7 +7,7 @@ on:
 
 jobs:
     lint:
-        name: Lint and deploy
+        name: Lint
         runs-on: ubuntu-latest
         steps:
             - name: Checkout repository

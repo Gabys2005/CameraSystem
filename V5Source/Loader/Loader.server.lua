@@ -13,7 +13,7 @@
 -- "Nightly" release, most likely contains bugs, might be broken,
 -- contains the newest features. You shouldn't use it unless
 -- you want to test newest stuff
---require(14142114135)(script.Parent)
+-- require(14142114135)(script.Parent)
 
 -- Local development
 require(game.ServerStorage.MainModule)(script.Parent)

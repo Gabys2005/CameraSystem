@@ -1,4 +1,6 @@
 node_modules/
 sourcemap.json
 roblox.yml
+
 module.rbxm
+loader.rbxm

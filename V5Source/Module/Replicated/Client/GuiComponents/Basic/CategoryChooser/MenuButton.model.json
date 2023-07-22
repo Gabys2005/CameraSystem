@@ -1,8 +1,8 @@
 {
-    "ClassName": "TextButton",
-    "Properties": {
-        "BorderSizePixel": 0,
-        "Font": "SourceSans",
-        "TextSize": 15
-    }
+	"ClassName": "TextButton",
+	"Properties": {
+		"BorderSizePixel": 0,
+		"Font": "SourceSans",
+		"TextSize": 15
+	}
 }

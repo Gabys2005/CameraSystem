@@ -1,21 +1,18 @@
 {
-	"name": "Camera-System",
+	"name": "CameraSystem",
 	"tree": {
 		"$className": "DataModel",
 
 		"Workspace": {
 			"CameraSystem": {
-				"$path": "V5Source/Loader"
-			},
-
-			"$properties": {
-				"StreamingEnabled": false
+				"$path": "src/Loader"
 			}
 		},
 
 		"ServerStorage": {
+			"$className": "ServerStorage",
 			"MainModule": {
-				"$path": "V5Source/Module"
+				"$path": "src/Module"
 			}
 		}
 	}

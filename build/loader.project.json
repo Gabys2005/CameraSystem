@@ -1,0 +1,6 @@
+{
+	"name": "CameraSystem",
+	"tree": {
+		"$path": "../V5Source/Loader"
+	}
+}

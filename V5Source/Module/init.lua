@@ -1,45 +1,24 @@
-return function(systemFolder)
+--!strict
+
+return function(systemFolder: any)
 	--// Services
 	local players = game:GetService("Players")
 	local replicatedStorage = game:GetService("ReplicatedStorage")
 	local lighting = game:GetService("Lighting")
 
 	--// Variables
-	local Settings = require(systemFolder.Settings)
 	local replicatedFolder = script.Replicated
+	local Types = require(script.Types)
+	local SettingsManager = require(script.Utils.SettingsManager)
+	local SafeRequire = require(script.Utils.SafeRequire)
+	local Settings: Types.Settings = SafeRequire(
+		systemFolder:FindFirstChild("Settings"),
+		SettingsManager.GetDefaultSettings(),
+		"[[ CameraSystem ]]: Couldn't load the Settings script. Make sure it has no errors and is there."
+	)
 	local data = require(replicatedFolder.Data)
+
 	local apiModule = script.Apis.Api
-	local SettingsWithTypes = {
-		GuiOwners = "table",
-		Theme = "string",
-		AccelerateStart = "boolean",
-		DecelerateEnd = "boolean",
-		ToggleGui = "table",
-		WatchButtonPosition = "string",
-		ControlButtonPosition = "string",
-		Keybinds = "table",
-		BarsOffset = "table",
-		BeforeLoad = "function",
-		FreeAdmin = "string",
-		LogActions = "boolean",
-	}
-	local DefaultSettings = {
-		GuiOwners = {},
-		Theme = "Dark",
-		AccelerateStart = true,
-		DecelerateEnd = true,
-		ToggleGui = {},
-		WatchButtonPosition = "Center",
-		ControlButtonPosition = "Left",
-		Keybinds = {},
-		BarsOffset = {
-			Players = {},
-			Offset = 36,
-		},
-		BeforeLoad = function() end,
-		FreeAdmin = "None",
-		LogActions = false,
-	}
 
 	--// Functions
 	local function isOwner(plr: Player)
@@ -72,31 +51,6 @@ return function(systemFolder)
 		mainGuiClone.Parent = plr.PlayerGui
 	end
 
-	local function validateSettings()
-		for i, v in pairs(SettingsWithTypes) do
-			if Settings[i] == nil then
-				warn("[[ Camera System ]]: The '" .. i .. "' setting is missing")
-				Settings[i] = DefaultSettings[i]
-			end
-			if type(Settings[i]) ~= v then
-				warn(
-					"[[ Camera System ]]: The '"
-						.. i
-						.. "' setting is the wrong type, it's a '"
-						.. typeof(Settings[i])
-						.. "' while it should be '"
-						.. v
-						.. "'"
-				)
-				Settings[i] = DefaultSettings[i]
-			end
-		end
-		-- Additional setting specific checks
-		for i, v in pairs(Settings.GuiOwners) do
-			assert(typeof(v) == "string", "[[ Camera System ]]: '" .. v .. "' isn't a string in 'GuiOwners' setting")
-		end
-	end
-
 	--===================== CODE =====================--
 
 	--// Import all neccessary assets
@@ -121,7 +75,7 @@ return function(systemFolder)
 	end
 
 	--// Validate settings
-	validateSettings()
+	SettingsManager.FixSettings(Settings)
 
 	apiModule.Parent = systemFolder
 	script.Lighting.CameraSystemBlur.Parent = lighting
@@ -264,7 +218,7 @@ return function(systemFolder)
 		end
 	end)
 
-	replicatedFolder.Events.RunKeybind.OnServerEvent:Connect(function(plr, keybindData)
+	replicatedFolder.Events.RunKeybind.OnServerEvent:Connect(function(plr: Player, keybindData: { any })
 		if isOwner(plr) then
 			log(`{plr.Name} ran a keybind: {keybindData[1]} {tostring(keybindData[2])} {tostring(keybindData[3])}`)
 			if keybindData[1] == "Fov" then

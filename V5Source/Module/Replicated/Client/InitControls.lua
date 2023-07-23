@@ -2,6 +2,9 @@ local replicatedStorage = game:GetService("ReplicatedStorage")
 local userInputService = game:GetService("UserInputService")
 local replicated = script.Parent.Parent
 
+local consts = require(replicated.Shared.Constants)
+local Window = require(replicated.Client.GuiComponents.Basic.Window)
+
 return function(mainGui)
 	local iconModule = replicated.Client.Dependencies.TopbarPlus
 	local menuNames = {
@@ -32,7 +35,7 @@ return function(mainGui)
 			Height = 150,
 		},
 	}
-	local window = require(replicated.Client.Scripts.NewWindow)
+	-- local window = require(replicated.Client.Scripts.NewWindow)
 	local data = require(replicated.Data)
 
 	--// Functions
@@ -43,27 +46,40 @@ return function(mainGui)
 	end
 	local Icon = require(iconModule)
 
-	window:setParent(mainGui)
+	-- window:setParent(mainGui)
 
 	local menuIcons = {}
 	for i, v in pairs(menuNames) do
 		local icon = Icon.new():setLabel(v.Name):setName(`CameraSystemControls-{v.Name}`)
-		local gui = window:new({
-			Title = v.Title or v.Name,
-			Name = v.Name,
-			MinimumWidth = v.Width,
-			MinimumHeight = v.Height,
+		-- local gui = window:new({
+		-- 	Title = v.Title or v.Name,
+		-- 	Name = v.Name,
+		-- 	MinimumWidth = v.Width,
+		-- 	MinimumHeight = v.Height,
+		-- 	Position = UDim2.fromOffset(250 * (i - 1) + 20, 50),
+		-- 	Enabled = false,
+		-- 	DeleteWhenClosed = false,
+		-- 	Icon = icon,
+		-- })
+		local window = Window.new({
+			Title = v.Name,
+			MinSize = UDim2.fromOffset(v.Width, v.Height),
 			Position = UDim2.fromOffset(250 * (i - 1) + 20, 50),
-			Enabled = false,
-			DeleteWhenClosed = false,
-			Icon = icon,
+			OnClose = function()
+				icon:deselect()
+			end,
 		})
-		icon:bindToggleItem(gui)
+		window.Instance.Parent = mainGui
+
+		local contentComponent = require(script.Parent.GuiComponents.Windows[v.Name])
+		contentComponent().Parent = window.Content
+
+		icon:bindToggleItem(window.Instance)
 		icon.deselectWhenOtherIconSelected = false
 		table.insert(menuIcons, icon)
 	end
 
-	local controlIcon = Icon.new():setImage(5036765717):setName("CameraSystemControls")
+	local controlIcon = Icon.new():setImage(consts.CONTROL_ICON_ID):setName("CameraSystemControls")
 	local controlButtonPosition = data.Local.Settings.ControlButtonPosition
 
 	if controlButtonPosition == "Left" then

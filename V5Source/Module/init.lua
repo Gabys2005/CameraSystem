@@ -14,7 +14,7 @@ return function(systemFolder: any)
 	local Settings: Types.Settings = SafeRequire(
 		systemFolder:FindFirstChild("Settings"),
 		SettingsManager.GetDefaultSettings(),
-		"[[ CameraSystem ]]: Couldn't load the Settings script. Make sure it has no errors and it exists."
+		"[[ Camera System ]]: Couldn't load the Settings script. Make sure it exists and has no errors."
 	)
 	local data = require(replicatedFolder.Data)
 
@@ -105,7 +105,10 @@ return function(systemFolder: any)
 	players.PlayerAdded:Connect(onPlayerAdded)
 
 	replicatedFolder.Events.RequestCurrentData.OnServerInvoke = function()
-		return data
+		return {
+			Data = data,
+			Settings = Settings,
+		}
 	end
 
 	replicatedFolder.Events.ChangeCam.OnServerEvent:Connect(function(plr, camType, camId)

@@ -1,0 +1,4 @@
+return {
+	CONTROL_ICON_ID = 14165792576,
+	DEFAULT_THEME = "Dark",
+}

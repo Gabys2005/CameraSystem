@@ -1,3 +1,5 @@
+--!strict
+
 local data = {
 
 	Shared = {
@@ -74,23 +76,9 @@ local data = {
 local run = game:GetService("RunService")
 if run:IsClient() then
 	local serverData = script.Parent.Events.RequestCurrentData:InvokeServer()
-	data.Shared = serverData.Shared
-	local SettingsModule = require(workspace:WaitForChild("CameraSystem").Settings)
-	local SettingsToImport = {
-		"AccelerateStart",
-		"DecelerateEnd",
-		"ToggleGui",
-		"WatchButtonPosition",
-		"ControlButtonPosition",
-		"Keybinds",
-		"BarsOffset",
-		"Admins",
-	}
-	local Defaults = {
-		BarsOffset = { Players = {}, Offset = 36 },
-	}
-	for i, v in pairs(SettingsToImport) do
-		data.Local.Settings[v] = SettingsModule[v] or Defaults[v]
+	data.Shared = serverData.Data.Shared
+	for settingName, settingValue in serverData.Settings do
+		data.Local.Settings[settingName] = settingValue
 	end
 	data.Local.LerpedValues.Fov = data.Shared.Effects.Fov.Value
 	data.Local.LerpedValues.Tilt = data.Shared.Effects.Tilt.Value

@@ -9,7 +9,7 @@ return function(module: ModuleScript?, defaultValue: any, warningMessage: string
 	if success then
 		return contentOrErrorMessage
 	else
-		warn(contentOrErrorMessage)
+		warn(warningMessage)
 		return defaultValue
 	end
 end

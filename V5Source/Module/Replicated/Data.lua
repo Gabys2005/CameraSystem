@@ -84,6 +84,7 @@ if run:IsClient() then
 		"ControlButtonPosition",
 		"Keybinds",
 		"BarsOffset",
+		"Admins",
 	}
 	local Defaults = {
 		BarsOffset = { Players = {}, Offset = 36 },

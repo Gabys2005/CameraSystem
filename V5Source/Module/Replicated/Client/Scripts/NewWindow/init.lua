@@ -1,4 +1,3 @@
-local utils = require(script.Parent.Utils)
 local theme = require(script.Parent.Parent.Themes.Current)
 local draggableUi = require(script.Parent.DraggableUI)
 local window = {}

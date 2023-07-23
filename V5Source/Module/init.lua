@@ -1,20 +1,20 @@
 --!strict
+-- Services
+local players = game:GetService("Players")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local lighting = game:GetService("Lighting")
+
+-- Variables
+local Types = require(script.Types)
+local SettingsManager = require(script.Utils.SettingsManager)
+local SafeRequire = require(script.Utils.SafeRequire)
 
 return function(systemFolder: any)
-	--// Services
-	local players = game:GetService("Players")
-	local replicatedStorage = game:GetService("ReplicatedStorage")
-	local lighting = game:GetService("Lighting")
-
-	--// Variables
 	local replicatedFolder = script.Replicated
-	local Types = require(script.Types)
-	local SettingsManager = require(script.Utils.SettingsManager)
-	local SafeRequire = require(script.Utils.SafeRequire)
 	local Settings: Types.Settings = SafeRequire(
 		systemFolder:FindFirstChild("Settings"),
 		SettingsManager.GetDefaultSettings(),
-		"[[ CameraSystem ]]: Couldn't load the Settings script. Make sure it has no errors and is there."
+		"[[ CameraSystem ]]: Couldn't load the Settings script. Make sure it has no errors and it exists."
 	)
 	local data = require(replicatedFolder.Data)
 
@@ -42,13 +42,14 @@ return function(systemFolder: any)
 
 	local function onPlayerAdded(plr: Player)
 		if isOwner(plr) then
+			-- Main and Control guis need to be separate because of DisplayOrder
 			local guiClone = script.Guis.Controls:Clone()
 			guiClone.Name = "CameraSystemControls"
-			guiClone.Parent = plr.PlayerGui
+			guiClone.Parent = plr:FindFirstChild("PlayerGui")
 		end
 		local mainGuiClone = script.Guis.Main:Clone()
 		mainGuiClone.Name = "CameraSystemMain"
-		mainGuiClone.Parent = plr.PlayerGui
+		mainGuiClone.Parent = plr:FindFirstChild("PlayerGui")
 	end
 
 	--===================== CODE =====================--
@@ -90,7 +91,7 @@ return function(systemFolder: any)
 	data.Shared.CurrentCamera.Model = camerasByIds.Default
 
 	--// Hide focus points
-	for i, v in pairs(systemFolder.FocusPoints:GetChildren()) do
+	for _, v in pairs(systemFolder.FocusPoints:GetChildren()) do
 		if v:IsA("BasePart") then
 			v.Transparency = 1
 			v.CanCollide = false
@@ -98,7 +99,7 @@ return function(systemFolder: any)
 	end
 
 	--// Connect events
-	for i, v in pairs(players:GetPlayers()) do
+	for _, v in pairs(players:GetPlayers()) do
 		onPlayerAdded(v)
 	end
 	players.PlayerAdded:Connect(onPlayerAdded)

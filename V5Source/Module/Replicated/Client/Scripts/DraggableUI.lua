@@ -1,3 +1,4 @@
+-- TODO: delete this as well
 local UserInputService = game:GetService("UserInputService")
 local players = game:GetService("Players")
 local mouse = players.LocalPlayer:GetMouse()
@@ -20,12 +21,8 @@ return function(gui: GuiObject)
 
 	local function update(input: InputObject)
 		local delta = input.Position - dragStart
-		gui.Position = UDim2.new(
-			startPos.X.Scale,
-			startPos.X.Offset + delta.X,
-			startPos.Y.Scale,
-			startPos.Y.Offset + delta.Y
-		)
+		gui.Position =
+			UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 	end
 
 	gui.InputBegan:Connect(function(input: InputObject)
@@ -101,10 +98,8 @@ return function(gui: GuiObject)
 				local diff = startingPosition.X - UserInputService:GetMouseLocation().X
 				if startingSize.X.Offset + diff > MINIMUM_WIDTH then
 					gui.Size = UDim2.fromOffset(math.max(startingSize.X.Offset + diff, MINIMUM_WIDTH), TOPBAR_SIZE)
-					gui.Position = UDim2.fromOffset(
-						UserInputService:GetMouseLocation().X,
-						startingFramePosition.Y.Offset
-					)
+					gui.Position =
+						UDim2.fromOffset(UserInputService:GetMouseLocation().X, startingFramePosition.Y.Offset)
 				end
 			elseif side == "bottomleft" then
 				local Xdiff = startingPosition.X - UserInputService:GetMouseLocation().X
@@ -117,10 +112,8 @@ return function(gui: GuiObject)
 				)
 				if startingSize.X.Offset + Xdiff > MINIMUM_WIDTH then
 					gui.Size = UDim2.fromOffset(math.max(startingSize.X.Offset + Xdiff, MINIMUM_WIDTH), TOPBAR_SIZE)
-					gui.Position = UDim2.fromOffset(
-						UserInputService:GetMouseLocation().X,
-						startingFramePosition.Y.Offset
-					)
+					gui.Position =
+						UDim2.fromOffset(UserInputService:GetMouseLocation().X, startingFramePosition.Y.Offset)
 				end
 			elseif side == "bottomright" then
 				local Xdiff = UserInputService:GetMouseLocation().X - startingPosition.X

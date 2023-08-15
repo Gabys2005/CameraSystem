@@ -8,32 +8,33 @@ local Window = require(replicated.Client.GuiComponents.Basic.Window)
 return function(mainGui)
 	local iconModule = replicated.Client.Dependencies.TopbarPlus
 	local menuNames = {
+		-- {
+		-- 	Name = "Cameras",
+		-- 	Width = 225,
+		-- 	Height = 300,
+		-- },
+		-- {
+		-- 	Name = "Effects",
+		-- 	Width = 225,
+		-- 	Height = 300,
+		-- },
+		-- {
+		-- 	Name = "Settings",
+		-- 	Width = 225,
+		-- 	Height = 280,
+		-- },
 		{
-			Name = "Cameras",
-			Width = 225,
-			Height = 300,
-		},
-		{
-			Name = "Effects",
-			Width = 225,
-			Height = 300,
-		},
-		{
-			Name = "Settings",
-			Width = 225,
-			Height = 280,
-		},
-		{
-			Name = "FocusList",
-			Width = 225,
-			Height = 100,
-		},
-		{
-			Name = "Info",
-			Title = "[Beta] Info",
-			Width = 225,
+			Module = "FocusList",
+			Name = "Focus List",
+			Width = 250,
 			Height = 150,
 		},
+		-- {
+		-- 	Name = "Info",
+		-- 	Title = "[Beta] Info",
+		-- 	Width = 225,
+		-- 	Height = 150,
+		-- },
 	}
 	-- local window = require(replicated.Client.Scripts.NewWindow)
 	local data = require(replicated.Data)
@@ -71,8 +72,10 @@ return function(mainGui)
 		})
 		window.Instance.Parent = mainGui
 
-		local contentComponent = require(script.Parent.GuiComponents.Windows[v.Name])
-		contentComponent().Parent = window.Content
+		local contentComponentModule = require(script.Parent.GuiComponents.Windows[v.Module])
+		local contentComponent = contentComponentModule.new()
+		contentComponent.Instance.Parent = window.Content
+		-- contentComponent().Parent = window.Content
 
 		icon:bindToggleItem(window.Instance)
 		icon.deselectWhenOtherIconSelected = false
@@ -82,9 +85,8 @@ return function(mainGui)
 	local controlIcon = Icon.new():setImage(consts.CONTROL_ICON_ID):setName("CameraSystemControls")
 	local controlButtonPosition = data.Local.Settings.ControlButtonPosition
 
-	if controlButtonPosition == "Left" then
-		controlIcon:setLeft()
-	elseif controlButtonPosition == "Center" then
+	-- running :setLeft() makes the menu not save the scroll position
+	if controlButtonPosition == "Center" then
 		controlIcon:setMid()
 	elseif controlButtonPosition == "Right" then
 		controlIcon:setRight()

@@ -15,6 +15,7 @@ return {
 			Border = Color3.fromRGB(80, 79, 79),
 		},
 		Danger = Color3.fromRGB(104, 17, 17),
+		Success = Color3.fromRGB(6, 172, 0),
 	},
 
 	-- !! OUTDATED !! --

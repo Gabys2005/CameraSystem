@@ -29,12 +29,13 @@ return function(mainGui)
 			Width = 250,
 			Height = 150,
 		},
-		-- {
-		-- 	Name = "Info",
-		-- 	Title = "[Beta] Info",
-		-- 	Width = 225,
-		-- 	Height = 150,
-		-- },
+		{
+			Module = "Info",
+			Name = "Camera Info",
+			Width = 225,
+			Height = 165,
+			VerticallyResizable = false,
+		},
 	}
 	-- local window = require(replicated.Client.Scripts.NewWindow)
 	local data = require(replicated.Data)
@@ -69,6 +70,7 @@ return function(mainGui)
 			OnClose = function()
 				icon:deselect()
 			end,
+			VerticallyResizable = v.VerticallyResizable,
 		})
 		window.Instance.Parent = mainGui
 

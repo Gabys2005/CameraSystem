@@ -4,7 +4,6 @@ local replicated = script.Parent.Parent.Parent.Parent
 
 local main = script.Parent.Parent
 local New = require(main.New)
-local Types = require(main.Types)
 local Component = require(main)
 
 local Button = require(main.Basic.Button)

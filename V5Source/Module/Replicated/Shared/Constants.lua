@@ -1,3 +1,5 @@
+local GuiService = game:GetService("GuiService")
+
 return {
 	CONTROL_ICON_ID = 14165792576,
 	DEFAULT_THEME = "Dark",
@@ -7,5 +9,5 @@ return {
 		BOTTOM_LEFT = "rbxassetid://7655124995",
 		BOTTOM_RIGHT = "rbxassetid://7655117647",
 	},
-	TOPBAR_SIZE = 36,
+	TOPBAR_SIZE = GuiService:GetGuiInset().Y,
 }

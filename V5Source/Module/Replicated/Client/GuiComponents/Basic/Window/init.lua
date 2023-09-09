@@ -25,6 +25,7 @@ type WindowParams = {
 	Size: UDim2?,
 	MinSize: UDim2?,
 	OnClose: (() -> any)?,
+	VerticallyResizable: boolean?,
 }
 
 type Window = typeof(setmetatable(
@@ -44,6 +45,7 @@ function Window.new(params: WindowParams)
 
 	local size = params.Size or params.MinSize or UDim2.fromOffset(200, 300)
 	local draggingFrames = {}
+	local allowVerticalResizing = if params.VerticallyResizable ~= nil then params.VerticallyResizable else true
 
 	local MINIMUM_WIDTH = if params.MinSize then params.MinSize.X.Offset else 100
 	local MINIMUM_HEIGHT = if params.MinSize then params.MinSize.Y.Offset else 100
@@ -306,50 +308,52 @@ function Window.new(params: WindowParams)
 		end
 	end)
 
-	draggingFrames.Bottom.InputBegan:Connect(function(input: InputObject)
-		startResize(input, "bottom")
-	end)
-	draggingFrames.Bottom.MouseEnter:Connect(function()
-		if not resizing then
-			lastCursor = mouse.Icon
-			mouse.Icon = consts.RESIZE_ICONS.VERTICAL
-		end
-	end)
-	draggingFrames.Bottom.MouseLeave:Connect(function()
-		if not resizing then
-			mouse.Icon = ""
-		end
-	end)
+	if allowVerticalResizing then
+		draggingFrames.Bottom.InputBegan:Connect(function(input: InputObject)
+			startResize(input, "bottom")
+		end)
+		draggingFrames.Bottom.MouseEnter:Connect(function()
+			if not resizing then
+				lastCursor = mouse.Icon
+				mouse.Icon = consts.RESIZE_ICONS.VERTICAL
+			end
+		end)
+		draggingFrames.Bottom.MouseLeave:Connect(function()
+			if not resizing then
+				mouse.Icon = ""
+			end
+		end)
 
-	draggingFrames.BottomLeft.InputBegan:Connect(function(input: InputObject)
-		startResize(input, "bottomleft")
-	end)
-	draggingFrames.BottomLeft.MouseEnter:Connect(function()
-		if not resizing then
-			lastCursor = mouse.Icon
-			mouse.Icon = consts.RESIZE_ICONS.BOTTOM_LEFT
-		end
-	end)
-	draggingFrames.BottomLeft.MouseLeave:Connect(function()
-		if not resizing then
-			mouse.Icon = ""
-		end
-	end)
+		draggingFrames.BottomLeft.InputBegan:Connect(function(input: InputObject)
+			startResize(input, "bottomleft")
+		end)
+		draggingFrames.BottomLeft.MouseEnter:Connect(function()
+			if not resizing then
+				lastCursor = mouse.Icon
+				mouse.Icon = consts.RESIZE_ICONS.BOTTOM_LEFT
+			end
+		end)
+		draggingFrames.BottomLeft.MouseLeave:Connect(function()
+			if not resizing then
+				mouse.Icon = ""
+			end
+		end)
 
-	draggingFrames.BottomRight.InputBegan:Connect(function(input: InputObject)
-		startResize(input, "bottomright")
-	end)
-	draggingFrames.BottomRight.MouseEnter:Connect(function()
-		if not resizing then
-			lastCursor = mouse.Icon
-			mouse.Icon = consts.RESIZE_ICONS.BOTTOM_RIGHT
-		end
-	end)
-	draggingFrames.BottomRight.MouseLeave:Connect(function()
-		if not resizing then
-			mouse.Icon = ""
-		end
-	end)
+		draggingFrames.BottomRight.InputBegan:Connect(function(input: InputObject)
+			startResize(input, "bottomright")
+		end)
+		draggingFrames.BottomRight.MouseEnter:Connect(function()
+			if not resizing then
+				lastCursor = mouse.Icon
+				mouse.Icon = consts.RESIZE_ICONS.BOTTOM_RIGHT
+			end
+		end)
+		draggingFrames.BottomRight.MouseLeave:Connect(function()
+			if not resizing then
+				mouse.Icon = ""
+			end
+		end)
+	end
 
 	Component.apply(self)
 	return self

@@ -138,10 +138,10 @@ return function(systemFolder: any)
 		end
 	end)
 
-	replicatedFolder.Events.ChangeFov.OnServerEvent:Connect(function(plr, fov)
+	replicatedFolder.Events.ChangeFov.OnServerEvent:Connect(function(plr, fov, time)
 		if isOwner(plr) then
 			log(`{plr.Name} changed fov to {fov}`)
-			api:ChangeFov(fov, data.Shared.Effects.Fov.Time)
+			api:ChangeFov(fov, time)
 		end
 	end)
 
@@ -159,24 +159,24 @@ return function(systemFolder: any)
 		end
 	end)
 
-	replicatedFolder.Events.ChangeBlur.OnServerEvent:Connect(function(plr, blur)
+	replicatedFolder.Events.ChangeBlur.OnServerEvent:Connect(function(plr, blur, time)
 		if isOwner(plr) then
 			log(`{plr.Name} changed blur to {blur}`)
-			api:ChangeBlur(blur)
+			api:ChangeBlur(blur, time)
 		end
 	end)
 
-	replicatedFolder.Events.ChangeSaturation.OnServerEvent:Connect(function(plr, saturation)
+	replicatedFolder.Events.ChangeSaturation.OnServerEvent:Connect(function(plr, saturation, time)
 		if isOwner(plr) then
 			log(`{plr.Name} changed saturation to {saturation}`)
-			api:ChangeSaturation(saturation)
+			api:ChangeSaturation(saturation, time)
 		end
 	end)
 
-	replicatedFolder.Events.ChangeTilt.OnServerEvent:Connect(function(plr, tilt)
+	replicatedFolder.Events.ChangeTilt.OnServerEvent:Connect(function(plr, tilt, time)
 		if isOwner(plr) then
 			log(`{plr.Name} changed tilt to {tilt}`)
-			api:ChangeTilt(tilt)
+			api:ChangeTilt(tilt, time)
 		end
 	end)
 

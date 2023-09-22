@@ -13,6 +13,7 @@ return {
 		Primary = {
 			Background = Color3.fromRGB(58, 58, 58),
 			Border = Color3.fromRGB(80, 79, 79),
+			Selected = Color3.fromRGB(117, 117, 117),
 		},
 		Danger = Color3.fromRGB(104, 17, 17),
 		Success = Color3.fromRGB(6, 172, 0),

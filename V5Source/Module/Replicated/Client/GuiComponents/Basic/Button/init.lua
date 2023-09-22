@@ -13,9 +13,11 @@ type ButtonParams = {
 	Position: UDim2?,
 	AnchorPoint: Vector2?,
 	OnClick: (() -> any)?,
+	OnRightClick: (() -> any)?,
+	Parent: Instance?,
 }
 
-type Button = typeof(setmetatable(
+export type Button = typeof(setmetatable(
 	{} :: {
 		Instance: TextButton,
 		Stroke: UIStroke,
@@ -55,6 +57,14 @@ function Button.new(params: ButtonParams)
 		table.insert(self.Connections, button.MouseButton1Click:Connect(params.OnClick))
 	end
 
+	if params.OnRightClick then
+		table.insert(self.Connections, button.MouseButton2Click:Connect(params.OnRightClick))
+	end
+
+	if params.Parent then
+		button.Parent = params.Parent
+	end
+
 	Component.apply(self)
 	return self
 end
@@ -63,6 +73,10 @@ function Button.ApplyTheme(self: Button, theme: Types.Theme)
 	self.Instance.BackgroundColor3 = theme.Buttons.Primary.Background
 	self.Stroke.Color = theme.Buttons.Primary.Border
 	self.Instance.TextColor3 = theme.Text.Primary
+end
+
+function Button.SetBackgroundColor(self: Button, color: Color3)
+	self.Instance.BackgroundColor3 = color
 end
 
 function Button.Destroy(self: Button)

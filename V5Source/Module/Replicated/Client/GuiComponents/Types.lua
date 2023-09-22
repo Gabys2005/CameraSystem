@@ -9,7 +9,7 @@ export type Theme = {
 	Buttons: {
 		Danger: Color3,
 		Success: Color3,
-		Primary: { Background: Color3, Border: Color3 },
+		Primary: { Background: Color3, Border: Color3, Selected: Color3 },
 	},
 }
 

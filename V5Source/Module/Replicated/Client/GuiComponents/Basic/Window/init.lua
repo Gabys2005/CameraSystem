@@ -77,6 +77,7 @@ function Window.new(params: WindowParams)
 		Name = "Content",
 		Size = UDim2.new(1, -10, 1, -35),
 		Position = UDim2.fromOffset(5, 30),
+		ClipsDescendants = true,
 	}, {
 		New("UICorner"),
 		New("UIPadding", {
@@ -89,6 +90,7 @@ function Window.new(params: WindowParams)
 
 	local mainFrame = New("Frame", {
 		Size = size,
+		Name = params.Title,
 		Visible = false,
 	}, { New("UICorner"), topbar, content })
 

@@ -13,11 +13,12 @@ return function(mainGui)
 		-- 	Width = 225,
 		-- 	Height = 300,
 		-- },
-		-- {
-		-- 	Name = "Effects",
-		-- 	Width = 225,
-		-- 	Height = 300,
-		-- },
+		{
+			Module = "Effects",
+			Name = "Effects",
+			Width = 225,
+			Height = 300,
+		},
 		-- {
 		-- 	Name = "Settings",
 		-- 	Width = 225,

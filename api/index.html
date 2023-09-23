@@ -1,0 +1,1709 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../faq/">
+      
+      
+      
+      <link rel="icon" href="../img/camera2.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.1">
+    
+    
+      
+        <title>API - Camera System</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.72749a73.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a5377069.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Camera System" class="md-header__button md-logo" aria-label="Camera System" data-md-component="logo">
+      
+  <img src="../img/camera2.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Camera System
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="teal"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Camera System" class="md-nav__button md-logo" aria-label="Camera System" data-md-component="logo">
+      
+  <img src="../img/camera2.png" alt="logo">
+
+    </a>
+    Camera System
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../updating/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Updating From V4 to V5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basicinfo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Information
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cameracategories/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Camera Categories
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Camera Types
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Camera Types
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../camera-types/staticcams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Static Cameras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../camera-types/movingcams/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Moving Cameras
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../camera-types/defaultcam/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Default Camera
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../camera-types/drones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Drones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../focuspoints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Focus Points
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../keybinds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Keybinds
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequently Asked Questions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    API
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-api" class="md-nav__link">
+    Using the API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-documentation" class="md-nav__link">
+    Api documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared" class="md-nav__link">
+    Shared
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getcamsbyid" class="md-nav__link">
+    GetCamsById()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcamidbynamecamtype-string-camname-string" class="md-nav__link">
+    GetCamIdByName(camType: string, camName: string)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcambyidcamtype-string-camid-number" class="md-nav__link">
+    GetCamById(camType: string, camId: number)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdefaultcamposition" class="md-nav__link">
+    GetDefaultCamPosition()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-only" class="md-nav__link">
+    Server-only
+  </a>
+  
+    <nav class="md-nav" aria-label="Server-only">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changecamcamtype-string-camidorname-numberstring" class="md-nav__link">
+    ChangeCam(camType: string, camIdOrName: number|string)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcurrentcamera" class="md-nav__link">
+    GetCurrentCamera()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#focuswhotofocuson-basepartstringnil" class="md-nav__link">
+    Focus(whoToFocusOn: BasePart|string|nil)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getfocus" class="md-nav__link">
+    GetFocus()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changefovfov-number-time-number" class="md-nav__link">
+    ChangeFov(fov: number, time: number?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changeautofovenable-boolean" class="md-nav__link">
+    ChangeAutoFov(enable: boolean)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changesmoothfocusenable-boolean" class="md-nav__link">
+    ChangeSmoothFocus(enable: boolean)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changeblurblur-number-time-number" class="md-nav__link">
+    ChangeBlur(blur: number, time: number?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changesaturationsaturation-number-time-number" class="md-nav__link">
+    ChangeSaturation(saturation: number, time: number?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changetilttilt-number-time-number" class="md-nav__link">
+    ChangeTilt(tilt: number, time: number?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changeblackoutenabled-boolean" class="md-nav__link">
+    ChangeBlackout(enabled: boolean?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changebarsenabledenabled-boolean" class="md-nav__link">
+    ChangeBarsEnabled(enabled: boolean?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changebarsizesize-number-time-number" class="md-nav__link">
+    ChangeBarSize(size: number, time: number?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changetransitionname-string" class="md-nav__link">
+    ChangeTransition(name: string)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changetransitionspeedspeed-number" class="md-nav__link">
+    ChangeTransitionSpeed(speed: number)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changeshakeshake-number" class="md-nav__link">
+    ChangeShake(shake: number)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getfov" class="md-nav__link">
+    GetFov()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getblur" class="md-nav__link">
+    GetBlur()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getsaturation" class="md-nav__link">
+    GetSaturation()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettilt" class="md-nav__link">
+    GetTilt()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbarsenabled" class="md-nav__link">
+    GetBarsEnabled()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbarsize" class="md-nav__link">
+    GetBarSize()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettransition" class="md-nav__link">
+    GetTransition()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettransitionspeed" class="md-nav__link">
+    GetTransitionSpeed()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getshake" class="md-nav__link">
+    GetShake()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apicamerachanged" class="md-nav__link">
+    api.CameraChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apifocuschanged" class="md-nav__link">
+    api.FocusChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apifovchanged" class="md-nav__link">
+    api.FovChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apiblurchanged" class="md-nav__link">
+    api.BlurChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apisaturationchanged" class="md-nav__link">
+    api.SaturationChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apitiltchanged" class="md-nav__link">
+    api.TiltChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apiblackoutchanged" class="md-nav__link">
+    api.BlackoutChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apibarsenabledchanged" class="md-nav__link">
+    api.BarsEnabledChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apibarsizechanged" class="md-nav__link">
+    api.BarSizeChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apitransitionchanged" class="md-nav__link">
+    api.TransitionChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apitransitionspeedchanged" class="md-nav__link">
+    api.TransitionSpeedChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apishakechanged" class="md-nav__link">
+    api.ShakeChanged
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-only" class="md-nav__link">
+    Client-only
+  </a>
+  
+    <nav class="md-nav" aria-label="Client-only">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#events_1" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apistartedwatching" class="md-nav__link">
+    api.StartedWatching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apistoppedwatching" class="md-nav__link">
+    api.StoppedWatching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#using-the-api" class="md-nav__link">
+    Using the API
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-documentation" class="md-nav__link">
+    Api documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shared" class="md-nav__link">
+    Shared
+  </a>
+  
+    <nav class="md-nav" aria-label="Shared">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getcamsbyid" class="md-nav__link">
+    GetCamsById()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcamidbynamecamtype-string-camname-string" class="md-nav__link">
+    GetCamIdByName(camType: string, camName: string)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcambyidcamtype-string-camid-number" class="md-nav__link">
+    GetCamById(camType: string, camId: number)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getdefaultcamposition" class="md-nav__link">
+    GetDefaultCamPosition()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-only" class="md-nav__link">
+    Server-only
+  </a>
+  
+    <nav class="md-nav" aria-label="Server-only">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    Methods
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#changecamcamtype-string-camidorname-numberstring" class="md-nav__link">
+    ChangeCam(camType: string, camIdOrName: number|string)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getcurrentcamera" class="md-nav__link">
+    GetCurrentCamera()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#focuswhotofocuson-basepartstringnil" class="md-nav__link">
+    Focus(whoToFocusOn: BasePart|string|nil)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getfocus" class="md-nav__link">
+    GetFocus()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changefovfov-number-time-number" class="md-nav__link">
+    ChangeFov(fov: number, time: number?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changeautofovenable-boolean" class="md-nav__link">
+    ChangeAutoFov(enable: boolean)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changesmoothfocusenable-boolean" class="md-nav__link">
+    ChangeSmoothFocus(enable: boolean)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changeblurblur-number-time-number" class="md-nav__link">
+    ChangeBlur(blur: number, time: number?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changesaturationsaturation-number-time-number" class="md-nav__link">
+    ChangeSaturation(saturation: number, time: number?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changetilttilt-number-time-number" class="md-nav__link">
+    ChangeTilt(tilt: number, time: number?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changeblackoutenabled-boolean" class="md-nav__link">
+    ChangeBlackout(enabled: boolean?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changebarsenabledenabled-boolean" class="md-nav__link">
+    ChangeBarsEnabled(enabled: boolean?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changebarsizesize-number-time-number" class="md-nav__link">
+    ChangeBarSize(size: number, time: number?)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changetransitionname-string" class="md-nav__link">
+    ChangeTransition(name: string)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changetransitionspeedspeed-number" class="md-nav__link">
+    ChangeTransitionSpeed(speed: number)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changeshakeshake-number" class="md-nav__link">
+    ChangeShake(shake: number)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getfov" class="md-nav__link">
+    GetFov()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getblur" class="md-nav__link">
+    GetBlur()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getsaturation" class="md-nav__link">
+    GetSaturation()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettilt" class="md-nav__link">
+    GetTilt()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbarsenabled" class="md-nav__link">
+    GetBarsEnabled()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getbarsize" class="md-nav__link">
+    GetBarSize()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettransition" class="md-nav__link">
+    GetTransition()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gettransitionspeed" class="md-nav__link">
+    GetTransitionSpeed()
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getshake" class="md-nav__link">
+    GetShake()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#events" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apicamerachanged" class="md-nav__link">
+    api.CameraChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apifocuschanged" class="md-nav__link">
+    api.FocusChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apifovchanged" class="md-nav__link">
+    api.FovChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apiblurchanged" class="md-nav__link">
+    api.BlurChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apisaturationchanged" class="md-nav__link">
+    api.SaturationChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apitiltchanged" class="md-nav__link">
+    api.TiltChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apiblackoutchanged" class="md-nav__link">
+    api.BlackoutChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apibarsenabledchanged" class="md-nav__link">
+    api.BarsEnabledChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apibarsizechanged" class="md-nav__link">
+    api.BarSizeChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apitransitionchanged" class="md-nav__link">
+    api.TransitionChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apitransitionspeedchanged" class="md-nav__link">
+    api.TransitionSpeedChanged
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apishakechanged" class="md-nav__link">
+    api.ShakeChanged
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-only" class="md-nav__link">
+    Client-only
+  </a>
+  
+    <nav class="md-nav" aria-label="Client-only">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#events_1" class="md-nav__link">
+    Events
+  </a>
+  
+    <nav class="md-nav" aria-label="Events">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#apistartedwatching" class="md-nav__link">
+    api.StartedWatching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apistoppedwatching" class="md-nav__link">
+    api.StoppedWatching
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="api">API</h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The api is <strong>not</strong> finished yet, a lot more stuff will be added to it in the future. Current functions shouldn't change however.</p>
+</div>
+<h2 id="using-the-api">Using the API</h2>
+<p>To use the API, simply require the <code>Api</code> module inserted into the main CameraSystem folder:
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">local</span> <span class="n">api</span> <span class="o">=</span> <span class="nb">require</span><span class="p">(</span><span class="n">workspace</span><span class="p">.</span><span class="n">CameraSystem</span><span class="p">:</span><span class="n">WaitForChild</span><span class="p">(</span><span class="s2">&quot;Api&quot;</span><span class="p">))</span>
+</code></pre></div></p>
+<h2 id="api-documentation">Api documentation</h2>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Shared apis can be accessed from local and server scripts. Server-only and Client-only apis can only be accessed from the server or client</p>
+</div>
+<h2 id="shared">Shared</h2>
+<h3 id="methods">Methods</h3>
+<hr />
+<h4 id="getcamsbyid">GetCamsById()</h4>
+<p>Used to get <strong>all</strong> cameras, indexed by their id
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kd">local</span> <span class="n">cams</span> <span class="o">=</span> <span class="n">api</span><span class="p">:</span><span class="n">GetCamsById</span><span class="p">()</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">cams</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="getcamidbynamecamtype-string-camname-string">GetCamIdByName(camType: string, camName: string)</h4>
+<p>Used to get a camera's id by it's name
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kd">local</span> <span class="n">camId</span> <span class="o">=</span> <span class="n">api</span><span class="p">:</span><span class="n">GetCamIdByName</span><span class="p">(</span><span class="s2">&quot;Static&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="getcambyidcamtype-string-camid-number">GetCamById(camType: string, camId: number)</h4>
+<p>Used to get the camera instance (part or model) by id
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kd">local</span> <span class="n">camPart</span> <span class="o">=</span> <span class="n">api</span><span class="p">:</span><span class="n">GetCamById</span><span class="p">(</span><span class="s2">&quot;Static&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="getdefaultcamposition">GetDefaultCamPosition()</h4>
+<p>Used to get the position of the default camera. Returns a Vector3
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">local</span> <span class="n">camPos</span> <span class="o">=</span> <span class="n">api</span><span class="p">:</span><span class="n">GetDefaultCamPosition</span><span class="p">()</span>
+</code></pre></div></p>
+<h2 id="server-only">Server-only</h2>
+<h3 id="methods_1">Methods</h3>
+<hr />
+<h4 id="changecamcamtype-string-camidorname-numberstring">ChangeCam(camType: string, camIdOrName: number|string)</h4>
+<p>Used to change the current camera
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeCam</span><span class="p">(</span><span class="s2">&quot;Static&quot;</span><span class="p">,</span> <span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1">-- Or</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeCam</span><span class="p">(</span><span class="s2">&quot;Static&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></p>
+<h4 id="getcurrentcamera">GetCurrentCamera()</h4>
+<p>Used to get basic information about the current camera
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="p">:</span><span class="n">GetCurrentCamera</span><span class="p">())</span> <span class="c1">-- { Id = 1, Model = &lt;Model&gt;, Type = &quot;Static&quot; }</span>
+</code></pre></div></p>
+<hr />
+<h4 id="focuswhotofocuson-basepartstringnil">Focus(whoToFocusOn: BasePart|string|nil)</h4>
+<p>Used to change the focus. If <code>whoToFocusOn</code> is a part, then it'll just focus on it. If it's a string, then it'll try to find a player whose name starts with it. If it's nil, then it will unfocus.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">api</span><span class="p">:</span><span class="n">Focus</span><span class="p">(</span><span class="n">workspace</span><span class="p">.</span><span class="n">Part</span><span class="p">)</span> <span class="c1">-- focus on a part</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">api</span><span class="p">:</span><span class="n">Focus</span><span class="p">(</span><span class="s2">&quot;gabys2005&quot;</span><span class="p">)</span> <span class="c1">-- focus on a player</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="n">api</span><span class="p">:</span><span class="n">Focus</span><span class="p">(</span><span class="kc">nil</span><span class="p">)</span> <span class="c1">-- unfocus</span>
+</code></pre></div></p>
+<hr />
+<h4 id="getfocus">GetFocus()</h4>
+<p>Returns the current focus point
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="kd">local</span> <span class="n">focus</span> <span class="o">=</span> <span class="n">api</span><span class="p">:</span><span class="n">GetFocus</span><span class="p">()</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">focus</span><span class="p">)</span> <span class="c1">-- { Type = &quot;Player&quot;, Instance = HumanoidRootPart } OR { Type = &quot;Part&quot;, Instance = Part }</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changefovfov-number-time-number">ChangeFov(fov: number, time: number?)</h4>
+<p>Change the fov. By default time is 0.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeFov</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span> <span class="c1">-- Change focus to 120 in 0.1 seconds</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeFov</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span> <span class="c1">-- Change focus to 30 over 5 seconds</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changeautofovenable-boolean">ChangeAutoFov(enable: boolean)</h4>
+<p>Enable or disable auto fov
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeAutoFov</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">-- enable</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeAutoFov</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="c1">-- disable</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changesmoothfocusenable-boolean">ChangeSmoothFocus(enable: boolean)</h4>
+<p>Enable or disable smooth focus
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeSmoothFocus</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">-- enable</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeSmoothFocus</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="c1">-- disable</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changeblurblur-number-time-number">ChangeBlur(blur: number, time: number?)</h4>
+<p>Change the blur. By default time is 0.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeBlur</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="c1">-- change the blur to 20</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeBlur</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">-- change the blur to 0 over 5 seconds</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changesaturationsaturation-number-time-number">ChangeSaturation(saturation: number, time: number?)</h4>
+<p>Change the saturation. By default time is 0.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeSaturation</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1">-- change the saturation to -1</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeSaturation</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="c1">-- change the saturationt to 1 over 3 seconds</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changetilttilt-number-time-number">ChangeTilt(tilt: number, time: number?)</h4>
+<p>Change the tilt. By default time is 0.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeTilt</span><span class="p">(</span><span class="mi">45</span><span class="p">)</span> <span class="c1">-- change the tilt to 45</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeTilt</span><span class="p">(</span><span class="o">-</span><span class="mi">45</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="c1">-- change the tilt to -45 over 6 seconds</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changeblackoutenabled-boolean">ChangeBlackout(enabled: boolean?)</h4>
+<p>Change the blackout. If enabled is not defined then blackout will be toggled.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeBlackout</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">-- enable blackout</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeBlackout</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="c1">-- disable blackout</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeBlackout</span><span class="p">()</span> <span class="c1">-- toggle blackout</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changebarsenabledenabled-boolean">ChangeBarsEnabled(enabled: boolean?)</h4>
+<p>Change the bars. If enabled is not defined then blackout will be toggled.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeBarsEnabled</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">-- enable bars</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeBarsEnabled</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="c1">-- disable bars</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeBarsEnabled</span><span class="p">()</span> <span class="c1">-- toggle bars</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changebarsizesize-number-time-number">ChangeBarSize(size: number, time: number?)</h4>
+<p>Change the bar size. By default time is 0.1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeBarSize</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">-- change bar size to 10%</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeBarSize</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">-- change bar size to 30% over 5 seconds</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changetransitionname-string">ChangeTransition(name: string)</h4>
+<p>Change the transition type. <code>name</code> is either <code>None</code>, <code>Black</code> or <code>White</code>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeTransition</span><span class="p">(</span><span class="s2">&quot;Black&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changetransitionspeedspeed-number">ChangeTransitionSpeed(speed: number)</h4>
+<p>Change the transition speed. Speed is the % of the base speed, so speed = 50 means half the speed
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeTransitionSpeed</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="changeshakeshake-number">ChangeShake(shake: number)</h4>
+<p>Change the shake intensity.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">api</span><span class="p">:</span><span class="n">ChangeShake</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="getfov">GetFov()</h4>
+<p>Returns the current FOV
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="p">:</span><span class="n">GetFov</span><span class="p">())</span> <span class="c1">-- { Value = 70, Time = 0.1 }</span>
+</code></pre></div></p>
+<hr />
+<h4 id="getblur">GetBlur()</h4>
+<p>Returns the current blur
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="p">:</span><span class="n">GetBlur</span><span class="p">())</span> <span class="c1">-- { Value = 0, Time = 0.1 }</span>
+</code></pre></div></p>
+<hr />
+<h4 id="getsaturation">GetSaturation()</h4>
+<p>Returns the current saturation
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="p">:</span><span class="n">GetSaturation</span><span class="p">())</span> <span class="c1">-- { Value = 0, Time = 0.1 }</span>
+</code></pre></div></p>
+<hr />
+<h4 id="gettilt">GetTilt()</h4>
+<p>Returns the current tilt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="p">:</span><span class="n">GetTilt</span><span class="p">())</span> <span class="c1">-- { Value = 0, Time = 0.1 }</span>
+</code></pre></div></p>
+<hr />
+<h4 id="getbarsenabled">GetBarsEnabled()</h4>
+<p>Returns a boolean indicating whether or not bars are enabled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="p">:</span><span class="n">GetBarsEnabled</span><span class="p">())</span> <span class="c1">-- false</span>
+</code></pre></div></p>
+<hr />
+<h4 id="getbarsize">GetBarSize()</h4>
+<p>Returns the current bar size
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="p">:</span><span class="n">GetBarSize</span><span class="p">())</span> <span class="c1">-- 0</span>
+</code></pre></div></p>
+<hr />
+<h4 id="gettransition">GetTransition()</h4>
+<p>Returns the current transition's name
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="p">:</span><span class="n">GetTransition</span><span class="p">())</span> <span class="c1">-- &quot;Black&quot;</span>
+</code></pre></div></p>
+<hr />
+<h4 id="gettransitionspeed">GetTransitionSpeed()</h4>
+<p>Returns the current transition speed
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="p">:</span><span class="n">GetTransitionSpeed</span><span class="p">())</span> <span class="c1">-- 100</span>
+</code></pre></div></p>
+<hr />
+<h4 id="getshake">GetShake()</h4>
+<p>Returns the current shake intensity
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nb">print</span><span class="p">(</span><span class="n">api</span><span class="p">:</span><span class="n">GetShake</span><span class="p">())</span> <span class="c1">-- 0</span>
+</code></pre></div></p>
+<h3 id="events">Events</h3>
+<hr />
+<h4 id="apicamerachanged">api.CameraChanged</h4>
+<p>Fired when the camera changes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">api</span><span class="p">.</span><span class="n">CameraChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">camType</span><span class="p">,</span> <span class="n">camId</span><span class="p">)</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Camera changed to a &quot;</span> <span class="o">..</span> <span class="n">camType</span> <span class="o">..</span> <span class="s2">&quot; camera with an id of &quot;</span> <span class="o">..</span> <span class="n">camId</span><span class="p">)</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apifocuschanged">api.FocusChanged</h4>
+<p>Fired when the focus changes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="n">api</span><span class="p">.</span><span class="n">FocusChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">focusData</span><span class="p">)</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Focus changed:&quot;</span><span class="p">,</span> <span class="n">focusData</span><span class="p">)</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apifovchanged">api.FovChanged</h4>
+<p>Fired when the fov changes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="n">api</span><span class="p">.</span><span class="n">FovChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">newFov</span><span class="p">,</span> <span class="n">changeTime</span><span class="p">)</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fov changed to:&quot;</span><span class="p">,</span> <span class="n">newFov</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="n">changeTime</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apiblurchanged">api.BlurChanged</h4>
+<p>Fired when the blur changes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="n">api</span><span class="p">.</span><span class="n">BlurChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">newBlur</span><span class="p">,</span> <span class="n">changeTime</span><span class="p">)</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blur changed to:&quot;</span><span class="p">,</span> <span class="n">newBlur</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="n">changeTime</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apisaturationchanged">api.SaturationChanged</h4>
+<p>Fired when the saturation changes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="n">api</span><span class="p">.</span><span class="n">SaturationChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">newSaturation</span><span class="p">,</span> <span class="n">changeTime</span><span class="p">)</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saturation changed to:&quot;</span><span class="p">,</span> <span class="n">newSaturation</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="n">changeTime</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apitiltchanged">api.TiltChanged</h4>
+<p>Fired when the blur changes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="n">api</span><span class="p">.</span><span class="n">TiltChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">newTilt</span><span class="p">,</span> <span class="n">changeTime</span><span class="p">)</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tilt changed to:&quot;</span><span class="p">,</span> <span class="n">newTilt</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="n">changeTime</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apiblackoutchanged">api.BlackoutChanged</h4>
+<p>Fired when the blackout gets enabled or disabled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="n">api</span><span class="p">.</span><span class="n">BlackoutChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">isEnabled</span><span class="p">)</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Blackout is now&quot;</span><span class="p">,</span> <span class="kr">if</span> <span class="n">isEnabled</span> <span class="kr">then</span> <span class="s2">&quot;Enabled&quot;</span> <span class="kr">else</span> <span class="s2">&quot;Disabled&quot;</span><span class="p">)</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apibarsenabledchanged">api.BarsEnabledChanged</h4>
+<p>Fired when the bars get enabled or disabled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="n">api</span><span class="p">.</span><span class="n">BarsEnabledChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">isEnabled</span><span class="p">)</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bars are now&quot;</span><span class="p">,</span> <span class="kr">if</span> <span class="n">isEnabled</span> <span class="kr">then</span> <span class="s2">&quot;Enabled&quot;</span> <span class="kr">else</span> <span class="s2">&quot;Disabled&quot;</span><span class="p">)</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apibarsizechanged">api.BarSizeChanged</h4>
+<p>Fired when the bar size changes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="n">api</span><span class="p">.</span><span class="n">BarSizeChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">newSize</span><span class="p">,</span> <span class="n">changeTime</span><span class="p">)</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bar size changed to:&quot;</span><span class="p">,</span> <span class="n">newSize</span><span class="p">,</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span> <span class="n">changeTime</span><span class="p">,</span> <span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apitransitionchanged">api.TransitionChanged</h4>
+<p>Fired when the transition type changes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a><span class="n">api</span><span class="p">.</span><span class="n">TransitionChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">transitionName</span><span class="p">)</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bar size changed to:&quot;</span><span class="p">,</span> <span class="n">transitionName</span><span class="p">)</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="#__codelineno-39-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apitransitionspeedchanged">api.TransitionSpeedChanged</h4>
+<p>Fired when the transition speed changes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a><span class="n">api</span><span class="p">.</span><span class="n">TransitionSpeedChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">newSpeed</span><span class="p">)</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Transition speed changed to:&quot;</span><span class="p">,</span> <span class="n">newSpeed</span><span class="p">)</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apishakechanged">api.ShakeChanged</h4>
+<p>Fired when the shake intensity changes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a><span class="n">api</span><span class="p">.</span><span class="n">ShakeChanged</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">(</span><span class="n">newIntensity</span><span class="p">)</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="#__codelineno-41-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Shake intensity changed to:&quot;</span><span class="p">,</span> <span class="n">newIntensity</span><span class="p">)</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="#__codelineno-41-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<h2 id="client-only">Client-only</h2>
+<h3 id="events_1">Events</h3>
+<hr />
+<h4 id="apistartedwatching">api.StartedWatching</h4>
+<p>Fired when the local player pressed the "Watch" button
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a><span class="n">api</span><span class="p">.</span><span class="n">StartedWatching</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Player started watching&quot;</span><span class="p">)</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h4 id="apistoppedwatching">api.StoppedWatching</h4>
+<p>Fired when the local player stopped watching (unpressed the "Watch" button)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a><span class="n">api</span><span class="p">.</span><span class="n">StoppedWatching</span><span class="p">:</span><span class="n">Connect</span><span class="p">(</span><span class="kr">function</span><span class="p">()</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Player stopped watching&quot;</span><span class="p">)</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a><span class="kr">end</span><span class="p">)</span>
+</code></pre></div></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.4e0fa4ba.min.js"></script>
+      
+    
+  </body>
+</html>

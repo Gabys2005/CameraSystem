@@ -194,10 +194,10 @@ return function(systemFolder: any)
 		end
 	end)
 
-	replicatedFolder.Events.ChangeBarSize.OnServerEvent:Connect(function(plr, size)
+	replicatedFolder.Events.ChangeBarSize.OnServerEvent:Connect(function(plr, size, time)
 		if isOwner(plr) then
 			log(`{plr.Name} changed bar size to {size}`)
-			api:ChangeBarSize(size)
+			api:ChangeBarSize(size, time)
 		end
 	end)
 

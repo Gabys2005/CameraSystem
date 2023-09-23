@@ -1,60 +1,153 @@
-local theme = require(script.Parent.Parent.Parent.Themes.Current)
-local util = require(script.Parent.Parent.Parent.Scripts.Utils)
-local window = require(script.Parent.Parent.Parent.Scripts.NewWindow)
-local ts = game:GetService("TweenService")
+--!strict
+local TweenService = game:GetService("TweenService")
 
-export type CategoryChooserTable = {
-	Frame: GuiObject,
+local main = script.Parent.Parent
+local New = require(main.New)
+local Types = require(main.Types)
+local Component = require(main)
+
+local BACKGROUND_CHANGE_TWEEN_INFO = TweenInfo.new(0.5)
+local TOPBAR_SIZE = 40
+local MARGIN = 5
+
+local CategoryChooser = {}
+CategoryChooser.__index = CategoryChooser
+
+type CategoryChooserFrame = {
+	Instance: any,
 	Name: string,
-	ComponentName: string,
-}
-export type CategoryChooserOptions = {
-	Frames: table,
 }
 
-script.MenuButton.BackgroundColor3 = theme.Base
-script.MenuButton.TextColor3 = theme.BaseText
-script.Frame.Categories.BackgroundColor3 = theme.Base
-script.Frame.Categories.Selector.BackgroundColor3 = theme.Underline
+type CategoryChooserParams = {
+	Categories: { CategoryChooserFrame },
+}
 
-return function(options: CategoryChooserOptions)
-	local copy = script.Frame:Clone()
-	local buttonWidth = 1 / #options.Frames
-	copy.Categories.Selector.Size = UDim2.new(buttonWidth, 0, 0, 2)
-	for i, v: CategoryChooserTable in pairs(options.Frames) do
-		local button = script.MenuButton:Clone()
-		button.Text = v.Name
-		button.Size = UDim2.fromScale(buttonWidth, 1)
-		button.Position = UDim2.fromScale((i - 1) * buttonWidth, 0)
-		button.Parent = copy.Categories
+export type CategoryChooser = typeof(setmetatable(
+	{} :: {
+		Instance: Frame,
+		Topbar: Frame,
+		Buttons: { TextButton },
+		SelectedCategory: number,
+		Connections: { RBXScriptConnection },
+		Instances: { any },
+	},
+	CategoryChooser
+))
 
-		button.MouseButton1Click:Connect(function()
-			copy.Pages.UIPageLayout:JumpToIndex(i - 1)
-			ts
-				:Create(
-					copy.Categories.Selector,
-					TweenInfo.new(0.2),
-					{ Position = UDim2.fromScale((i - 1) * buttonWidth, 1) }
-				)
-				:Play()
-		end)
-		button.MouseButton2Click:Connect(function()
-			window:new({
-				Name = v.ComponentName,
-				Title = v.Name,
-				Position = UDim2.fromOffset(300, 50),
-				Enabled = true,
-			})
-		end)
+function CategoryChooser.new(params: CategoryChooserParams)
+	local self = setmetatable({}, CategoryChooser) :: CategoryChooser
+	self.Buttons = {}
+	self.Connections = {}
+	self.Instances = {}
+	self.SelectedCategory = 1
 
-		local frame = util:NewInstance("Frame", {
-			BackgroundTransparency = 1,
-			Size = UDim2.fromScale(1, 1),
-			LayoutOrder = i,
-			Parent = copy.Pages,
-		})
-		v.Frame.Parent = frame
+	local mainFrame = New("Frame", {
+		Size = UDim2.fromScale(1, 1),
+		BackgroundTransparency = 1,
+		ClipsDescendants = true,
+	})
+
+	local topbar = New("Frame", {
+		Size = UDim2.new(1, 0, 0, TOPBAR_SIZE),
+		Parent = mainFrame,
+	}, {
+		New("UICorner"),
+		New("UIPadding", {
+			PaddingLeft = UDim.new(0, 5),
+			PaddingRight = UDim.new(0, 5),
+			PaddingBottom = UDim.new(0, 5),
+			PaddingTop = UDim.new(0, 5),
+		}),
+	})
+	self.Topbar = topbar
+
+	local pageLayout = New("UIPageLayout", {
+		SortOrder = Enum.SortOrder.LayoutOrder,
+		TweenTime = 0.25,
+		GamepadInputEnabled = false,
+		ScrollWheelInputEnabled = false,
+		TouchInputEnabled = false,
+	})
+
+	local contentContainer = New("Frame", {
+		Size = UDim2.new(1, 0, 1, -TOPBAR_SIZE - MARGIN),
+		Position = UDim2.fromOffset(0, TOPBAR_SIZE + MARGIN),
+		BackgroundTransparency = 1,
+		Parent = mainFrame,
+	}, pageLayout)
+
+	local buttonSize = 1 / #params.Categories
+
+	for i, category in params.Categories do
+		local button = New("TextButton", {
+			Size = UDim2.new(buttonSize, -5, 1, 0),
+			Position = UDim2.new((i - 1) * buttonSize, 2.5, 0, 0),
+			Font = Enum.Font.Gotham,
+			TextSize = 14,
+			Text = category.Name,
+			Parent = topbar,
+		}, New("UICorner"))
+		table.insert(self.Buttons, button)
+		table.insert(
+			self.Connections,
+			button.MouseButton1Click:Connect(function()
+				self.SelectedCategory = i
+				self:_UpdateButtonColors()
+				pageLayout:JumpToIndex(i - 1)
+			end)
+		)
+
+		if category.Instance then
+			if typeof(category.Instance) == "Instance" then
+				category.Instance.Parent = contentContainer
+			else
+				if category.Instance.SetParent then
+					category.Instance:SetParent(contentContainer)
+				elseif category.Instance.Instance then
+					category.Instance.Instance.Parent = contentContainer
+				end
+			end
+			table.insert(self.Instances, category.Instance)
+		end
 	end
 
-	return copy
+	self.Instance = mainFrame
+
+	Component.apply(self)
+	return self
 end
+
+function CategoryChooser._UpdateButtonColors(self: CategoryChooser, theme: Types.Theme?)
+	local actualTheme = theme or Component.getTheme()
+	for i, button in self.Buttons do
+		button.TextColor3 = actualTheme.Text.Primary
+		local backgroundColor = if i == self.SelectedCategory
+			then actualTheme.Buttons.Primary.Selected
+			else actualTheme.Buttons.Primary.Background
+		TweenService:Create(button, BACKGROUND_CHANGE_TWEEN_INFO, { BackgroundColor3 = backgroundColor }):Play()
+		if i == self.SelectedCategory then
+			button.FontFace.Bold = true
+		else
+			button.FontFace.Bold = false
+		end
+	end
+end
+
+function CategoryChooser.ApplyTheme(self: CategoryChooser, theme: Types.Theme)
+	self.Topbar.BackgroundColor3 = theme.Background.Dark
+	self:_UpdateButtonColors(theme)
+end
+
+function CategoryChooser.SetParent(self: CategoryChooser, newParent: Instance)
+	self.Instance.Parent = newParent
+end
+
+function CategoryChooser.Destroy(self: CategoryChooser)
+	Component.cleanup(self)
+	self.Instance:Destroy()
+	for _, instance in self.Instances do
+		instance:Destroy()
+	end
+end
+
+return CategoryChooser

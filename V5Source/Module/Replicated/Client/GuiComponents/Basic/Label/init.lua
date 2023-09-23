@@ -15,14 +15,22 @@ type LabelParams = {
 	AnchorPoint: Vector2?,
 	RichText: boolean?,
 	Bold: boolean?,
+	Align: "Left" | "Center" | "Right" | nil,
 }
 
-type Label = typeof(setmetatable({} :: {
+export type Label = typeof(setmetatable({} :: {
 	Instance: TextLabel,
 }, Label))
 
 function Label.new(params: LabelParams)
 	local self = setmetatable({}, Label)
+
+	local xAlignment = Enum.TextXAlignment.Center
+	if params.Align == "Left" then
+		xAlignment = Enum.TextXAlignment.Left
+	elseif params.Align == "Right" then
+		xAlignment = Enum.TextXAlignment.Right
+	end
 
 	local label = New("TextLabel", {
 		Text = params.Text,
@@ -37,6 +45,7 @@ function Label.new(params: LabelParams)
 		Position = params.Position or UDim2.fromScale(0, 0),
 		RichText = params.RichText,
 		AnchorPoint = params.AnchorPoint or Vector2.new(0, 0),
+		TextXAlignment = xAlignment,
 	})
 
 	self.Instance = label

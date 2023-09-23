@@ -19,11 +19,12 @@ return function(mainGui)
 			Width = 225,
 			Height = 300,
 		},
-		-- {
-		-- 	Name = "Settings",
-		-- 	Width = 225,
-		-- 	Height = 280,
-		-- },
+		{
+			Module = "Settings",
+			Name = "Settings",
+			Width = 240,
+			Height = 280,
+		},
 		{
 			Module = "FocusList",
 			Name = "Focus List",

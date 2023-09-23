@@ -61,8 +61,12 @@ function DotSlider.new(params: DotSliderParams)
 	params.Round = params.Round or 0
 	params.Suffix = params.Suffix or ""
 
-	local nameLabel =
-		Label.new({ Text = params.Name, Size = UDim2.fromScale(0.4, 0.5), Position = UDim2.fromScale(0, 0.1) })
+	local nameLabel = Label.new({
+		Text = params.Name,
+		Size = UDim2.fromScale(0.4, 0.5),
+		Position = UDim2.fromScale(0, 0.1),
+		Align = "Right",
+	})
 	nameLabel:SetParent(mainFrame)
 
 	local valueLabel = Label.new({

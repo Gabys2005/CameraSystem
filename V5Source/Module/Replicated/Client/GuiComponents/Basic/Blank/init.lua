@@ -42,7 +42,7 @@ function Blank.new()
 end
 
 function Blank.ApplyTheme(self: Blank, theme: Types.Theme)
-	self.Label.TextColor3 = theme.BaseText
+	self.Label.TextColor3 = theme.Text.Primary
 end
 
 function Blank.Destroy(self: Blank)

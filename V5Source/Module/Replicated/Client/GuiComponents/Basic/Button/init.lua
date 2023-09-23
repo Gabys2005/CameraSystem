@@ -79,6 +79,10 @@ function Button.SetBackgroundColor(self: Button, color: Color3)
 	self.Instance.BackgroundColor3 = color
 end
 
+function Button.SetParent(self: Button, newParent: Instance)
+	self.Instance.Parent = newParent
+end
+
 function Button.Destroy(self: Button)
 	self.Instance:Destroy()
 	for _, connection in self.Connections do

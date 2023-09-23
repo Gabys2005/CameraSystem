@@ -1,24 +1,58 @@
-local basicComponents = script.Parent.Parent.Basic
 local windowComponents = script.Parent.Parent.WindowComponents
 
-return function()
-	local copy = script.Frame:Clone()
+local main = script.Parent.Parent
+local Component = require(main)
+local New = require(main.New)
 
-	local categoryChooser = require(basicComponents.CategoryChooser)({
-		Frames = {
+local CategoryChooser = require(main.Basic.CategoryChooser)
+local LocalSettingsWindow = require(main.WindowComponents.LocalSettings)
+local GlobalSettingsWindow = require(main.WindowComponents.GlobalSettings)
+
+local SettingsWindow = {}
+SettingsWindow.__index = SettingsWindow
+
+type SettingsWindow = typeof(setmetatable(
+	{} :: {
+		Instance: Frame,
+		Chooser: CategoryChooser.CategoryChooser,
+	},
+	SettingsWindow
+))
+
+function SettingsWindow.new()
+	local self = setmetatable({}, SettingsWindow)
+
+	local mainFrame = New("Frame", {
+		Size = UDim2.fromScale(1, 1),
+		BackgroundTransparency = 1,
+	})
+
+	local chooser = CategoryChooser.new({
+		Categories = {
 			{
 				Name = "Local",
-				Frame = require(windowComponents.LocalSettings)(),
-				ComponentName = "LocalSettings",
+				Instance = LocalSettingsWindow.new(),
 			},
 			{
 				Name = "Global",
-				Frame = require(windowComponents.GlobalSettings)(),
-				ComponentName = "GlobalSettings",
+				Instance = GlobalSettingsWindow.new(),
 			},
 		},
 	})
-	categoryChooser.Parent = copy
+	chooser:SetParent(mainFrame)
+	self.Chooser = chooser
+	self.Instance = mainFrame
 
-	return copy
+	Component.apply(self)
+	return self
 end
+
+function SettingsWindow.ApplyTheme() end
+
+function SettingsWindow.Destroy(self: SettingsWindow)
+	Component.cleanup(self)
+	self.Chooser:Destroy()
+	self.Instance:Destroy()
+end
+
+return SettingsWindow
